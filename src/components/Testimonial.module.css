@@ -1,0 +1,47 @@
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xxl);
+}
+
+.quote {
+  font-size: var(--font-h4);
+  line-height: var(--line-h4);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+}
+
+.quote::before {
+  content: "\201C";
+}
+
+.quote::after {
+  content: "\201D";
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: var(--font-h3);
+  line-height: var(--line-h3);
+  font-weight: 600;
+}
+
+.title {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}

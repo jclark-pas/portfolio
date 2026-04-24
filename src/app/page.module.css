@@ -1,0 +1,106 @@
+.section {
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+
+.sectionInner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.sectionHeading {
+  margin-bottom: var(--space-xxl);
+}
+
+.workGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.sectionHeader {
+  margin-bottom: var(--space-xxl);
+}
+
+.eyebrow {
+  font-size: var(--font-h3);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.sectionTitle {
+  font-family: var(--font-serif);
+  font-size: var(--font-h1);
+  line-height: var(--line-h1);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.sectionTitleLg {
+  font-family: var(--font-serif);
+  font-size: 56px;
+  line-height: 68px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+@media (max-width: 960px) {
+  .sectionTitleLg {
+    font-size: 48px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 430px) {
+  .sectionTitleLg {
+    font-size: 40px;
+    line-height: 55px;
+  }
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.experienceList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 1350px;
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-xl);
+}
+
+.subsectionLabel {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.compactList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (max-width: 960px) {
+  .workGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonialGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 430px) {
+  .section {
+    padding: var(--space-xxl) var(--space-md);
+  }
+}

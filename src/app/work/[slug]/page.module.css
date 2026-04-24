@@ -1,0 +1,153 @@
+.section {
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+
+.inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.heading {
+  margin-bottom: var(--space-xxl);
+}
+
+.bodyText {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: start;
+}
+
+.reverse {
+  direction: rtl;
+}
+
+.reverse > * {
+  direction: ltr;
+}
+
+.rolesHeading {
+  margin-bottom: var(--space-md);
+}
+
+.rolesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.rolesList li {
+  font-size: var(--font-body2);
+  color: var(--color-text-secondary);
+}
+
+.rolesList li::before {
+  content: "\2022 ";
+  color: var(--color-accent);
+  margin-right: var(--space-sm);
+}
+
+.timeline {
+  font-size: var(--font-body2);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.highlightImage {
+  position: relative;
+  aspect-ratio: 16/10;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.sectionImage {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.imgCover {
+  object-fit: cover;
+}
+
+.bottomNav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--color-border);
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-xl) var(--space-xxl);
+  transition: background 0.2s;
+}
+
+.navLink:hover {
+  background: var(--color-bg-card);
+}
+
+.navLink:last-child {
+  text-align: right;
+  border-left: 1px solid var(--color-border);
+}
+
+.navLabel {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-secondary);
+}
+
+.navTitle {
+  font-size: var(--font-h3);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+@media (max-width: 960px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+
+  .reverse {
+    direction: ltr;
+  }
+
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 430px) {
+  .section {
+    padding: var(--space-xxl) var(--space-md);
+  }
+
+  .navLink {
+    padding: var(--space-lg) var(--space-md);
+  }
+}

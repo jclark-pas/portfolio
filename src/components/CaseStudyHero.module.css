@@ -1,0 +1,51 @@
+.hero {
+  padding: var(--space-xxxl) var(--space-xxl);
+  color: var(--color-text-invert);
+  text-align: center;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.company {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  margin-bottom: var(--space-md);
+}
+
+.title {
+  color: var(--color-text-invert);
+  margin-bottom: var(--space-lg);
+}
+
+.tagline {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  opacity: 0.9;
+  max-width: 640px;
+  margin: 0 auto var(--space-xxl);
+}
+
+.imageArea {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16/10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.heroImg {
+  object-fit: contain;
+}
+
+@media (max-width: 430px) {
+  .hero {
+    padding: var(--space-xxl) var(--space-md);
+  }
+}
