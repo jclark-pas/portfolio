@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Navigation.module.css";
 
 type Theme = "light" | "dark";
@@ -12,8 +13,17 @@ function getInitialTheme(): Theme {
 }
 
 export default function Navigation() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("light");
+
+  const isActive = (href: string) => {
+    if (href.includes("#")) return false;
+    return pathname === href || pathname?.startsWith(`${href}/`);
+  };
+
+  const linkClass = (href: string) =>
+    `${styles.link} ${isActive(href) ? styles.active : ""}`;
 
   useEffect(() => {
     setTheme(getInitialTheme());
@@ -35,10 +45,25 @@ export default function Navigation() {
           Josh Clark
         </Link>
         <div className={styles.links}>
-          <Link href="/#work" className={styles.link}>
+          <Link
+            href="/#work"
+            className={linkClass("/#work")}
+            aria-current={isActive("/#work") ? "page" : undefined}
+          >
             Work
           </Link>
-          <Link href="/#contact" className={styles.link}>
+          <Link
+            href="/my-story"
+            className={linkClass("/my-story")}
+            aria-current={isActive("/my-story") ? "page" : undefined}
+          >
+            My Story
+          </Link>
+          <Link
+            href="/#contact"
+            className={linkClass("/#contact")}
+            aria-current={isActive("/#contact") ? "page" : undefined}
+          >
             Contact
           </Link>
           <button
@@ -72,14 +97,24 @@ export default function Navigation() {
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ""}`}>
         <Link
           href="/#work"
-          className={styles.link}
+          className={linkClass("/#work")}
+          aria-current={isActive("/#work") ? "page" : undefined}
           onClick={() => setMenuOpen(false)}
         >
           Work
         </Link>
         <Link
+          href="/my-story"
+          className={linkClass("/my-story")}
+          aria-current={isActive("/my-story") ? "page" : undefined}
+          onClick={() => setMenuOpen(false)}
+        >
+          My Story
+        </Link>
+        <Link
           href="/#contact"
-          className={styles.link}
+          className={linkClass("/#contact")}
+          aria-current={isActive("/#contact") ? "page" : undefined}
           onClick={() => setMenuOpen(false)}
         >
           Contact

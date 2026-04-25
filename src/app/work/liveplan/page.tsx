@@ -202,27 +202,23 @@ export default function LivePlanPage() {
         <div className={styles.gradientBlock} aria-hidden="true" />
       </section>
 
-      <section className={styles.quoteSection}>
-        <div className={styles.narrow}>
-          <p className={styles.eyebrow}>Key Insight</p>
-          <blockquote className={styles.bigQuote}>
-            “Users weren’t struggling because the features didn’t exist — they
-            were struggling because they couldn’t find them, trust them, or
-            make them their own.”
-          </blockquote>
-          <p className={styles.quoteFollow}>
-            This reframing shifted our approach from building new capabilities
-            to surfacing existing ones in context.
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className={styles.inner}>
+      <section className={styles.insightsSection}>
+        <div className={styles.insightsContainer}>
+          <div className={styles.insightsHeader}>
+            <p className={styles.eyebrow}>Key Insights</p>
+            <blockquote className={styles.bigQuote}>
+              “Users weren’t struggling because the features didn’t exist —
+              they were struggling because they couldn’t find them, trust them,
+              or make them their own.”
+            </blockquote>
+            <p className={styles.quoteFollow}>
+              This reframing shifted our approach from building new capabilities
+              to surfacing existing ones in context.
+            </p>
+          </div>
           <div className={styles.insightsGrid}>
             {insights.map((i) => (
               <article key={i.title} className={styles.insightCard}>
-                <div className={styles.insightIcon} aria-hidden="true" />
                 <h3 className={styles.insightTitle}>{i.title}</h3>
                 <p className={styles.insightBody}>{i.body}</p>
               </article>

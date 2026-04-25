@@ -17,6 +17,18 @@
   gap: var(--space-xl);
 }
 
+.featuredList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.moreWorkGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
 .sectionHeader {
   margin-bottom: var(--space-xxl);
 }
@@ -67,7 +79,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  max-width: 1350px;
 }
 
 .subsection {
@@ -94,7 +105,17 @@
     grid-template-columns: 1fr;
   }
 
+  .moreWorkGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .testimonialGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .moreWorkGrid {
     grid-template-columns: 1fr;
   }
 }

@@ -48,35 +48,37 @@ export default function ExperienceEntry({
           {open ? <MinusIcon /> : <PlusIcon />}
         </span>
       </button>
-      {open && (
-        <div className={styles.content}>
-          <ul className={styles.bullets}>
-            {bullets.map((b, i) => (
-              <li key={i}>{b}</li>
-            ))}
-          </ul>
-          <div className={styles.skills}>
-            {SKILLS.map((skill, i) => (
-              <div key={skill.label} className={styles.skillRow}>
-                <span className={styles.skillLabel}>{skill.label}</span>
-                <div
-                  className={styles.skillDots}
-                  style={{ color: skill.color }}
-                >
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <span
-                      key={j}
-                      className={`${styles.skillDot} ${
-                        j < skills[i] ? styles.filled : ""
-                      }`}
-                    />
-                  ))}
+      <div className={styles.contentWrapper} aria-hidden={!open}>
+        <div className={styles.contentInner}>
+          <div className={styles.content}>
+            <ul className={styles.bullets}>
+              {bullets.map((b, i) => (
+                <li key={i}>{b}</li>
+              ))}
+            </ul>
+            <div className={styles.skills}>
+              {SKILLS.map((skill, i) => (
+                <div key={skill.label} className={styles.skillRow}>
+                  <span className={styles.skillLabel}>{skill.label}</span>
+                  <div
+                    className={styles.skillDots}
+                    style={{ color: skill.color }}
+                  >
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <span
+                        key={j}
+                        className={`${styles.skillDot} ${
+                          j < skills[i] ? styles.filled : ""
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

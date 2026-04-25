@@ -204,58 +204,71 @@
   );
 }
 
-/* ===== Quote section ===== */
-.quoteSection {
+/* ===== Key Insights section ===== */
+.insightsSection {
   padding: var(--space-xxxl) var(--space-xxl);
 }
 
+.insightsContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.insightsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.insightsHeader .eyebrow {
+  margin-bottom: 0;
+}
+
 .bigQuote {
-  font-family: var(--font-bricolage), sans-serif;
-  font-size: 40px;
-  line-height: 52px;
+  font-family: var(--font-poppins), var(--font-bricolage), sans-serif;
+  font-size: 32px;
+  line-height: 1.1;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: var(--space-xl);
 }
 
 .quoteFollow {
   font-size: 18px;
-  line-height: 30px;
+  line-height: 32px;
   color: var(--color-text-secondary);
-  max-width: 640px;
 }
 
-/* ===== Insights grid ===== */
 .insightsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
+  gap: 32px;
 }
 
 .insightCard {
   background: var(--color-bg-card);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-}
-
-.insightIcon {
-  width: 40px;
-  height: 40px;
-  background: var(--color-accent);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-md);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 .insightTitle {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
+  line-height: 1.1;
   color: var(--color-text);
-  margin-bottom: var(--space-sm);
 }
 
 .insightBody {
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 18px;
+  line-height: 32px;
   color: var(--color-text-secondary);
 }
 
@@ -544,7 +557,7 @@
 @media (max-width: 430px) {
   .section,
   .darkSection,
-  .quoteSection,
+  .insightsSection,
   .hero,
   .statsBand {
     padding-left: var(--space-md);

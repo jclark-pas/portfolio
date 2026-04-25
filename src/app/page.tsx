@@ -1,6 +1,9 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import WorkCard from "@/components/WorkCard";
+import WorkCarousel from "@/components/WorkCarousel";
+import FeaturedWorkCard, {
+  type FeaturedWork,
+} from "@/components/FeaturedWorkCard";
 import Testimonial from "@/components/Testimonial";
 import ExperienceEntry from "@/components/ExperienceEntry";
 import CompactEntry from "@/components/CompactEntry";
@@ -9,21 +12,86 @@ import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
 import styles from "./page.module.css";
 
+const featuredWork: FeaturedWork[] = [
+  {
+    number: "01",
+    eyebrow: "LivePlan · Plan Editor",
+    title: "Redesigning the Plan",
+    description:
+      "Reimagining a decade-old business plan editor — making it faster to write, easier to customize, and smarter with AI while maintaining the structure investors trust.",
+    tags: [
+      "Strategy",
+      "User Research",
+      "Design Systems",
+      "AI Integration",
+      "Product Design",
+    ],
+    href: "/work/liveplan",
+    imageBackground:
+      "linear-gradient(135deg, #214E41 0%, #009660 35%, #6EAD59 65%, #FFCC50 100%)",
+  },
+  {
+    number: "02",
+    eyebrow: "LivePlan · Design System",
+    title: "Scaling Design with AI",
+    description:
+      "Building Evergreen — a token-based design system that powers print, product, and pitch decks — paired with AI-driven workflows that accelerated our team's output.",
+    tags: [
+      "Design Systems",
+      "Tokens",
+      "AI Process",
+      "Team Leadership",
+      "Documentation",
+    ],
+    href: "#",
+    imageBackground:
+      "linear-gradient(135deg, #1F3939 0%, #57766A 50%, #E8A33A 100%)",
+  },
+  {
+    number: "03",
+    eyebrow: "LivePlan · Idea Canvas",
+    title: "From Idea to Plan",
+    description:
+      "An AI-assisted canvas that helps entrepreneurs shape a fuzzy idea into a fundable plan — moving users from blank page to first draft in minutes.",
+    tags: ["Product Strategy", "AI", "Onboarding", "Information Design"],
+    href: "#",
+    imageBackground:
+      "linear-gradient(135deg, #6F4AC7 0%, #3B82C9 50%, #F26A5D 100%)",
+  },
+];
+
+const otherProjects = projects.filter((p) => p.slug !== "liveplan");
+
 export default function Home() {
   return (
     <>
       <Navigation />
       <Hero />
 
-      {/* Work Section */}
+      {/* Featured Work Section */}
       <section id="work" className={styles.section}>
         <div className={styles.sectionInner}>
-          <h2 className={styles.sectionHeading}>Work</h2>
-          <div className={styles.workGrid}>
-            {projects.map((project) => (
-              <WorkCard key={project.slug} project={project} />
+          <div className={styles.sectionHeader}>
+            <p className={styles.eyebrow}>Featured Work.</p>
+            <h2 className={styles.sectionTitleLg}>
+              Three stories from LivePlan
+            </h2>
+          </div>
+          <div className={styles.featuredList}>
+            {featuredWork.map((work) => (
+              <FeaturedWorkCard key={work.number} work={work} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* More Work Section */}
+      <section className={styles.section}>
+        <div className={styles.sectionInner}>
+          <div className={styles.sectionHeader}>
+            <p className={styles.subsectionLabel}>More Work</p>
+          </div>
+          <WorkCarousel projects={otherProjects} />
         </div>
       </section>
 
