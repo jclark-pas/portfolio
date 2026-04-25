@@ -137,8 +137,52 @@ export const projects: Project[] = [
       },
     ],
     prevSlug: "qlarity",
-    nextSlug: "ktek",
+    nextSlug: "idea-canvas",
     prevTitle: "Qlarity",
+    nextTitle: "Idea Canvas",
+  },
+  {
+    slug: "idea-canvas",
+    title: "Idea Canvas",
+    tagline: "AI-powered idea validation for early-stage entrepreneurs",
+    description:
+      "An AI-powered idea validation tool that helps early-stage entrepreneurs test and refine their business assumptions before committing to a full business plan.",
+    color: "#1B7A7A",
+    thumbnail: "/images/thumb-idea-canvas.png",
+    heroImage: "/images/idea-canvas/hero.png",
+    roles: ["Product Design", "User Research", "Product Strategy"],
+    whatIDid:
+      "I designed Idea Canvas \u2014 an AI-powered idea validation tool for LivePlan that helps early-stage entrepreneurs test and refine their business assumptions before committing to a full business plan.\n\nTransforming LivePlan from an execution tool into a discovery platform, the canvas uses AI-powered evidence analysis to help founders determine whether their assumptions have legs \u2014 and suggests concrete pivots when they don\u2019t.",
+    highlights: [
+      {
+        title: "AI-Powered Evidence Analysis",
+        description:
+          "Each assumption gets instant AI analysis, rating the strength of supporting evidence from strong to weak \u2014 backed by research papers, market data, and community sentiment.",
+        image: "/images/idea-canvas/evidence.png",
+      },
+      {
+        title: "The Pivot Engine",
+        description:
+          "When evidence is weak, the AI suggests concrete alternatives. 70% of users replace their original assumptions with AI suggestions \u2014 validating AI as a collaborative partner, not just a critic.",
+        image: "/images/idea-canvas/pivot.png",
+      },
+    ],
+    sections: [
+      {
+        title: "Idea Check",
+        description:
+          "A holistic confidence score evaluates the entire business \u2014 examining market size, revenue model, regulatory risks, competition, and fatal flaws \u2014 producing a score with specific pivot suggestions to adjacent opportunities.",
+        image: "/images/idea-canvas/idea-check.png",
+      },
+      {
+        title: "A framework for every founder",
+        description:
+          "Built on the Lean Canvas framework to map cleanly to LivePlan\u2019s business plan template, with framework-agnostic architecture for education partners who prefer BMC or other outlines.",
+      },
+    ],
+    prevSlug: "liveplan",
+    nextSlug: "ktek",
+    prevTitle: "LivePlan",
     nextTitle: "KinderTek",
   },
   {
@@ -186,9 +230,9 @@ export const projects: Project[] = [
         image: "/images/ktek/teacher-app.png",
       },
     ],
-    prevSlug: "liveplan",
+    prevSlug: "idea-canvas",
     nextSlug: "learningwrite",
-    prevTitle: "LivePlan",
+    prevTitle: "Idea Canvas",
     nextTitle: "LearningWrite",
   },
   {
