@@ -144,7 +144,7 @@
 
 @media (max-width: 430px) {
   .section {
-    padding: var(--space-xxl) var(--space-md);
+    padding: var(--space-xxl) var(--space-xl);
   }
 
   .navLink {

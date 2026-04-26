@@ -578,8 +578,21 @@
   .insightsSection,
   .hero,
   .statsBand {
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+
+  .insightsContainer {
+    padding: var(--space-xl);
+    gap: var(--space-xxl);
+  }
+
+  .insightsGrid {
+    gap: var(--space-md);
+  }
+
+  .insightCard {
+    padding: var(--space-xl);
   }
 
   .statsGrid {

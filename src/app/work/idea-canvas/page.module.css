@@ -578,9 +578,10 @@
   .darkSection,
   .quoteSection,
   .hero,
-  .statsBand {
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
+  .statsBand,
+  .gallerySection {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
   }
 
   .statsGrid {
