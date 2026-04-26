@@ -18,12 +18,6 @@ export default function MyStoryPage() {
           </h1>
         </header>
 
-        <div className={styles.imageRow}>
-          <div className={styles.imagePlaceholder} aria-hidden="true" />
-          <div className={styles.imagePlaceholder} aria-hidden="true" />
-          <div className={styles.imagePlaceholder} aria-hidden="true" />
-        </div>
-
         <div className={styles.prose}>
           <p>
             Hi, I’m Josh Clark — a product designer and builder. I’ve been
@@ -63,6 +57,15 @@ export default function MyStoryPage() {
             I’d been building — including the path toward design leadership I
             was on — was over.
           </p>
+        </div>
+
+        <div className={styles.imageRow}>
+          <div className={styles.imagePlaceholder} aria-hidden="true" />
+          <div className={styles.imagePlaceholder} aria-hidden="true" />
+          <div className={styles.imagePlaceholder} aria-hidden="true" />
+        </div>
+
+        <div className={styles.prose}>
           <p>
             What I found instead was that the worst day of my life had become a
             strange kind of gift.
