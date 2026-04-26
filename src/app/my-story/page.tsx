@@ -73,12 +73,15 @@ export default function MyStoryPage() {
           <p>
             It taught me how to dig deep, how to make the life I have rather
             than the one I’d planned, and how to keep showing up when progress
-            is measured in millimeters. It also gave me the gift of perspective:
-            overnight, I went from being part of the majority to being a
+            is measured in millimeters. It also gave me the gift of perspective.
+            Overnight, I went from being part of the majority to being a
             minority, navigating a world full of barriers I’d never had to
-            notice. It opened my eyes to the obstacles placed in front of
-            people with disabilities, women, BIPOC, queer folks, and so many
-            others — and turned my credo from a slogan into a practice.
+            notice. I won’t claim to understand the experience of every
+            marginalized person — every story is different — but my own turned
+            a long list of <em>unknown</em> unknowns about privilege into{" "}
+            <em>known</em> unknowns. That shift turned my credo from a slogan
+            into a practice, and made the ongoing work of learning those
+            unknowns part of how I show up.
           </p>
           <p>
             And it taught me something I now carry into every team I work with:
