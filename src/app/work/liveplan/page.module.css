@@ -578,21 +578,35 @@
   .insightsSection,
   .hero,
   .statsBand {
-    padding-left: var(--space-xl);
-    padding-right: var(--space-xl);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section,
+  .darkSection,
+  .insightsSection {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .insightsContainer {
-    padding: var(--space-xl);
-    gap: var(--space-xxl);
+    padding: 0;
+    border: 0;
+    gap: 24px;
   }
 
   .insightsGrid {
-    gap: var(--space-md);
+    gap: 12px;
   }
 
   .insightCard {
-    padding: var(--space-xl);
+    padding: 16px;
+  }
+
+  .statCard,
+  .pillarCard,
+  .tokenCol {
+    padding: 16px;
   }
 
   .statsGrid {

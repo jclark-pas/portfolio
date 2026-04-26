@@ -580,8 +580,23 @@
   .hero,
   .statsBand,
   .gallerySection {
-    padding-left: var(--space-xl);
-    padding-right: var(--space-xl);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section,
+  .darkSection,
+  .quoteSection,
+  .gallerySection {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .insightCard,
+  .pillarCard,
+  .outcomeCard,
+  .statCard {
+    padding: 16px;
   }
 
   .statsGrid {
