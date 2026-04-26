@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -103,33 +104,42 @@ export default function IdeaCanvasPage() {
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <div className={styles.heroContent}>
+          <div className={styles.heroIntro}>
             <p className={styles.kicker}>LivePlan · AI-Powered Business Validation</p>
             <h1 className={styles.heroHeadline}>Idea Canvas</h1>
-            <p className={styles.heroDescription}>
-              I designed an AI-powered idea validation tool that helps early-stage entrepreneurs
-              test and refine their business assumptions before committing to a full business
-              plan — transforming LivePlan from an execution tool into a discovery platform.
-            </p>
-            <dl className={styles.metaRow}>
-              <div className={styles.metaCell}>
-                <dt>Role</dt>
-                <dd>Product Designer &amp; Researcher</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Team</dt>
-                <dd>Discovery Pod (Designer, Engineer, PM)</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Timeline</dt>
-                <dd>3 weeks to MVP</dd>
-              </div>
-            </dl>
           </div>
-          <div>
-            <div className={styles.heroVisual} aria-hidden="true" />
+          <div className={styles.heroMedia}>
+            <div className={styles.heroVisual}>
+              <Image
+                src="/images/canvas-hero.png"
+                alt="Idea Canvas interface — Mike's Hot Dog Stand validation session with confidence indicator and evidence ratings on each assumption"
+                fill
+                priority
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.heroImg}
+              />
+            </div>
             <p className={styles.imageCaption}>Full Idea Canvas interface — an active validation session with AI evidence ratings visible on each assumption</p>
           </div>
+          <p className={styles.heroDescription}>
+            I designed an AI-powered idea validation tool that helps early-stage entrepreneurs
+            test and refine their business assumptions before committing to a full business
+            plan — transforming LivePlan from an execution tool into a discovery platform.
+          </p>
+          <dl className={styles.metaRow}>
+            <div className={styles.metaCell}>
+              <dt>Role</dt>
+              <dd>Product Designer &amp; Researcher</dd>
+            </div>
+            <div className={styles.metaCell}>
+              <dt>Team</dt>
+              <dd>Discovery Pod (Designer, Engineer, PM)</dd>
+            </div>
+            <div className={styles.metaCell}>
+              <dt>Timeline</dt>
+              <dd>3 weeks to MVP</dd>
+            </div>
+          </dl>
         </div>
       </section>
 

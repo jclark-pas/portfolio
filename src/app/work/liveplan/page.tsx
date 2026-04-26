@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { getAdjacentProjects } from "@/data/projects";
@@ -119,32 +120,41 @@ export default function LivePlanPage() {
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <div className={styles.heroContent}>
+          <div className={styles.heroIntro}>
             <p className={styles.kicker}>LivePlan · Product Design · 2024</p>
             <h1 className={styles.heroHeadline}>
               Redesigning the Business Plan Writing Experience
             </h1>
-            <p className={styles.heroDescription}>
-              How user research, design systems thinking, and AI integration
-              reduced early churn by 70% and transformed how entrepreneurs
-              write business plans.
-            </p>
-            <dl className={styles.metaRow}>
-              <div className={styles.metaCell}>
-                <dt>Role</dt>
-                <dd>Lead Product Designer</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Team</dt>
-                <dd>9 Engineers, 1 PM</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Timeline</dt>
-                <dd>3 months</dd>
-              </div>
-            </dl>
           </div>
-          <div className={styles.heroVisual} aria-hidden="true" />
+          <div className={styles.heroVisual}>
+            <Image
+              src="/images/liveplan/businessplan-hero.png"
+              alt="LivePlan business plan editor with executive summary, formatting toolbar, and inline AI guidance"
+              fill
+              priority
+              sizes="(max-width: 1100px) 100vw, 1100px"
+              className={styles.heroImg}
+            />
+          </div>
+          <p className={styles.heroDescription}>
+            How user research, design systems thinking, and AI integration
+            reduced early churn by 70% and transformed how entrepreneurs
+            write business plans.
+          </p>
+          <dl className={styles.metaRow}>
+            <div className={styles.metaCell}>
+              <dt>Role</dt>
+              <dd>Lead Product Designer</dd>
+            </div>
+            <div className={styles.metaCell}>
+              <dt>Team</dt>
+              <dd>9 Engineers, 1 PM</dd>
+            </div>
+            <div className={styles.metaCell}>
+              <dt>Timeline</dt>
+              <dd>3 months</dd>
+            </div>
+          </dl>
         </div>
       </section>
 

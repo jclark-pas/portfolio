@@ -83,6 +83,13 @@
   line-height: 1.1;
   font-weight: 600;
   color: var(--color-text);
+  hanging-punctuation: first last;
+}
+
+@supports not (hanging-punctuation: first) {
+  .credo {
+    text-indent: -0.45em;
+  }
 }
 
 .wideImage {
