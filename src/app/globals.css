@@ -84,8 +84,8 @@
   }
 }
 
-/* Mobile overrides (Figma Mobile mode, breakpoint 430) */
-@media (max-width: 430px) {
+/* Mobile overrides (Figma Mobile mode, breakpoint 480) */
+@media (max-width: 480px) {
   :root {
     --space-xs: 2px;
     --space-sm: 4px;

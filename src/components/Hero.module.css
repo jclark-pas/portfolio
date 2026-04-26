@@ -40,7 +40,7 @@
   margin-bottom: var(--space-lg);
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .headline {
     font-size: 32px;
     line-height: 38px;
@@ -64,7 +64,7 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .inner {
     padding: var(--space-xl) var(--space-md);
   }

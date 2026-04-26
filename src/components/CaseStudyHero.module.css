@@ -44,7 +44,7 @@
   object-fit: contain;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .hero {
     padding: var(--space-xxl) var(--space-md);
   }

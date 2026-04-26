@@ -161,7 +161,7 @@
   background: currentColor;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .header {
     padding: var(--space-xl) var(--space-lg);
   }

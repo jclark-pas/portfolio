@@ -94,7 +94,7 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .sectionTitleLg {
     font-size: 40px;
     line-height: 55px;
@@ -152,7 +152,7 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .section {
     padding: var(--space-xxl) var(--space-xl);
   }

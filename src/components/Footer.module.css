@@ -27,7 +27,7 @@
   max-width: 640px;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .footer {
     padding: var(--space-xxl) var(--space-md);
   }

@@ -119,7 +119,7 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .section {
     padding: var(--space-xxl) var(--space-xl);
     gap: var(--space-xl);

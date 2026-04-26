@@ -31,7 +31,7 @@
   text-align: right;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .subtitle {
     text-align: left;
   }
