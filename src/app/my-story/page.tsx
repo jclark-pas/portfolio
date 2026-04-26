@@ -14,9 +14,7 @@ export default function MyStoryPage() {
             About Me<span className={styles.eyebrowDot}>.</span>
           </p>
           <h1 className={styles.headline}>
-            Pull up a chair and
-            <br />
-            I’ll tell you a tale...
+            How the worst day of my life made me a better design leader.
           </h1>
         </header>
 
@@ -28,41 +26,77 @@ export default function MyStoryPage() {
 
         <div className={styles.prose}>
           <p>
-            My name is Josh Clark, and I’m applying for the Staff Product
-            Designer position at AudioEye.
+            Hi, I’m Josh Clark — a product designer and builder. I’ve been
+            designing since 2006 and working in product design specifically
+            since 2011, across mobile and web, from healthcare to small-business
+            SaaS. Along the way I’ve worn most of the hats: product and project
+            management, user research, UX and UI, front-end development, and
+            enough back-end to be dangerous.
           </p>
           <p>
-            In 2017 I felt like I needed clarity in my vocational life, and
-            spent the better part of that year writing my vocational credo — a
-            rule to live my professional life by. Here it is:
-          </p>
-          <p className={styles.credo}>
-            I design environments of access, so the excluded can be included
-            and all may benefit from their inclusion.
+            That’s the résumé version. The story underneath it starts in 2017.
           </p>
           <p>
-            Just a year after discerning that, I experienced a spinal cord
-            injury that left me living in a constructed environment full of
-            barriers for people with disabilities. This life experience has
-            allowed me to see the constructed world through different eyes,
-            learning to understand the edges of inclusion and access all around
-            me.
+            After a decade in the work, I needed to know <em>why</em> I was
+            doing it. So I spent the better part of that year writing a
+            vocational credo — a rule to live my professional life by:
+          </p>
+          <aside className={styles.credoCallout}>
+            <p className={styles.credoEyebrow}>My Credo</p>
+            <blockquote className={styles.credo}>
+              “I design environments of access, so the excluded can be
+              included and all may benefit from their inclusion.”
+            </blockquote>
+          </aside>
+          <p>A year later, that sentence stopped being abstract.</p>
+          <p>
+            On September 6, 2018, I woke from a dead sleep with a pain in my
+            lower back. Within fifty minutes I couldn’t move from the waist
+            down. Ten days later I was diagnosed with Transverse Myelitis — my
+            immune system had attacked my spinal cord and left me with partial
+            paralysis below the waist.
           </p>
           <p>
-            As a trained and experienced product designer, I have spent my
-            career working to enable access for people into spaces that exclude
-            them. Most recently, I’ve spent my time building software to help
-            passionate people with business ideas but no business background
-            execute their entrepreneurial dreams. My career and skill set is
-            wide ranging — from Design Director, Product Manager, Usability
-            researcher, and Front-End developer.
+            It took two years of intense physical therapy, stubborn
+            determination, and a lot of luck to work my way from a wheelchair
+            back to walking on my own. For a long stretch I was sure the life
+            I’d been building — including the path toward design leadership I
+            was on — was over.
           </p>
           <p>
-            Given my vocational credo, life experience, and professional
-            training, I think I’d be a good fit for AudioEye’s Staff Product
-            Designer Role.
+            What I found instead was that the worst day of my life had become a
+            strange kind of gift.
           </p>
-          <p>I look forward to hearing more about the opportunity!</p>
+          <p>
+            It taught me how to dig deep, how to make the life I have rather
+            than the one I’d planned, and how to keep showing up when progress
+            is measured in millimeters. It also gave me the gift of perspective:
+            overnight, I went from being part of the majority to being a
+            minority, navigating a world full of barriers I’d never had to
+            notice. It opened my eyes to the obstacles placed in front of
+            people with disabilities, women, BIPOC, queer folks, and so many
+            others — and turned my credo from a slogan into a practice.
+          </p>
+          <p>
+            And it taught me something I now carry into every team I work with:
+            we are all, at our base, a collection of our worst days. They don’t
+            have to ruin us — but they do define us. Mine is more dramatic than
+            most, but it has made me a more empathetic collaborator and, I
+            believe, a better leader. I’m slower to judge, quicker to listen,
+            and genuinely interested in helping the people around me find work
+            that feels meaningful — whatever hand they’ve been dealt.
+          </p>
+          <p>
+            The way I work and lead comes from all of it: identify the
+            constraints, then find the simplest path to success around or
+            through them.
+          </p>
+          <p>
+            That’s the leader I want to be, and the work I want to do next:
+            building thoughtful products with sharp, talented people, designing
+            environments of access, and helping a team do the best work of
+            their careers.
+          </p>
         </div>
 
         <div className={styles.wideImage} aria-hidden="true" />
