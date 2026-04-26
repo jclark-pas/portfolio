@@ -46,9 +46,9 @@ export default function Navigation() {
         </Link>
         <div className={styles.links}>
           <Link
-            href="/#work"
-            className={linkClass("/#work")}
-            aria-current={isActive("/#work") ? "page" : undefined}
+            href="/work"
+            className={linkClass("/work")}
+            aria-current={isActive("/work") ? "page" : undefined}
           >
             Work
           </Link>
@@ -96,9 +96,9 @@ export default function Navigation() {
       </div>
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ""}`}>
         <Link
-          href="/#work"
-          className={linkClass("/#work")}
-          aria-current={isActive("/#work") ? "page" : undefined}
+          href="/work"
+          className={linkClass("/work")}
+          aria-current={isActive("/work") ? "page" : undefined}
           onClick={() => setMenuOpen(false)}
         >
           Work

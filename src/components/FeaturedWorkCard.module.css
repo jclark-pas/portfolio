@@ -55,8 +55,8 @@
 
 .title {
   font-family: var(--font-serif);
-  font-size: 56px;
-  line-height: 1.05;
+  font-size: 44px;
+  line-height: 52px;
   font-weight: 700;
   color: var(--color-text);
 }
