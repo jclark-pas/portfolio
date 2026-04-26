@@ -59,6 +59,24 @@
   gap: var(--space-xl);
 }
 
+.moreWorkGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+@media (max-width: 960px) {
+  .moreWorkGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .moreWorkGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 430px) {
   .introInner,
   .section {

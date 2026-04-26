@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import WorkCarousel from "@/components/WorkCarousel";
+import WorkCard from "@/components/WorkCard";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -7,7 +7,6 @@ import { projects } from "@/data/projects";
 import { featuredWork, featuredSlugs } from "@/data/featuredWork";
 import styles from "./page.module.css";
 
-const additionalFeatured = featuredWork.filter((w) => w.number !== "01");
 const otherProjects = projects.filter((p) => !featuredSlugs.has(p.slug));
 
 export default function WorkIndexPage() {
@@ -34,7 +33,7 @@ export default function WorkIndexPage() {
             <p className={styles.subsectionLabel}>Featured</p>
           </div>
           <div className={styles.featuredList}>
-            {additionalFeatured.map((work) => (
+            {featuredWork.map((work) => (
               <FeaturedWorkCard key={work.number} work={work} />
             ))}
           </div>
@@ -46,7 +45,11 @@ export default function WorkIndexPage() {
           <div className={styles.sectionHeader}>
             <p className={styles.subsectionLabel}>More Work</p>
           </div>
-          <WorkCarousel projects={otherProjects} />
+          <div className={styles.moreWorkGrid}>
+            {otherProjects.map((project) => (
+              <WorkCard key={project.slug} project={project} />
+            ))}
+          </div>
         </div>
       </section>
 
