@@ -1,14 +1,14 @@
 /* Design Tokens from Figma */
 :root {
   /* Colors - AudioEye mode */
-  --color-accent: #F26A5D;
+  --color-accent: #FF4419;
   --color-surface: #FDFBF7;
-  --color-text: #1F3939;
-  --color-text-secondary: #57766A;
+  --color-text: #0B0921;
+  --color-text-secondary: #130F38;
   --color-bg-card: rgba(239, 233, 219, 0.5);
   --color-border: #E3DBCA;
-  --color-text-invert: #FDFBF7;
-  --color-surface-invert: #073626;
+  --color-text-invert: #EFE9DB;
+  --color-surface-invert: #0B0921;
 
   /* Spacing - Desktop */
   --space-xs: 4px;
