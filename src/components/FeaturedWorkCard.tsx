@@ -6,7 +6,6 @@ export interface FeaturedWork {
   eyebrow: string;
   title: string;
   description: string;
-  tags: string[];
   href: string;
   imageBackground?: string;
 }
@@ -28,13 +27,6 @@ export default function FeaturedWorkCard({ work }: { work: FeaturedWork }) {
         </p>
         <h3 className={styles.title}>{work.title}</h3>
         <p className={styles.description}>{work.description}</p>
-        <div className={styles.tags}>
-          {work.tags.map((tag) => (
-            <span key={tag} className={styles.tag}>
-              {tag}
-            </span>
-          ))}
-        </div>
         <span className={styles.cta}>
           Read case study <span aria-hidden="true">→</span>
         </span>

@@ -3,6 +3,8 @@ import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { getAdjacentProjects } from "@/data/projects";
+import ObservationViewer from "./ObservationViewer";
+import BeforeAfterToggle from "./BeforeAfterToggle";
 import styles from "./page.module.css";
 
 const stats = [
@@ -68,23 +70,30 @@ const pillars = [
 const beforeAfter = [
   {
     title: "Inline Editing",
-    before:
-      "Users entered a separate detail view to edit each section, losing context of their overall plan.",
-    after: "Write directly in the document flow. No modals, no round-tripping.",
+    before: {
+      body: "Users entered a separate detail view to edit each section, losing context of their overall plan.",
+    },
+    after: {
+      body: "Write directly in the document flow. No modals, no round-tripping.",
+    },
   },
   {
     title: "AI Writing Tools",
-    before:
-      "AI writing lived in a sidebar disconnected from what users were actually working on.",
-    after:
-      "AI suggestions appear in context, with surgical controls over tone, length, and scope.",
+    before: {
+      body: "AI writing lived in a sidebar disconnected from what users were actually working on.",
+    },
+    after: {
+      body: "AI suggestions appear in context, with surgical controls over tone, length, and scope.",
+    },
   },
   {
     title: "Plan Outline Editing",
-    before:
-      "Outline changes required navigating to a separate settings area, away from the content itself.",
-    after:
-      "Reorder, rename, and restructure the outline directly alongside the plan as you write.",
+    before: {
+      body: "Outline changes required navigating to a separate settings area, away from the content itself.",
+    },
+    after: {
+      body: "Reorder, rename, and restructure the outline directly alongside the plan as you write.",
+    },
   },
 ];
 
@@ -95,20 +104,6 @@ const typographyTokens = [
   { name: "Serif", family: "Source Serif" },
   { name: "Mono", family: "JetBrains Mono" },
   { name: "Classic", family: "Georgia" },
-];
-
-const colorTokens = [
-  "#1F3939",
-  "#F26A5D",
-  "#57766A",
-  "#FDFBF7",
-  "#E3DBCA",
-  "#2A8A5F",
-  "#E8A33A",
-  "#6F4AC7",
-  "#3B82C9",
-  "#D4476A",
-  "#B84A3F",
 ];
 
 export default function LivePlanPage() {
@@ -239,28 +234,7 @@ export default function LivePlanPage() {
 
       <section className={styles.section}>
         <div className={styles.inner}>
-          <div className={styles.twoCol}>
-            <div>
-              <p className={styles.eyebrow}>Behavioral Analysis</p>
-              <h2 className={styles.sectionHeading}>
-                Watching users struggle (and succeed)
-              </h2>
-              <p className={styles.prose}>
-                Session replays in Amplitude revealed patterns that interviews
-                alone couldn’t surface. I watched users work around our
-                limitations in creative — and frustrating — ways.
-              </p>
-              <ul className={styles.observationList}>
-                {observations.map((o) => (
-                  <li key={o.title}>
-                    <p className={styles.observationTitle}>{o.title}</p>
-                    <p className={styles.observationBody}>{o.body}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={styles.sideImage} aria-hidden="true" />
-          </div>
+          <ObservationViewer items={observations} />
         </div>
       </section>
 
@@ -294,25 +268,7 @@ export default function LivePlanPage() {
           </p>
           <div className={styles.comparisons}>
             {beforeAfter.map((b) => (
-              <div key={b.title} className={styles.comparison}>
-                <h3 className={styles.comparisonTitle}>{b.title}</h3>
-                <div className={styles.comparisonPair}>
-                  <div className={styles.comparisonSide}>
-                    <p className={styles.comparisonLabel}>Before</p>
-                    <div className={styles.comparisonImage} aria-hidden="true" />
-                    <p className={styles.comparisonBody}>{b.before}</p>
-                  </div>
-                  <div className={styles.comparisonSide}>
-                    <p
-                      className={`${styles.comparisonLabel} ${styles.comparisonLabelAfter}`}
-                    >
-                      After
-                    </p>
-                    <div className={styles.comparisonImage} aria-hidden="true" />
-                    <p className={styles.comparisonBody}>{b.after}</p>
-                  </div>
-                </div>
-              </div>
+              <BeforeAfterToggle key={b.title} comparison={b} />
             ))}
           </div>
         </div>
@@ -332,7 +288,16 @@ export default function LivePlanPage() {
             designed themes at launch while giving users the power to customize
             colors, fonts, and layouts.
           </p>
-          <div className={styles.themingVisual} aria-hidden="true" />
+          <div className={styles.themingVisual}>
+            <Image
+              src="/images/liveplan/themes-examples.png"
+              alt="Four theme variations of the LivePlan plan editor — neutral, classic teal, bold orange/teal, and bold red/blue — each rendering the same Expectations chapter with different typography, color, and chart treatments"
+              width={3070}
+              height={2364}
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className={styles.themingImg}
+            />
+          </div>
         </div>
       </section>
 
@@ -367,17 +332,14 @@ export default function LivePlanPage() {
                 Brand colors that cascade through charts, links, highlights,
                 and call-to-action elements.
               </p>
-              <p className={styles.tokenSubLabel}>Colors</p>
-              <div className={styles.swatchGrid}>
-                {colorTokens.map((c) => (
-                  <div
-                    key={c}
-                    className={styles.swatch}
-                    style={{ background: c }}
-                    aria-label={c}
-                  />
-                ))}
-              </div>
+              <Image
+                src="/images/liveplan/color-variables.png"
+                alt="Color token variables for the LivePlan theming system — base surface, surface-card, surface-sidebar, primary, body-text, accent 1–3, and border tokens shown alongside five theme palettes"
+                width={3362}
+                height={1590}
+                sizes="(max-width: 1200px) 100vw, 600px"
+                className={styles.tokenImg}
+              />
             </div>
           </div>
         </div>
