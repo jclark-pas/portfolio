@@ -21,19 +21,14 @@ export default function Home() {
       {/* Featured Work Section */}
       <section id="work" className={styles.section}>
         <div className={styles.sectionInner}>
-          <div className={styles.sectionHeader}>
+          <div className={`${styles.sectionHeader} ${styles.workHeader}`}>
             <p className={styles.eyebrow}>Featured Work.</p>
-            <h2 className={styles.sectionTitleLg}>
-              The story I want to lead with
-            </h2>
-          </div>
-          <div className={styles.featuredList}>
-            <FeaturedWorkCard work={heroFeature} />
-          </div>
-          <div className={styles.workCta}>
             <Link href="/work" className={styles.workCtaLink}>
               See all work <span aria-hidden="true">→</span>
             </Link>
+          </div>
+          <div className={styles.featuredList}>
+            <FeaturedWorkCard work={heroFeature} />
           </div>
         </div>
       </section>
