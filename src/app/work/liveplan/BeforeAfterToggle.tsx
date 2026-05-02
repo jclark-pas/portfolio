@@ -47,8 +47,8 @@ export default function BeforeAfterToggle({
 
   return (
     <div className={styles.comparison}>
-      <div className={styles.comparisonHeader}>
-        <h3 className={styles.comparisonTitle}>{comparison.title}</h3>
+      <div className={styles.toggleMedia} role="tabpanel">
+        <Media side={active} label={mode === "before" ? "Before" : "After"} />
         <div
           className={styles.toggleGroup}
           role="tablist"
@@ -73,9 +73,6 @@ export default function BeforeAfterToggle({
             );
           })}
         </div>
-      </div>
-      <div className={styles.toggleMedia} role="tabpanel">
-        <Media side={active} label={mode === "before" ? "Before" : "After"} />
       </div>
       <p className={styles.comparisonBody}>{active.body}</p>
     </div>

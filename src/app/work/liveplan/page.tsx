@@ -52,48 +52,54 @@ const observations = [
   },
 ];
 
-const pillars = [
+const designApproach = [
   {
     title: "Inline Everything",
     body: "Eliminate modal detail views. Let users write, edit, and refine directly in the document flow without losing context and to limit the amount of round-tripping users are required to do for editorial tasks.",
+    comparisons: [
+      {
+        title: "Inline Editing",
+        before: {
+          body: "Users entered a separate detail view to edit each section, losing context of their overall plan.",
+        },
+        after: {
+          body: "Write directly in the document flow. No modals, no round-tripping. Reorder, rename, and restructure the outline directly alongside the plan as you write.",
+          videoSrc: "/videos/plan-inlineediting.mp4",
+        },
+      },
+    ],
   },
   {
     title: "Design Token Theming",
     body: "Build an extensible system where themes cascade from print PDFs to on-screen editing to pitch decks — with brand customization.",
+    comparisons: [
+      {
+        title: "Theme Customization",
+        before: {
+          body: "Users were locked into a small set of fixed templates with no way to adjust colors, typography, or layout to match their brand.",
+        },
+        after: {
+          body: "A dozen professionally-designed themes ship at launch, each editable down to the token — colors, fonts, and chart styling cascade through the entire plan.",
+          videoSrc: "/videos/plan-themes.mp4",
+        },
+      },
+    ],
   },
   {
     title: "Contextual AI",
     body: "Surface AI writing tools at the point of need, with business-specific instructions and surgical precision over output.",
-  },
-];
-
-const beforeAfter = [
-  {
-    title: "Inline Editing",
-    before: {
-      body: "Users entered a separate detail view to edit each section, losing context of their overall plan.",
-    },
-    after: {
-      body: "Write directly in the document flow. No modals, no round-tripping.",
-    },
-  },
-  {
-    title: "AI Writing Tools",
-    before: {
-      body: "AI writing lived in a sidebar disconnected from what users were actually working on.",
-    },
-    after: {
-      body: "AI suggestions appear in context, with surgical controls over tone, length, and scope.",
-    },
-  },
-  {
-    title: "Plan Outline Editing",
-    before: {
-      body: "Outline changes required navigating to a separate settings area, away from the content itself.",
-    },
-    after: {
-      body: "Reorder, rename, and restructure the outline directly alongside the plan as you write.",
-    },
+    comparisons: [
+      {
+        title: "AI Writing Tools",
+        before: {
+          body: "AI writing lived in a sidebar disconnected from what users were actually working on.",
+        },
+        after: {
+          body: "AI suggestions appear in context, with surgical controls over tone, length, and scope.",
+          videoSrc: "/videos/plan-ai.mp4",
+        },
+      },
+    ],
   },
 ];
 
@@ -246,29 +252,26 @@ export default function LivePlanPage() {
           <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
             Three pillars of the redesign
           </h2>
-          <div className={styles.pillarGrid}>
-            {pillars.map((p) => (
-              <article key={p.title} className={styles.pillarCard}>
-                <div className={styles.pillarIcon} aria-hidden="true" />
-                <h3 className={styles.pillarTitle}>{p.title}</h3>
-                <p className={styles.pillarBody}>{p.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>The Changes</p>
-          <h2 className={styles.sectionHeading}>Before → After</h2>
-          <p className={styles.lead}>
-            Each change was designed to eliminate friction and put users in
-            control.
+          <p className={`${styles.lead} ${styles.onDarkMuted}`}>
+            Each pillar shaped a focused set of changes — eliminating friction
+            and putting users back in control.
           </p>
-          <div className={styles.comparisons}>
-            {beforeAfter.map((b) => (
-              <BeforeAfterToggle key={b.title} comparison={b} />
+          <div className={styles.pillarStack}>
+            {designApproach.map((p) => (
+              <article key={p.title} className={styles.pillarCard}>
+                <div className={styles.pillarHeader}>
+                  <div className={styles.pillarIcon} aria-hidden="true" />
+                  <h3 className={styles.pillarTitle}>{p.title}</h3>
+                  <p className={styles.pillarBody}>{p.body}</p>
+                </div>
+                {p.comparisons.length > 0 && (
+                  <div className={styles.pillarComparisons}>
+                    {p.comparisons.map((c) => (
+                      <BeforeAfterToggle key={c.title} comparison={c} />
+                    ))}
+                  </div>
+                )}
+              </article>
             ))}
           </div>
         </div>

@@ -404,10 +404,10 @@
 }
 
 /* ===== Pillars (dark) ===== */
-.pillarGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+.pillarStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
   margin-top: var(--space-xxl);
 }
 
@@ -415,7 +415,11 @@
   background: rgba(253, 251, 247, 0.06);
   border: 1px solid rgba(253, 251, 247, 0.12);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-xxl);
+}
+
+.pillarHeader {
+  max-width: 720px;
 }
 
 .pillarIcon {
@@ -437,6 +441,43 @@
   font-size: 16px;
   line-height: 26px;
   color: rgba(253, 251, 247, 0.8);
+}
+
+.pillarComparisons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid rgba(253, 251, 247, 0.12);
+}
+
+/* Dark-section overrides for BeforeAfterToggle children */
+.pillarCard .comparisonTitle {
+  color: var(--color-text-invert);
+}
+
+.pillarCard .comparisonBody {
+  color: rgba(253, 251, 247, 0.75);
+}
+
+.pillarCard .toggleGroup {
+  background: rgba(15, 17, 26, 0.88);
+  border-color: rgba(253, 251, 247, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.pillarCard .toggleButton {
+  color: rgba(253, 251, 247, 0.6);
+}
+
+.pillarCard .toggleButton:hover {
+  color: var(--color-text-invert);
+}
+
+.pillarCard .toggleMedia {
+  background: rgba(253, 251, 247, 0.04);
+  border-color: rgba(253, 251, 247, 0.12);
 }
 
 /* ===== Before / After ===== */
@@ -474,6 +515,14 @@
   border-radius: var(--radius-full);
   padding: 4px;
   gap: 2px;
+}
+
+.toggleMedia .toggleGroup {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-md);
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
 .toggleButton {
@@ -678,7 +727,6 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .pillarGrid,
   .insightsGrid {
     grid-template-columns: 1fr;
   }
@@ -727,6 +775,12 @@
   .pillarCard,
   .tokenCol {
     padding: 16px;
+  }
+
+  .pillarComparisons {
+    gap: var(--space-xl);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
   }
 
   .statsGrid {
