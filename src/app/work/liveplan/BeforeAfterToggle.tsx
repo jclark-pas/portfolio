@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./page.module.css";
 
 type Side = {
@@ -14,18 +14,64 @@ export type Comparison = {
   after: Side;
 };
 
+type VideoFullscreenEl = HTMLVideoElement & {
+  webkitRequestFullscreen?: () => void;
+  webkitEnterFullscreen?: () => void;
+};
+
 function Media({ side, label }: { side: Side; label: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleFullscreen = () => {
+    const v = videoRef.current as VideoFullscreenEl | null;
+    if (!v) return;
+    if (v.requestFullscreen) {
+      v.requestFullscreen();
+    } else if (v.webkitRequestFullscreen) {
+      v.webkitRequestFullscreen();
+    } else if (v.webkitEnterFullscreen) {
+      // iOS Safari
+      v.webkitEnterFullscreen();
+    }
+  };
+
   if (side.videoSrc) {
     return (
-      <video
-        key={side.videoSrc}
-        src={side.videoSrc}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={styles.observationVideo}
-      />
+      <>
+        <video
+          ref={videoRef}
+          key={side.videoSrc}
+          src={side.videoSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={styles.observationVideo}
+        />
+        <button
+          type="button"
+          onClick={handleFullscreen}
+          className={styles.fullscreenButton}
+          aria-label={`View ${label} video fullscreen`}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M2 6V2h4" />
+            <path d="M14 6V2h-4" />
+            <path d="M2 10v4h4" />
+            <path d="M14 10v4h-4" />
+          </svg>
+        </button>
+      </>
     );
   }
   return (
