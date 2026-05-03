@@ -1,7 +1,8 @@
 /* Design Tokens from Figma */
 :root {
   /* Colors - AudioEye mode */
-  --color-accent: #FF4419;
+  --color-accent: #DB3914;
+  --color-accent-on-dark: #F26B47;
   --color-surface: #FDFBF7;
   --color-text: #0B0921;
   --color-text-secondary: #130F38;
@@ -47,7 +48,8 @@
 
 /* Dark mode - AudioEye dark (derived) */
 [data-theme="dark"] {
-  --color-accent: #FF8273;
+  --color-accent: #F26B47;
+  --color-accent-on-dark: #F26B47;
   --color-surface: #1F3939;
   --color-text: #FDFBF7;
   --color-text-secondary: #C8D8CF;

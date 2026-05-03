@@ -7,6 +7,7 @@
   background: var(--color-surface-invert);
   color: var(--color-text-invert);
   padding: var(--space-xxxl) var(--space-xxl);
+  --color-accent: var(--color-accent-on-dark);
 }
 
 .inner {
@@ -66,6 +67,7 @@
   background: var(--color-surface-invert);
   color: var(--color-text-invert);
   padding: var(--space-xxxl) var(--space-xxl);
+  --color-accent: var(--color-accent-on-dark);
 }
 
 .heroInner {
