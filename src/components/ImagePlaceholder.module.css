@@ -1,0 +1,56 @@
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  text-align: center;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
+  border: 1px dashed var(--color-border);
+  color: var(--color-text-secondary);
+  width: 100%;
+}
+
+.placeholderDark {
+  background: rgba(253, 251, 247, 0.04);
+  border-color: rgba(253, 251, 247, 0.18);
+  color: rgba(253, 251, 247, 0.7);
+}
+
+.iconWell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 17, 26, 0.06);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.placeholderDark .iconWell {
+  background: rgba(253, 251, 247, 0.08);
+  color: rgba(253, 251, 247, 0.85);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.placeholderDark .label {
+  color: var(--color-text-invert);
+}
+
+.guidance {
+  font-size: 12px;
+  line-height: 18px;
+  max-width: 460px;
+  color: inherit;
+}

@@ -2,16 +2,75 @@ import Link from "next/link";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import ObservationViewer from "./ObservationViewer";
 import BeforeAfterToggle from "./BeforeAfterToggle";
 import styles from "./page.module.css";
 
-const stats = [
+type Stat = {
+  value: string;
+  title: string;
+  label?: string;
+  description?: string;
+};
+
+const stats: Stat[] = [
   { value: "40%", title: "Decrease in early churn", label: "for new users" },
   { value: "42%", title: "Writing engagement", label: "more sections started" },
   { value: "38%", title: "AI feature adoption", label: "increase in usage" },
   { value: "63%", title: "Collaboration increase", label: "in plan comments" },
+];
+
+const validationStats: Stat[] = [
+  { value: "90%", title: "Found outline tools", label: "Up from ~15%" },
+  { value: "70%", title: "Located AI tools", label: "Up from 20%" },
+];
+
+const outcomes: Stat[] = [
+  {
+    value: "40%",
+    title: "Decrease in early churn",
+    description:
+      "New users completed their first plan section at dramatically higher rates.",
+  },
+  {
+    value: "42%",
+    title: "Increase in writing engagement",
+    description:
+      "Users started — and finished — more sections of their plans.",
+  },
+  {
+    value: "38%",
+    title: "Increase in AI feature usage",
+    description:
+      "Contextual placement and surgical controls drove adoption.",
+  },
+  {
+    value: "63%",
+    title: "Increase in plan comments",
+    description:
+      "Real-time collaboration drove team-level engagement on the plan.",
+  },
+];
+
+const reflections = [
+  {
+    title: "Session replays revealed what interviews couldn’t",
+    body:
+      "Watching users struggle in real-time — rage-clicking, creating workarounds, abandoning flows — gave me conviction that interviews alone miss. The combination of qualitative insights and behavioral data made the case for change undeniable.",
+  },
+  {
+    title: "Design systems thinking paid dividends",
+    body:
+      "Building a token-based theming system took longer upfront, but it let us ship a dozen themes at launch and respond to user requests for brand customization without redesigning components. The same system now powers the pitch deck feature.",
+  },
+  {
+    title: "AI trust is earned through context",
+    body:
+      "Users didn’t distrust AI — they distrusted generic AI. By building business-specific instructions and giving users surgical control over what AI touched, we turned skeptics into power users.",
+  },
 ];
 
 const insights = [
@@ -61,6 +120,7 @@ const designApproach = [
         title: "Inline Editing",
         before: {
           body: "Users entered a separate detail view to edit each section, losing context of their overall plan.",
+          videoSrc: "/videos/plan-inlineediting-before.mp4",
         },
         after: {
           body: "Write directly in the document flow. No modals, no round-tripping. Reorder, rename, and restructure the outline directly alongside the plan as you write.",
@@ -77,6 +137,7 @@ const designApproach = [
         title: "Theme Customization",
         before: {
           body: "Users were locked into a small set of fixed templates with no way to adjust colors, typography, or layout to match their brand.",
+          videoSrc: "/videos/plan-themes-old.mp4",
         },
         after: {
           body: "A dozen professionally-designed themes ship at launch, each editable down to the token — colors, fonts, and chart styling cascade through the entire plan.",
@@ -93,6 +154,7 @@ const designApproach = [
         title: "AI Writing Tools",
         before: {
           body: "AI writing lived in a sidebar disconnected from what users were actually working on.",
+          videoSrc: "/videos/plan-ai-old.mp4",
         },
         after: {
           body: "AI suggestions appear in context, with surgical controls over tone, length, and scope.",
@@ -111,6 +173,35 @@ const typographyTokens = [
   { name: "Mono", family: "JetBrains Mono" },
   { name: "Classic", family: "Georgia" },
 ];
+
+function StatCard({
+  stat,
+  variant = "default",
+  compact = false,
+}: {
+  stat: Stat;
+  variant?: "default" | "onDark";
+  compact?: boolean;
+}) {
+  const classes = [
+    styles.statCard,
+    compact ? styles.statCardCompact : "",
+    variant === "onDark" ? styles.statCardOnDark : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <div className={classes}>
+      <p className={styles.statValue}>{stat.value}</p>
+      <p className={styles.statTitle}>{stat.title}</p>
+      {stat.label ? <p className={styles.statLabel}>{stat.label}</p> : null}
+      {stat.description ? (
+        <p className={styles.statDescription}>{stat.description}</p>
+      ) : null}
+    </div>
+  );
+}
 
 export default function LivePlanPage() {
   const { prev, next } = getAdjacentProjects("liveplan");
@@ -163,11 +254,7 @@ export default function LivePlanPage() {
         <div className={styles.inner}>
           <div className={styles.statsGrid}>
             {stats.map((s) => (
-              <div key={s.title} className={styles.statCard}>
-                <p className={styles.statValue}>{s.value}</p>
-                <p className={styles.statTitle}>{s.title}</p>
-                <p className={styles.statLabel}>{s.label}</p>
-              </div>
+              <StatCard key={s.title} stat={s} />
             ))}
           </div>
         </div>
@@ -194,7 +281,33 @@ export default function LivePlanPage() {
             </p>
           </div>
         </div>
-        <div className={styles.wideImage} aria-hidden="true" />
+        <div className={styles.wideImageSlider}>
+          <BeforeAfterSlider
+            aspectRatio="16 / 9"
+            beforeLabel="Before"
+            afterLabel="After"
+            before={
+              <Image
+                src="/images/liveplan/editor-before.png"
+                alt="The legacy LivePlan editor — modal-heavy, fixed templates, sidebar-only AI"
+                width={2400}
+                height={1350}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                priority
+              />
+            }
+            after={
+              <Image
+                src="/images/liveplan/editor-after.png"
+                alt="The redesigned LivePlan editor — inline writing, themed output, contextual AI"
+                width={2400}
+                height={1350}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                priority
+              />
+            }
+          />
+        </div>
       </section>
 
       <section className={styles.section}>
@@ -344,6 +457,122 @@ export default function LivePlanPage() {
                 className={styles.tokenImg}
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>Validation</p>
+          <h2 className={styles.sectionHeading}>Testing with real users</h2>
+          <p className={styles.lead}>
+            We ran multiple rounds of usability testing to validate the designs
+            before engineering investment. The results gave us confidence — and
+            surfaced one more requirement.
+          </p>
+          <div className={styles.validationGrid}>
+            <div>
+              <div className={styles.validationStats}>
+                {validationStats.map((s) => (
+                  <StatCard key={s.title} stat={s} compact />
+                ))}
+              </div>
+              <div className={styles.calloutHighlight}>
+                <div>
+                  <p className={styles.calloutTitle}>
+                    Testing surfaced a new requirement
+                  </p>
+                  <p className={styles.calloutBody}>
+                    Users loved the themes but wanted brand customization —
+                    custom colors and fonts. Added to the backlog and shipped
+                    in a fast-follow.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className={styles.imageStack}>
+              <ImagePlaceholder
+                aspectRatio="16 / 10"
+                label="Usability Test Session"
+                guidance="Photo from a usability test — anonymized Zoom screenshot, hands-on-laptop shot, or testing setup. Makes the research feel real and human."
+              />
+            </div>
+          </div>
+          <div className={styles.bigStatPillWrap}>
+            <div className={styles.bigStatPill}>
+              <span className={styles.bigStatValue}>100%</span>
+              <span className={styles.bigStatLabel}>
+                of usability participants asked to join the beta
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>The Solution</p>
+          <h2 className={styles.sectionHeading}>The redesigned experience</h2>
+          <p className={styles.lead}>
+            The shipped editor brought all three pillars together — inline
+            writing, themed output, and contextual AI — in a single surface.
+          </p>
+          <div className={styles.solutionHero}>
+            <ImagePlaceholder
+              aspectRatio="16 / 9"
+              label="Hero Editor View"
+              guidance="The full plan editor showing inline editing in action — sidebar visible, AI tools accessible, real business plan with rich formatting. The 'wow' moment."
+            />
+          </div>
+          <div className={styles.solutionDetails}>
+            <ImagePlaceholder
+              aspectRatio="4 / 3"
+              label="AI Writing Detail"
+              guidance="Close-up of paragraph selection, contextual menu, and business-specific instructions panel."
+            />
+            <ImagePlaceholder
+              aspectRatio="4 / 3"
+              label="Theme Customization Detail"
+              guidance="Theme settings panel with color pickers, font selectors, and live preview."
+            />
+            <ImagePlaceholder
+              aspectRatio="4 / 3"
+              label="Collaboration Features"
+              guidance="Inline comments, presence indicators, or commenting interface — supports the 63% collaboration uplift."
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.darkSection}>
+        <div className={styles.inner}>
+          <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>Outcomes</p>
+          <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
+            The impact after launch
+          </h2>
+          <p className={`${styles.lead} ${styles.onDarkMuted}`}>
+            The redesigned experience rolled out to all users in Q3 2024.
+            Within the first 60 days, every metric we tracked moved in the
+            right direction.
+          </p>
+          <div className={styles.outcomeGrid}>
+            {outcomes.map((o) => (
+              <StatCard key={o.title} stat={o} variant="onDark" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.narrow}>
+          <h2 className={styles.sectionHeading}>Reflections</h2>
+          <div className={styles.reflectionList}>
+            {reflections.map((r) => (
+              <div key={r.title} className={styles.reflectionItem}>
+                <h3 className={styles.reflectionTitle}>{r.title}</h3>
+                <p className={styles.reflectionBody}>{r.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -199,6 +199,44 @@
   color: var(--color-text-secondary);
 }
 
+.statDescription {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
+}
+
+.statCardCompact {
+  padding: var(--space-lg);
+}
+
+.statCardCompact .statValue {
+  font-size: 32px;
+  margin-bottom: var(--space-xs);
+}
+
+.statCardCompact .statTitle {
+  font-size: 14px;
+}
+
+.statCardCompact .statLabel {
+  font-size: 12px;
+}
+
+.statCardOnDark {
+  background: rgba(253, 251, 247, 0.04);
+  border-color: rgba(253, 251, 247, 0.12);
+}
+
+.statCardOnDark .statTitle {
+  color: var(--color-text-invert);
+}
+
+.statCardOnDark .statLabel,
+.statCardOnDark .statDescription {
+  color: rgba(253, 251, 247, 0.7);
+}
+
 /* ===== Challenge wide image ===== */
 .wideImage {
   max-width: 1200px;
@@ -207,6 +245,11 @@
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+}
+
+.wideImageSlider {
+  max-width: 1200px;
+  margin: var(--space-xxl) auto 0;
 }
 
 /* ===== Gradient block (discovery) ===== */
@@ -706,6 +749,134 @@
   );
 }
 
+/* ===== Validation ===== */
+.validationGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: start;
+  margin-top: var(--space-xl);
+}
+
+.validationStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+
+.imageStack {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.calloutHighlight {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+}
+
+.calloutTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.calloutBody {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-text-secondary);
+}
+
+.bigStatPill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xl) var(--space-xxxl);
+  margin-top: var(--space-xxl);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-invert);
+  color: var(--color-text-invert);
+}
+
+.bigStatPillWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.bigStatValue {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-accent-on-dark);
+}
+
+.bigStatLabel {
+  font-size: 16px;
+  color: rgba(253, 251, 247, 0.85);
+}
+
+/* ===== Solution showcase ===== */
+.solutionHero {
+  margin-top: var(--space-xl);
+}
+
+.solutionDetails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/* ===== Outcomes ===== */
+.outcomeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.outcomeAnalytics {
+  margin-top: var(--space-xl);
+}
+
+/* ===== Reflections ===== */
+.reflectionList {
+  display: grid;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.reflectionItem {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.reflectionItem:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.reflectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.reflectionBody {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+
 /* ===== Bottom nav ===== */
 .bottomNav {
   display: grid;
@@ -737,8 +908,21 @@
 @media (max-width: 960px) {
   .heroInner,
   .twoCol,
-  .tokenGrid {
+  .tokenGrid,
+  .validationGrid {
     grid-template-columns: 1fr;
+  }
+
+  .solutionDetails {
+    grid-template-columns: 1fr;
+  }
+
+  .outcomeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bigStatValue {
+    font-size: 44px;
   }
 
   .heroHeadline {
