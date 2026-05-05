@@ -287,17 +287,23 @@ export default function LivePlanPage() {
             beforeLabel="Before"
             afterLabel="After"
             before={
-              <ImagePlaceholder
-                aspectRatio="16 / 9"
-                label="Old Editor"
-                guidance="Full-screen screenshot of the legacy plan editor — modal-heavy, fixed templates, sidebar AI."
+              <Image
+                src="/images/liveplan/editor-before.png"
+                alt="The legacy LivePlan editor — modal-heavy, fixed templates, sidebar-only AI"
+                width={2400}
+                height={1350}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                priority
               />
             }
             after={
-              <ImagePlaceholder
-                aspectRatio="16 / 9"
-                label="New Editor"
-                guidance="Full-screen screenshot of the redesigned editor — inline writing, themed output, contextual AI."
+              <Image
+                src="/images/liveplan/editor-after.png"
+                alt="The redesigned LivePlan editor — inline writing, themed output, contextual AI"
+                width={2400}
+                height={1350}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                priority
               />
             }
           />
