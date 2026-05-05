@@ -3,6 +3,7 @@ import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import ObservationViewer from "./ObservationViewer";
 import BeforeAfterToggle from "./BeforeAfterToggle";
@@ -119,6 +120,7 @@ const designApproach = [
         title: "Inline Editing",
         before: {
           body: "Users entered a separate detail view to edit each section, losing context of their overall plan.",
+          videoSrc: "/videos/plan-inlineediting-before.mp4",
         },
         after: {
           body: "Write directly in the document flow. No modals, no round-tripping. Reorder, rename, and restructure the outline directly alongside the plan as you write.",
@@ -135,6 +137,7 @@ const designApproach = [
         title: "Theme Customization",
         before: {
           body: "Users were locked into a small set of fixed templates with no way to adjust colors, typography, or layout to match their brand.",
+          videoSrc: "/videos/plan-themes-old.mp4",
         },
         after: {
           body: "A dozen professionally-designed themes ship at launch, each editable down to the token — colors, fonts, and chart styling cascade through the entire plan.",
@@ -151,6 +154,7 @@ const designApproach = [
         title: "AI Writing Tools",
         before: {
           body: "AI writing lived in a sidebar disconnected from what users were actually working on.",
+          videoSrc: "/videos/plan-ai-old.mp4",
         },
         after: {
           body: "AI suggestions appear in context, with surgical controls over tone, length, and scope.",
@@ -277,7 +281,27 @@ export default function LivePlanPage() {
             </p>
           </div>
         </div>
-        <div className={styles.wideImage} aria-hidden="true" />
+        <div className={styles.wideImageSlider}>
+          <BeforeAfterSlider
+            aspectRatio="16 / 9"
+            beforeLabel="Before"
+            afterLabel="After"
+            before={
+              <ImagePlaceholder
+                aspectRatio="16 / 9"
+                label="Old Editor"
+                guidance="Full-screen screenshot of the legacy plan editor — modal-heavy, fixed templates, sidebar AI."
+              />
+            }
+            after={
+              <ImagePlaceholder
+                aspectRatio="16 / 9"
+                label="New Editor"
+                guidance="Full-screen screenshot of the redesigned editor — inline writing, themed output, contextual AI."
+              />
+            }
+          />
+        </div>
       </section>
 
       <section className={styles.section}>
@@ -466,11 +490,6 @@ export default function LivePlanPage() {
                 label="Usability Test Session"
                 guidance="Photo from a usability test — anonymized Zoom screenshot, hands-on-laptop shot, or testing setup. Makes the research feel real and human."
               />
-              <ImagePlaceholder
-                aspectRatio="16 / 10"
-                label="Affinity Map / Findings Board"
-                guidance="Sticky notes on a wall, FigJam board with clustered findings, or Notion/Miro board showing how insights were organized. Shows analytical rigor."
-              />
             </div>
           </div>
           <div className={styles.bigStatPillWrap}>
@@ -534,14 +553,6 @@ export default function LivePlanPage() {
             {outcomes.map((o) => (
               <StatCard key={o.title} stat={o} variant="onDark" />
             ))}
-          </div>
-          <div className={styles.outcomeAnalytics}>
-            <ImagePlaceholder
-              aspectRatio="21 / 9"
-              label="Analytics Dashboard"
-              guidance="Optional: an anonymized chart from analytics showing churn or engagement trending in the right direction post-launch. Adds credibility."
-              variant="dark"
-            />
           </div>
         </div>
       </section>

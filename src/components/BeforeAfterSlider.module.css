@@ -1,0 +1,119 @@
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  user-select: none;
+  touch-action: none;
+  cursor: ew-resize;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.layer > * {
+  width: 100%;
+  height: 100%;
+}
+
+.layer img,
+.layer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(253, 251, 247, 0.92);
+  box-shadow: 0 0 0 1px rgba(15, 17, 26, 0.25);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.handle {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(15, 17, 26, 0.88);
+  border: 2px solid rgba(253, 251, 247, 0.92);
+  color: rgba(253, 251, 247, 0.95);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, background 0.15s ease;
+  z-index: 3;
+  touch-action: none;
+}
+
+.handle:hover {
+  background: rgba(15, 17, 26, 0.95);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.handle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.handle:active {
+  cursor: grabbing;
+}
+
+.edgeLabel {
+  position: absolute;
+  top: var(--space-md);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 17, 26, 0.78);
+  color: rgba(253, 251, 247, 0.92);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.edgeLabelLeft {
+  left: var(--space-md);
+}
+
+.edgeLabelRight {
+  right: var(--space-md);
+}
+
+@media (max-width: 480px) {
+  .handle {
+    width: 36px;
+    height: 36px;
+  }
+  .edgeLabel {
+    font-size: 10px;
+    padding: 3px 8px;
+    top: var(--space-sm);
+  }
+  .edgeLabelLeft {
+    left: var(--space-sm);
+  }
+  .edgeLabelRight {
+    right: var(--space-sm);
+  }
+}

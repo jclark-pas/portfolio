@@ -247,6 +247,11 @@
   border-radius: var(--radius-lg);
 }
 
+.wideImageSlider {
+  max-width: 1200px;
+  margin: var(--space-xxl) auto 0;
+}
+
 /* ===== Gradient block (discovery) ===== */
 .gradientBlock {
   max-width: 1200px;
