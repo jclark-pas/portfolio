@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 
 type Side = {
@@ -22,6 +22,36 @@ type VideoFullscreenEl = HTMLVideoElement & {
 function Media({ side, label }: { side: Side; label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Lazy-load + lazy-play: only download and start playing once the video
+  // scrolls into view. Pause + reset when it scrolls away to free CPU and
+  // network. Each pillar's video stays dormant until needed.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || !side.videoSrc) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      // Fallback: just play immediately if the API isn't available.
+      v.play().catch(() => {});
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            v.play().catch(() => {});
+          } else {
+            v.pause();
+          }
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(v);
+    return () => observer.disconnect();
+  }, [side.videoSrc]);
+
   const handleFullscreen = () => {
     const v = videoRef.current as VideoFullscreenEl | null;
     if (!v) return;
@@ -42,10 +72,10 @@ function Media({ side, label }: { side: Side; label: string }) {
           ref={videoRef}
           key={side.videoSrc}
           src={side.videoSrc}
-          autoPlay
           loop
           muted
           playsInline
+          preload="metadata"
           className={styles.observationVideo}
         />
         <button
