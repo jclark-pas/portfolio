@@ -17,7 +17,7 @@ type Stat = {
 };
 
 const stats: Stat[] = [
-  { value: "40%", title: "Decrease in early churn", label: "for new users" },
+  { value: "25%", title: "Decrease in early churn", label: "for new users" },
   { value: "42%", title: "Writing engagement", label: "more sections started" },
   { value: "38%", title: "AI feature adoption", label: "increase in usage" },
   { value: "63%", title: "Collaboration increase", label: "in plan comments" },
@@ -30,7 +30,7 @@ const validationStats: Stat[] = [
 
 const outcomes: Stat[] = [
   {
-    value: "40%",
+    value: "25%",
     title: "Decrease in early churn",
     description:
       "New users completed their first plan section at dramatically higher rates.",
@@ -230,7 +230,7 @@ export default function LivePlanPage() {
           </div>
           <p className={styles.heroDescription}>
             How user research, design systems thinking, and AI integration
-            reduced early churn by 70% and transformed how entrepreneurs
+            reduced early churn by 25% and transformed how entrepreneurs
             write business plans.
           </p>
           <dl className={styles.metaRow}>
@@ -518,27 +518,39 @@ export default function LivePlanPage() {
             writing, themed output, and contextual AI — in a single surface.
           </p>
           <div className={styles.solutionHero}>
-            <ImagePlaceholder
-              aspectRatio="16 / 9"
-              label="Hero Editor View"
-              guidance="The full plan editor showing inline editing in action — sidebar visible, AI tools accessible, real business plan with rich formatting. The 'wow' moment."
+            <Image
+              src="/images/liveplan/plan-hero.png"
+              alt="The redesigned LivePlan editor — sidebar outline, rich inline content, contextual AI tools, and a themed plan in view"
+              width={3732}
+              height={2884}
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className={styles.solutionHeroImg}
             />
           </div>
           <div className={styles.solutionDetails}>
-            <ImagePlaceholder
-              aspectRatio="4 / 3"
-              label="AI Writing Detail"
-              guidance="Close-up of paragraph selection, contextual menu, and business-specific instructions panel."
+            <Image
+              src="/images/liveplan/ai-write-detail.png"
+              alt="Close-up of LivePlan's contextual AI writing tools — paragraph selection with an inline menu and business-specific instructions"
+              width={1806}
+              height={1406}
+              sizes="(max-width: 960px) 100vw, 33vw"
+              className={styles.solutionDetailImg}
             />
-            <ImagePlaceholder
-              aspectRatio="4 / 3"
-              label="Theme Customization Detail"
-              guidance="Theme settings panel with color pickers, font selectors, and live preview."
+            <Image
+              src="/images/liveplan/plan-theme-interface.png"
+              alt="The LivePlan theme customization interface — color and font pickers with a live preview of the plan"
+              width={1504}
+              height={1114}
+              sizes="(max-width: 960px) 100vw, 50vw"
+              className={styles.solutionDetailImg}
             />
-            <ImagePlaceholder
-              aspectRatio="4 / 3"
-              label="Collaboration Features"
-              guidance="Inline comments, presence indicators, or commenting interface — supports the 63% collaboration uplift."
+            <Image
+              src="/images/liveplan/plan-comments.png"
+              alt="Inline plan comments — collaborator avatars, threaded feedback, and presence indicators next to the plan text"
+              width={2030}
+              height={1260}
+              sizes="(max-width: 960px) 100vw, 1200px"
+              className={`${styles.solutionDetailImg} ${styles.solutionDetailImgWide}`}
             />
           </div>
         </div>
