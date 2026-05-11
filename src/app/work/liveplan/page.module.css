@@ -828,11 +828,42 @@
   margin-top: var(--space-xl);
 }
 
+.solutionHeroImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(11, 9, 33, 0.12);
+}
+
 .solutionDetails {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-top: var(--space-md);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+/* When there's an odd-one-out (3rd item), let it span both columns
+   so the row doesn't end with a single lonely card. */
+.solutionDetails > :nth-child(3):last-child {
+  grid-column: 1 / -1;
+}
+
+.solutionDetailImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(11, 9, 33, 0.12);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Variant for the full-width slot — display at native aspect ratio
+   so wider screenshots aren't cropped. */
+.solutionDetailImgWide {
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 /* ===== Outcomes ===== */

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./BeforeAfterSlider.module.css";
 
 type Props = {
@@ -16,11 +16,18 @@ type Props = {
   aspectRatio?: string;
   /** Initial divider position, 0–100. Defaults to 50. */
   initialPosition?: number;
+  /** Animate from "complete before" → "complete after" → resting position
+   *  the first time the slider scrolls into view. Default true. */
+  animateOnEnter?: boolean;
   /** Optional className for the outer container */
   className?: string;
 };
 
 const STEP = 4;
+
+function easeInOutCubic(t: number) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
 
 export default function BeforeAfterSlider({
   before,
@@ -29,13 +36,106 @@ export default function BeforeAfterSlider({
   afterLabel = "After",
   aspectRatio = "16 / 9",
   initialPosition = 50,
+  animateOnEnter = true,
   className,
 }: Props) {
-  const [position, setPosition] = useState(() =>
-    Math.max(0, Math.min(100, initialPosition))
+  const clampedInitial = Math.max(0, Math.min(100, initialPosition));
+  // When the entrance animation will run, start at "complete before" so the
+  // initial paint matches the first keyframe and there's no visible snap when
+  // the slider enters the viewport.
+  const [position, setPosition] = useState(
+    animateOnEnter ? 100 : clampedInitial
   );
   const containerRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
+  const animatingRef = useRef(false);
+  const rafRef = useRef<number | null>(null);
+  const hasAnimatedRef = useRef(false);
+
+  const cancelAnimation = useCallback(() => {
+    animatingRef.current = false;
+    if (rafRef.current != null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+  }, []);
+
+  // Entrance animation: hold at "complete before" → glide to "complete after"
+  // → settle at initialPosition. Runs once, only when the slider first scrolls
+  // into view. Honors prefers-reduced-motion. Any user interaction cancels it.
+  useEffect(() => {
+    if (!animateOnEnter || hasAnimatedRef.current) return;
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (typeof window !== "undefined") {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (reduced.matches) {
+        hasAnimatedRef.current = true;
+        // Reduced-motion users skip the animation but still get the final
+        // resting state ("complete after") rather than being stuck at "before".
+        setPosition(0);
+        return;
+      }
+    }
+    if (typeof IntersectionObserver === "undefined") {
+      hasAnimatedRef.current = true;
+      setPosition(0);
+      return;
+    }
+
+    const runEntrance = () => {
+      const keyframes = [
+        { t: 0, pos: 100 }, // start at "complete before"
+        { t: 250, pos: 100 }, // hold "complete before"
+        { t: 1350, pos: 0 }, // glide to "complete after" (1100ms) and stay
+      ];
+      const totalDuration = keyframes[keyframes.length - 1].t;
+      const startTime = performance.now();
+      animatingRef.current = true;
+
+      const frame = (now: number) => {
+        if (!animatingRef.current) return;
+        const elapsed = now - startTime;
+        if (elapsed >= totalDuration) {
+          setPosition(keyframes[keyframes.length - 1].pos);
+          animatingRef.current = false;
+          rafRef.current = null;
+          return;
+        }
+        let i = 0;
+        while (i < keyframes.length - 2 && keyframes[i + 1].t <= elapsed) i++;
+        const a = keyframes[i];
+        const b = keyframes[i + 1];
+        const segLen = b.t - a.t;
+        const segProgress = segLen > 0 ? (elapsed - a.t) / segLen : 1;
+        const eased = easeInOutCubic(Math.max(0, Math.min(1, segProgress)));
+        setPosition(a.pos + (b.pos - a.pos) * eased);
+        rafRef.current = requestAnimationFrame(frame);
+      };
+
+      rafRef.current = requestAnimationFrame(frame);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.intersectionRatio >= 0.4 && !hasAnimatedRef.current) {
+            hasAnimatedRef.current = true;
+            observer.disconnect();
+            runEntrance();
+          }
+        }
+      },
+      { threshold: [0, 0.25, 0.4, 0.6, 1] }
+    );
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimation();
+    };
+  }, [animateOnEnter, clampedInitial, cancelAnimation]);
 
   const updateFromClientX = useCallback((clientX: number) => {
     const container = containerRef.current;
@@ -47,6 +147,7 @@ export default function BeforeAfterSlider({
 
   const handlePointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    cancelAnimation();
     draggingRef.current = true;
     e.currentTarget.setPointerCapture(e.pointerId);
     updateFromClientX(e.clientX);
@@ -67,6 +168,7 @@ export default function BeforeAfterSlider({
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // Click anywhere on the slider to jump the divider there
     if (e.target === e.currentTarget || (e.target as HTMLElement).closest(`.${styles.layer}`)) {
+      cancelAnimation();
       updateFromClientX(e.clientX);
     }
   };
@@ -74,15 +176,19 @@ export default function BeforeAfterSlider({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();
+      cancelAnimation();
       setPosition((p) => Math.max(0, p - STEP));
     } else if (e.key === "ArrowRight") {
       e.preventDefault();
+      cancelAnimation();
       setPosition((p) => Math.min(100, p + STEP));
     } else if (e.key === "Home") {
       e.preventDefault();
+      cancelAnimation();
       setPosition(0);
     } else if (e.key === "End") {
       e.preventDefault();
+      cancelAnimation();
       setPosition(100);
     }
   };
