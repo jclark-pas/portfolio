@@ -267,9 +267,45 @@
   );
 }
 
+/* Discovery: session-replay + customer-interview side-by-side,
+   nestled inside the sunset gradient frame from the original block.
+   Columns are proportional to the image widths so both render at
+   their native aspect ratio AND share an identical visual height. */
+.discoveryImages {
+  max-width: 1200px;
+  margin: var(--space-lg) auto 0;
+  padding: var(--space-lg);
+  display: grid;
+  grid-template-columns: 723fr 850fr;
+  gap: var(--space-md);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    90deg,
+    #F26A5D 0%,
+    #F59F3C 40%,
+    #F5C23B 70%,
+    #EFE9DB 100%
+  );
+}
+
+/* Modifier for sections that need less vertical breathing
+   (e.g. Discovery, which sits between two other content sections). */
+.sectionTight {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-md);
+}
+
+.discoveryImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(11, 9, 33, 0.12);
+}
+
 /* ===== Key Insights section ===== */
 .insightsSection {
-  padding: var(--space-xxxl) var(--space-xxl);
+  padding: var(--space-xl) var(--space-xxl);
 }
 
 .insightsContainer {
@@ -940,7 +976,8 @@
   .heroInner,
   .twoCol,
   .tokenGrid,
-  .validationGrid {
+  .validationGrid,
+  .discoveryImages {
     grid-template-columns: 1fr;
   }
 

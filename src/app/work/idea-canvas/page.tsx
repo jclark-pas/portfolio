@@ -3,6 +3,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { getAdjacentProjects } from "@/data/projects";
 import styles from "./page.module.css";
 
@@ -184,7 +186,29 @@ export default function IdeaCanvasPage() {
             </p>
           </div>
         </div>
-        <div className={styles.wideImage} aria-hidden="true" />
+        <div className={styles.wideImageSlider}>
+          <BeforeAfterSlider
+            aspectRatio="16 / 9"
+            beforeLabel="Legacy Pitch"
+            afterLabel="Idea Canvas"
+            before={
+              <ImagePlaceholder
+                aspectRatio="16 / 9"
+                label="Legacy Pitch Editor"
+                guidance="Screenshot of LivePlan's legacy Pitch feature — the old dual-purpose canvas + pitch deck tool that did neither job well."
+              />
+            }
+            after={
+              <Image
+                src="/images/canvas/canvas-overview.png"
+                alt="The new Idea Canvas — a focused, dedicated validation experience"
+                width={3030}
+                height={2659}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+              />
+            }
+          />
+        </div>
         <p className={styles.imageCaption}>The legacy Pitch editor alongside the new Idea Canvas — contrasting the scope mismatch of a dual-purpose tool with a focused, dedicated validation experience</p>
       </section>
 
@@ -267,90 +291,107 @@ export default function IdeaCanvasPage() {
           <p className={styles.eyebrow}>The Product</p>
           <h2 className={styles.sectionHeading}>What we built</h2>
           <div className={styles.galleryGrid}>
-
-            <figure className={styles.galleryHero}>
-              <div className={styles.galleryImg} aria-hidden="true" />
+            <figure className={styles.galleryItem}>
+              <Image
+                src="/images/canvas/canvas-overview.png"
+                alt="Full Idea Canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption"
+                width={3030}
+                height={2659}
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.galleryImg}
+              />
               <figcaption className={styles.galleryCap}>
                 Full canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption
               </figcaption>
             </figure>
 
-            <div className={styles.galleryPair}>
-              <figure className={styles.galleryThumb}>
-                <div className={styles.galleryImg} aria-hidden="true" />
-                <figcaption className={styles.galleryCap}>
-                  Entering an assumption — problem statement with inline AI research triggered on save
-                </figcaption>
-              </figure>
-              <figure className={styles.galleryThumb}>
-                <div className={styles.galleryImg} aria-hidden="true" />
-                <figcaption className={styles.galleryCap}>
-                  Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment
-                </figcaption>
-              </figure>
-            </div>
+            <figure className={styles.galleryItem}>
+              <Image
+                src="/images/canvas/canvas-enterAnAssumption.png"
+                alt="Entering an assumption — problem statement field with inline AI research triggered on save"
+                width={1446}
+                height={1228}
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.galleryImg}
+              />
+              <figcaption className={styles.galleryCap}>
+                Entering an assumption — problem statement with inline AI research triggered on save
+              </figcaption>
+            </figure>
 
-            <div className={styles.galleryTrio}>
-              <figure className={styles.galleryThumb}>
-                <div className={styles.galleryImg} aria-hidden="true" />
-                <figcaption className={styles.galleryCap}>
-                  Pivot suggestions — AI-generated alternatives surfaced when evidence is weak
-                </figcaption>
-              </figure>
-              <figure className={styles.galleryThumb}>
-                <div className={styles.galleryImg} aria-hidden="true" />
-                <figcaption className={styles.galleryCap}>
-                  Idea Check in progress — sections completing before the holistic score is unlocked
-                </figcaption>
-              </figure>
-              <figure className={styles.galleryThumb}>
-                <div className={styles.galleryImg} aria-hidden="true" />
-                <figcaption className={styles.galleryCap}>
-                  Idea Check result — confidence score with market size, revenue model, competition, and fatal flaw analysis
-                </figcaption>
-              </figure>
-            </div>
+            <figure className={styles.galleryItem}>
+              <Image
+                src="/images/canvas/assumption-detail.png"
+                alt="Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment"
+                width={1462}
+                height={1326}
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.galleryImg}
+              />
+              <figcaption className={styles.galleryCap}>
+                Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment
+              </figcaption>
+            </figure>
 
+            <figure className={styles.galleryItem}>
+              <Image
+                src="/images/canvas/pivot-detail.png"
+                alt="Pivot suggestions — AI-generated alternatives surfaced when an assumption's evidence is weak"
+                width={1866}
+                height={1438}
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.galleryImg}
+              />
+              <figcaption className={styles.galleryCap}>
+                Pivot suggestions — AI-generated alternatives surfaced when evidence is weak
+              </figcaption>
+            </figure>
+
+            <figure className={styles.galleryItem}>
+              <Image
+                src="/images/canvas/ideacheck-canvas.png"
+                alt="Idea Check result — overall confidence score with market size, revenue model, competition, and fatal flaw analysis"
+                width={2970}
+                height={1456}
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.galleryImg}
+              />
+              <figcaption className={styles.galleryCap}>
+                Idea Check result — confidence score with market size, revenue model, competition, and fatal flaw analysis
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
       <section className={styles.section}>
-        <div className={styles.inner}>
-          <div className={styles.twoCol}>
-            <div>
-              <p className={styles.eyebrow}>The Pivot Engine</p>
-              <h2 className={styles.sectionHeading}>
-                The star of the product
-              </h2>
-              <div className={styles.prose}>
-                <p>
-                  When an assumption has weak evidence, the AI doesn&rsquo;t just flag it — it
-                  analyzes adjacent possibilities and suggests concrete alternatives. If your
-                  solution is &ldquo;Dog food made of dog poop&rdquo; (illegal and unsafe), the
-                  system suggests pivoting to &ldquo;Nutritional supplements that help dogs stop
-                  eating poop.&rdquo;
-                </p>
-                <p>
-                  70% of users replace their original assumptions with suggested alternatives —
-                  far exceeding our expectations and validating the approach of making AI a
-                  collaborative partner rather than just a critic.
-                </p>
-              </div>
-              <ul className={styles.observationList}>
-                {observations.map((o) => (
-                  <li key={o.title}>
-                    <p className={styles.observationTitle}>{o.title}</p>
-                    <p className={styles.observationBody}>{o.body}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <div className={styles.sideImage} aria-hidden="true" />
-              <p className={styles.imageCaption}>Pivot suggestion UI — a &ldquo;Weak Evidence&rdquo; rating triggering AI-generated alternatives with evidence sources (research papers, market data, community threads)</p>
-            </div>
+        <div className={styles.narrow}>
+          <p className={styles.eyebrow}>The Pivot Engine</p>
+          <h2 className={styles.sectionHeading}>
+            The star of the product
+          </h2>
+          <div className={styles.prose}>
+            <p>
+              When an assumption has weak evidence, the AI doesn&rsquo;t just flag it — it
+              analyzes adjacent possibilities and suggests concrete alternatives. If your
+              solution is &ldquo;Dog food made of dog poop&rdquo; (illegal and unsafe), the
+              system suggests pivoting to &ldquo;Nutritional supplements that help dogs stop
+              eating poop.&rdquo;
+            </p>
+            <p>
+              70% of users replace their original assumptions with suggested alternatives —
+              far exceeding our expectations and validating the approach of making AI a
+              collaborative partner rather than just a critic.
+            </p>
           </div>
+          <ul className={styles.observationList}>
+            {observations.map((o) => (
+              <li key={o.title}>
+                <p className={styles.observationTitle}>{o.title}</p>
+                <p className={styles.observationBody}>{o.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

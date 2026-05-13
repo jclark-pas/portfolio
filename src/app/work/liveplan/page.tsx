@@ -310,7 +310,7 @@ export default function LivePlanPage() {
         </div>
       </section>
 
-      <section className={styles.section}>
+      <section className={`${styles.section} ${styles.sectionTight}`}>
         <div className={styles.narrow}>
           <p className={styles.eyebrow}>Discovery</p>
           <h2 className={styles.sectionHeading}>
@@ -323,7 +323,24 @@ export default function LivePlanPage() {
             team.
           </p>
         </div>
-        <div className={styles.gradientBlock} aria-hidden="true" />
+        <div className={styles.discoveryImages}>
+          <Image
+            src="/images/liveplan/session-replay.png"
+            alt="Amplitude session replay timeline — recorded user session of someone working in the legacy LivePlan editor"
+            width={723}
+            height={470}
+            sizes="(max-width: 960px) 100vw, 46vw"
+            className={styles.discoveryImg}
+          />
+          <Image
+            src="/images/liveplan/customer-interview.png"
+            alt="Customer interview — Zoom recording from a one-on-one research session with a LivePlan user"
+            width={850}
+            height={470}
+            sizes="(max-width: 960px) 100vw, 54vw"
+            className={styles.discoveryImg}
+          />
+        </div>
       </section>
 
       <section className={styles.insightsSection}>
