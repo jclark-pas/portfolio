@@ -5,7 +5,6 @@ import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import Testimonial from "@/components/Testimonial";
 import ExperienceEntry from "@/components/ExperienceEntry";
 import CompactEntry from "@/components/CompactEntry";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { featuredWork } from "@/data/featuredWork";
 import styles from "./page.module.css";
@@ -164,7 +163,6 @@ export default function Home() {
         </div>
       </section>
 
-      <ContactSection />
       <Footer />
     </>
   );
