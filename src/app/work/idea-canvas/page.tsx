@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { value: "93.4%", title: "Canvas Completion", label: "Users who start finish core sections" },
-  { value: "70%", title: "Pivot Adoption", label: "Users replace assumptions with AI suggestions" },
-  { value: "90.7%", title: "AI Helpfulness", label: "Users rate AI feedback as helpful" },
-  { value: "3 weeks", title: "Time to MVP", label: "From concept to shipped product" },
+  { value: "93.4%", title: "Finished the canvas", label: "Users who start complete the core sections" },
+  { value: "70%", title: "Acted on a pivot suggestion", label: "Users took the AI up on its suggestions" },
+  { value: "90.7%", title: "Rated the AI helpful", label: "Users found the feedback genuinely useful" },
+  { value: "3 weeks", title: "Time to MVP", label: "From first concept to shipped product" },
 ];
 
 const insights = [
@@ -77,23 +77,23 @@ const pillars = [
 const outcomes = [
   {
     stat: "93.4%",
-    title: "Canvas completion rate",
-    body: "Validated the approachable design — users don't abandon the process midway through.",
+    title: "Finished the canvas",
+    body: "Nearly everyone who started completed the core sections — the simplified design kept people from dropping off.",
   },
   {
     stat: "70%",
-    title: "Pivot adoption rate",
-    body: "Proved that AI suggestions feel actionable and collaborative, not prescriptive.",
+    title: "Acted on a pivot suggestion",
+    body: "Most users took the AI up on its suggestions, so the guidance felt like help, not orders.",
   },
   {
     stat: "90.7%",
-    title: "AI helpfulness rating",
-    body: "Confirmed the tone and depth of the research output resonated with real users.",
+    title: "Rated the AI helpful",
+    body: "Users found the AI's evidence and feedback genuinely useful — not generic filler.",
   },
   {
-    stat: "↑ funnel",
-    title: "Moved LivePlan up-funnel",
-    body: "Provided an entry point for users not yet ready for a full business plan.",
+    stat: "3 weeks",
+    title: "Time to MVP",
+    body: "From first concept to a shipped MVP in three weeks — fast enough to prove the bet before over-investing.",
   },
 ];
 
@@ -420,9 +420,10 @@ export default function IdeaCanvasPage() {
           <p className={styles.eyebrow}>Outcomes</p>
           <h2 className={styles.sectionHeading}>What we shipped, and what it proved</h2>
           <p className={styles.lead}>
-            The metrics validated both the product&rsquo;s usability and its strategic
-            positioning — Idea Canvas moved LivePlan up-funnel and opened a new acquisition
-            channel for users who weren&rsquo;t ready for a full business plan.
+            The numbers confirmed the bet: the tool was approachable, the AI guidance
+            landed, and we proved it fast. Idea Canvas also gave LivePlan a way to help
+            people while they&rsquo;re still exploring an idea — before they&rsquo;re
+            ready for a full business plan.
           </p>
           <div className={styles.outcomesGrid}>
             {outcomes.map((o) => (
