@@ -1,5 +1,4 @@
 import Navigation from "@/components/Navigation";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
@@ -110,7 +109,6 @@ export default function MyStoryPage() {
         <div className={styles.signature} aria-hidden="true" />
       </section>
 
-      <ContactSection />
       <Footer />
     </>
   );

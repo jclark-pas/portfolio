@@ -1,7 +1,6 @@
 import Navigation from "@/components/Navigation";
 import WorkCard from "@/components/WorkCard";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
 import { featuredWork, featuredSlugs } from "@/data/featuredWork";
@@ -53,7 +52,6 @@ export default function WorkIndexPage() {
         </div>
       </section>
 
-      <ContactSection />
       <Footer />
     </>
   );
