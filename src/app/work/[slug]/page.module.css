@@ -150,4 +150,18 @@
   .navLink {
     padding: var(--space-lg) var(--space-md);
   }
+
+  .highlightImage,
+  .sectionImage {
+    aspect-ratio: auto;
+    overflow: visible;
+    padding: 8px;
+  }
+
+  .imgCover {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+  }
 }
