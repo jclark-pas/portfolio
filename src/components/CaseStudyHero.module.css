@@ -1,7 +1,14 @@
 .hero {
   padding: var(--space-xxxl) var(--space-xxl);
-  color: var(--color-text-invert);
+  /* Bands are always a fixed dark/saturated color, so text stays light in both themes */
+  color: #efe9db;
   text-align: center;
+}
+
+/* Dark-text variant for light-colored bands */
+.darkText,
+.darkText .title {
+  color: #0b2018;
 }
 
 .inner {
@@ -19,8 +26,9 @@
 }
 
 .title {
-  color: var(--color-text-invert);
+  color: #efe9db;
   margin-bottom: var(--space-lg);
+  text-wrap: balance;
 }
 
 .tagline {
@@ -33,7 +41,7 @@
 
 .imageArea {
   position: relative;
-  max-width: 960px;
+  max-width: 1120px;
   margin: 0 auto;
   aspect-ratio: 16/10;
   border-radius: var(--radius-lg);
@@ -42,6 +50,21 @@
 
 .heroImg {
   object-fit: contain;
+}
+
+/* Optional framed/inset image treatment */
+.imageAreaFramed {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--space-xxl) var(--space-xxxl);
+  border-radius: var(--radius-xl);
+}
+
+.heroImgInset {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
 }
 
 @media (max-width: 480px) {

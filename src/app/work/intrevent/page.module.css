@@ -1,0 +1,105 @@
+.section {
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+
+.altBg {
+  background: var(--color-bg-card);
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.bodyText {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+
+.heading {
+  margin-bottom: var(--space-xxl);
+}
+
+/* What I did */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: start;
+}
+
+.rolesHeading {
+  margin-bottom: var(--space-md);
+}
+
+.rolesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.rolesList li {
+  font-size: var(--font-body2);
+  color: var(--color-text-secondary);
+}
+
+.rolesList li::before {
+  content: "\2022 ";
+  color: var(--color-accent);
+  margin-right: var(--space-sm);
+}
+
+/* Highlights — stacked large screenshots + branding row */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxxl);
+}
+
+/* Green → magenta gradient inset (Figma #30D284 → #5F7CD5 → #0B31A9 → #B41FAE), softened */
+.gradientInset {
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    227deg,
+    rgba(48, 210, 132, 0.7) 0%,
+    rgba(95, 124, 213, 0.7) 34%,
+    rgba(11, 49, 169, 0.7) 62%,
+    rgba(180, 31, 174, 0.7) 100%
+  );
+}
+
+.gradientInset img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+/* Branding row: screenshot left, text right */
+.splitRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: center;
+}
+
+.splitText h2 {
+  margin-bottom: var(--space-md);
+}
+
+@media (max-width: 960px) {
+  .twoCol,
+  .splitRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 32px 16px;
+  }
+}

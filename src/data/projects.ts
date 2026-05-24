@@ -3,6 +3,7 @@ import type { ThumbnailData } from "@/components/ProjectThumbnail";
 export interface Project {
   slug: string;
   title: string;
+  year?: number;
   tagline: string;
   description: string;
   color: string;
@@ -188,6 +189,7 @@ export const projects: Project[] = [
   {
     slug: "ktek",
     title: "KinderTek",
+    year: 2014,
     tagline: "An assessment system for Kindergartners learning math",
     description:
       "An evidence-based learning and assessment system to help Kindergartners master common core math skills independently.",
@@ -238,6 +240,7 @@ export const projects: Project[] = [
   {
     slug: "learningwrite",
     title: "LearningWrite",
+    year: 2017,
     tagline: "Automatic writing assessment evaluation for language learning",
     description:
       "A learning and assessment platform to make it easier for teachers to assign writing exercises to language learners.",
@@ -283,6 +286,7 @@ export const projects: Project[] = [
   {
     slug: "nulia",
     title: "Nulia",
+    year: 2020,
     tagline: "Learning in action.",
     description:
       "I helped Nulia perfect a platform that provides Office 365 users with personalized guidance for enhancing workplace productivity and success.",
@@ -333,6 +337,7 @@ export const projects: Project[] = [
   {
     slug: "intrevent",
     title: "Intrevent",
+    year: 2018,
     tagline: "Planning, for any event.",
     description:
       "Event management startup Intrevent, Inc. was on a mission to create a platform to unify all scheduling, communication, payment, and other organizing functions into a single, time-saving tool.",
@@ -359,6 +364,7 @@ export const projects: Project[] = [
   {
     slug: "qlarity",
     title: "Qlarity",
+    year: 2019,
     tagline: "Mindfulness to reduce adolescent substance use",
     description:
       "I helped researchers at Oregon Research Institute design an app that helps adolescents with substance abuse through evidence-based mindfulness practices.",
