@@ -21,8 +21,23 @@
 }
 
 .media {
+  position: relative;
+  overflow: hidden;
   min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xxl);
   background: linear-gradient(135deg, #1F3939 0%, #57766A 100%);
+}
+
+.mediaImg {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(11, 9, 33, 0.28);
 }
 
 .content {
