@@ -89,7 +89,7 @@
 }
 
 .imgCover {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 @media (max-width: 960px) {
@@ -109,5 +109,19 @@
 @media (max-width: 480px) {
   .section {
     padding: 32px 16px;
+  }
+
+  .highlightImage,
+  .sectionImage {
+    aspect-ratio: auto;
+    overflow: visible;
+    padding: 8px;
+  }
+
+  .imgCover {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
   }
 }
