@@ -17,10 +17,10 @@ type Stat = {
 };
 
 const stats: Stat[] = [
-  { value: "25%", title: "Decrease in early churn", label: "for new users" },
-  { value: "42%", title: "Writing engagement", label: "more sections started" },
-  { value: "38%", title: "AI feature adoption", label: "increase in usage" },
-  { value: "63%", title: "Collaboration increase", label: "in plan comments" },
+  { value: "25%", title: "Decrease in early churn", label: "More new users stick around" },
+  { value: "42%", title: "Increase in writing engagement", label: "More sections started and finished" },
+  { value: "38%", title: "Increase in AI feature usage", label: "AI placed where users write" },
+  { value: "63%", title: "Increase in plan comments", label: "Whole teams collaborating in the plan" },
 ];
 
 const validationStats: Stat[] = [
@@ -33,7 +33,7 @@ const outcomes: Stat[] = [
     value: "25%",
     title: "Decrease in early churn",
     description:
-      "New users completed their first plan section at dramatically higher rates.",
+      "More new users completed their first plan section in week one — and stuck around instead of dropping off.",
   },
   {
     value: "42%",
@@ -45,13 +45,13 @@ const outcomes: Stat[] = [
     value: "38%",
     title: "Increase in AI feature usage",
     description:
-      "Contextual placement and surgical controls drove adoption.",
+      "Putting AI assistance right where users were writing, with fine-grained controls, drove adoption.",
   },
   {
     value: "63%",
     title: "Increase in plan comments",
     description:
-      "Real-time collaboration drove team-level engagement on the plan.",
+      "Real-time collaboration got whole teams commenting and working in the plan together.",
   },
 ];
 

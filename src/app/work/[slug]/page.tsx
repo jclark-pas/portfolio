@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import CaseStudyHero from "@/components/CaseStudyHero";
+import CaseStudyNav from "@/components/CaseStudyNav";
 import Testimonial from "@/components/Testimonial";
 import Footer from "@/components/Footer";
 import { projects, getProject, getAdjacentProjects } from "@/data/projects";
@@ -134,14 +134,7 @@ export default async function CaseStudyPage({
       ))}
 
       {/* Bottom Nav */}
-      <nav className={styles.bottomNav}>
-        <Link href={`/work/${prev.slug}`} className={styles.navLink}>
-          <span className={styles.navLabel}>&larr; {prev.title}</span>
-        </Link>
-        <Link href={`/work/${next.slug}`} className={styles.navLink}>
-          <span className={styles.navLabel}>{next.title} &rarr;</span>
-        </Link>
-      </nav>
+      <CaseStudyNav prev={prev} next={next} />
 
       <Footer />
     </>

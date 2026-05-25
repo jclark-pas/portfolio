@@ -1,0 +1,147 @@
+.section {
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+
+/* Tinted sections (matches Figma's background differentiation) */
+.altBg {
+  background: var(--color-bg-card);
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.bodyText {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+
+/* What I did */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: start;
+}
+
+.rolesHeading {
+  margin-bottom: var(--space-md);
+}
+
+.rolesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.rolesList li {
+  font-size: var(--font-body2);
+  color: var(--color-text-secondary);
+}
+
+.rolesList li::before {
+  content: "\2022 ";
+  color: var(--color-accent);
+  margin-right: var(--space-sm);
+}
+
+/* Assignment management — full-width block above the zipper */
+.blockHeading {
+  margin-bottom: var(--space-md);
+}
+
+.blockIntro {
+  max-width: 720px;
+  margin-bottom: var(--space-xl);
+}
+
+.blockImage {
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  /* Green gradient inset (matches Figma node 6004:717) */
+  background: linear-gradient(
+    158deg,
+    rgb(0, 41, 33) 4%,
+    rgb(0, 120, 95) 65.5%,
+    rgb(255, 204, 80) 100%
+  );
+}
+
+.blockImage img,
+.blockImage video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+/* Stacked zipper: image left, text right */
+.featureRows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxxl);
+}
+
+.featureRow {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: center;
+}
+
+.featureImage {
+  position: relative;
+  width: 100%;
+}
+
+.featureImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.featureText h3 {
+  margin-bottom: var(--space-sm);
+}
+
+/* Role management — text left, image right */
+.splitRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: center;
+}
+
+.splitRow h2 {
+  margin-bottom: var(--space-md);
+}
+
+.splitImage {
+  position: relative;
+  width: 100%;
+}
+
+.splitImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 960px) {
+  .twoCol,
+  .featureRow,
+  .splitRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 32px 16px;
+  }
+}

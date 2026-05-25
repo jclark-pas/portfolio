@@ -4,8 +4,8 @@
 }
 
 .darkSection {
-  background: var(--color-surface-invert);
-  color: var(--color-text-invert);
+  background: #0B0921;
+  color: #EFE9DB;
   padding: var(--space-xxxl) var(--space-xxl);
   --color-accent: var(--color-accent-on-dark);
 }
@@ -43,7 +43,7 @@
 }
 
 .onDark {
-  color: var(--color-text-invert);
+  color: #EFE9DB;
 }
 
 .prose {
@@ -68,8 +68,8 @@
 
 /* ===== Hero ===== */
 .hero {
-  background: var(--color-surface-invert);
-  color: var(--color-text-invert);
+  background: #0B0921;
+  color: #EFE9DB;
   padding: var(--space-xxxl) var(--space-xxl);
   --color-accent: var(--color-accent-on-dark);
 }
@@ -112,7 +112,8 @@
   font-size: 44px;
   line-height: 52px;
   font-weight: 700;
-  color: var(--color-text-invert);
+  color: #EFE9DB;
+  text-wrap: balance;
 }
 
 .heroDescription {
@@ -140,7 +141,7 @@
 
 .metaCell dd {
   font-size: 16px;
-  color: var(--color-text-invert);
+  color: #EFE9DB;
 }
 
 .heroVisual {
@@ -229,7 +230,7 @@
 }
 
 .statCardOnDark .statTitle {
-  color: var(--color-text-invert);
+  color: #EFE9DB;
 }
 
 .statCardOnDark .statLabel,
@@ -514,7 +515,7 @@
 .pillarTitle {
   font-size: 22px;
   font-weight: 600;
-  color: var(--color-text-invert);
+  color: #EFE9DB;
   margin-bottom: var(--space-sm);
 }
 
@@ -535,7 +536,7 @@
 
 /* Dark-section overrides for BeforeAfterToggle children */
 .pillarCard .comparisonTitle {
-  color: var(--color-text-invert);
+  color: #EFE9DB;
 }
 
 .pillarCard .comparisonBody {
@@ -553,7 +554,7 @@
 }
 
 .pillarCard .toggleButton:hover {
-  color: var(--color-text-invert);
+  color: #EFE9DB;
 }
 
 .pillarCard .toggleMedia {
@@ -627,7 +628,7 @@
 }
 
 .fullscreenButton:hover {
-  color: var(--color-text-invert);
+  color: #EFE9DB;
   background: rgba(15, 17, 26, 0.95);
   transform: scale(1.05);
 }
@@ -661,11 +662,11 @@
 
 .toggleButtonActive {
   background: var(--color-accent);
-  color: var(--color-text-invert);
+  color: #EFE9DB;
 }
 
 .toggleButtonActive:hover {
-  color: var(--color-text-invert);
+  color: #EFE9DB;
 }
 
 .toggleMedia {
@@ -837,8 +838,8 @@
   padding: var(--space-xl) var(--space-xxxl);
   margin-top: var(--space-xxl);
   border-radius: var(--radius-lg);
-  background: var(--color-surface-invert);
-  color: var(--color-text-invert);
+  background: #0B0921;
+  color: #EFE9DB;
 }
 
 .bigStatPillWrap {
@@ -946,6 +947,10 @@
 
 /* ===== Bottom nav ===== */
 .bottomNav {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background: var(--color-surface);
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-top: 1px solid var(--color-border);

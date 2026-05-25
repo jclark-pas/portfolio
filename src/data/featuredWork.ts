@@ -10,6 +10,9 @@ export const featuredWork: FeaturedWork[] = [
     href: "/work/liveplan",
     imageBackground:
       "linear-gradient(135deg, #214E41 0%, #009660 35%, #6EAD59 65%, #FFCC50 100%)",
+    image: "/images/liveplan/featured-plan-editor.png",
+    imageWidth: 1749,
+    imageHeight: 1366,
   },
   {
     number: "02",
@@ -20,6 +23,9 @@ export const featuredWork: FeaturedWork[] = [
     href: "/work/idea-canvas",
     imageBackground:
       "linear-gradient(135deg, #6F4AC7 0%, #3B82C9 50%, #F26A5D 100%)",
+    image: "/images/featured-idea-canvas.png",
+    imageWidth: 1986,
+    imageHeight: 1459,
   },
 ];
 

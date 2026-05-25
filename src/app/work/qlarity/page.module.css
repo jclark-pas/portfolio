@@ -1,0 +1,104 @@
+.section {
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+
+.altBg {
+  background: var(--color-bg-card);
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.bodyText {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+
+/* What I did */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: start;
+}
+
+.rolesHeading {
+  margin-bottom: var(--space-md);
+}
+
+.rolesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.rolesList li {
+  font-size: var(--font-body2);
+  color: var(--color-text-secondary);
+}
+
+.rolesList li::before {
+  content: "\2022 ";
+  color: var(--color-accent);
+  margin-right: var(--space-sm);
+}
+
+/* Feature rows: text + screenshot, alternating sides */
+.splitRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: center;
+}
+
+/* Image column gets a consistent extra weight, following whichever side it's on */
+.imgLeft {
+  grid-template-columns: 1.25fr 1fr;
+}
+
+.imgRight {
+  grid-template-columns: 1fr 1.25fr;
+}
+
+.splitText h2 {
+  margin-bottom: var(--space-md);
+}
+
+.splitImage {
+  position: relative;
+  width: 100%;
+}
+
+.splitImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 960px) {
+  .twoCol,
+  .splitRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* Keep image below text when stacked, regardless of source order */
+  .splitImage {
+    order: 2;
+  }
+
+  .splitText {
+    order: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 32px 16px;
+  }
+}

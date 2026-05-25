@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${bricolage.variable}`} suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" className={`${poppins.variable} ${bricolage.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
