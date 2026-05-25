@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
@@ -44,28 +45,32 @@ export default function Home() {
               quote="Josh is a strong leader and mentor in UX design by encouraging and facilitating everyone across the product team to consider the user experience in their process. He's a master at asking insightful questions to get quality answers to better inform the project, business goals, and team communication."
               name="Ali Atanasov"
               title="Lead Product Designer at Reforge"
+              avatar="/images/testimonials/ali.png"
             />
             <Testimonial
-              quote="Josh's experience in UX, HCI, and product design are invaluable skills to any startup or product team, and his positive attitude, hilarious spirit, and joyful approach to tackling problems are invaluable skills for any team anywhere."
-              name="Laurel Benson"
-              title="Senior Product Designer at Sephora"
+              quote="Josh is one of those designers who really ‘gets’ the development process. He’s not just focused on making things look pretty; he collaborates with devs early on to balance the ideal user experience with real technical constraints."
+              name="Haley Whitman"
+              title="Senior Software Engineer for LivePlan"
+              avatar="/images/testimonials/haley.png"
             />
             <Testimonial
               quote="Josh is a rare individual with a range of talents including high-level strategy for product...and on top of that is fun to work with and a great team member. If you are lucky enough, I highly recommend working with him."
               name="Mike Biglan"
               title="Founder/CEO of Twenty Ideas"
+              avatar="/images/testimonials/mike.png"
             />
             <Testimonial
               quote="Josh is passionate about creating engaging and empowering experiences for all different types of users. He is a caring manager and an excellent mentor from whom I have learned a great deal."
               name="Brooke Zunja"
               title="Product Design Manager at Rithum"
+              avatar="/images/testimonials/brooke.png"
             />
           </div>
         </div>
       </section>
 
       {/* Resume Section */}
-      <section className={styles.section}>
+      <section id="resume" className={styles.section}>
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <p className={styles.eyebrow}>Resume.</p>
@@ -75,16 +80,36 @@ export default function Home() {
           </div>
           <div className={styles.experienceList}>
             <ExperienceEntry
-              role="Lead Product Designer for LivePlan"
+              role="Staff Product Designer for LivePlan"
               company="Palo Alto Software"
               dates="March 2021 - Present"
+              defaultOpen
               bullets={[
-                "Partnered with others to form a future-focused roadmap for LivePlan, detailing both the product trajectory and the anticipated customer journey.",
-                "Led a complete product rebrand, creating easy-to-follow visual branding guidelines. I then put together (and continue to manage) a cohesive design system and component library in Figma and code. This greatly accelerates our capacity and consistency.",
-                "Work as an embedded team member with engineers, product managers, company leadership, data research, and product marketing.",
-                "Initiated a product UI/UX overhaul, broken down into a two-year execution strategy to actually get the changes going without overwhelming the delivery pipeline.",
-                "Championed the charge for our company to embrace AI, coming up with a UX plan to boost how our customers do business plan writing in LivePlan.",
-                "I worked on making our user research and customer discovery processes better, shifting us from focusing on what we think our users want to really listening to what our actual customers are saying.",
+                <Fragment key="editor">
+                  Led a ground-up{" "}
+                  <Link href="/work/liveplan" className={styles.bulletLink}>
+                    redesign of LivePlan’s decade-old business plan editor
+                  </Link>{" "}
+                  that cut early churn 25% and drove a 63% increase in
+                  collaborative plan comments — driven by user interviews and
+                  Amplitude session-replay research, then validated in usability
+                  tests where 100% of participants asked to join the beta.
+                </Fragment>,
+                <Fragment key="idea-canvas">
+                  <Link href="/work/idea-canvas" className={styles.bulletLink}>
+                    Designed Idea Canvas
+                  </Link>
+                  , an AI-powered idea-validation tool taken from concept to
+                  shipped MVP in 3 weeks — 93% of users completed the canvas, 70%
+                  acted on an AI pivot suggestion, and 91% rated the AI feedback
+                  genuinely helpful — expanding LivePlan from an execution tool
+                  into a discovery platform that captures users earlier in their
+                  journey.
+                </Fragment>,
+                "Built and maintain a token-based design system and component library in Figma and code, including a theming system that shipped a dozen customizable themes at launch and now powers the pitch-deck feature — accelerating delivery speed and cross-product consistency.",
+                "Championed LivePlan’s AI strategy, putting contextual, business-specific AI writing tools at the point of need; surgical user controls turned AI skeptics into power users, lifting writing engagement 42% and AI feature adoption 38%.",
+                "Reframed our research and discovery culture from “what we think users want” to evidence from real customers — pairing qualitative interviews with behavioral data to make the case for change undeniable.",
+                "Partnered cross-functionally as an embedded team member with engineering, product, leadership, data research, and marketing to shape a future-focused roadmap and a two-year UI/UX execution strategy.",
               ]}
               skills={[5, 5, 3, 2]}
             />
@@ -100,6 +125,7 @@ export default function Home() {
                 "Nulia was honored as the \u201CModern Workplace: Apps & Solutions for Microsoft Teams Partner of the Year\u201D in 2020.",
               ]}
               skills={[5, 5, 3, 3]}
+              cta={{ href: "/work/nulia", label: "Read the Nulia story" }}
             />
             <ExperienceEntry
               role="Design Director"
