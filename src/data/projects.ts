@@ -291,7 +291,7 @@ export const projects: Project[] = [
     description:
       "I helped Nulia perfect a platform that provides Office 365 users with personalized guidance for enhancing workplace productivity and success.",
     color: "#1A285F",
-    thumbnail: "/images/thumb-nulia.png",
+    thumbnail: "/images/thumb-nulia-v2.png",
     heroImage: "/images/nulia/hero.png",
     roles: ["Product Design", "Art Direction", "Product Strategy", "Research"],
     whatIDid:
@@ -342,7 +342,7 @@ export const projects: Project[] = [
     description:
       "Event management startup Intrevent, Inc. was on a mission to create a platform to unify all scheduling, communication, payment, and other organizing functions into a single, time-saving tool.",
     color: "#C44536",
-    thumbnail: "/images/thumb-intrevent.png",
+    thumbnail: "/images/thumb-intrevent-v2.png",
     heroImage: "/images/intrevent/hero.png",
     roles: ["Product Design", "Art Direction", "Product Strategy", "Research"],
     whatIDid:
@@ -369,7 +369,7 @@ export const projects: Project[] = [
     description:
       "I helped researchers at Oregon Research Institute design an app that helps adolescents with substance abuse through evidence-based mindfulness practices.",
     color: "#4A6741",
-    thumbnail: "/images/thumb-qlarity.png",
+    thumbnail: "/images/thumb-qlarity-v2.png",
     heroImage: "/images/qlarity/hero.png",
     roles: ["Product Design", "Art Direction", "Product Strategy", "Research"],
     whatIDid:
