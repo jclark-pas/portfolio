@@ -21,7 +21,7 @@ export default function Hero() {
             included.
           </h1>
           <div className={styles.actions}>
-            <Button href="#contact">Get in touch</Button>
+            <Button href="/work">See Work</Button>
             <Button href="#work" variant="secondary">
               Get to know Josh
             </Button>

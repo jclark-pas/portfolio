@@ -8,7 +8,7 @@
 
 .header {
   width: 100%;
-  max-width: 750px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -42,15 +42,21 @@
 }
 
 .imagePlaceholder {
+  position: relative;
+  overflow: hidden;
   aspect-ratio: 1 / 1.1;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
 }
 
+.photo {
+  object-fit: cover;
+}
+
 .prose {
   width: 100%;
-  max-width: 750px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -62,7 +68,7 @@
 .credoCallout {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-xl) var(--space-xl) var(--space-xl) var(--space-xxxl);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -93,6 +99,8 @@
 }
 
 .wideImage {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   max-width: 960px;
   aspect-ratio: 960 / 518;
@@ -101,10 +109,11 @@
   border-radius: var(--radius-xl);
 }
 
-.signature {
-  width: 260px;
-  height: 185px;
-  background: transparent;
+.resumeCta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
 }
 
 @media (max-width: 960px) {

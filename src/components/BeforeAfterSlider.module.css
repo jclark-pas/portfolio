@@ -77,43 +77,9 @@
   cursor: grabbing;
 }
 
-.edgeLabel {
-  position: absolute;
-  top: var(--space-md);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: rgba(15, 17, 26, 0.78);
-  color: rgba(253, 251, 247, 0.92);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.edgeLabelLeft {
-  left: var(--space-md);
-}
-
-.edgeLabelRight {
-  right: var(--space-md);
-}
-
 @media (max-width: 480px) {
   .handle {
     width: 36px;
     height: 36px;
-  }
-  .edgeLabel {
-    font-size: 10px;
-    padding: 3px 8px;
-    top: var(--space-sm);
-  }
-  .edgeLabelLeft {
-    left: var(--space-sm);
-  }
-  .edgeLabelRight {
-    right: var(--space-sm);
   }
 }

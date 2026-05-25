@@ -216,14 +216,6 @@ export default function BeforeAfterSlider({
         {before}
       </div>
 
-      {/* Edge labels */}
-      <span className={`${styles.edgeLabel} ${styles.edgeLabelLeft}`}>
-        {beforeLabel}
-      </span>
-      <span className={`${styles.edgeLabel} ${styles.edgeLabelRight}`}>
-        {afterLabel}
-      </span>
-
       {/* Divider line */}
       <div
         className={styles.divider}

@@ -75,7 +75,7 @@ export default function Navigation() {
     <nav className={styles.nav}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          Josh Clark
+          Josh Clark<span className={styles.logoDot}>.</span>
         </Link>
         <div className={styles.links}>
           <Link

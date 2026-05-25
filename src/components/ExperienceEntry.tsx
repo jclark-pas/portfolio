@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+import Button from "./Button";
 import styles from "./ExperienceEntry.module.css";
 
 const SKILLS = [
@@ -16,8 +17,10 @@ interface ExperienceEntryProps {
   role: string;
   company: string;
   dates: string;
-  bullets: string[];
+  bullets: ReactNode[];
   skills: SkillRatings;
+  cta?: { href: string; label: string };
+  defaultOpen?: boolean;
 }
 
 export default function ExperienceEntry({
@@ -26,8 +29,10 @@ export default function ExperienceEntry({
   dates,
   bullets,
   skills,
+  cta,
+  defaultOpen = false,
 }: ExperienceEntryProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen);
 
   return (
     <div className={`${styles.entry} ${open ? styles.open : ""}`}>
@@ -51,11 +56,20 @@ export default function ExperienceEntry({
       <div className={styles.contentWrapper} aria-hidden={!open}>
         <div className={styles.contentInner}>
           <div className={styles.content}>
-            <ul className={styles.bullets}>
-              {bullets.map((b, i) => (
-                <li key={i}>{b}</li>
-              ))}
-            </ul>
+            <div className={styles.bulletsCol}>
+              <ul className={styles.bullets}>
+                {bullets.map((b, i) => (
+                  <li key={i}>{b}</li>
+                ))}
+              </ul>
+              {cta ? (
+                <div className={styles.cta}>
+                  <Button href={cta.href} variant="secondary">
+                    {cta.label}
+                  </Button>
+                </div>
+              ) : null}
+            </div>
             <div className={styles.skills}>
               {SKILLS.map((skill, i) => (
                 <div key={skill.label} className={styles.skillRow}>

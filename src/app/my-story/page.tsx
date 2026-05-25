@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Button from "@/components/Button";
 import styles from "./page.module.css";
 
 export default function MyStoryPage() {
@@ -59,9 +61,44 @@ export default function MyStoryPage() {
         </div>
 
         <div className={styles.imageRow}>
-          <div className={styles.imagePlaceholder} aria-hidden="true" />
-          <div className={styles.imagePlaceholder} aria-hidden="true" />
-          <div className={styles.imagePlaceholder} aria-hidden="true" />
+          <div className={styles.imagePlaceholder}>
+            <Image
+              src="/images/my-story/day3.JPG"
+              alt="Josh, in a hospital gown and wheelchair, outside with his two kids near a waterfall"
+              fill
+              sizes="(max-width: 960px) 33vw, 300px"
+              className={styles.photo}
+              style={{ objectPosition: "left" }}
+            />
+          </div>
+          <div className={styles.imagePlaceholder}>
+            <Image
+              src="/images/my-story/IMG_3073.JPG"
+              alt="Josh standing with leg straps and a walker during physical therapy"
+              fill
+              sizes="(max-width: 960px) 33vw, 300px"
+              className={styles.photo}
+            />
+          </div>
+          <div className={styles.imagePlaceholder}>
+            <Image
+              src="/images/my-story/IMG_20190220_164829.jpg"
+              alt="Josh in a wheelchair holding a stuffed unicorn during his hospital recovery"
+              fill
+              sizes="(max-width: 960px) 33vw, 300px"
+              className={styles.photo}
+            />
+          </div>
+        </div>
+
+        <div className={styles.wideImage}>
+          <Image
+            src="/images/my-story/IMG_20190226_112100.jpg"
+            alt="Josh relearning to walk in a support harness with physical therapists"
+            fill
+            sizes="(max-width: 960px) 100vw, 960px"
+            className={styles.photo}
+          />
         </div>
 
         <div className={styles.prose}>
@@ -104,9 +141,42 @@ export default function MyStoryPage() {
           </p>
         </div>
 
-        <div className={styles.wideImage} aria-hidden="true" />
+        <div className={styles.imageRow}>
+          <div className={styles.imagePlaceholder}>
+            <Image
+              src="/images/my-story/IMG_20191022_113238.jpg"
+              alt="Josh giving a thumbs up while training at the parallel bars in rehab"
+              fill
+              sizes="(max-width: 960px) 33vw, 300px"
+              className={styles.photo}
+            />
+          </div>
+          <div className={styles.imagePlaceholder}>
+            <Image
+              src="/images/my-story/34c1af5e-ae26-4132-86d0-5961d44cf1c5.jpg"
+              alt="Josh adaptive sit-skiing on a snowy slope with an instructor"
+              fill
+              sizes="(max-width: 960px) 33vw, 300px"
+              className={styles.photo}
+            />
+          </div>
+          <div className={styles.imagePlaceholder}>
+            <Image
+              src="/images/my-story/IMG_0563.jpg"
+              alt="Josh hiking outdoors with his family after his recovery"
+              fill
+              sizes="(max-width: 960px) 33vw, 300px"
+              className={styles.photo}
+            />
+          </div>
+        </div>
 
-        <div className={styles.signature} aria-hidden="true" />
+        <div className={styles.resumeCta}>
+          <Button href="/#resume">View Experience</Button>
+          <Button href="/work" variant="secondary">
+            View Work
+          </Button>
+        </div>
       </section>
 
       <Footer />

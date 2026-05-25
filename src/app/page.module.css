@@ -57,6 +57,25 @@
   outline-offset: 2px;
 }
 
+.bulletLink {
+  color: #F26B47;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.15s ease;
+}
+
+.bulletLink:hover {
+  opacity: 0.75;
+}
+
+.bulletLink:focus-visible {
+  outline: 2px solid #F26B47;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .moreWorkGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
