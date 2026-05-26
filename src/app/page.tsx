@@ -10,7 +10,8 @@ import Footer from "@/components/Footer";
 import { featuredWork } from "@/data/featuredWork";
 import styles from "./page.module.css";
 
-const heroFeature = featuredWork[0];
+const planEditorFeature = featuredWork[0];
+const ideaCanvasFeature = featuredWork[1];
 
 export default function Home() {
   return (
@@ -28,7 +29,8 @@ export default function Home() {
             </Link>
           </div>
           <div className={styles.featuredList}>
-            <FeaturedWorkCard work={heroFeature} />
+            <FeaturedWorkCard work={planEditorFeature} />
+            <FeaturedWorkCard work={ideaCanvasFeature} />
           </div>
         </div>
       </section>
