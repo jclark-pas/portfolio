@@ -1061,6 +1061,11 @@
     padding: 16px;
   }
 
+  .insightBody {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
   .statCard,
   .pillarCard,
   .tokenCol {
