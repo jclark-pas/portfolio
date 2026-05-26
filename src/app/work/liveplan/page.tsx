@@ -348,9 +348,9 @@ export default function LivePlanPage() {
           <div className={styles.insightsHeader}>
             <p className={styles.eyebrow}>Key Insights</p>
             <blockquote className={styles.bigQuote}>
-              “Users weren’t struggling because the features didn’t exist —
+              Users weren’t struggling because the features didn’t exist —
               they were struggling because they couldn’t find them, trust them,
-              or make them their own.”
+              or make them their own.
             </blockquote>
             <p className={styles.quoteFollow}>
               This reframing shifted our approach from building new capabilities

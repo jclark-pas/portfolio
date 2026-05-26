@@ -108,7 +108,7 @@ export const projects: Project[] = [
     ],
     testimonial: {
       quote:
-        "\u201CJosh is one of those designers who really \u2018gets\u2019 the development process. He\u2019s not just focused on making things look pretty; he collaborates with devs early on to balance the ideal user experience with real technical constraints.\u201D",
+        "Josh is one of those designers who really \u2018gets\u2019 the development process. He\u2019s not just focused on making things look pretty; he collaborates with devs early on to balance the ideal user experience with real technical constraints.",
       name: "Haley Whitman",
       title: "Senior Software Engineer for LivePlan",
     },

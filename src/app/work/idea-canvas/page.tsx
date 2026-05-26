@@ -257,9 +257,9 @@ export default function IdeaCanvasPage() {
         <div className={styles.narrow}>
           <p className={styles.eyebrow}>Key Insight</p>
           <blockquote className={styles.bigQuote}>
-            &ldquo;Business planning feels like work. I wanted idea validation to feel like it
+            Business planning feels like work. I wanted idea validation to feel like it
             unlocks opportunity — immediate feedback that gives you something to work with, not
-            another task on your to-do list.&rdquo;
+            another task on your to-do list.
           </blockquote>
           <p className={styles.quoteFollow}>
             This framing shaped every design decision that followed — from the section-by-section
