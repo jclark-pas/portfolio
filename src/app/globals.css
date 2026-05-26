@@ -46,16 +46,16 @@
   --max-width: 1400px;
 }
 
-/* Dark mode - AudioEye dark (derived) */
+/* Dark mode - navy (matches the dark bands used in the light theme) */
 [data-theme="dark"] {
   --color-accent: #F26B47;
   --color-accent-on-dark: #F26B47;
-  --color-surface: #1F3939;
+  --color-surface: #15123A;
   --color-text: #FDFBF7;
-  --color-text-secondary: #C8D8CF;
-  --color-bg-card: rgba(57, 87, 82, 0.6);
-  --color-border: rgba(227, 219, 202, 0.25);
-  --color-text-invert: #1F3939;
+  --color-text-secondary: #B9B4D6;
+  --color-bg-card: rgba(255, 255, 255, 0.05);
+  --color-border: rgba(239, 233, 219, 0.18);
+  --color-text-invert: #15123A;
   --color-surface-invert: #FDFBF7;
 }
 

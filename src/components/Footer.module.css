@@ -1,5 +1,5 @@
 .footer {
-  /* Fixed dark band — stays grounded in both light and dark themes */
+  /* Fixed dark navy band — stays grounded in both light and dark themes */
   background: #0b0921;
   color: #efe9db;
   padding: var(--space-xxxl) var(--space-xxl);
