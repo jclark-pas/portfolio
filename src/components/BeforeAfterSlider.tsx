@@ -12,8 +12,6 @@ type Props = {
   beforeLabel?: string;
   /** Short label used for the right edge ribbon and accessibility */
   afterLabel?: string;
-  /** CSS aspect-ratio string. Defaults to 16 / 9. */
-  aspectRatio?: string;
   /** Initial divider position, 0–100. Defaults to 50. */
   initialPosition?: number;
   /** Animate from "complete before" → "complete after" → resting position
@@ -34,7 +32,6 @@ export default function BeforeAfterSlider({
   after,
   beforeLabel = "Before",
   afterLabel = "After",
-  aspectRatio = "16 / 9",
   initialPosition = 50,
   animateOnEnter = true,
   className,
@@ -167,7 +164,7 @@ export default function BeforeAfterSlider({
 
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // Click anywhere on the slider to jump the divider there
-    if (e.target === e.currentTarget || (e.target as HTMLElement).closest(`.${styles.layer}`)) {
+    if (e.target === e.currentTarget || (e.target as HTMLElement).closest(`.${styles.layer}, .${styles.base}`)) {
       cancelAnimation();
       updateFromClientX(e.clientX);
     }
@@ -199,11 +196,10 @@ export default function BeforeAfterSlider({
     <div
       ref={containerRef}
       className={[styles.container, className].filter(Boolean).join(" ")}
-      style={{ aspectRatio }}
       onClick={handleContainerClick}
     >
-      {/* AFTER (base layer, full size) */}
-      <div className={styles.layer} aria-hidden="true">
+      {/* AFTER (base layer, in normal flow — sets the container height) */}
+      <div className={styles.base} aria-hidden="true">
         {after}
       </div>
 

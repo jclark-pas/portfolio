@@ -283,7 +283,6 @@ export default function LivePlanPage() {
         </div>
         <div className={styles.wideImageSlider}>
           <BeforeAfterSlider
-            aspectRatio="16 / 9"
             beforeLabel="Before"
             afterLabel="After"
             before={

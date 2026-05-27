@@ -10,6 +10,29 @@
   cursor: ew-resize;
 }
 
+/* Base layer (the "after" content) sits in normal flow so its natural height
+   drives the container — the slider grows to fit any image, no cropping. */
+.base {
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+}
+
+.base > * {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.base img,
+.base video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Overlay layer (the "before" content) is absolutely positioned on top and
+   clipped by the divider. It matches the base layer's box exactly. */
 .layer {
   position: absolute;
   inset: 0;
@@ -81,41 +104,5 @@
   .handle {
     width: 36px;
     height: 36px;
-  }
-}
-
-/* On mobile a draggable comparison is cramped and object-fit: cover crops the
-   images. Stack before/after vertically and show each one in full instead.
-   Inline styles (container aspect-ratio, before-layer clip-path) are overridden
-   with !important. */
-@media (max-width: 640px) {
-  .container {
-    aspect-ratio: auto !important;
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 1px;
-    cursor: default;
-    touch-action: auto;
-  }
-
-  .layer {
-    position: relative;
-    inset: auto;
-    clip-path: none !important;
-  }
-
-  .layer > * {
-    height: auto;
-  }
-
-  .layer img,
-  .layer video {
-    height: auto;
-    object-fit: contain;
-  }
-
-  .divider,
-  .handle {
-    display: none;
   }
 }

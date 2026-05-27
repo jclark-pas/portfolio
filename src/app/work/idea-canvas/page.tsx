@@ -188,7 +188,6 @@ export default function IdeaCanvasPage() {
         </div>
         <div className={styles.wideImageSlider}>
           <BeforeAfterSlider
-            aspectRatio="16 / 9"
             beforeLabel="Legacy Pitch"
             afterLabel="Idea Canvas"
             before={
