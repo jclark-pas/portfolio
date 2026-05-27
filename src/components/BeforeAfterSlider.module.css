@@ -83,3 +83,39 @@
     height: 36px;
   }
 }
+
+/* On mobile a draggable comparison is cramped and object-fit: cover crops the
+   images. Stack before/after vertically and show each one in full instead.
+   Inline styles (container aspect-ratio, before-layer clip-path) are overridden
+   with !important. */
+@media (max-width: 640px) {
+  .container {
+    aspect-ratio: auto !important;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1px;
+    cursor: default;
+    touch-action: auto;
+  }
+
+  .layer {
+    position: relative;
+    inset: auto;
+    clip-path: none !important;
+  }
+
+  .layer > * {
+    height: auto;
+  }
+
+  .layer img,
+  .layer video {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .divider,
+  .handle {
+    display: none;
+  }
+}
