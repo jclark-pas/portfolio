@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
-import ObservationViewer from "./ObservationViewer";
 import BeforeAfterToggle from "./BeforeAfterToggle";
 import styles from "./page.module.css";
 
@@ -369,7 +368,23 @@ export default function LivePlanPage() {
 
       <section className={styles.section}>
         <div className={styles.inner}>
-          <ObservationViewer items={observations} />
+          <p className={styles.eyebrow}>Behavioral Analysis</p>
+          <h2 className={styles.sectionHeading}>
+            Watching users struggle (and succeed)
+          </h2>
+          <p className={styles.prose}>
+            Session replays in Amplitude revealed patterns that interviews alone
+            couldn’t surface. I watched users work around our limitations in
+            creative — and frustrating — ways.
+          </p>
+          <ul className={styles.observationList}>
+            {observations.map((o) => (
+              <li key={o.title} className={styles.observationItem}>
+                <p className={styles.observationTitle}>{o.title}</p>
+                <p className={styles.observationBody}>{o.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
