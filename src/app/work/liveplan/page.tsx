@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import BeforeAfterToggle from "./BeforeAfterToggle";
@@ -43,7 +44,7 @@ const outcomes: Stat[] = [
     value: "38%",
     title: "Increase in AI feature usage",
     description:
-      "Placing AI assistance right where users were writing — with fine-grained controls — drove adoption.",
+      "Putting AI assistance right where users were writing, with fine-grained controls, drove adoption.",
   },
   {
     value: "63%",
@@ -57,7 +58,7 @@ const reflections = [
   {
     title: "Session replays revealed what interviews couldn’t",
     body:
-      "Watching users struggle in real time — rage-clicking, building workarounds, abandoning flows — gave me a conviction no interview could. Pairing that behavioral data with qualitative insights made the case for change undeniable.",
+      "Watching users struggle in real-time — rage-clicking, creating workarounds, abandoning flows — gave me conviction that interviews alone miss. The combination of qualitative insights and behavioral data made the case for change undeniable.",
   },
   {
     title: "Design systems thinking paid dividends",
@@ -67,26 +68,26 @@ const reflections = [
   {
     title: "AI trust is earned through context",
     body:
-      "Users didn’t distrust AI — they distrusted generic AI. Business-specific instructions and precise control over what the AI touched turned skeptics into power users.",
+      "Users didn’t distrust AI — they distrusted generic AI. By building business-specific instructions and giving users surgical control over what AI touched, we turned skeptics into power users.",
   },
 ];
 
 const insights = [
   {
-    title: "Imposter syndrome ran deep",
-    body: "Owners wanted to know they were doing it right — that their plan would hold up to investor expectations.",
+    title: "Imposter syndrome was rampant",
+    body: "Small business owners needed guidance on how to “do it right” — they craved validation that their plan would meet investor expectations.",
   },
   {
-    title: "AI felt too generic",
-    body: "Users had LLMs but didn’t trust generic output. They wanted AI that understood their specific business.",
+    title: "AI trust gap",
+    body: "Users had access to LLMs but lacked confidence in generic output. They wanted AI that understood their specific business context.",
   },
   {
     title: "Templates felt outdated",
-    body: "Plan templates looked dated and couldn’t be customized to match a brand.",
+    body: "Users complained that plan templates looked old and couldn’t be customized to reflect their brand identity.",
   },
   {
     title: "Features were hidden",
-    body: "Session replays showed users couldn’t find the AI writing tools — and when they did, they wanted finer control.",
+    body: "Session replays revealed users couldn’t find AI writing tools, and when they did, they wanted more surgical control.",
   },
 ];
 
@@ -112,7 +113,7 @@ const observations = [
 const designApproach = [
   {
     title: "Inline Everything",
-    body: "Eliminate modal detail views. Let users write, edit, and refine directly in the document flow — no lost context, no round-tripping.",
+    body: "Eliminate modal detail views. Let users write, edit, and refine directly in the document flow without losing context and to limit the amount of round-tripping users are required to do for editorial tasks.",
     comparisons: [
       {
         title: "Inline Editing",
@@ -121,7 +122,7 @@ const designApproach = [
           videoSrc: "/videos/plan-inlineediting-before.mp4",
         },
         after: {
-          body: "Write in the document flow. No modals, no round-tripping. Reorder, rename, and restructure the outline alongside the plan as you write.",
+          body: "Write directly in the document flow. No modals, no round-tripping. Reorder, rename, and restructure the outline directly alongside the plan as you write.",
           videoSrc: "/videos/plan-inlineediting.mp4",
         },
       },
@@ -129,7 +130,7 @@ const designApproach = [
   },
   {
     title: "Design Token Theming",
-    body: "Build an extensible system where a theme cascades from print PDFs to on-screen editing to pitch decks — brand customization included.",
+    body: "Build an extensible system where themes cascade from print PDFs to on-screen editing to pitch decks — with brand customization.",
     comparisons: [
       {
         title: "Theme Customization",
@@ -146,7 +147,7 @@ const designApproach = [
   },
   {
     title: "Contextual AI",
-    body: "Surface AI writing tools at the point of need, with business-specific instructions and fine-grained control over output.",
+    body: "Surface AI writing tools at the point of need, with business-specific instructions and surgical precision over output.",
     comparisons: [
       {
         title: "AI Writing Tools",
@@ -155,7 +156,7 @@ const designApproach = [
           videoSrc: "/videos/plan-ai-old.mp4",
         },
         after: {
-          body: "AI suggestions appear in context, with fine-grained control over tone, length, and scope.",
+          body: "AI suggestions appear in context, with surgical controls over tone, length, and scope.",
           videoSrc: "/videos/plan-ai.mp4",
         },
       },
@@ -227,8 +228,9 @@ export default function LivePlanPage() {
             />
           </div>
           <p className={styles.heroDescription}>
-            User research, design systems, and contextual AI cut early churn
-            by 25% — and reshaped how entrepreneurs write their business plans.
+            How user research, design systems thinking, and AI integration
+            reduced early churn by 25% and transformed how entrepreneurs
+            write business plans.
           </p>
           <dl className={styles.metaRow}>
             <div className={styles.metaCell}>
@@ -261,20 +263,20 @@ export default function LivePlanPage() {
         <div className={styles.narrow}>
           <p className={styles.eyebrow}>The Challenge</p>
           <h2 className={styles.sectionHeading}>
-            A decade-old editor was holding the product back.
+            A decade-old editor, holding the product back.
           </h2>
           <div className={styles.prose}>
             <p>
-              LivePlan helps entrepreneurs write business plans, but our
-              decade-old editor was showing its age. New users churned before
-              they reached the product’s value, while seasoned users built
-              workarounds for basic tasks.
+              LivePlan helps entrepreneurs write business plans — but our
+              decade-old editor was showing its age. New users were churning
+              before they could experience the product’s value, and seasoned
+              users were building workarounds for basic functionality.
             </p>
             <p>
-              I reimagined the plan-writing experience from the ground up —
-              faster to write, easier to customize, and smarter with AI —
-              without losing the guided structure that made LivePlan trusted by
-              lenders and investors.
+              I was tasked with reimagining the plan-writing experience from
+              the ground up: making it faster to write, easier to customize,
+              and smarter with AI — while maintaining the guided structure that
+              made LivePlan trusted by lenders and investors.
             </p>
           </div>
         </div>
@@ -313,9 +315,10 @@ export default function LivePlanPage() {
             Understanding the problem space
           </h2>
           <p className={styles.lead}>
-            I ran three streams of research: interviews with new signups and
-            power users, session-replay analysis in Amplitude, and deep-dives
-            with our customer advocacy team.
+            I conducted three streams of research to build a complete picture:
+            user interviews with new signups and power users, session replay
+            analysis in Amplitude, and deep-dives with our customer advocacy
+            team.
           </p>
         </div>
         <div className={styles.discoveryImages}>
@@ -427,9 +430,10 @@ export default function LivePlanPage() {
             A theming system built for scale
           </h2>
           <p className={`${styles.lead} ${styles.onDarkMuted}`}>
-            Instead of fixed templates, I designed a token-based theming
-            system. It let us ship a dozen polished themes at launch — each one
-            customizable down to colors, fonts, and layout.
+            Instead of creating fixed templates, I designed a token-based
+            theming system. This allowed us to ship a dozen professionally-
+            designed themes at launch while giving users the power to customize
+            colors, fonts, and layouts.
           </p>
           <div className={styles.themingVisual}>
             <Image
@@ -498,22 +502,31 @@ export default function LivePlanPage() {
             surfaced one more requirement.
           </p>
           <div className={styles.validationGrid}>
-            <div className={styles.validationStats}>
-              {validationStats.map((s) => (
-                <StatCard key={s.title} stat={s} compact />
-              ))}
-            </div>
-            <div className={styles.calloutHighlight}>
-              <div>
-                <p className={styles.calloutTitle}>
-                  Testing surfaced a new requirement
-                </p>
-                <p className={styles.calloutBody}>
-                  Users loved the themes but wanted brand customization —
-                  custom colors and fonts. We added it to the backlog and
-                  shipped it in a fast-follow.
-                </p>
+            <div>
+              <div className={styles.validationStats}>
+                {validationStats.map((s) => (
+                  <StatCard key={s.title} stat={s} compact />
+                ))}
               </div>
+              <div className={styles.calloutHighlight}>
+                <div>
+                  <p className={styles.calloutTitle}>
+                    Testing surfaced a new requirement
+                  </p>
+                  <p className={styles.calloutBody}>
+                    Users loved the themes but wanted brand customization —
+                    custom colors and fonts. Added to the backlog and shipped
+                    in a fast-follow.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className={styles.imageStack}>
+              <ImagePlaceholder
+                aspectRatio="16 / 10"
+                label="Usability Test Session"
+                guidance="Photo from a usability test — anonymized Zoom screenshot, hands-on-laptop shot, or testing setup. Makes the research feel real and human."
+              />
             </div>
           </div>
           <div className={styles.bigStatPillWrap}>
