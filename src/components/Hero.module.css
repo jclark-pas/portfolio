@@ -66,10 +66,11 @@
 
 @media (max-width: 480px) {
   .inner {
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-xxl) var(--space-xl);
   }
 
   .actions {
     flex-direction: column;
+    gap: var(--space-lg);
   }
 }
