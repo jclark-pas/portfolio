@@ -26,6 +26,11 @@ const stats: Stat[] = [
 const validationStats: Stat[] = [
   { value: "90%", title: "Found outline tools", label: "Up from ~15%" },
   { value: "70%", title: "Located AI tools", label: "Up from 20%" },
+  {
+    value: "100%",
+    title: "Asked to join the beta",
+    label: "Of usability participants",
+  },
 ];
 
 const outcomes: Stat[] = [
@@ -180,15 +185,12 @@ const typographyTokens = [
 function StatCard({
   stat,
   variant = "default",
-  compact = false,
 }: {
   stat: Stat;
   variant?: "default" | "onDark";
-  compact?: boolean;
 }) {
   const classes = [
     styles.statCard,
-    compact ? styles.statCardCompact : "",
     variant === "onDark" ? styles.statCardOnDark : "",
   ]
     .filter(Boolean)
@@ -512,41 +514,30 @@ export default function LivePlanPage() {
             before engineering investment. The results gave us confidence — and
             surfaced one more requirement.
           </p>
-          <div className={styles.validationGrid}>
-            <div>
-              <div className={styles.validationStats}>
-                {validationStats.map((s) => (
-                  <StatCard key={s.title} stat={s} compact />
-                ))}
-              </div>
-              <div className={styles.calloutHighlight}>
-                <div>
-                  <p className={styles.calloutTitle}>
-                    Testing surfaced a new requirement
-                  </p>
-                  <p className={styles.calloutBody}>
-                    Users loved the themes but wanted brand customization —
-                    custom colors and fonts. Added to the backlog and shipped
-                    in a fast-follow.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className={styles.imageStack}>
-              <ImagePlaceholder
-                aspectRatio="16 / 10"
-                label="Usability Test Session"
-                guidance="Photo from a usability test — anonymized Zoom screenshot, hands-on-laptop shot, or testing setup. Makes the research feel real and human."
-              />
-            </div>
+          <div className={styles.validationStats}>
+            {validationStats.map((s) => (
+              <StatCard key={s.title} stat={s} />
+            ))}
           </div>
-          <div className={styles.bigStatPillWrap}>
-            <div className={styles.bigStatPill}>
-              <span className={styles.bigStatValue}>100%</span>
-              <span className={styles.bigStatLabel}>
-                of usability participants asked to join the beta
-              </span>
-            </div>
+
+          <div className={styles.validationImage}>
+            <ImagePlaceholder
+              aspectRatio="16 / 9"
+              label="Usability Test Session"
+              guidance="Photo from a usability test — anonymized Zoom screenshot, hands-on-laptop shot, or testing setup. Makes the research feel real and human."
+            />
+          </div>
+
+          <div className={styles.calloutHighlight}>
+            <p className={styles.calloutEyebrow}>New requirement</p>
+            <p className={styles.calloutTitle}>
+              Testing surfaced brand customization
+            </p>
+            <p className={styles.calloutBody}>
+              Users loved the themes but wanted to make them their own — custom
+              colors and fonts. We added it to the backlog and shipped it in a
+              fast-follow.
+            </p>
           </div>
         </div>
       </section>
