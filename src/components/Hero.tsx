@@ -22,7 +22,7 @@ export default function Hero() {
           </h1>
           <div className={styles.actions}>
             <Button href="/work">See Work</Button>
-            <Button href="#work" variant="secondary">
+            <Button href="#resume" variant="secondary">
               Get to know Josh
             </Button>
           </div>
