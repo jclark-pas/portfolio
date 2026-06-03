@@ -179,12 +179,12 @@ export default function Home() {
             <p className={styles.subsectionLabel}>Education</p>
             <div className={styles.compactList}>
               <CompactEntry
-                title="Valparaiso University"
-                subtitle={["Bachelor of Arts with Honors", "Cum Laude • 2002"]}
-              />
-              <CompactEntry
                 title="George Fox University"
                 subtitle={["Master of Divinity (M.Div)", "Magna Cum Laude • 2010"]}
+              />
+              <CompactEntry
+                title="Valparaiso University"
+                subtitle={["Bachelor of Arts with Honors", "Cum Laude • 2002"]}
               />
             </div>
           </div>
