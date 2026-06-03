@@ -86,6 +86,13 @@ export default function Navigation() {
             Work
           </Link>
           <Link
+            href="/#resume"
+            className={linkClass("/#resume")}
+            aria-current={isActive("/#resume") ? "page" : undefined}
+          >
+            Resume
+          </Link>
+          <Link
             href="/my-story"
             className={linkClass("/my-story")}
             aria-current={isActive("/my-story") ? "page" : undefined}
@@ -138,6 +145,14 @@ export default function Navigation() {
             onClick={() => setMenuOpen(false)}
           >
             Work
+          </Link>
+          <Link
+            href="/#resume"
+            className={mobileLinkClass("/#resume")}
+            aria-current={isActive("/#resume") ? "page" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
+            Resume
           </Link>
           <Link
             href="/my-story"
