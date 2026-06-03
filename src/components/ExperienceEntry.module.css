@@ -56,7 +56,7 @@
 
 .meta {
   font-size: var(--font-body1);
-  line-height: 30px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
@@ -147,7 +147,7 @@
 
 .bullets {
   font-size: var(--font-body1);
-  line-height: 30px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
@@ -185,7 +185,7 @@
 .skillLabel {
   flex: 1;
   font-size: var(--font-body1);
-  line-height: 30px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
@@ -217,9 +217,5 @@
 
   .role {
     font-size: var(--font-h2);
-  }
-
-  .bullets {
-    line-height: 1.5;
   }
 }

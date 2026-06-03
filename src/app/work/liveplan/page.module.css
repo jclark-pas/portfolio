@@ -58,7 +58,7 @@
 
 .lead {
   font-size: 20px;
-  line-height: 32px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
@@ -119,7 +119,7 @@
 .heroDescription {
   max-width: 720px;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 1.5;
   color: rgba(253, 251, 247, 0.8);
 }
 
@@ -204,7 +204,7 @@
 
 .statDescription {
   font-size: 14px;
-  line-height: 22px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
   margin-top: var(--space-xs);
 }
@@ -342,7 +342,7 @@
 
 .quoteFollow {
   font-size: 18px;
-  line-height: 32px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
@@ -370,7 +370,7 @@
 
 .insightBody {
   font-size: 18px;
-  line-height: 32px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
@@ -408,7 +408,7 @@
 
 .observationBody {
   font-size: 14px;
-  line-height: 22px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
   opacity: 0.75;
 }
@@ -479,7 +479,7 @@
 
 .pillarBody {
   font-size: 16px;
-  line-height: 26px;
+  line-height: 1.5;
   color: rgba(253, 251, 247, 0.8);
 }
 
@@ -638,7 +638,7 @@
 
 .comparisonBody {
   font-size: 14px;
-  line-height: 22px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
@@ -691,7 +691,7 @@
 
 .tokenBody {
   font-size: 15px;
-  line-height: 24px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
   margin-bottom: var(--space-lg);
 }
@@ -784,7 +784,7 @@
 
 .calloutBody {
   font-size: 14px;
-  line-height: 22px;
+  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
@@ -1008,7 +1008,7 @@
 
   .insightBody {
     font-size: 14px;
-    line-height: 24px;
+    line-height: 1.5;
   }
 
   .statCard,
