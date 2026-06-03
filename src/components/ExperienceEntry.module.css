@@ -218,4 +218,8 @@
   .role {
     font-size: var(--font-h2);
   }
+
+  .bullets {
+    line-height: 1.5;
+  }
 }
