@@ -38,9 +38,9 @@
   --font-h4: 20px;
   --line-h4: 28px;
   --font-body1: 18px;
-  --line-body1: 32px;
+  --line-body1: 1.5;
   --font-body2: 16px;
-  --line-body2: 24px;
+  --line-body2: 1.5;
 
   /* Layout */
   --max-width: 1400px;
@@ -80,9 +80,7 @@
     --font-h3: 24px;
     --line-h3: 32px;
     --font-body1: 16px;
-    --line-body1: 24px;
     --font-body2: 14px;
-    --line-body2: 22px;
   }
 }
 
@@ -109,9 +107,7 @@
     --font-h3: 18px;
     --line-h3: 24px;
     --font-body1: 14px;
-    --line-body1: 24px;
     --font-body2: 14px;
-    --line-body2: 22px;
   }
 }
 
