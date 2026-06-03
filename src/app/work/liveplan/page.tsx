@@ -6,6 +6,7 @@ import ImagePlaceholder from "@/components/ImagePlaceholder";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import BeforeAfterToggle from "./BeforeAfterToggle";
+import { PenLine, Palette, Sparkles } from "lucide-react";
 import styles from "./page.module.css";
 
 type Stat = {
@@ -113,6 +114,7 @@ const observations = [
 const designApproach = [
   {
     title: "Inline Everything",
+    icon: PenLine,
     body: "Eliminate modal detail views. Let users write, edit, and refine directly in the document flow without losing context and to limit the amount of round-tripping users are required to do for editorial tasks.",
     comparisons: [
       {
@@ -130,6 +132,7 @@ const designApproach = [
   },
   {
     title: "Design Token Theming",
+    icon: Palette,
     body: "Build an extensible system where themes cascade from print PDFs to on-screen editing to pitch decks — with brand customization.",
     comparisons: [
       {
@@ -147,6 +150,7 @@ const designApproach = [
   },
   {
     title: "Contextual AI",
+    icon: Sparkles,
     body: "Surface AI writing tools at the point of need, with business-specific instructions and surgical precision over output.",
     comparisons: [
       {
@@ -367,16 +371,18 @@ export default function LivePlanPage() {
       </section>
 
       <section className={styles.section}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>Behavioral Analysis</p>
-          <h2 className={styles.sectionHeading}>
-            Watching users struggle
-          </h2>
-          <p className={styles.prose}>
-            Session replays in Amplitude revealed patterns that interviews alone
-            couldn’t surface. I watched users work around our limitations in
-            creative — and frustrating — ways.
-          </p>
+        <div className={`${styles.inner} ${styles.observationLayout}`}>
+          <div className={styles.observationIntro}>
+            <p className={styles.eyebrow}>Behavioral Analysis</p>
+            <h2 className={styles.sectionHeading}>
+              Watching users struggle
+            </h2>
+            <p className={styles.prose}>
+              Session replays in Amplitude revealed patterns that interviews
+              alone couldn’t surface. I watched users work around our
+              limitations in creative — and frustrating — ways.
+            </p>
+          </div>
           <ul className={styles.observationList}>
             {observations.map((o) => (
               <li key={o.title} className={styles.observationItem}>
@@ -401,10 +407,14 @@ export default function LivePlanPage() {
             and putting users back in control.
           </p>
           <div className={styles.pillarStack}>
-            {designApproach.map((p) => (
+            {designApproach.map((p) => {
+              const Icon = p.icon;
+              return (
               <article key={p.title} className={styles.pillarCard}>
                 <div className={styles.pillarHeader}>
-                  <div className={styles.pillarIcon} aria-hidden="true" />
+                  <div className={styles.pillarIcon} aria-hidden="true">
+                    <Icon size={22} color="#EFE9DB" strokeWidth={2} />
+                  </div>
                   <h3 className={styles.pillarTitle}>{p.title}</h3>
                   <p className={styles.pillarBody}>{p.body}</p>
                 </div>
@@ -416,7 +426,8 @@ export default function LivePlanPage() {
                   </div>
                 )}
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

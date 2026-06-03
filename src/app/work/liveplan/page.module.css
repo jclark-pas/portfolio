@@ -191,12 +191,14 @@
 
 .statTitle {
   font-size: 18px;
+  line-height: 1.3;
   font-weight: 600;
   color: var(--color-text);
 }
 
 .statLabel {
   font-size: 14px;
+  line-height: 1.3;
   color: var(--color-text-secondary);
 }
 
@@ -314,10 +316,10 @@
   margin: 0 auto;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 64px;
+  padding: clamp(24px, 4.5vw, 48px);
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: clamp(32px, 5vw, 56px);
 }
 
 .insightsHeader {
@@ -347,13 +349,13 @@
 .insightsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: clamp(16px, 2.5vw, 32px);
 }
 
 .insightCard {
   background: var(--color-bg-card);
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: clamp(24px, 3vw, 32px);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -372,37 +374,49 @@
   color: var(--color-text-secondary);
 }
 
-.observationList {
+.observationLayout {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  margin-top: var(--space-xl);
+  gap: var(--space-xl);
+}
+
+.observationIntro {
+  max-width: 720px;
+}
+
+.observationList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
 }
 
 .observationItem {
-  border-left: 2px solid var(--color-accent);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-lg);
   background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
 }
 
 .observationTitle {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
   color: var(--color-text);
   margin-bottom: var(--space-xs);
 }
 
 .observationBody {
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 22px;
   color: var(--color-text-secondary);
+  opacity: 0.75;
 }
 
 .observationVideo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -446,6 +460,9 @@
 }
 
 .pillarIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   background: var(--color-accent);
@@ -960,6 +977,10 @@
   .insightsGrid {
     grid-template-columns: 1fr;
   }
+
+  .observationList {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -983,14 +1004,6 @@
     padding: 0;
     border: 0;
     gap: 24px;
-  }
-
-  .insightsGrid {
-    gap: 12px;
-  }
-
-  .insightCard {
-    padding: 16px;
   }
 
   .insightBody {
