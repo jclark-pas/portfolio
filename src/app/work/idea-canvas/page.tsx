@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { getAdjacentProjects } from "@/data/projects";
+import { LayoutGrid, Compass, Sparkles, Gauge } from "lucide-react";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -24,18 +25,22 @@ const stats = [
 const insights = [
   {
     title: "Breaking the Canvas Paradigm",
+    icon: LayoutGrid,
     body: "The traditional single-page canvas is hard to read on screen and its information density is intimidating to people without MBAs. We used the space afforded by a web app — not a piece of paper — to make the task more approachable.",
   },
   {
     title: "Choosing the Right Framework",
+    icon: Compass,
     body: "Educators had strong (almost cult-level) opinions about Lean Canvas vs. BMC. The BMC assumes you've already validated your problem and solution — exactly what our users hadn't done. We went with Lean Canvas, but engineered the tool to be framework-agnostic for education partners.",
   },
   {
     title: "AI-First Validation",
+    icon: Sparkles,
     body: "Traditional canvases are great collection tools, but they don't validate anything. We leveraged our existing Market Research deep-research capabilities to provide instant evidence analysis on each assumption — rating them strong, moderate, or weak.",
   },
   {
     title: "From Evidence to Confidence",
+    icon: Gauge,
     body: "Individual assumptions get evidence ratings, but the Idea Check evaluates the entire business holistically — examining market size, revenue model, regulatory risks, competition, and fatal flaws — producing a confidence score with specific pivot suggestions.",
   },
 ];
@@ -274,13 +279,18 @@ export default function IdeaCanvasPage() {
             Four ideas that shaped the product
           </h2>
           <div className={styles.insightsGrid}>
-            {insights.map((i) => (
+            {insights.map((i) => {
+              const Icon = i.icon;
+              return (
               <article key={i.title} className={styles.insightCard}>
-                <div className={styles.insightIcon} aria-hidden="true" />
+                <div className={styles.insightIcon} aria-hidden="true">
+                  <Icon size={22} color="#EFE9DB" strokeWidth={2} />
+                </div>
                 <h3 className={styles.insightTitle}>{i.title}</h3>
                 <p className={styles.insightBody}>{i.body}</p>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
