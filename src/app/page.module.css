@@ -7,6 +7,16 @@
   margin: 0 auto;
 }
 
+/* Resume is a text-heavy block; capping its content keeps the bullets and
+   the skills sidebar in a tight two-column relationship instead of
+   stretching the full grid width. Applied to the resume column's direct
+   children (header, entries, subsection) so they left-align within the
+   centered sectionInner — keeping the left rail aligned with the rest of
+   the page at every viewport. */
+.resumeColumn {
+  max-width: 1120px;
+}
+
 .sectionHeading {
   margin-bottom: var(--space-xxl);
 }

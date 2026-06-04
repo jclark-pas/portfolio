@@ -74,13 +74,13 @@ export default function Home() {
       {/* Resume Section */}
       <section id="resume" className={styles.section}>
         <div className={styles.sectionInner}>
-          <div className={styles.sectionHeader}>
+          <div className={`${styles.sectionHeader} ${styles.resumeColumn}`}>
             <p className={styles.eyebrow}>Resume.</p>
             <h2 className={styles.sectionTitle}>
               15+ years experience in design, product, and leadership
             </h2>
           </div>
-          <div className={styles.experienceList}>
+          <div className={`${styles.experienceList} ${styles.resumeColumn}`}>
             <ExperienceEntry
               role="Staff Product Designer for LivePlan"
               company="Palo Alto Software"
@@ -157,7 +157,7 @@ export default function Home() {
             />
           </div>
 
-          <div className={styles.subsection}>
+          <div className={`${styles.subsection} ${styles.resumeColumn}`}>
             <p className={styles.subsectionLabel}>Additional Experience</p>
             <div className={styles.compactList}>
               <CompactEntry
