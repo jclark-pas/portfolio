@@ -149,6 +149,10 @@
   font-size: var(--font-body1);
   line-height: 1.5;
   color: var(--color-text-secondary);
+  /* Cap the reading measure (~70 chars) so lines don't run too long on
+     wide desktop layouts. ch scales with font size, so it only bites
+     where there's excess width. */
+  max-width: 60ch;
 }
 
 .cta {
