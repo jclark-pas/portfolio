@@ -40,7 +40,7 @@ export default function Home() {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <p className={styles.eyebrow}>Testimonials.</p>
-            <h2 className={styles.sectionTitleLg}>Real words from real people</h2>
+            <h2 className={styles.sectionTitleLg}>Kind words from awesome humans</h2>
           </div>
           <div className={styles.testimonialGrid}>
             <Testimonial
