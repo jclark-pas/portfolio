@@ -3,19 +3,11 @@
 }
 
 .sectionInner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-/* Resume is a text-heavy block; capping its content keeps the bullets and
-   the skills sidebar in a tight two-column relationship instead of
-   stretching the full grid width. Applied to the resume column's direct
-   children (header, entries, subsection) and centered within the
-   sectionInner so the whole block sits centered on the page. */
-.resumeColumn {
+  /* Homepage sections share one centered 1120px column so the card grids
+     (Work, Testimonials) and the text-heavy Resume layout read as a single
+     consistent measure down the page. */
   max-width: 1120px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 .sectionHeading {
