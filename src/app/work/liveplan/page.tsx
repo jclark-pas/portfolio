@@ -540,7 +540,7 @@ export default function LivePlanPage() {
           <p className={styles.eyebrow}>The Solution</p>
           <h2 className={styles.sectionHeading}>The redesigned experience</h2>
           <p className={styles.lead}>
-            The shipped editor brought all three pillars together — inline
+            The new editor brought all three pillars together — inline
             writing, themed output, and contextual AI — in a single surface.
           </p>
           <div className={styles.solutionHero}>
