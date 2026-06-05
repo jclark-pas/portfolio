@@ -156,6 +156,10 @@
   gap: var(--space-md);
 }
 
+.storyTeaser {
+  margin-top: var(--space-xxxl);
+}
+
 @media (max-width: 960px) {
   .workGrid {
     grid-template-columns: 1fr;

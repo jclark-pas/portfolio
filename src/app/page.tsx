@@ -6,6 +6,7 @@ import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import Testimonial from "@/components/Testimonial";
 import ExperienceEntry from "@/components/ExperienceEntry";
 import CompactEntry from "@/components/CompactEntry";
+import StoryTeaser from "@/components/StoryTeaser";
 import Footer from "@/components/Footer";
 import { featuredWork } from "@/data/featuredWork";
 import styles from "./page.module.css";
@@ -187,6 +188,10 @@ export default function Home() {
                 subtitle={["Bachelor of Arts with Honors", "Cum Laude • 2002"]}
               />
             </div>
+          </div>
+
+          <div className={styles.storyTeaser}>
+            <StoryTeaser />
           </div>
         </div>
       </section>
