@@ -16,13 +16,6 @@ type Stat = {
   description?: string;
 };
 
-const stats: Stat[] = [
-  { value: "25%", title: "Decrease in early churn", label: "More new users stick around" },
-  { value: "42%", title: "Increase in writing engagement", label: "More sections started and finished" },
-  { value: "38%", title: "Increase in AI feature usage", label: "AI placed where users write" },
-  { value: "63%", title: "Increase in plan comments", label: "Whole teams collaborating in the plan" },
-];
-
 const validationStats: Stat[] = [
   { value: "90%", title: "Found outline tools", label: "Up from ~15%" },
   { value: "70%", title: "Located AI tools", label: "Up from 20%" },
@@ -258,7 +251,7 @@ export default function LivePlanPage() {
       <section className={styles.statsBand}>
         <div className={styles.inner}>
           <div className={styles.statsGrid}>
-            {stats.map((s) => (
+            {outcomes.map((s) => (
               <StatCard key={s.title} stat={s} />
             ))}
           </div>
