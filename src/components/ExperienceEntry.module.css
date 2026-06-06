@@ -222,4 +222,11 @@
   .role {
     font-size: var(--font-h2);
   }
+
+  .skills {
+    flex-basis: auto;
+    max-width: none;
+    min-width: 0;
+    padding: 0;
+  }
 }
