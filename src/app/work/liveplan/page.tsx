@@ -443,10 +443,10 @@ export default function LivePlanPage() {
           </p>
           <div className={styles.themingVisual}>
             <Image
-              src="/images/liveplan/themes-examples.png"
-              alt="Four theme variations of the LivePlan plan editor — neutral, classic teal, bold orange/teal, and bold red/blue — each rendering the same Expectations chapter with different typography, color, and chart treatments"
-              width={3070}
-              height={2364}
+              src="/images/liveplan/themes-showcase.png"
+              alt="A montage of LivePlan plan covers and pages across many themes — neutral, blue, green, dark, teal, and bold red — showing how the token-based theming system restyles typography, color, and charts across the whole document"
+              width={1440}
+              height={473}
               sizes="(max-width: 1200px) 100vw, 1200px"
               className={styles.themingImg}
             />
