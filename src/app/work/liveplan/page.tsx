@@ -474,8 +474,12 @@ export default function LivePlanPage() {
             <div className={styles.tokenCol}>
               <h3 className={styles.tokenTitle}>Color tokens</h3>
               <p className={styles.tokenBody}>
-                Brand colors that cascade through charts, links, highlights,
-                and call-to-action elements.
+                Users can select one of fifteen color themes or use the
+                flexible theming system to customize all collateral pieces
+                related to their business plan. This includes the screen and
+                printed versions of their business plan, pitch deck, and idea
+                canvas. All colors cascade through these artifacts to customize
+                charts, links, highlights, statements, and widgets.
               </p>
               <Image
                 src="/images/liveplan/color-variables-v2.png"
