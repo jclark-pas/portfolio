@@ -7,7 +7,7 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.inner}>
         <Image
-          src="/josh-hero.png"
+          src="/josh-hero-v2.png"
           alt="Portrait illustration of Josh Clark"
           width={550}
           height={476}
