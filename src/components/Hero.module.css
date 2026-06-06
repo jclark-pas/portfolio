@@ -19,10 +19,6 @@
   height: auto;
 }
 
-:global([data-theme="dark"]) .portrait {
-  filter: invert(1) hue-rotate(180deg);
-}
-
 .content {
   min-width: 0;
 }
