@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "./Button";
+import joshHero from "../../public/josh-hero-v2.png";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -7,10 +8,8 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.inner}>
         <Image
-          src="/josh-hero-v2.png"
+          src={joshHero}
           alt="Portrait illustration of Josh Clark"
-          width={550}
-          height={476}
           priority
           className={styles.portrait}
         />
