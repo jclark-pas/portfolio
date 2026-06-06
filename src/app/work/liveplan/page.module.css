@@ -254,17 +254,14 @@
   );
 }
 
-/* Discovery: session-replay + customer-interview side-by-side,
-   nestled inside the sunset gradient frame from the original block.
-   Columns are proportional to the image widths so both render at
-   their native aspect ratio AND share an identical visual height. */
+/* Discovery: a single composite of the session replay + customer
+   interview, nestled inside the sunset gradient frame. */
 .discoveryImages {
   max-width: 1200px;
   margin: var(--space-lg) auto 0;
   padding: var(--space-lg);
   display: grid;
-  grid-template-columns: 723fr 850fr;
-  gap: var(--space-md);
+  grid-template-columns: 1fr;
   border-radius: var(--radius-lg);
   background: linear-gradient(
     90deg,

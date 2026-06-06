@@ -322,19 +322,11 @@ export default function LivePlanPage() {
         </div>
         <div className={styles.discoveryImages}>
           <Image
-            src="/images/liveplan/session-replay.png"
-            alt="Amplitude session replay timeline — recorded user session of someone working in the legacy LivePlan editor"
-            width={723}
+            src="/images/liveplan/research-screens.png"
+            alt="Two research inputs side by side — an Amplitude session replay of a user working in the legacy LivePlan editor, and a Zoom recording from a one-on-one customer interview"
+            width={1317}
             height={470}
-            sizes="(max-width: 960px) 100vw, 46vw"
-            className={styles.discoveryImg}
-          />
-          <Image
-            src="/images/liveplan/customer-interview.png"
-            alt="Customer interview — Zoom recording from a one-on-one research session with a LivePlan user"
-            width={850}
-            height={470}
-            sizes="(max-width: 960px) 100vw, 54vw"
+            sizes="(max-width: 1200px) 100vw, 1200px"
             className={styles.discoveryImg}
           />
         </div>
