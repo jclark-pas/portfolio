@@ -645,7 +645,7 @@
 /* ===== Token section ===== */
 .tokenGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-xxl);
   margin-top: var(--space-xl);
 }

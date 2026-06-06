@@ -478,11 +478,11 @@ export default function LivePlanPage() {
                 and call-to-action elements.
               </p>
               <Image
-                src="/images/liveplan/color-variables.png"
+                src="/images/liveplan/color-variables-v2.png"
                 alt="Color token variables for the LivePlan theming system — base surface, surface-card, surface-sidebar, primary, body-text, accent 1–3, and border tokens shown alongside five theme palettes"
-                width={3362}
-                height={1590}
-                sizes="(max-width: 1200px) 100vw, 600px"
+                width={1846}
+                height={696}
+                sizes="(max-width: 1200px) 100vw, 1200px"
                 className={styles.tokenImg}
               />
             </div>
