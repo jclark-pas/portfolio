@@ -630,8 +630,8 @@
 .themingVisual {
   max-width: 1200px;
   margin: var(--space-xxl) auto 0;
-  padding: var(--space-xxl);
   border-radius: var(--radius-lg);
+  overflow: hidden;
   background: linear-gradient(
     135deg,
     #2A2557 0%,
@@ -644,12 +644,6 @@
   width: 100%;
   height: auto;
   display: block;
-}
-
-@media (max-width: 480px) {
-  .themingVisual {
-    padding: var(--space-md);
-  }
 }
 
 /* ===== Token section ===== */
