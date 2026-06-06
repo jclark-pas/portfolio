@@ -651,7 +651,7 @@
 }
 
 .tokenCol {
-  background: var(--color-bg-card);
+  background: var(--color-surface);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
 }
