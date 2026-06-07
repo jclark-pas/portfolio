@@ -450,10 +450,10 @@ export default function LivePlanPage() {
               <Image
                 src="/images/liveplan/type-tokens.png"
                 alt="Typography tokens across LivePlan themes — the same plan cover, headings, and body text rendered in a range of curated font pairings"
-                width={2456}
-                height={1200}
+                width={2202}
+                height={1000}
                 sizes="(max-width: 1200px) 100vw, 1200px"
-                className={styles.tokenImg}
+                className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
               />
             </div>
             <div className={styles.tokenCol}>

@@ -678,6 +678,13 @@
   border: 1px solid var(--color-border);
 }
 
+/* Self-contained graphic — skip the framed padding/border treatment */
+.tokenImgFlush {
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
 /* ===== Validation ===== */
 .validationStats {
   display: grid;
