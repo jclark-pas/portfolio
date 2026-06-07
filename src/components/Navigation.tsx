@@ -16,6 +16,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("light");
+  const [scrolled, setScrolled] = useState(false);
 
   const isActive = (href: string) => {
     if (href.includes("#")) return false;
@@ -30,6 +31,13 @@ export default function Navigation() {
 
   useEffect(() => {
     setTheme(getInitialTheme());
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -72,7 +80,7 @@ export default function Navigation() {
     );
 
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
           Josh Clark<span className={styles.logoDot}>.</span>

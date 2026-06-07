@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: padding 0.3s ease;
 }
 
 .logo {
@@ -22,6 +23,26 @@
   color: var(--color-text);
   position: relative;
   z-index: 2;
+  transition: font-size 0.3s ease;
+}
+
+/* Shrink on scroll (desktop only — tablet/mobile are already compact) */
+@media (min-width: 769px) {
+  .navScrolled .inner {
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+  }
+
+  .navScrolled .logo {
+    font-size: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner,
+  .logo {
+    transition: none;
+  }
 }
 
 .logoDot {
