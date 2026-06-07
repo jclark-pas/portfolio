@@ -429,7 +429,6 @@
 
 .pillarCard {
   background: rgba(253, 251, 247, 0.06);
-  border: 1px solid rgba(253, 251, 247, 0.12);
   border-radius: var(--radius-lg);
   padding: var(--space-xxl);
 }
