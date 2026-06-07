@@ -315,12 +315,13 @@ export default function IdeaCanvasPage() {
           <div className={styles.galleryGrid}>
             <figure className={styles.galleryItem}>
               <Image
-                src="/images/canvas/canvas-overview.png"
+                src="/images/canvas/idea-canvas-full.svg"
                 alt="Full Idea Canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption"
-                width={3030}
-                height={2659}
+                width={1123}
+                height={1093}
                 sizes="(max-width: 1100px) 100vw, 1100px"
                 className={styles.galleryImg}
+                unoptimized
               />
               <figcaption className={styles.galleryCap}>
                 Full canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption
