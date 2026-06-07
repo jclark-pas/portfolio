@@ -9,7 +9,7 @@
 .inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: calc(var(--space-md) * 2) var(--space-xxl);
+  padding: calc(var(--space-md) * 1.5) var(--space-xxl);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -239,14 +239,14 @@
   .hamburger {
     display: inline-flex;
   }
+
+  .logo {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 480px) {
   .inner {
     padding: var(--space-md) var(--space-md);
-  }
-
-  .logo {
-    font-size: 28px;
   }
 }
