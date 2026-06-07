@@ -237,19 +237,14 @@
   color: var(--color-text-secondary);
 }
 
-/* ===== Gradient block ===== */
-.gradientBlock {
+/* ===== Discovery research image ===== */
+.researchImg {
+  display: block;
+  width: 100%;
   max-width: 1200px;
+  height: auto;
   margin: var(--space-xxl) auto 0;
-  aspect-ratio: 16 / 7;
   border-radius: var(--radius-lg);
-  background: linear-gradient(
-    90deg,
-    #1b7a7a 0%,
-    #2aa8a8 35%,
-    #5ecfcf 65%,
-    #efe9db 100%
-  );
 }
 
 /* ===== Quote section ===== */

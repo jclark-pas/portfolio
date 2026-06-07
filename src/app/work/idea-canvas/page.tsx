@@ -253,7 +253,14 @@ export default function IdeaCanvasPage() {
             </div>
           </div>
         </div>
-        <div className={styles.gradientBlock} aria-hidden="true" />
+        <Image
+          src="/images/canvas/canvas-research.png"
+          alt="Discovery artifacts — keyword search volume data, Reddit community screenshots showing early-stage founder questions, and competitive analysis of VenturePlanner and Leanstack"
+          width={1717}
+          height={980}
+          sizes="(max-width: 1200px) 100vw, 1200px"
+          className={styles.researchImg}
+        />
         <p className={styles.imageCaption}>Discovery artifacts: keyword search volume data, Reddit community screenshots showing early-stage founder questions, and competitive analysis of VenturePlanner and Leanstack</p>
       </section>
 
