@@ -4,6 +4,7 @@ import styles from "./Footer.module.css";
 const explore = [
   { label: "Work", href: "/work" },
   { label: "My Story", href: "/my-story" },
+  { label: "Style Guide", href: "/styleGuide" },
   { label: "Contact", href: "#contact" },
 ];
 
