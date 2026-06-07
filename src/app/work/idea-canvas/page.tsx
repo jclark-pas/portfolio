@@ -393,9 +393,8 @@ export default function IdeaCanvasPage() {
               eating poop.&rdquo;
             </p>
             <p>
-              70% of users replace their original assumptions with suggested alternatives —
-              far exceeding our expectations and validating the approach of making AI a
-              collaborative partner rather than just a critic.
+              70% of users replace their original assumption with the suggested alternative —
+              proof that AI works best as a collaborative partner, not just a critic.
             </p>
           </div>
           <ul className={styles.observationList}>
