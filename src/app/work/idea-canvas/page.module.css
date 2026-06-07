@@ -264,13 +264,6 @@
   font-weight: 600;
   color: var(--color-text);
   margin-bottom: var(--space-xl);
-  hanging-punctuation: first last;
-}
-
-@supports not (hanging-punctuation: first) {
-  .bigQuote {
-    text-indent: -0.45em;
-  }
 }
 
 .quoteFollow {
