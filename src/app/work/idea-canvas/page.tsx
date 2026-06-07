@@ -332,10 +332,10 @@ export default function IdeaCanvasPage() {
               <Image
                 src="/images/canvas/assumption-cards.svg"
                 alt="Entering an assumption — problem statement field with inline AI research triggered on save"
-                width={965}
-                height={649}
+                width={909}
+                height={585}
                 sizes="(max-width: 1200px) 100vw, 1200px"
-                className={styles.galleryImg}
+                className={`${styles.galleryImg} ${styles.galleryImgBare}`}
                 unoptimized
               />
               <figcaption className={styles.galleryCap}>
