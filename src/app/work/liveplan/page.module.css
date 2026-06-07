@@ -349,8 +349,8 @@
 }
 
 .insightBody {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
   color: var(--color-text-secondary);
 }
 
@@ -387,8 +387,8 @@
 }
 
 .observationBody {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
   color: var(--color-text-secondary);
 }
 
@@ -937,16 +937,6 @@
     padding: 0;
     border: 0;
     gap: 24px;
-  }
-
-  .insightBody {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .insightBody {
-    font-size: 14px;
-    line-height: 24px;
   }
 
   .statCard,
