@@ -380,9 +380,9 @@ export default function IdeaCanvasPage() {
 
       <section className={styles.section}>
         <div className={styles.narrow}>
-          <p className={styles.eyebrow}>The Pivot Engine</p>
+          <p className={styles.eyebrow}>The star of the product</p>
           <h2 className={styles.sectionHeading}>
-            The star of the product
+            The Pivot Engine
           </h2>
           <div className={styles.prose}>
             <p>
