@@ -166,15 +166,6 @@ const designApproach = [
   },
 ];
 
-const typographyTokens = [
-  { name: "Display", family: "Bricolage Grotesque" },
-  { name: "Heading", family: "Inter Tight" },
-  { name: "Body", family: "Inter" },
-  { name: "Serif", family: "Source Serif" },
-  { name: "Mono", family: "JetBrains Mono" },
-  { name: "Classic", family: "Georgia" },
-];
-
 function StatCard({
   stat,
   variant = "default",
@@ -456,20 +447,14 @@ export default function LivePlanPage() {
                 Font families, weights, and sizes for headlines through body
                 text. 6 curated pairings per theme.
               </p>
-              <p className={styles.tokenSubLabel}>Fonts</p>
-              <div className={styles.typeList}>
-                {typographyTokens.map((t) => (
-                  <div key={t.name} className={styles.typeRow}>
-                    <span className={styles.typeName}>{t.name}</span>
-                    <span
-                      className={styles.typeFamily}
-                      style={{ fontFamily: t.family }}
-                    >
-                      {t.family}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <Image
+                src="/images/liveplan/type-tokens.png"
+                alt="Typography tokens across LivePlan themes — the same plan cover, headings, and body text rendered in a range of curated font pairings"
+                width={2456}
+                height={1200}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className={styles.tokenImg}
+              />
             </div>
             <div className={styles.tokenCol}>
               <h3 className={styles.tokenTitle}>Color tokens</h3>

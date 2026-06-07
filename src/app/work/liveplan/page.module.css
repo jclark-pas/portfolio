@@ -668,40 +668,6 @@
   margin-bottom: var(--space-lg);
 }
 
-.tokenSubLabel {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-sm);
-}
-
-.typeList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.typeRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.typeName {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.typeFamily {
-  font-size: 16px;
-  color: var(--color-text-secondary);
-}
-
 .tokenImg {
   width: 100%;
   height: auto;
