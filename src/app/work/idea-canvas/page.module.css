@@ -259,8 +259,8 @@
 
 .bigQuote {
   font-family: var(--font-bricolage), sans-serif;
-  font-size: 40px;
-  line-height: 52px;
+  font-size: var(--font-h2);
+  line-height: var(--line-h2);
   font-weight: 600;
   color: var(--color-text);
   margin-bottom: var(--space-xl);
@@ -536,11 +536,6 @@
   .sectionHeading {
     font-size: 32px;
     line-height: 40px;
-  }
-
-  .bigQuote {
-    font-size: 28px;
-    line-height: 38px;
   }
 
   .pillarGrid,

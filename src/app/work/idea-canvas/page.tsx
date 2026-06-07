@@ -260,11 +260,11 @@ export default function IdeaCanvasPage() {
       <section className={styles.quoteSection}>
         <div className={styles.narrow}>
           <p className={styles.eyebrow}>Key Insight</p>
-          <h2 className={styles.bigQuote}>
+          <blockquote className={styles.bigQuote}>
             Business planning feels like work. I wanted idea validation to feel like it
             unlocks opportunity — immediate feedback that gives you something to work with, not
             another task on your to-do list.
-          </h2>
+          </blockquote>
           <p className={styles.quoteFollow}>
             This framing shaped every design decision that followed — from the section-by-section
             AI feedback to the confidence score that tells you whether your idea has legs.
