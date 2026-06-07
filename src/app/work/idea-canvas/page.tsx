@@ -227,6 +227,17 @@ export default function IdeaCanvasPage() {
             worked closely with marketing to define the market need and funnel fit. We approached
             validation from three angles simultaneously.
           </p>
+        </div>
+        <Image
+          src="/images/canvas/canvas-research.png"
+          alt="Discovery artifacts — keyword search volume data, Reddit community screenshots showing early-stage founder questions, and competitive analysis of VenturePlanner and Leanstack"
+          width={1717}
+          height={980}
+          sizes="(max-width: 1200px) 100vw, 1200px"
+          className={styles.researchImg}
+        />
+        <p className={styles.imageCaption}>Discovery artifacts: keyword search volume data, Reddit community screenshots showing early-stage founder questions, and competitive analysis of VenturePlanner and Leanstack</p>
+        <div className={styles.narrow}>
           <div className={styles.discoveryDetails}>
             <div className={styles.discoveryItem}>
               <h3 className={styles.discoveryItemTitle}>Market signals</h3>
@@ -253,15 +264,6 @@ export default function IdeaCanvasPage() {
             </div>
           </div>
         </div>
-        <Image
-          src="/images/canvas/canvas-research.png"
-          alt="Discovery artifacts — keyword search volume data, Reddit community screenshots showing early-stage founder questions, and competitive analysis of VenturePlanner and Leanstack"
-          width={1717}
-          height={980}
-          sizes="(max-width: 1200px) 100vw, 1200px"
-          className={styles.researchImg}
-        />
-        <p className={styles.imageCaption}>Discovery artifacts: keyword search volume data, Reddit community screenshots showing early-stage founder questions, and competitive analysis of VenturePlanner and Leanstack</p>
       </section>
 
       <section className={styles.quoteSection}>
