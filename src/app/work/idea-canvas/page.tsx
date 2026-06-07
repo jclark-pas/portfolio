@@ -359,12 +359,13 @@ export default function IdeaCanvasPage() {
 
             <figure className={styles.galleryItem}>
               <Image
-                src="/images/canvas/pivot-detail.png"
+                src="/images/canvas/idea-check-panel.svg"
                 alt="Pivot suggestions — AI-generated alternatives surfaced when an assumption's evidence is weak"
-                width={1866}
-                height={1438}
-                sizes="(max-width: 1100px) 100vw, 1100px"
+                width={1263}
+                height={964}
+                sizes="(max-width: 1200px) 100vw, 1200px"
                 className={styles.galleryImg}
+                unoptimized
               />
               <figcaption className={styles.galleryCap}>
                 Pivot suggestions — AI-generated alternatives surfaced when evidence is weak
