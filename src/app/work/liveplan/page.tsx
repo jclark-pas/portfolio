@@ -17,11 +17,7 @@ type Stat = {
 };
 
 const validationStats: Stat[] = [
-  {
-    value: "90%",
-    title: "Found outline tools",
-    label: "compared to only 15% of users using the old UI",
-  },
+  { value: "90%", title: "Found outline tools", label: "versus 15% previously" },
   { value: "70%", title: "Located AI tools", label: "versus 20% previously" },
   {
     value: "100%",
