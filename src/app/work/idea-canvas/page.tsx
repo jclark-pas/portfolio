@@ -262,8 +262,15 @@ export default function IdeaCanvasPage() {
           <p className={styles.eyebrow}>Key Insight</p>
           <blockquote className={styles.bigQuote}>
             Business planning feels like work. I wanted idea validation to feel like
-            discovery, not another task on your entrepreneurial to-do list.
+            discovery.
           </blockquote>
+          <p className={styles.quoteFollow}>
+            Most idea validation tools require you to identify the assumptions, and then
+            go out and figure out if they&rsquo;re true — which is a lot of work. After
+            hearing from users that this process is overwhelming and difficult, we wanted
+            this new experience to feel like users were checking something off their
+            to-do list, rather than adding items to it.
+          </p>
           <p className={styles.quoteFollow}>
             This framing shaped every design decision that followed — from the section-by-section
             AI feedback to the confidence score that tells you whether your idea has legs.
