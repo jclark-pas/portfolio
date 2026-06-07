@@ -448,12 +448,13 @@ export default function LivePlanPage() {
                 text. 6 curated pairings per theme.
               </p>
               <Image
-                src="/images/liveplan/type-tokens.png"
+                src="/images/liveplan/type-token.svg"
                 alt="Typography tokens across LivePlan themes — the same plan cover, headings, and body text rendered in a range of curated font pairings"
-                width={2202}
-                height={1000}
+                width={2232}
+                height={976}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
+                unoptimized
               />
             </div>
             <div className={styles.tokenCol}>
