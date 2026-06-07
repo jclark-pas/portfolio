@@ -274,6 +274,10 @@
   max-width: 640px;
 }
 
+.quoteFollow + .quoteFollow {
+  margin-top: var(--space-md);
+}
+
 /* ===== Insights grid ===== */
 .insightsGrid {
   display: grid;
