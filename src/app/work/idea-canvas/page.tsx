@@ -317,7 +317,7 @@ export default function IdeaCanvasPage() {
               <Image
                 src="/images/canvas/idea-canvas-full.svg"
                 alt="Full Idea Canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption"
-                width={1123}
+                width={1199}
                 height={1093}
                 sizes="(max-width: 1100px) 100vw, 1100px"
                 className={styles.galleryImg}
