@@ -245,4 +245,8 @@
   .inner {
     padding: var(--space-md) var(--space-md);
   }
+
+  .logo {
+    font-size: 28px;
+  }
 }
