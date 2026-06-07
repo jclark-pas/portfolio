@@ -442,22 +442,6 @@ export default function LivePlanPage() {
           <h2 className={styles.sectionHeading}>How the token system works</h2>
           <div className={styles.tokenGrid}>
             <div className={styles.tokenCol}>
-              <h3 className={styles.tokenTitle}>Typography tokens</h3>
-              <p className={styles.tokenBody}>
-                With nine font pairings and fifteen custom color sets, users
-                have 135 ways to customize the design of their business plan.
-              </p>
-              <Image
-                src="/images/liveplan/type-token.svg"
-                alt="Typography tokens across LivePlan themes — the same plan cover, headings, and body text rendered in a range of curated font pairings"
-                width={2232}
-                height={976}
-                sizes="(max-width: 1200px) 100vw, 1200px"
-                className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
-                unoptimized
-              />
-            </div>
-            <div className={styles.tokenCol}>
               <h3 className={styles.tokenTitle}>Color tokens</h3>
               <p className={styles.tokenBody}>
                 Users can select one of fifteen color themes or use the
@@ -472,6 +456,22 @@ export default function LivePlanPage() {
                 alt="Color token variables for the LivePlan theming system — base surface, surface-card, surface-sidebar, primary, body-text, accent 1–3, and border tokens shown alongside five theme palettes"
                 width={1846}
                 height={696}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
+                unoptimized
+              />
+            </div>
+            <div className={styles.tokenCol}>
+              <h3 className={styles.tokenTitle}>Typography tokens</h3>
+              <p className={styles.tokenBody}>
+                With nine font pairings and fifteen custom color sets, users
+                have 135 ways to customize the design of their business plan.
+              </p>
+              <Image
+                src="/images/liveplan/type-token.svg"
+                alt="Typography tokens across LivePlan themes — the same plan cover, headings, and body text rendered in a range of curated font pairings"
+                width={2232}
+                height={976}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
                 unoptimized
