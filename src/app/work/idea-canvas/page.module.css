@@ -458,13 +458,6 @@
   border-radius: 12px;
 }
 
-/* Self-framed graphic — no surface fill or border */
-.galleryImgBare {
-  background: none;
-  border: 0;
-  border-radius: 0;
-}
-
 .galleryCap {
   font-size: 13px;
   line-height: 1.5;
