@@ -267,8 +267,8 @@
 }
 
 .quoteFollow {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
   color: var(--color-text-secondary);
   max-width: 640px;
 }

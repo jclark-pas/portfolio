@@ -261,8 +261,7 @@ export default function IdeaCanvasPage() {
         <div className={styles.narrow}>
           <p className={styles.eyebrow}>Key Insight</p>
           <blockquote className={styles.bigQuote}>
-            Business planning feels like work. I wanted idea validation to feel like
-            discovery.
+            Business planning feels like work. It should feel like discovery.
           </blockquote>
           <p className={styles.quoteFollow}>
             Most idea validation tools require you to identify the assumptions, and then
