@@ -364,7 +364,7 @@ export default function IdeaCanvasPage() {
                 width={1263}
                 height={964}
                 sizes="(max-width: 1200px) 100vw, 1200px"
-                className={styles.galleryImg}
+                className={`${styles.galleryImg} ${styles.galleryImgBare}`}
                 unoptimized
               />
               <figcaption className={styles.galleryCap}>
