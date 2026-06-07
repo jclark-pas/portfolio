@@ -444,8 +444,8 @@ export default function LivePlanPage() {
             <div className={styles.tokenCol}>
               <h3 className={styles.tokenTitle}>Typography tokens</h3>
               <p className={styles.tokenBody}>
-                Font families, weights, and sizes for headlines through body
-                text. 6 curated pairings per theme.
+                With nine font pairings and fifteen custom color sets, users
+                have 135 ways to customize the design of their business plan.
               </p>
               <Image
                 src="/images/liveplan/type-token.svg"
