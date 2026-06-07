@@ -825,7 +825,7 @@
 }
 
 .navLink {
-  padding: var(--space-xl) var(--space-xxl);
+  padding: var(--space-lg) var(--space-xxl);
   transition: background 0.2s;
 }
 
