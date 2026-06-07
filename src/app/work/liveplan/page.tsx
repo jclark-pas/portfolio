@@ -22,7 +22,7 @@ const validationStats: Stat[] = [
     title: "Found outline tools",
     label: "compared to only 15% of users using the old UI",
   },
-  { value: "70%", title: "Located AI tools", label: "Up from 20%" },
+  { value: "70%", title: "Located AI tools", label: "versus 20% previously" },
   {
     value: "100%",
     title: "Asked to join the beta",
