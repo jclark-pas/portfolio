@@ -9,7 +9,7 @@
 .inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-md) var(--space-xxl);
+  padding: calc(var(--space-md) * 2) var(--space-xxl);
   display: flex;
   align-items: center;
   justify-content: space-between;
