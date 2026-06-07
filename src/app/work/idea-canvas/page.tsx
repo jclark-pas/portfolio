@@ -371,20 +371,6 @@ export default function IdeaCanvasPage() {
                 Pivot suggestions — AI-generated alternatives surfaced when evidence is weak
               </figcaption>
             </figure>
-
-            <figure className={styles.galleryItem}>
-              <Image
-                src="/images/canvas/ideacheck-canvas.png"
-                alt="Idea Check result — overall confidence score with market size, revenue model, competition, and fatal flaw analysis"
-                width={2970}
-                height={1456}
-                sizes="(max-width: 1100px) 100vw, 1100px"
-                className={styles.galleryImg}
-              />
-              <figcaption className={styles.galleryCap}>
-                Idea Check result — confidence score with market size, revenue model, competition, and fatal flaw analysis
-              </figcaption>
-            </figure>
           </div>
         </div>
       </section>
