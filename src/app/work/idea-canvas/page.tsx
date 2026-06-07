@@ -236,7 +236,6 @@ export default function IdeaCanvasPage() {
           sizes="(max-width: 1200px) 100vw, 1200px"
           className={styles.researchImg}
         />
-        <p className={styles.imageCaption}>Discovery artifacts: keyword search volume data, Reddit community screenshots showing early-stage founder questions, and competitive analysis of VenturePlanner and Leanstack</p>
         <div className={styles.narrow}>
           <div className={styles.discoveryDetails}>
             <div className={styles.discoveryItem}>
