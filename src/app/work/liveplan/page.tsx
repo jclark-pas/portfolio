@@ -373,7 +373,7 @@ export default function LivePlanPage() {
           <ul className={styles.observationList}>
             {observations.map((o) => (
               <li key={o.title} className={styles.observationItem}>
-                <p className={styles.observationTitle}>{o.title}</p>
+                <h3 className={styles.observationTitle}>{o.title}</h3>
                 <p className={styles.observationBody}>{o.body}</p>
               </li>
             ))}
