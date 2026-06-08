@@ -13,7 +13,7 @@
 
 .primary {
   background: var(--color-accent);
-  color: var(--color-text-invert);
+  color: #ffffff;
 }
 
 .primary:hover {
