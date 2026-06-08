@@ -347,7 +347,7 @@ export default function IdeaCanvasPage() {
               <Image
                 src="/images/canvas/assumption-panel.svg"
                 alt="Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment"
-                width={1348}
+                width={1350}
                 height={735}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.galleryImg} ${styles.galleryImgBare}`}
