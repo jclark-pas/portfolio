@@ -728,8 +728,7 @@
 
 .validationVideo {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
