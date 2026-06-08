@@ -365,11 +365,6 @@
   flex: 1 1 300px;
 }
 
-.observationHeadingAside {
-  display: block;
-  font-size: 0.7em;
-}
-
 .observationList {
   flex: 1.5 1 440px;
   background: var(--color-bg-card);

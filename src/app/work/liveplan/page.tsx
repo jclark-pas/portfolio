@@ -354,9 +354,6 @@ export default function LivePlanPage() {
             <p className={styles.eyebrow}>Behavioral Analysis</p>
             <h2 className={styles.sectionHeading}>
               Watching users struggle
-              <span className={styles.observationHeadingAside}>
-                (and succeed)
-              </span>
             </h2>
             <p className={styles.prose}>
               Session replays in Amplitude revealed patterns that interviews
