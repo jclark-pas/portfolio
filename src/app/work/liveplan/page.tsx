@@ -6,7 +6,7 @@ import ImagePlaceholder from "@/components/ImagePlaceholder";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import BeforeAfterToggle from "./BeforeAfterToggle";
-import { PenLine, Palette, Sparkles } from "lucide-react";
+import { PenLine, Palette, Sparkles, Frown } from "lucide-react";
 import styles from "./page.module.css";
 
 type Stat = {
@@ -92,12 +92,12 @@ const insights = [
 
 const observations = [
   {
-    title: "Editing took too many clicks",
-    body: "Every change to the plan required at least two extra clicks.",
+    title: "Extra clicks wasted users’ time to do editorial tasks",
+    body: "Each edit to their plan required at least two extra clicks.",
   },
   {
-    title: "Users built charts in Excel, then pasted them in",
-    body: "Our native charting tools went undiscovered.",
+    title: "Users made charts in Excel and added them into LivePlan",
+    body: "Our native charting tools weren’t being discovered.",
   },
   {
     title: "Users bolded entire lines to simulate headlines",
@@ -354,6 +354,9 @@ export default function LivePlanPage() {
             <p className={styles.eyebrow}>Behavioral Analysis</p>
             <h2 className={styles.sectionHeading}>
               Watching users struggle
+              <span className={styles.observationHeadingAside}>
+                (and succeed)
+              </span>
             </h2>
             <p className={styles.prose}>
               Session replays in Amplitude revealed patterns that interviews
@@ -364,8 +367,16 @@ export default function LivePlanPage() {
           <ul className={styles.observationList}>
             {observations.map((o) => (
               <li key={o.title} className={styles.observationItem}>
-                <h3 className={styles.observationTitle}>{o.title}</h3>
-                <p className={styles.observationBody}>{o.body}</p>
+                <Frown
+                  size={24}
+                  strokeWidth={2}
+                  className={styles.observationIcon}
+                  aria-hidden="true"
+                />
+                <div className={styles.observationItemText}>
+                  <h3 className={styles.observationTitle}>{o.title}</h3>
+                  <p className={styles.observationBody}>{o.body}</p>
+                </div>
               </li>
             ))}
           </ul>

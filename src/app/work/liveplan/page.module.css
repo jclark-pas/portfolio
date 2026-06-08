@@ -356,33 +356,56 @@
 
 .observationLayout {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xxxl);
 }
 
 .observationIntro {
-  max-width: 720px;
+  flex: 1 1 300px;
+}
+
+.observationHeadingAside {
+  display: block;
+  font-size: 0.7em;
 }
 
 .observationList {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
+  flex: 1.5 1 440px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .observationItem {
-  background: var(--color-bg-card);
-  border-radius: var(--radius-lg);
-  padding: clamp(24px, 3vw, 32px);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.observationItem:last-child {
+  border-bottom: 0;
+}
+
+.observationIcon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.observationItemText {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  min-width: 0;
 }
 
 .observationTitle {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.2;
   color: var(--color-text);
 }
 
@@ -880,10 +903,6 @@
   }
 
   .insightsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .observationList {
     grid-template-columns: 1fr;
   }
 }
