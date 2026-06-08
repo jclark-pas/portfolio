@@ -460,13 +460,12 @@ export default function LivePlanPage() {
                 charts, links, highlights, statements, and widgets.
               </p>
               <Image
-                src="/images/liveplan/color-tokens.svg"
+                src="/images/liveplan/color-tokens.png"
                 alt="Color token variables for the LivePlan theming system — base surface, surface-card, surface-sidebar, primary, body-text, accent 1–3, and border tokens shown alongside five theme palettes"
                 width={1846}
                 height={696}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
-                unoptimized
               />
             </div>
             <div className={styles.tokenCol}>
@@ -476,13 +475,12 @@ export default function LivePlanPage() {
                 have 135 ways to customize the design of their business plan.
               </p>
               <Image
-                src="/images/liveplan/type-token.svg"
+                src="/images/liveplan/type-token.png"
                 alt="Typography tokens across LivePlan themes — the same plan cover, headings, and body text rendered in a range of curated font pairings"
                 width={2232}
                 height={976}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
-                unoptimized
               />
             </div>
           </div>

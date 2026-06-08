@@ -315,13 +315,12 @@ export default function IdeaCanvasPage() {
           <div className={styles.galleryGrid}>
             <figure className={styles.galleryItem}>
               <Image
-                src="/images/canvas/idea-canvas-full.svg"
+                src="/images/canvas/idea-canvas-full.png"
                 alt="Full Idea Canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption"
                 width={1199}
                 height={1093}
                 sizes="(max-width: 1100px) 100vw, 1100px"
                 className={styles.galleryImg}
-                unoptimized
               />
               <figcaption className={styles.galleryCap}>
                 Full canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption
@@ -330,13 +329,12 @@ export default function IdeaCanvasPage() {
 
             <figure className={styles.galleryItem}>
               <Image
-                src="/images/canvas/assumption-panel.svg"
+                src="/images/canvas/assumption-panel.png"
                 alt="Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment"
                 width={1350}
                 height={735}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.galleryImg} ${styles.galleryImgBare}`}
-                unoptimized
               />
               <figcaption className={styles.galleryCap}>
                 Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment
@@ -345,13 +343,12 @@ export default function IdeaCanvasPage() {
 
             <figure className={styles.galleryItem}>
               <Image
-                src="/images/canvas/idea-check-panel.svg"
+                src="/images/canvas/idea-check-panel.png"
                 alt="Pivot suggestions — AI-generated alternatives surfaced when an assumption's evidence is weak"
                 width={1263}
                 height={964}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.galleryImg} ${styles.galleryImgBare}`}
-                unoptimized
               />
               <figcaption className={styles.galleryCap}>
                 Pivot suggestions — AI-generated alternatives surfaced when evidence is weak
