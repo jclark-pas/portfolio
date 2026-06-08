@@ -365,6 +365,12 @@
   flex: 1 1 300px;
 }
 
+.amplitudeLogo {
+  display: block;
+  height: auto;
+  margin-top: var(--space-lg);
+}
+
 .observationList {
   flex: 1.5 1 440px;
   background: var(--color-bg-card);
