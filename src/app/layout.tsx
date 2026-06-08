@@ -16,8 +16,14 @@ const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
 });
 
+const BRAND =
+  "Josh Clark - Experienced Product Designer & Leader in Eugene, Oregon";
+
 export const metadata: Metadata = {
-  title: "Josh Clark — UX Designer",
+  title: {
+    default: BRAND,
+    template: `%s | ${BRAND}`,
+  },
   description: "Portfolio showcasing UX design work by Josh Clark",
 };
 

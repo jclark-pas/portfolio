@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { getProject, getAdjacentProjects } from "@/data/projects";
 import styles from "./page.module.css";
 
+export const metadata = { title: "LearningWrite" };
+
 const CREATE_ASSIGNMENT_VIDEO = "/images/learningwrite/create-assignment.mp4";
 
 export default function LearningWritePage() {

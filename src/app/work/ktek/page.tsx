@@ -7,6 +7,8 @@ import { getProject, getAdjacentProjects } from "@/data/projects";
 import TeacherAppCarousel from "./TeacherAppCarousel";
 import styles from "./page.module.css";
 
+export const metadata = { title: "KinderTek" };
+
 const teacherSlides = [
   { src: "/images/ktek/teacher-01-blank-v2.png", alt: "Empty class roster — the teacher app's starting state" },
   { src: "/images/ktek/teacher-02-add-student-v2.png", alt: "Adding a new student to a class" },

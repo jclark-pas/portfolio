@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { getProject, getAdjacentProjects } from "@/data/projects";
 import styles from "./page.module.css";
 
+export const metadata = { title: "Intrevent" };
+
 export default function IntreventPage() {
   const project = getProject("intrevent")!;
   const { prev, next } = getAdjacentProjects("intrevent");

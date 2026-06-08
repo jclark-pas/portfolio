@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Style Guide — Josh Clark",
+  title: "Style Guide",
   robots: { index: false, follow: false },
 };
 

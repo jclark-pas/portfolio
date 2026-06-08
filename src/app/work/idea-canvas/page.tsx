@@ -10,7 +10,7 @@ import { LayoutGrid, Compass, Sparkles, Gauge } from "lucide-react";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Idea Canvas — AI-Powered Business Validation",
+  title: "Idea Canvas",
   description:
     "I designed an AI-powered idea validation tool that helps early-stage entrepreneurs test and refine their business assumptions before committing to a full business plan.",
 };

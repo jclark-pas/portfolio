@@ -6,6 +6,8 @@ import { projects } from "@/data/projects";
 import { featuredWork, featuredSlugs } from "@/data/featuredWork";
 import styles from "./page.module.css";
 
+export const metadata = { title: "Work" };
+
 const otherProjects = projects.filter((p) => !featuredSlugs.has(p.slug));
 
 export default function WorkIndexPage() {

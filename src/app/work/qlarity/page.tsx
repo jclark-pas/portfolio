@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { getProject, getAdjacentProjects } from "@/data/projects";
 import styles from "./page.module.css";
 
+export const metadata = { title: "Qlarity" };
+
 export default function QlarityPage() {
   const project = getProject("qlarity")!;
   const { prev, next } = getAdjacentProjects("qlarity");

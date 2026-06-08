@@ -12,6 +12,16 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = getProject(slug);
+  return { title: project?.title };
+}
+
 export default async function CaseStudyPage({
   params,
 }: {

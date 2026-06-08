@@ -8,6 +8,8 @@ import BeforeAfterToggle from "./BeforeAfterToggle";
 import { PenLine, Palette, Sparkles, Frown, VolumeX } from "lucide-react";
 import styles from "./page.module.css";
 
+export const metadata = { title: "LivePlan" };
+
 type Stat = {
   value: string;
   title: string;

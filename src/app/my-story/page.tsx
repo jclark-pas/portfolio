@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import styles from "./page.module.css";
 
+export const metadata = { title: "My Story" };
+
 export default function MyStoryPage() {
   return (
     <>

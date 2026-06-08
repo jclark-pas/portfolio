@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { getProject, getAdjacentProjects } from "@/data/projects";
 import styles from "./page.module.css";
 
+export const metadata = { title: "Nulia" };
+
 export default function NuliaPage() {
   const project = getProject("nulia")!;
   const { prev, next } = getAdjacentProjects("nulia");
