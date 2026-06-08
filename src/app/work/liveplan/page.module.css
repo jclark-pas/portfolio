@@ -724,6 +724,25 @@
 
 .validationImage {
   margin-top: var(--space-md);
+  position: relative;
+}
+
+.videoMutedBadge {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 9, 33, 0.72);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
 }
 
 .validationVideo {

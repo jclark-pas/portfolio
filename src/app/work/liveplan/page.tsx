@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import BeforeAfterToggle from "./BeforeAfterToggle";
-import { PenLine, Palette, Sparkles, Frown } from "lucide-react";
+import { PenLine, Palette, Sparkles, Frown, VolumeX } from "lucide-react";
 import styles from "./page.module.css";
 
 type Stat = {
@@ -512,6 +512,10 @@ export default function LivePlanPage() {
               className={styles.validationVideo}
               aria-label="Usability test session recording"
             />
+            <span className={styles.videoMutedBadge}>
+              <VolumeX size={14} strokeWidth={2} aria-hidden="true" />
+              No sound — for privacy
+            </span>
           </div>
 
           <div className={styles.calloutHighlight}>
