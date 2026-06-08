@@ -7,8 +7,8 @@ export default function StoryTeaser() {
     <Link href="/my-story" className={styles.card} aria-label="Read my story">
       <div className={styles.media}>
         <Image
-          src="/images/my-story/day3.JPG"
-          alt="Josh, in a hospital gown and wheelchair, outside with his two kids near a waterfall"
+          src="/images/my-story/IMG_20190226_112100.jpg"
+          alt="Josh relearning to walk in a support harness with physical therapists"
           fill
           sizes="(max-width: 768px) 100vw, 480px"
           className={styles.img}
