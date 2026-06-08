@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import BeforeAfterToggle from "./BeforeAfterToggle";
@@ -505,10 +504,13 @@ export default function LivePlanPage() {
           </div>
 
           <div className={styles.validationImage}>
-            <ImagePlaceholder
-              aspectRatio="16 / 9"
-              label="Usability Test Session"
-              guidance="Photo from a usability test — anonymized Zoom screenshot, hands-on-laptop shot, or testing setup. Makes the research feel real and human."
+            <video
+              src="/videos/plan-usability-test.mp4"
+              controls
+              playsInline
+              preload="metadata"
+              className={styles.validationVideo}
+              aria-label="Usability test session recording"
             />
           </div>
 
