@@ -515,15 +515,24 @@ export default function LivePlanPage() {
           </div>
 
           <div className={styles.calloutHighlight}>
-            <p className={styles.calloutEyebrow}>New requirement</p>
-            <p className={styles.calloutTitle}>
-              Testing surfaced brand customization
-            </p>
-            <p className={styles.calloutBody}>
-              Users loved the themes but wanted to make them their own — custom
-              colors and fonts. We added it to the backlog and shipped it in a
-              fast-follow.
-            </p>
+            <div className={styles.calloutText}>
+              <p className={styles.calloutEyebrow}>New requirement</p>
+              <p className={styles.calloutTitle}>
+                Testing surfaced brand customization
+              </p>
+              <p className={styles.calloutBody}>
+                Users loved the themes but wanted to make them their own — custom
+                colors and fonts. We added it to the backlog and shipped it in a
+                fast-follow.
+              </p>
+            </div>
+            <Image
+              src="/images/liveplan/custom-color-picker.png"
+              alt="Custom color picker — Primary and Accent color swatches with hex values for a plan theme"
+              width={399}
+              height={104}
+              className={styles.calloutImage}
+            />
           </div>
         </div>
       </section>

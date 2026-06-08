@@ -741,6 +741,22 @@
   border-radius: var(--radius-lg);
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.calloutText {
+  flex: 1 1 320px;
+}
+
+.calloutImage {
+  flex-shrink: 0;
+  width: 399px;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
 }
 
 .calloutEyebrow {
