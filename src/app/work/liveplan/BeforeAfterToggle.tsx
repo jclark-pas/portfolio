@@ -118,7 +118,7 @@ export default function BeforeAfterToggle({
 }: {
   comparison: Comparison;
 }) {
-  const [mode, setMode] = useState<"before" | "after">("before");
+  const [mode, setMode] = useState<"before" | "after">("after");
   const active = comparison[mode];
 
   return (

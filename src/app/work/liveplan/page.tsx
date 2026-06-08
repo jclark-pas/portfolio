@@ -122,7 +122,7 @@ const designApproach = [
           videoSrc: "/videos/plan-inlineediting-before.mp4",
         },
         after: {
-          body: "Write directly in the document flow. No modals, no round-tripping. Reorder, rename, and restructure the outline directly alongside the plan as you write.",
+          body: "Now everything is editable inline — write, reorder, and restructure right in the document, with no modals and no lost context.",
           videoSrc: "/videos/plan-inlineediting.mp4",
         },
       },
@@ -140,7 +140,7 @@ const designApproach = [
           videoSrc: "/videos/plan-themes-old.mp4",
         },
         after: {
-          body: "A dozen professionally-designed themes ship at launch, each editable down to the token — colors, fonts, and chart styling cascade through the entire plan.",
+          body: "A dozen polished themes ship at launch, each editable down to the token — colors, fonts, and chart styles cascade across the entire plan.",
           videoSrc: "/videos/plan-themes.mp4",
         },
       },
@@ -158,7 +158,7 @@ const designApproach = [
           videoSrc: "/videos/plan-ai-old.mp4",
         },
         after: {
-          body: "AI suggestions appear in context, with surgical controls over tone, length, and scope.",
+          body: "AI writing now meets users right where they’re working, with surgical control over tone, length, and scope.",
           videoSrc: "/videos/plan-ai.mp4",
         },
       },
@@ -460,12 +460,13 @@ export default function LivePlanPage() {
                 charts, links, highlights, statements, and widgets.
               </p>
               <Image
-                src="/images/liveplan/color-tokens.png"
+                src="/images/liveplan/color-tokens.svg"
                 alt="Color token variables for the LivePlan theming system — base surface, surface-card, surface-sidebar, primary, body-text, accent 1–3, and border tokens shown alongside five theme palettes"
                 width={1846}
                 height={696}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
+                unoptimized
               />
             </div>
             <div className={styles.tokenCol}>
@@ -475,12 +476,13 @@ export default function LivePlanPage() {
                 have 135 ways to customize the design of their business plan.
               </p>
               <Image
-                src="/images/liveplan/type-token.png"
+                src="/images/liveplan/type-token.svg"
                 alt="Typography tokens across LivePlan themes — the same plan cover, headings, and body text rendered in a range of curated font pairings"
                 width={2232}
                 height={976}
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className={`${styles.tokenImg} ${styles.tokenImgFlush}`}
+                unoptimized
               />
             </div>
           </div>
