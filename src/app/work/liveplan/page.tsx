@@ -529,8 +529,9 @@ export default function LivePlanPage() {
             <Image
               src="/images/liveplan/custom-color-picker.png"
               alt="Custom color picker — Primary and Accent color swatches with hex values for a plan theme"
-              width={399}
-              height={104}
+              width={798}
+              height={208}
+              sizes="399px"
               className={styles.calloutImage}
             />
           </div>
