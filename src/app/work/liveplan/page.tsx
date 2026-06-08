@@ -448,9 +448,6 @@ export default function LivePlanPage() {
               className={styles.themingImg}
             />
           </div>
-          <h2 className={`${styles.sectionHeading} ${styles.tokenSystemHeading}`}>
-            How the token system works
-          </h2>
           <div className={styles.tokenGrid}>
             <div className={styles.tokenCol}>
               <h3 className={styles.tokenTitle}>Color tokens</h3>

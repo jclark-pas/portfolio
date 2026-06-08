@@ -670,10 +670,6 @@
 }
 
 /* ===== Token section ===== */
-.tokenSystemHeading {
-  margin-top: var(--space-xxxl);
-}
-
 .tokenGrid {
   display: grid;
   grid-template-columns: 1fr;
