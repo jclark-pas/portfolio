@@ -426,15 +426,13 @@ export default function LivePlanPage() {
         </div>
       </section>
 
-      <section className={styles.darkSection}>
+      <section className={styles.section}>
         <div className={styles.inner}>
-          <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>
-            Design System
-          </p>
-          <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
+          <p className={styles.eyebrow}>Design System</p>
+          <h2 className={styles.sectionHeading}>
             A theming system built for scale
           </h2>
-          <p className={`${styles.lead} ${styles.onDarkMuted}`}>
+          <p className={styles.lead}>
             Instead of creating fixed templates, I designed a token-based
             theming system. This allowed us to ship a dozen professionally-
             designed themes at launch while giving users the power to customize
@@ -450,12 +448,9 @@ export default function LivePlanPage() {
               className={styles.themingImg}
             />
           </div>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <h2 className={styles.sectionHeading}>How the token system works</h2>
+          <h2 className={`${styles.sectionHeading} ${styles.tokenSystemHeading}`}>
+            How the token system works
+          </h2>
           <div className={styles.tokenGrid}>
             <div className={styles.tokenCol}>
               <h3 className={styles.tokenTitle}>Color tokens</h3>
