@@ -330,21 +330,6 @@ export default function IdeaCanvasPage() {
 
             <figure className={styles.galleryItem}>
               <Image
-                src="/images/canvas/assumption-cards.svg"
-                alt="Entering an assumption — problem statement field with inline AI research triggered on save"
-                width={965}
-                height={649}
-                sizes="(max-width: 1200px) 100vw, 1200px"
-                className={styles.galleryImg}
-                unoptimized
-              />
-              <figcaption className={styles.galleryCap}>
-                Entering an assumption — problem statement with inline AI research triggered on save
-              </figcaption>
-            </figure>
-
-            <figure className={styles.galleryItem}>
-              <Image
                 src="/images/canvas/assumption-panel.svg"
                 alt="Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment"
                 width={1350}
