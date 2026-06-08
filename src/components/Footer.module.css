@@ -50,11 +50,19 @@
   text-underline-offset: 4px;
 }
 
+.role {
+  margin-top: var(--space-sm);
+  font-size: var(--font-body1);
+  line-height: 1.4;
+  color: rgba(239, 233, 219, 0.85);
+  text-wrap: balance;
+}
+
 .availability {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-top: var(--space-sm);
+  margin-top: var(--space-lg);
   font-size: var(--font-body2);
   color: rgba(239, 233, 219, 0.75);
 }

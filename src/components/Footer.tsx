@@ -27,6 +27,9 @@ export default function Footer() {
             <a href="mailto:joshclark17@gmail.com" className={styles.email}>
               joshclark17@gmail.com
             </a>
+            <p className={styles.role}>
+              Experienced Product Designer &amp; Leader in Eugene, Oregon
+            </p>
             <p className={styles.availability}>
               <span className={styles.dot} aria-hidden="true" />
               Open to product design roles
