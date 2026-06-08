@@ -345,12 +345,13 @@ export default function IdeaCanvasPage() {
 
             <figure className={styles.galleryItem}>
               <Image
-                src="/images/canvas/assumption-detail.png"
+                src="/images/canvas/assumption-panel.svg"
                 alt="Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment"
-                width={1462}
-                height={1326}
-                sizes="(max-width: 1100px) 100vw, 1100px"
-                className={styles.galleryImg}
+                width={1348}
+                height={735}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className={`${styles.galleryImg} ${styles.galleryImgBare}`}
+                unoptimized
               />
               <figcaption className={styles.galleryCap}>
                 Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment
