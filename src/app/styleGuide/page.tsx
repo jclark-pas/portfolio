@@ -33,10 +33,10 @@ const SAMPLE =
   "The quick brown fox jumps over the lazy dog, while good type makes dense information feel calm and easy to read.";
 
 const typeScale: TypeRow[] = [
-  { label: "Display / H1", token: "--font-h1 / --line-h1", family: "serif", size: "56px", lineHeight: "68px", weight: 700, sample: SAMPLE },
-  { label: "Heading 2", token: "--font-h2 / --line-h2", family: "sans", size: "32px", lineHeight: "40px", weight: 600, sample: SAMPLE },
-  { label: "Heading 3", token: "--font-h3 / --line-h3", family: "sans", size: "24px", lineHeight: "32px", weight: 600, sample: SAMPLE },
-  { label: "Heading 4", token: "--font-h4 / --line-h4", family: "sans", size: "20px", lineHeight: "28px", weight: 600, sample: SAMPLE },
+  { label: "Display / H1", token: "--font-h1 / --line-h1", family: "serif", size: "56px", lineHeight: "68px", weight: 700, sample: "The quick brown fox" },
+  { label: "Heading 2", token: "--font-h2 / --line-h2", family: "sans", size: "32px", lineHeight: "40px", weight: 600, sample: "The quick brown fox" },
+  { label: "Heading 3", token: "--font-h3 / --line-h3", family: "sans", size: "24px", lineHeight: "32px", weight: 600, sample: "The quick brown fox" },
+  { label: "Heading 4", token: "--font-h4 / --line-h4", family: "sans", size: "20px", lineHeight: "28px", weight: 600, sample: "The quick brown fox" },
   { label: "Body 1", token: "--font-body1 / --line-body1", family: "sans", size: "18px", lineHeight: "32px", weight: 400, sample: SAMPLE },
   { label: "Body 2", token: "--font-body2 / --line-body2", family: "sans", size: "16px", lineHeight: "24px", weight: 400, sample: SAMPLE },
 ];
