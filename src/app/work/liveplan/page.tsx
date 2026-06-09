@@ -361,14 +361,18 @@ export default function LivePlanPage() {
               alone couldn’t surface. I watched users work around our
               limitations in creative — and frustrating — ways.
             </p>
-            <Image
-              src="/images/liveplan/Amplitude_idPo7J6YFZ_0.svg"
-              alt="Amplitude"
-              width={135}
-              height={28}
-              className={styles.amplitudeLogo}
-              unoptimized
-            />
+            <p className={styles.amplitudeCaption}>
+              Using
+              <Image
+                src="/images/liveplan/Amplitude_idPo7J6YFZ_0.svg"
+                alt="Amplitude"
+                width={135}
+                height={28}
+                className={styles.amplitudeLogo}
+                unoptimized
+              />
+              Session Replays
+            </p>
           </div>
           <ul className={styles.observationList}>
             {observations.map((o) => (

@@ -365,10 +365,21 @@
   flex: 1 1 300px;
 }
 
-.amplitudeLogo {
-  display: block;
-  height: auto;
+.amplitudeCaption {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4em;
   margin-top: var(--space-lg);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.amplitudeLogo {
+  display: inline-block;
+  width: auto;
+  height: 1.25em;
 }
 
 .observationList {
