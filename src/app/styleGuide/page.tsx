@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 const colorTokens = [
   { name: "--color-accent", light: "#DB3914", dark: "#F26B47", note: "Primary brand accent (light bg)" },
   { name: "--color-accent-on-dark", light: "#F26B47", dark: "#F26B47", note: "Brighter accent for dark surfaces" },
-  { name: "--color-surface", light: "#FDFBF7", dark: "#1F3939", note: "Page background" },
+  { name: "--color-surface", light: "#FDFBF7", dark: "#15123A", note: "Page background" },
   { name: "--color-surface-invert", light: "#0B0921", dark: "#FDFBF7", note: "Inverted surface (dark sections)" },
   { name: "--color-text", light: "#0B0921", dark: "#FDFBF7", note: "Primary text" },
-  { name: "--color-text-secondary", light: "#130F38", dark: "#C8D8CF", note: "Body / secondary text" },
-  { name: "--color-text-invert", light: "#EFE9DB", dark: "#1F3939", note: "Text on dark surfaces" },
-  { name: "--color-bg-card", light: "rgba(239, 233, 219, 0.5)", dark: "rgba(57, 87, 82, 0.6)", note: "Card / panel surface" },
-  { name: "--color-border", light: "#E3DBCA", dark: "rgba(227, 219, 202, 0.25)", note: "Subtle dividers" },
+  { name: "--color-text-secondary", light: "#130F38", dark: "#B9B4D6", note: "Body / secondary text" },
+  { name: "--color-text-invert", light: "#EFE9DB", dark: "#15123A", note: "Text on dark surfaces" },
+  { name: "--color-bg-card", light: "rgba(239, 233, 219, 0.5)", dark: "rgba(255, 255, 255, 0.05)", note: "Card / panel surface" },
+  { name: "--color-border", light: "#E3DBCA", dark: "rgba(239, 233, 219, 0.18)", note: "Subtle dividers" },
 ];
 
 type TypeRow = {
