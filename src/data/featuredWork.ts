@@ -23,9 +23,10 @@ export const featuredWork: FeaturedWork[] = [
     href: "/work/idea-canvas",
     imageBackground:
       "linear-gradient(135deg, #6F4AC7 0%, #3B82C9 50%, #F26A5D 100%)",
-    image: "/images/featured-idea-canvas.png",
-    imageWidth: 1986,
-    imageHeight: 1459,
+    image: "/images/canvas/canvas-hero.png",
+    imageWidth: 1399,
+    imageHeight: 964,
+    imageElevated: true,
   },
 ];
 

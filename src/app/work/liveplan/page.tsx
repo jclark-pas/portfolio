@@ -5,7 +5,10 @@ import Footer from "@/components/Footer";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import BeforeAfterToggle from "./BeforeAfterToggle";
-import { PenLine, Palette, Sparkles, Frown, VolumeX } from "lucide-react";
+import { PenLine, Palette, Sparkles, VolumeX } from "lucide-react";
+import ObservationAccordion, {
+  type Observation,
+} from "@/components/ObservationAccordion";
 import styles from "./page.module.css";
 
 export const metadata = { title: "LivePlan" };
@@ -91,22 +94,34 @@ const insights = [
   },
 ];
 
-const observations = [
+const observations: Observation[] = [
   {
+    icon: "click",
     title: "Extra clicks wasted users’ time to do editorial tasks",
-    body: "Each edit to their plan required at least two extra clicks.",
+    summary: "Each edit to their plan required at least two extra clicks.",
+    detail:
+      "Replays showed people bouncing between a read-only view and a separate edit mode just to fix a typo or reword a line. Formatting controls sat a click or two from the text, turning simple edits into repetitive, mode-switching chores.",
   },
   {
-    title: "Users made charts in Excel and added them into LivePlan",
-    body: "Our native charting tools weren’t being discovered.",
+    icon: "chart",
+    title: "Users imported Excel charts into LivePlan",
+    summary: "Our native charting tools weren’t being discovered.",
+    detail:
+      "We had built-in charting, but replays showed users rebuilding the same financials in Excel and pasting them back as static images. The native tools weren’t where people expected them, so they fell back on the spreadsheet they trusted — losing the live, editable data.",
   },
   {
+    icon: "bold",
     title: "Users bolded entire lines to simulate headlines",
-    body: "Without proper heading styles, users hacked formatting.",
+    summary: "Without proper heading styles, users hacked formatting.",
+    detail:
+      "With no real heading styles, users improvised — bolding, underlining, and italicizing whole lines to fake section titles. The result was inconsistent structure that couldn’t be restyled or restructured later, all from a missing editorial primitive.",
   },
   {
+    icon: "outline",
     title: "Users struggled to customize their plan outline",
-    body: "Outline customization existed — just elsewhere in the app.",
+    summary: "Outline customization existed — just elsewhere in the app.",
+    detail:
+      "Adding, removing, and reordering sections was already possible — just tucked into a separate part of the app. Because it wasn’t where people built their plan, most assumed the outline was fixed and worked around a structure they could have changed all along.",
   },
 ];
 
@@ -374,22 +389,7 @@ export default function LivePlanPage() {
               Session Replays
             </p>
           </div>
-          <ul className={styles.observationList}>
-            {observations.map((o) => (
-              <li key={o.title} className={styles.observationItem}>
-                <Frown
-                  size={24}
-                  strokeWidth={2}
-                  className={styles.observationIcon}
-                  aria-hidden="true"
-                />
-                <div className={styles.observationItemText}>
-                  <h3 className={styles.observationTitle}>{o.title}</h3>
-                  <p className={styles.observationBody}>{o.body}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <ObservationAccordion observations={observations} />
         </div>
       </section>
 

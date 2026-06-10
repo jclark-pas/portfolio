@@ -334,6 +334,7 @@
 
 .insightCard {
   background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: clamp(24px, 3vw, 32px);
   display: flex;
@@ -371,7 +372,8 @@
   flex-wrap: wrap;
   gap: 0.4em;
   margin-top: var(--space-lg);
-  font-size: 18px;
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -382,49 +384,10 @@
   height: 1.25em;
 }
 
-.observationList {
-  flex: 1.5 1 440px;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.observationItem {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-lg);
-  padding: var(--space-xl) var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.observationItem:last-child {
-  border-bottom: 0;
-}
-
-.observationIcon {
-  flex-shrink: 0;
-  color: var(--color-accent);
-}
-
-.observationItemText {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.observationTitle {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--color-text);
-}
-
-.observationBody {
-  font-size: var(--font-body2);
-  line-height: var(--line-body2);
-  color: var(--color-text-secondary);
+/* The logo is a single blue mark; in dark mode recolor it white so it
+   reads against the dark background (the "A" is a transparent cutout). */
+:global([data-theme="dark"]) .amplitudeLogo {
+  filter: brightness(0) invert(1);
 }
 
 .observationVideo {
@@ -463,7 +426,7 @@
 }
 
 .pillarCard {
-  background: rgba(253, 251, 247, 0.06);
+  border: 1px solid rgba(253, 251, 247, 0.12);
   border-radius: var(--radius-lg);
   padding: var(--space-xxl);
 }
