@@ -1,14 +1,14 @@
 import Image from "next/image";
 import styles from "./Testimonial.module.css";
 
-interface TestimonialProps {
+export interface TestimonialData {
   quote: string;
   name: string;
   title: string;
   avatar?: string;
 }
 
-export default function Testimonial({ quote, name, title, avatar }: TestimonialProps) {
+export default function Testimonial({ quote, name, title, avatar }: TestimonialData) {
   return (
     <div className={styles.card}>
       <p className={styles.quote}>{quote}</p>

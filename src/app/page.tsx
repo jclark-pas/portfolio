@@ -3,12 +3,13 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
-import Testimonial from "@/components/Testimonial";
+import TestimonialDeck from "@/components/TestimonialDeck";
 import ExperienceEntry from "@/components/ExperienceEntry";
 import CompactEntry from "@/components/CompactEntry";
 import StoryTeaser from "@/components/StoryTeaser";
 import Footer from "@/components/Footer";
 import { featuredWork } from "@/data/featuredWork";
+import { testimonials } from "@/data/testimonials";
 import styles from "./page.module.css";
 
 const planEditorFeature = featuredWork[0];
@@ -43,32 +44,7 @@ export default function Home() {
             <p className={styles.eyebrow}>Testimonials.</p>
             <h2 className={styles.sectionTitleLg}>Kind words from awesome humans</h2>
           </div>
-          <div className={styles.testimonialGrid}>
-            <Testimonial
-              quote="Josh is a strong leader and mentor in UX design by encouraging and facilitating everyone across the product team to consider the user experience in their process. He's a master at asking insightful questions to get quality answers to better inform the project, business goals, and team communication."
-              name="Ali Atanasov"
-              title="Lead Product Designer at Reforge"
-              avatar="/images/testimonials/ali.png"
-            />
-            <Testimonial
-              quote="Josh is one of those designers who really ‘gets’ the development process. He’s not just focused on making things look pretty; he collaborates with devs early on to balance the ideal user experience with real technical constraints."
-              name="Haley Whitman"
-              title="Senior Software Engineer for LivePlan"
-              avatar="/images/testimonials/haley.png"
-            />
-            <Testimonial
-              quote="Josh is a rare individual with a range of talents including high-level strategy for product...and on top of that is fun to work with and a great team member. If you are lucky enough, I highly recommend working with him."
-              name="Mike Biglan"
-              title="Founder/CEO of Twenty Ideas"
-              avatar="/images/testimonials/mike.png"
-            />
-            <Testimonial
-              quote="Josh is passionate about creating engaging and empowering experiences for all different types of users. He is a caring manager and an excellent mentor from whom I have learned a great deal."
-              name="Brooke Zunja"
-              title="Product Design Manager at Rithum"
-              avatar="/images/testimonials/brooke.png"
-            />
-          </div>
+          <TestimonialDeck testimonials={testimonials} />
         </div>
       </section>
 
