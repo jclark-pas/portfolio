@@ -125,12 +125,6 @@
   }
 }
 
-.testimonialGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
-}
-
 .experienceList {
   display: flex;
   flex-direction: column;
@@ -167,10 +161,6 @@
 
   .moreWorkGrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .testimonialGrid {
-    grid-template-columns: 1fr;
   }
 }
 

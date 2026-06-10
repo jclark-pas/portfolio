@@ -8,6 +8,7 @@ import { LayoutGrid, Compass, Sparkles, Gauge } from "lucide-react";
 import ObservationAccordion, {
   type Observation,
 } from "@/components/ObservationAccordion";
+import VideoFacade from "@/components/VideoFacade";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -186,9 +187,10 @@ export default function IdeaCanvasPage() {
             </p>
             <p>
               The existing Business Plan tool could technically be used for idea validation, but
-              it was like using a sledgehammer to hang a picture. LivePlan&rsquo;s legacy Pitch
-              feature was trying to do double duty as both a canvas-style idea validator and a
-              pitch deck builder — doing neither job well.
+              it was like using a sledgehammer to hang a picture. The world of entrepreneurship
+              already had several tools to help with this: most notably the Business Model Canvas
+              and Lean Canvas. However, those canvasses are intimidating and difficult to execute
+              on for normal business owners.
             </p>
             <p>
               The opportunity was clear: build a dedicated tool for idea validation that could
@@ -198,15 +200,11 @@ export default function IdeaCanvasPage() {
           </div>
         </div>
         <div className={styles.wideImageSlider}>
-          <div className={styles.videoEmbed}>
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/VNTO36yMo1A"
-              title="Idea Canvas walkthrough"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+          <VideoFacade
+            videoId="VNTO36yMo1A"
+            title="Idea Canvas walkthrough"
+            poster="/images/canvas/video-poster.jpg"
+          />
         </div>
         <p className={styles.imageCaption}>A walkthrough of the Idea Canvas validation experience</p>
       </section>

@@ -1,0 +1,116 @@
+.deck {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.stack {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  /* room for the back cards peeking out down-right */
+  padding-right: var(--back-offset);
+  padding-bottom: var(--back-offset);
+}
+
+.card {
+  grid-area: 1 / 1;
+  /* stretch the inner testimonial card to the full stack height */
+  display: grid;
+  border-radius: var(--radius-lg);
+  /* opaque base so stacked cards don't show through the translucent card bg */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(11, 9, 33, 0.05);
+  transform: translate(var(--tx), var(--ty));
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Front card peels down past the pile, then rises back up behind it */
+.tuck {
+  animation: tuck 0.7s cubic-bezier(0.45, 0, 0.25, 1) both;
+}
+
+@keyframes tuck {
+  0% {
+    z-index: 30;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    z-index: 30;
+    transform: translate(var(--tx), calc(60% + var(--space-lg))) rotate(-3deg);
+  }
+  50.1% {
+    z-index: 0;
+  }
+  100% {
+    z-index: 0;
+    transform: translate(var(--tx), var(--ty)) rotate(0deg);
+  }
+}
+
+/* Back card slides out from under the pile, then lands on top */
+.untuck {
+  animation: untuck 0.7s cubic-bezier(0.45, 0, 0.25, 1) both;
+}
+
+@keyframes untuck {
+  0% {
+    z-index: 0;
+    transform: translate(var(--back-offset), var(--back-offset)) rotate(0deg);
+  }
+  49.9% {
+    z-index: 0;
+    transform: translate(var(--back-offset), calc(60% + var(--space-lg))) rotate(-3deg);
+  }
+  50% {
+    z-index: 30;
+  }
+  100% {
+    z-index: 30;
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.arrow {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.arrow:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+@media (max-width: 700px) {
+  .deck {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* stack on its own row, arrows side by side underneath */
+  .stack {
+    flex-basis: 100%;
+    order: -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  .tuck,
+  .untuck {
+    animation: none;
+  }
+}
