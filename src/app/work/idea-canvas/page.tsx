@@ -3,10 +3,11 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { getAdjacentProjects } from "@/data/projects";
 import { LayoutGrid, Compass, Sparkles, Gauge } from "lucide-react";
+import ObservationAccordion, {
+  type Observation,
+} from "@/components/ObservationAccordion";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -45,22 +46,26 @@ const insights = [
   },
 ];
 
-const observations = [
+const observations: Observation[] = [
   {
+    icon: "engagement",
     title: "Weak evidence ratings create engagement, not abandonment",
-    body: "Users engage most deeply with assumptions that receive \u201cWeak Evidence\u201d ratings — the friction drives refinement rather than drop-off.",
+    detail: "Users engage most deeply with assumptions that receive \u201cWeak Evidence\u201d ratings — the friction drives refinement rather than drop-off.",
   },
   {
+    icon: "speed",
     title: "Pivot suggestions compress research from days to minutes",
-    body: "The AI's concrete alternatives reduced time-to-refinement dramatically, replacing hours of manual research with actionable suggestions.",
+    detail: "The AI's concrete alternatives reduced time-to-refinement dramatically, replacing hours of manual research with actionable suggestions.",
   },
   {
+    icon: "trust",
     title: "Evidence sources build trust in the AI's recommendations",
-    body: "Surfacing research papers, market data, and Reddit threads behind each rating gave users confidence in what the AI was telling them.",
+    detail: "Surfacing research papers, market data, and Reddit threads behind each rating gave users confidence in what the AI was telling them.",
   },
   {
+    icon: "teaching",
     title: "Educators adopted it as a teaching tool",
-    body: "Entrepreneurship educators began using the canvas to show students how their assumptions hold up against real market data.",
+    detail: "Entrepreneurship educators began using the canvas to show students how their assumptions hold up against real market data.",
   },
 ];
 
@@ -118,9 +123,10 @@ export default function IdeaCanvasPage() {
           <div className={styles.heroMedia}>
             <div className={styles.heroVisual}>
               <Image
-                src="/images/canvas-hero.png"
-                alt="Idea Canvas interface — Mike's Hot Dog Stand validation session with confidence indicator and evidence ratings on each assumption"
-                fill
+                src="/images/canvas/canvas-hero.png"
+                alt="Idea Canvas interface — Balance & Flow wellness center validation session, with an Idea Check confidence panel and evidence ratings on each assumption"
+                width={1399}
+                height={964}
                 priority
                 sizes="(max-width: 1100px) 100vw, 1100px"
                 className={styles.heroImg}
@@ -192,28 +198,17 @@ export default function IdeaCanvasPage() {
           </div>
         </div>
         <div className={styles.wideImageSlider}>
-          <BeforeAfterSlider
-            beforeLabel="Legacy Pitch"
-            afterLabel="Idea Canvas"
-            before={
-              <ImagePlaceholder
-                aspectRatio="16 / 9"
-                label="Legacy Pitch Editor"
-                guidance="Screenshot of LivePlan's legacy Pitch feature — the old dual-purpose canvas + pitch deck tool that did neither job well."
-              />
-            }
-            after={
-              <Image
-                src="/images/canvas/canvas-overview.png"
-                alt="The new Idea Canvas — a focused, dedicated validation experience"
-                width={3030}
-                height={2659}
-                sizes="(max-width: 1200px) 100vw, 1200px"
-              />
-            }
-          />
+          <div className={styles.videoEmbed}>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/VNTO36yMo1A"
+              title="Idea Canvas walkthrough"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
         </div>
-        <p className={styles.imageCaption}>The legacy Pitch editor alongside the new Idea Canvas — contrasting the scope mismatch of a dual-purpose tool with a focused, dedicated validation experience</p>
+        <p className={styles.imageCaption}>A walkthrough of the Idea Canvas validation experience</p>
       </section>
 
       <section className={styles.section}>
@@ -377,14 +372,9 @@ export default function IdeaCanvasPage() {
               proof that AI works best as a collaborative partner, not just a critic.
             </p>
           </div>
-          <ul className={styles.observationList}>
-            {observations.map((o) => (
-              <li key={o.title}>
-                <p className={styles.observationTitle}>{o.title}</p>
-                <p className={styles.observationBody}>{o.body}</p>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.pivotAccordion}>
+            <ObservationAccordion observations={observations} />
+          </div>
         </div>
       </section>
 
@@ -462,7 +452,14 @@ export default function IdeaCanvasPage() {
               </a>
             </div>
             <div>
-              <div className={styles.sideImage} aria-hidden="true" />
+              <Image
+                src="/images/canvas/validation-toolkit.png"
+                alt="Prototype screens from the traditional validation toolkit — customer discovery interview guide with auto-generated shareable link and sentiment analysis panel"
+                width={2696}
+                height={2708}
+                sizes="(max-width: 900px) 100vw, 550px"
+                className={styles.sideImage}
+              />
               <p className={styles.imageCaption}>Prototype screens from the traditional validation toolkit — customer discovery interview guide with auto-generated shareable link and sentiment analysis panel</p>
             </div>
           </div>

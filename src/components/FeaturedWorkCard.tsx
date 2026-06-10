@@ -12,6 +12,9 @@ export interface FeaturedWork {
   image?: string;
   imageWidth?: number;
   imageHeight?: number;
+  /** Set when the image already bakes in its own corners + shadow, so the
+   *  card skips its default border-radius/box-shadow (avoids double elevation). */
+  imageElevated?: boolean;
 }
 
 export default function FeaturedWorkCard({ work }: { work: FeaturedWork }) {
@@ -31,7 +34,9 @@ export default function FeaturedWorkCard({ work }: { work: FeaturedWork }) {
             width={work.imageWidth ?? 1600}
             height={work.imageHeight ?? 1200}
             sizes="(max-width: 900px) 100vw, 60vw"
-            className={styles.mediaImg}
+            className={`${styles.mediaImg}${
+              work.imageElevated ? ` ${styles.mediaImgElevated}` : ""
+            }`}
           />
         )}
       </div>
