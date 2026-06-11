@@ -32,7 +32,7 @@ export default function Footer() {
             </p>
             <p className={styles.availability}>
               <span className={styles.dot} aria-hidden="true" />
-              Open to product design roles
+              Open to Product Design + Product Leadership Roles
             </p>
             <a href="tel:+15418449000" className={styles.phone}>
               541.844.9000

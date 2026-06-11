@@ -26,7 +26,6 @@ export default function LearningWritePage() {
         year={project.year}
         title={project.tagline}
         description={project.description}
-        color={project.color}
         heroImage={project.heroImage}
       />
 

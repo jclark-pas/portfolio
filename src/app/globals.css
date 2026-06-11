@@ -24,7 +24,7 @@
   --radius-sm: 4px;
   --radius-md: 4px;
   --radius-lg: 8px;
-  --radius-xl: 8px;
+  --radius-xl: 16px;
   --radius-full: 60px;
 
   /* Typography - Desktop */
@@ -73,7 +73,7 @@
     --radius-sm: 4px;
     --radius-md: 4px;
     --radius-lg: 8px;
-    --radius-xl: 8px;
+    --radius-xl: 16px;
 
     --font-h1: 44px;
     --line-h1: 56px;
@@ -98,7 +98,7 @@
     --radius-sm: 2px;
     --radius-md: 4px;
     --radius-lg: 8px;
-    --radius-xl: 8px;
+    --radius-xl: 16px;
 
     --font-h1: 36px;
     --line-h1: 48px;

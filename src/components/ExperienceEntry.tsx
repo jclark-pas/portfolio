@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import Button from "./Button";
+import Link from "next/link";
 import styles from "./ExperienceEntry.module.css";
 
 const SKILLS = [
@@ -19,9 +19,11 @@ interface ExperienceEntryProps {
   dates: string;
   bullets: ReactNode[];
   skills: SkillRatings;
-  cta?: { href: string; label: string };
+  cta?: CTA | CTA[];
   defaultOpen?: boolean;
 }
+
+type CTA = { href: string; label: string };
 
 export default function ExperienceEntry({
   role,
@@ -33,6 +35,7 @@ export default function ExperienceEntry({
   defaultOpen = false,
 }: ExperienceEntryProps) {
   const [open, setOpen] = useState(defaultOpen);
+  const ctas = cta ? (Array.isArray(cta) ? cta : [cta]) : [];
 
   return (
     <div className={`${styles.entry} ${open ? styles.open : ""}`}>
@@ -62,12 +65,20 @@ export default function ExperienceEntry({
                   <li key={i}>{b}</li>
                 ))}
               </ul>
-              {cta ? (
-                <div className={styles.cta}>
-                  <Button href={cta.href} variant="secondary">
-                    {cta.label}
-                  </Button>
-                </div>
+              {ctas.length > 0 ? (
+                <p className={styles.cta}>
+                  <span className={styles.ctaLabel}>
+                    {ctas.length > 1 ? "Case Studies: " : "Case Study: "}
+                  </span>
+                  {ctas.map((c, i) => (
+                    <span key={c.href}>
+                      {i > 0 ? ", " : ""}
+                      <Link href={c.href} className={styles.ctaLink}>
+                        {c.label}
+                      </Link>
+                    </span>
+                  ))}
+                </p>
               ) : null}
             </div>
             <div className={styles.skills}>

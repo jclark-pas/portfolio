@@ -17,7 +17,7 @@
   grid-area: 1 / 1;
   /* stretch the inner testimonial card to the full stack height */
   display: grid;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   /* opaque base so stacked cards don't show through the translucent card bg */
   background: var(--color-surface);
   border: 1px solid var(--color-border);

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
@@ -40,7 +39,7 @@ export default function Home() {
       {/* Testimonials Section */}
       <section className={styles.section}>
         <div className={styles.sectionInner}>
-          <div className={styles.sectionHeader}>
+          <div className={`${styles.sectionHeader} ${styles.centered}`}>
             <p className={styles.eyebrow}>Testimonials.</p>
             <h2 className={styles.sectionTitleLg}>Kind words from awesome humans</h2>
           </div>
@@ -64,33 +63,17 @@ export default function Home() {
               dates="March 2021 - Present"
               defaultOpen
               bullets={[
-                <Fragment key="editor">
-                  Led a ground-up{" "}
-                  <Link href="/work/liveplan" className={styles.bulletLink}>
-                    redesign of LivePlan’s decade-old business plan editor
-                  </Link>{" "}
-                  that cut early churn 25% and lifted collaborative plan
-                  comments 63% — grounded in user interviews and Amplitude
-                  session-replay research, then validated in usability tests
-                  where 100% of participants asked to join the beta.
-                </Fragment>,
-                <Fragment key="idea-canvas">
-                  <Link href="/work/idea-canvas" className={styles.bulletLink}>
-                    Designed and shipped Idea Canvas
-                  </Link>
-                  , an AI-powered idea-validation tool, from concept to MVP in 3
-                  weeks — 93% of users completed the canvas, 70% acted on an AI
-                  pivot suggestion, and 91% rated the AI feedback genuinely
-                  helpful — expanding LivePlan from an execution tool into a
-                  discovery platform that captures users earlier in their
-                  journey.
-                </Fragment>,
-                "Built and maintained a token-based design system and component library in Figma and code, including a theming system that shipped a dozen customizable themes at launch and now powers the pitch-deck feature — accelerating delivery speed and cross-product consistency.",
-                "Championed LivePlan’s AI strategy, putting contextual, business-specific AI writing tools at the point of need; surgical user controls turned AI skeptics into power users, lifting writing engagement 42% and AI feature adoption 38%.",
-                "Reframed our research and discovery culture from “what we think users want” to “what real customers actually do” — pairing qualitative interviews with behavioral data to make the case for change undeniable.",
-                "Partnered as an embedded team member with engineering, product, leadership, data research, and marketing to shape a future-focused roadmap and a two-year UI/UX execution strategy.",
+                "Led a ground-up redesign of LivePlan’s decade-old business plan editor, cutting early churn 25% and lifting collaborative plan comments 63%.",
+                "Designed and shipped Idea Canvas, an AI idea-validation tool, from concept to MVP in 3 weeks — 93% completion, and 70% of users acted on an AI pivot suggestion.",
+                "Built LivePlan’s token-based design system in Figma and code, including a theming engine that shipped a dozen themes at launch and now powers the pitch-deck feature.",
+                "Championed LivePlan’s AI strategy, putting business-specific writing tools at the point of need — lifting writing engagement 42% and AI feature adoption 38%.",
+                "Reframed research culture from “what we think users want” to “what customers actually do,” pairing interviews with behavioral data to shape a two-year product roadmap.",
               ]}
               skills={[5, 5, 3, 2]}
+              cta={[
+                { href: "/work/liveplan", label: "Redesigning the Plan" },
+                { href: "/work/idea-canvas", label: "Idea Canvas" },
+              ]}
             />
             <ExperienceEntry
               role="Senior Product Designer"
@@ -103,33 +86,36 @@ export default function Home() {
                 "Helped Nulia earn the \u201CModern Workplace: Apps & Solutions for Microsoft Teams Partner of the Year\u201D award in 2020.",
               ]}
               skills={[5, 5, 3, 3]}
-              cta={{ href: "/work/nulia", label: "Read the Nulia story" }}
+              cta={{ href: "/work/nulia", label: "Nulia" }}
             />
             <ExperienceEntry
               role="Design Director"
               company="Twenty Ideas"
               dates="July 2017 - December 2019"
               bullets={[
-                "Built a design team from the ground up, hiring and mentoring a team of five talented designers.",
+                "Built the design team from scratch, hiring and mentoring five designers.",
                 "Guided our company from a development-focused crew to a full-fledged product agency.",
-                "Served on the Executive team, playing a pivotal role in expanding our tight-knit group from 8 to 24 while increasing profitability and productivity, and \u2014 most importantly \u2014 making Twenty Ideas a great place to work.",
-                "Cultivated a company culture rooted in structured best practices, fostering top-tier product thinking across all client projects.",
+                "Served on the executive team as we grew from 8 to 24, increasing profitability while keeping Twenty Ideas a great place to work.",
                 "Spearheaded the launch of over a dozen web and mobile products.",
               ]}
               skills={[5, 5, 5, 3]}
+              cta={[
+                { href: "/work/qlarity", label: "Qlarity" },
+                { href: "/work/intrevent", label: "Intrevent" },
+                { href: "/work/learningwrite", label: "LearningWrite" },
+              ]}
             />
             <ExperienceEntry
               role="Senior UI/UX Designer"
               company="Concentric Sky"
               dates="June 2012 - July 2017"
               bullets={[
-                "Served as the principal expert on customer, user, and market insight for client projects across multiple industries \u2014 including education, healthcare, and public services \u2014 in a hybrid product-design and management role.",
+                "Served as the principal expert on customer and market insight for client work across education, healthcare, and public services, in a hybrid design/management role.",
                 "Established iterative discovery and design practices for new and existing products across web, mobile, and tablet.",
-                "Performed customer research and produced functional requirements, information architecture, wireframes, prototypes, and brand guidelines.",
-                "Oversaw project design teams of 1-3 designers to execute UI and UX design discovery.",
                 "Consistently delivered the agency’s highest levels of profitability, client satisfaction, and account longevity.",
               ]}
               skills={[5, 5, 4, 3]}
+              cta={{ href: "/work/ktek", label: "KinderTek" }}
             />
           </div>
 

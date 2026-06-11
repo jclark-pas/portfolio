@@ -55,7 +55,7 @@ const radiusTokens = [
   { name: "--radius-sm", value: "4px" },
   { name: "--radius-md", value: "4px" },
   { name: "--radius-lg", value: "8px" },
-  { name: "--radius-xl", value: "8px" },
+  { name: "--radius-xl", value: "16px" },
   { name: "--radius-full", value: "60px (pill)" },
 ];
 
