@@ -7,7 +7,7 @@ import Testimonial, { TestimonialData } from "./Testimonial";
 import styles from "./TestimonialDeck.module.css";
 
 // Offset (px) between each card peeking out of the stack
-const PEEK = 14;
+const PEEK = 4;
 
 export default function TestimonialDeck({
   testimonials,
@@ -22,13 +22,13 @@ export default function TestimonialDeck({
   const [paused, setPaused] = useState(false);
   const count = testimonials.length;
 
-  // Auto-advance every 5s unless the user is hovering or focused on the deck
+  // Auto-advance every 10s unless the user is hovering or focused on the deck
   useEffect(() => {
     if (paused || count <= 1) return;
     const timer = setTimeout(() => {
       setAnimating({ index: topIndex, dir: "next" });
       setTopIndex((topIndex + 1) % count);
-    }, 5000);
+    }, 10000);
     return () => clearTimeout(timer);
   }, [paused, topIndex, count]);
 

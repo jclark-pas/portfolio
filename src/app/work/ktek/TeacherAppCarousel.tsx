@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import styles from "./TeacherAppCarousel.module.css";
 
 interface Slide {
@@ -41,7 +42,7 @@ export default function TeacherAppCarousel({ slides }: { slides: Slide[] }) {
           className={`${styles.arrow} ${styles.arrowPrev}`}
           onClick={() => go(index - 1)}
         >
-          &larr;
+          <ArrowLeft size={20} aria-hidden="true" />
         </button>
         <button
           type="button"
@@ -49,7 +50,7 @@ export default function TeacherAppCarousel({ slides }: { slides: Slide[] }) {
           className={`${styles.arrow} ${styles.arrowNext}`}
           onClick={() => go(index + 1)}
         >
-          &rarr;
+          <ArrowRight size={20} aria-hidden="true" />
         </button>
       </div>
 

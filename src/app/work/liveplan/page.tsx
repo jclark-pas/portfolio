@@ -1,11 +1,11 @@
-import Link from "next/link";
 import Image from "next/image";
+import CaseStudyNav from "@/components/CaseStudyNav";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import BeforeAfterToggle from "./BeforeAfterToggle";
-import { PenLine, Palette, Sparkles, VolumeX } from "lucide-react";
+import { VolumeX } from "lucide-react";
 import ObservationAccordion, {
   type Observation,
 } from "@/components/ObservationAccordion";
@@ -128,7 +128,6 @@ const observations: Observation[] = [
 const designApproach = [
   {
     title: "Inline Everything",
-    icon: PenLine,
     body: "Eliminate modal detail views. Let users write, edit, and refine directly in the document flow without losing context and to limit the amount of round-tripping users are required to do for editorial tasks.",
     comparisons: [
       {
@@ -146,7 +145,6 @@ const designApproach = [
   },
   {
     title: "Design Token Theming",
-    icon: Palette,
     body: "Build an extensible system where themes cascade from print PDFs to on-screen editing to pitch decks — with brand customization.",
     comparisons: [
       {
@@ -164,7 +162,6 @@ const designApproach = [
   },
   {
     title: "Contextual AI",
-    icon: Sparkles,
     body: "Surface AI writing tools at the point of need, with business-specific instructions and surgical precision over output.",
     comparisons: [
       {
@@ -406,14 +403,9 @@ export default function LivePlanPage() {
             and putting users back in control.
           </p>
           <div className={styles.pillarStack}>
-            {designApproach.map((p) => {
-              const Icon = p.icon;
-              return (
+            {designApproach.map((p) => (
               <article key={p.title} className={styles.pillarCard}>
                 <div className={styles.pillarHeader}>
-                  <div className={styles.pillarIcon} aria-hidden="true">
-                    <Icon size={22} color="#EFE9DB" strokeWidth={2} />
-                  </div>
                   <h3 className={styles.pillarTitle}>{p.title}</h3>
                   <p className={styles.pillarBody}>{p.body}</p>
                 </div>
@@ -425,8 +417,7 @@ export default function LivePlanPage() {
                   </div>
                 )}
               </article>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>
@@ -628,14 +619,7 @@ export default function LivePlanPage() {
         </div>
       </section>
 
-      <nav className={styles.bottomNav}>
-        <Link href={`/work/${prev.slug}`} className={styles.navLink}>
-          <span className={styles.navLabel}>← {prev.title}</span>
-        </Link>
-        <Link href={`/work/${next.slug}`} className={styles.navLink}>
-          <span className={styles.navLabel}>{next.title} →</span>
-        </Link>
-      </nav>
+      <CaseStudyNav prev={prev} next={next} />
 
       <Footer />
     </>

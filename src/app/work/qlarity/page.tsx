@@ -32,9 +32,7 @@ export default function QlarityPage() {
         year={project.year}
         title={project.tagline}
         description={project.description}
-        color="#242422"
         heroImage={project.heroImage}
-        titleColor="#9ECEBD"
       />
 
       {/* What I did */}

@@ -43,7 +43,6 @@ export default async function CaseStudyPage({
         company={project.title}
         title={project.tagline}
         description={project.description}
-        color={project.color}
         heroImage={project.heroImage}
       />
 

@@ -145,7 +145,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(20px, 4vw, 56px);
+  /* No padding — the hero image bakes in its own shadow/margin */
+  padding: 0;
   /* Gradient borrowed from the Idea Canvas featured-work card */
   background: linear-gradient(135deg, #6f4ac7 0%, #3b82c9 50%, #f26a5d 100%);
   border-radius: var(--radius-lg);
@@ -165,7 +166,7 @@
 
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
 }
 
@@ -218,17 +219,19 @@
 .discoveryDetails {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   margin-top: var(--space-xl);
 }
 
 .discoveryItem {
-  border-top: 2px solid var(--color-accent);
-  padding-top: var(--space-md);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
 }
 
 .discoveryItemTitle {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--color-text);
   margin-bottom: var(--space-sm);
@@ -286,6 +289,7 @@
 
 .insightCard {
   background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
 }
@@ -322,9 +326,17 @@
   align-items: start;
 }
 
-.pivotAccordion {
+/* Two-column unit: intro left, accordion right (matches the LivePlan
+   behavioral-analysis layout). The accordion's own .list flex sets its width. */
+.pivotLayout {
   display: flex;
-  margin-top: var(--space-xl);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xxxl);
+}
+
+.pivotIntro {
+  flex: 1 1 300px;
 }
 
 .sideImage {
@@ -354,6 +366,9 @@
 }
 
 .pillarIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   background: var(--color-accent);
@@ -377,13 +392,87 @@
 /* ===== Outcomes ===== */
 .outcomesGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
   margin-top: var(--space-xl);
 }
 
+/* The 3-week turnaround is a velocity story, not a metric — its own callout */
+.velocityCallout {
+  margin-top: var(--space-lg);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xxl);
+  flex-wrap: wrap;
+}
+
+.velocityText {
+  flex: 1 1 320px;
+}
+
+.velocityEyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.velocityTitle {
+  font-size: var(--font-h3);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.velocityBody {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+}
+
+/* Styled like a speed sign: white plate, bold frame, centered stack.
+   Colors are hardcoded since the plate stays white in both themes. */
+.velocityStat {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  text-align: center;
+  min-width: 150px;
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-bricolage), sans-serif;
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.velocityNumber {
+  font-size: clamp(64px, 8vw, 92px);
+  color: var(--color-accent);
+}
+
+.velocityUnit {
+  font-size: clamp(16px, 2.2vw, 22px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
 .outcomeCard {
   background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
 }
@@ -482,36 +571,6 @@
   opacity: 0.7;
 }
 
-/* ===== Bottom nav ===== */
-.bottomNav {
-  position: sticky;
-  bottom: 0;
-  z-index: 10;
-  background: var(--color-surface);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--color-border);
-}
-
-.navLink {
-  padding: var(--space-xl) var(--space-xxl);
-  transition: background 0.2s;
-}
-
-.navLink:hover {
-  background: var(--color-bg-card);
-}
-
-.navLink:last-child {
-  text-align: right;
-  border-left: 1px solid var(--color-border);
-}
-
-.navLabel {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-accent);
-}
 
 /* ===== Responsive ===== */
 @media (max-width: 960px) {
@@ -534,6 +593,7 @@
   .pillarGrid,
   .insightsGrid,
   .outcomesGrid,
+  .statsGrid,
   .discoveryDetails {
     grid-template-columns: 1fr;
   }
@@ -571,9 +631,5 @@
 
   .statsGrid {
     grid-template-columns: 1fr;
-  }
-
-  .navLink {
-    padding: var(--space-lg) var(--space-md);
   }
 }

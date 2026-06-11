@@ -12,7 +12,7 @@ export const testimonials: TestimonialData[] = [
     quote:
       "Josh is one of those designers who really ‘gets’ the development process. He’s not just focused on making things look pretty; he collaborates with devs early on to balance the ideal user experience with real technical constraints.",
     name: "Haley Whitman",
-    title: "Senior Software Engineer for LivePlan",
+    title: "Staff Software Engineer for LivePlan",
     avatar: "/images/testimonials/haley.png",
   },
   {

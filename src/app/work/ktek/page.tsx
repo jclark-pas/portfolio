@@ -38,7 +38,6 @@ export default function KtekPage() {
         year={project.year}
         title={project.tagline}
         description={project.description}
-        color={project.color}
         heroImage={project.heroImage}
       />
 
@@ -116,11 +115,11 @@ export default function KtekPage() {
       {/* Teacher app carousel */}
       <section className={styles.section}>
         <div className={styles.inner}>
-          <TeacherAppCarousel slides={teacherSlides} />
           <div className={styles.teacherText}>
             <h2>{teacherApp.title}</h2>
             <p className={styles.bodyText}>{teacherApp.description}</p>
           </div>
+          <TeacherAppCarousel slides={teacherSlides} />
         </div>
       </section>
 

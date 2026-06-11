@@ -24,14 +24,12 @@
   line-height: var(--line-h1);
   font-weight: 700;
   color: var(--color-text);
-  max-width: 900px;
 }
 
 .lead {
   font-size: var(--font-body1);
   line-height: var(--line-body1);
   color: var(--color-text-secondary);
-  max-width: 720px;
 }
 
 .section {

@@ -6,16 +6,11 @@ interface CaseStudyHeroProps {
   year?: number;
   title: string;
   description: string;
-  color: string;
   heroImage: string;
   /** When set, the hero image sits on this background (inset/padded) instead of directly on the band. */
   imageBackground?: string;
   imageWidth?: number;
   imageHeight?: number;
-  /** Use dark text instead of light — for light-colored bands. */
-  darkText?: boolean;
-  /** Optional accent color for the headline. */
-  titleColor?: string;
 }
 
 export default function CaseStudyHero({
@@ -23,27 +18,19 @@ export default function CaseStudyHero({
   year,
   title,
   description,
-  color,
   heroImage,
   imageBackground,
   imageWidth,
   imageHeight,
-  darkText,
-  titleColor,
 }: CaseStudyHeroProps) {
   return (
-    <section
-      className={`${styles.hero} ${darkText ? styles.darkText : ""}`}
-      style={{ background: color }}
-    >
+    <section className={styles.hero}>
       <div className={styles.inner}>
         <p className={styles.company}>
           {company}
           {year ? ` / ${year}` : ""}
         </p>
-        <h1 className={styles.title} style={titleColor ? { color: titleColor } : undefined}>
-          {title}
-        </h1>
+        <h1 className={styles.title}>{title}</h1>
         <p className={styles.tagline}>{description}</p>
         {imageBackground ? (
           <div

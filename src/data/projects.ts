@@ -3,6 +3,8 @@ import type { ThumbnailData } from "@/components/ProjectThumbnail";
 export interface Project {
   slug: string;
   title: string;
+  /** Optional longer title shown in the prev/next case-study nav. */
+  navTitle?: string;
   year?: number;
   tagline: string;
   description: string;
@@ -37,6 +39,7 @@ export const projects: Project[] = [
   {
     slug: "liveplan",
     title: "LivePlan",
+    navTitle: "Redesigning the Plan",
     tagline: "Helping small businesses forecast a better future",
     description:
       "The world\u2019s most-used business planning and financial forecasting tool for small businesses",
@@ -110,7 +113,7 @@ export const projects: Project[] = [
       quote:
         "Josh is one of those designers who really \u2018gets\u2019 the development process. He\u2019s not just focused on making things look pretty; he collaborates with devs early on to balance the ideal user experience with real technical constraints.",
       name: "Haley Whitman",
-      title: "Senior Software Engineer for LivePlan",
+      title: "Staff Software Engineer for LivePlan",
     },
     sections: [
       {

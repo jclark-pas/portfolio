@@ -23,12 +23,11 @@ export default function MyStoryPage() {
 
         <div className={styles.prose}>
           <p>
-            Hi, I’m Josh Clark — a product designer and builder. I’ve been
-            designing since 2006 and working in product design specifically
-            since 2011, across mobile and web, from healthcare to small-business
-            SaaS. Along the way I’ve worn most of the hats: product and project
-            management, user research, UX and UI, front-end development, and
-            enough back-end to be dangerous.
+            Hi, I’m Josh Clark — a product designer and builder. I’ve worked
+            across mobile and web, from healthcare to small-business SaaS.
+            Along the way I’ve worn most hats: product leadership, design
+            direction, product and project management, user research, UX and
+            UI, front-end development, and enough back-end to be dangerous.
           </p>
           <p>
             That’s the résumé version. The story underneath it starts in 2017.
@@ -105,8 +104,8 @@ export default function MyStoryPage() {
 
         <div className={styles.prose}>
           <p>
-            What I found instead was that the worst day of my life had become a
-            strange kind of gift.
+            What I found was that the worst day of my life — or more
+            specifically, my response to it — was a strange kind of gift to me.
           </p>
           <p>
             It taught me how to dig deep, how to make the life I have rather
@@ -123,7 +122,8 @@ export default function MyStoryPage() {
           </p>
           <p>
             And it taught me something I now carry into every team I work with:
-            we are all, at our base, a collection of our worst days. They don’t
+            we are all, at our base, a collection of our worst days and how we
+            can choose every day to respond to them. They don’t
             have to ruin us — but they do define us. Mine is more dramatic than
             most, but it has made me a more empathetic collaborator and, I
             believe, a better leader. I’m slower to judge, quicker to listen,
@@ -133,7 +133,9 @@ export default function MyStoryPage() {
           <p>
             The way I work and lead comes from all of it: identify the
             constraints, then find the simplest path to success around or
-            through them.
+            through them. The same design thinking I applied to my recovery is
+            what I also use to bring benefit to the product users, employees,
+            and co-workers I serve.
           </p>
           <p>
             That’s the leader I want to be, and the work I want to do next:

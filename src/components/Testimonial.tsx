@@ -24,7 +24,7 @@ export default function Testimonial({ quote, name, title, avatar }: TestimonialD
         ) : (
           <div className={styles.avatar} />
         )}
-        <div>
+        <div className={styles.meta}>
           <p className={styles.name}>{name}</p>
           <p className={styles.title}>{title}</p>
         </div>

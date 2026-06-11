@@ -1,10 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
+import CaseStudyNav from "@/components/CaseStudyNav";
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { getAdjacentProjects } from "@/data/projects";
-import { LayoutGrid, Compass, Sparkles, Gauge } from "lucide-react";
+import { LayoutGrid, Compass, Sparkles, Gauge, Zap, Layers, Workflow } from "lucide-react";
 import ObservationAccordion, {
   type Observation,
 } from "@/components/ObservationAccordion";
@@ -18,10 +18,9 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { value: "93.4%", title: "Finished the canvas", label: "Users who start complete the core sections" },
-  { value: "70%", title: "Acted on a pivot suggestion", label: "Users took the AI up on its suggestions" },
-  { value: "90.7%", title: "Rated the AI helpful", label: "Users found the feedback genuinely useful" },
-  { value: "3 weeks", title: "Time to MVP", label: "From first concept to shipped product" },
+  { value: "93.4%", title: "Finished the canvas", label: "Nearly everyone who started completed the core sections — the simplified design kept people from dropping off." },
+  { value: "70%", title: "Acted on a pivot suggestion", label: "Most users took the AI up on its suggestions, so the guidance felt like help, not orders." },
+  { value: "90.7%", title: "Rated the AI helpful", label: "Users found the AI's evidence and feedback genuinely useful — not generic filler." },
 ];
 
 const insights = [
@@ -50,36 +49,39 @@ const insights = [
 const observations: Observation[] = [
   {
     icon: "engagement",
-    title: "Weak evidence ratings create engagement, not abandonment",
-    detail: "Users engage most deeply with assumptions that receive \u201cWeak Evidence\u201d ratings — the friction drives refinement rather than drop-off.",
+    title: "Weak evidence drives engagement, not hopelessness.",
+    detail: "A weak rating can read as a dead end, but it's really the most engaging moment in the flow. Instead of leaving users stuck, the AI treats that signal as a starting point — surfacing stronger, evidence-backed assumptions in adjacent areas. If a more profitable market shares the same problem, for instance, it points users toward a concrete pivot rather than just flagging the weakness.",
   },
   {
     icon: "speed",
-    title: "Pivot suggestions compress research from days to minutes",
-    detail: "The AI's concrete alternatives reduced time-to-refinement dramatically, replacing hours of manual research with actionable suggestions.",
+    title: "Vet a pivot in minutes, not weeks",
+    detail: "The value isn't just faster research — it's being able to vet a pivot the moment it's suggested. Instead of spending days, or weeks, confirming whether a new market or business model actually holds up, the AI researches the alternative on demand so you can see the evidence and commit to the change in minutes. That speed is what makes it realistic to explore several directions rather than betting everything on the first idea.",
   },
   {
     icon: "trust",
-    title: "Evidence sources build trust in the AI's recommendations",
-    detail: "Surfacing research papers, market data, and Reddit threads behind each rating gave users confidence in what the AI was telling them.",
+    title: "Cited sources build trust",
+    detail: "Every rating is backed by deep research and the citations behind it — research papers, market data, and real community discussion. Because users can click through and check the evidence themselves, they never have to wonder whether the AI hallucinated an answer. That verifiability is what makes the guidance feel trustworthy enough to act on.",
   },
   {
     icon: "teaching",
-    title: "Educators adopted it as a teaching tool",
-    detail: "Entrepreneurship educators began using the canvas to show students how their assumptions hold up against real market data.",
+    title: "Adopted as a teaching tool",
+    detail: "Entrepreneurship educators adopted the canvas as a classroom tool, using it to help students pressure-test their business ideas against real market evidence. And it's only growing from there — a forthcoming custom-canvas option will let each program bring its own preferred methodology to the same evidence engine.",
   },
 ];
 
 const pillars = [
   {
+    icon: Zap,
     title: "Immediate Feedback",
     body: "Every assumption gets instant AI analysis. No batch processing, no submit-and-wait. The design prioritizes the feeling of having a knowledgeable co-founder looking over your shoulder.",
   },
   {
+    icon: Layers,
     title: "Progressive Complexity",
     body: "Start with a simple problem statement, layer on solution, market, channels, and revenue. The Idea Check only appears after sufficient sections are complete, preventing premature judgment.",
   },
   {
+    icon: Workflow,
     title: "Seamless Transition",
     body: "Because the canvas framework maps to LivePlan's business plan template, validated assumptions flow directly into a full business plan — users who've done the hard thinking don't have to start over.",
   },
@@ -100,11 +102,6 @@ const outcomes = [
     stat: "90.7%",
     title: "Rated the AI helpful",
     body: "Users found the AI's evidence and feedback genuinely useful — not generic filler.",
-  },
-  {
-    stat: "3 weeks",
-    title: "Time to MVP",
-    body: "From first concept to a shipped MVP in three weeks — fast enough to prove the bet before over-investing.",
   },
 ];
 
@@ -133,7 +130,6 @@ export default function IdeaCanvasPage() {
                 className={styles.heroImg}
               />
             </div>
-            <p className={styles.imageCaption}>Full Idea Canvas interface — an active validation session with AI evidence ratings visible on each assumption</p>
           </div>
           <p className={styles.heroDescription}>
             I designed an AI-powered idea validation tool that helps early-stage entrepreneurs
@@ -352,27 +348,27 @@ export default function IdeaCanvasPage() {
       </section>
 
       <section className={styles.section}>
-        <div className={styles.narrow}>
-          <p className={styles.eyebrow}>The star of the product</p>
-          <h2 className={styles.sectionHeading}>
-            The Pivot Engine
-          </h2>
-          <div className={styles.prose}>
-            <p>
-              When an assumption has weak evidence, the AI doesn&rsquo;t just flag it — it
-              analyzes adjacent possibilities and suggests concrete alternatives. If your
-              solution is &ldquo;Dog food made of dog poop&rdquo; (illegal and unsafe), the
-              system suggests pivoting to &ldquo;Nutritional supplements that help dogs stop
-              eating poop.&rdquo;
-            </p>
-            <p>
-              70% of users replace their original assumption with the suggested alternative —
-              proof that AI works best as a collaborative partner, not just a critic.
-            </p>
+        <div className={`${styles.inner} ${styles.pivotLayout}`}>
+          <div className={styles.pivotIntro}>
+            <p className={styles.eyebrow}>The star of the product</p>
+            <h2 className={styles.sectionHeading}>
+              The Pivot Engine
+            </h2>
+            <div className={styles.prose}>
+              <p>
+                When an assumption has weak evidence, the AI doesn&rsquo;t just flag it — it
+                analyzes adjacent possibilities and suggests concrete alternatives. If your
+                solution is &ldquo;Dog food made of dog poop&rdquo; (illegal and unsafe), the
+                system suggests pivoting to &ldquo;Nutritional supplements that help dogs stop
+                eating poop.&rdquo;
+              </p>
+              <p>
+                70% of users replace their original assumption with the suggested alternative —
+                proof that AI works best as a collaborative partner, not just a critic.
+              </p>
+            </div>
           </div>
-          <div className={styles.pivotAccordion}>
-            <ObservationAccordion observations={observations} />
-          </div>
+          <ObservationAccordion observations={observations} />
         </div>
       </section>
 
@@ -385,13 +381,18 @@ export default function IdeaCanvasPage() {
             Three principles behind the experience
           </h2>
           <div className={styles.pillarGrid}>
-            {pillars.map((p) => (
+            {pillars.map((p) => {
+              const Icon = p.icon;
+              return (
               <article key={p.title} className={styles.pillarCard}>
-                <div className={styles.pillarIcon} aria-hidden="true" />
+                <div className={styles.pillarIcon} aria-hidden="true">
+                  <Icon size={22} color="#EFE9DB" strokeWidth={2} />
+                </div>
                 <h3 className={styles.pillarTitle}>{p.title}</h3>
                 <p className={styles.pillarBody}>{p.body}</p>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -414,6 +415,21 @@ export default function IdeaCanvasPage() {
                 <p className={styles.outcomeBody}>{o.body}</p>
               </div>
             ))}
+          </div>
+          <div className={styles.velocityCallout}>
+            <p className={styles.velocityStat}>
+              <span className={styles.velocityNumber}>3</span>
+              <span className={styles.velocityUnit}>weeks</span>
+            </p>
+            <div className={styles.velocityText}>
+              <p className={styles.velocityEyebrow}>Shipped Fast</p>
+              <h3 className={styles.velocityTitle}>From first concept to a shipped MVP</h3>
+              <p className={styles.velocityBody}>
+                Start to finish — fast enough to prove the bet before over-investing.
+                The whole thing went from a blank canvas to a working product in a single
+                sprint cycle.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -464,14 +480,7 @@ export default function IdeaCanvasPage() {
         </div>
       </section>
 
-      <nav className={styles.bottomNav}>
-        <Link href={`/work/${prev.slug}`} className={styles.navLink}>
-          <span className={styles.navLabel}>← {prev.title}</span>
-        </Link>
-        <Link href={`/work/${next.slug}`} className={styles.navLink}>
-          <span className={styles.navLabel}>{next.title} →</span>
-        </Link>
-      </nav>
+      <CaseStudyNav prev={prev} next={next} />
 
       <Footer />
     </>

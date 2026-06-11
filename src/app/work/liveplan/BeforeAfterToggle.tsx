@@ -150,7 +150,6 @@ export default function BeforeAfterToggle({
           })}
         </div>
       </div>
-      <p className={styles.comparisonBody}>{active.body}</p>
     </div>
   );
 }
