@@ -4,6 +4,7 @@ import styles from "./Button.module.css";
 interface ButtonProps {
   href?: string;
   variant?: "primary" | "secondary";
+  size?: "default" | "small";
   children: React.ReactNode;
   onClick?: () => void;
 }
@@ -11,10 +12,13 @@ interface ButtonProps {
 export default function Button({
   href,
   variant = "primary",
+  size = "default",
   children,
   onClick,
 }: ButtonProps) {
-  const className = `${styles.button} ${styles[variant]}`;
+  const className = `${styles.button} ${styles[variant]}${
+    size === "small" ? ` ${styles.small}` : ""
+  }`;
 
   if (href) {
     return (

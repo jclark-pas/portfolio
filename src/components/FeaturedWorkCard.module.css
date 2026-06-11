@@ -81,8 +81,8 @@
 
 .title {
   font-family: var(--font-serif);
-  font-size: 44px;
-  line-height: 52px;
+  font-size: var(--font-h2);
+  line-height: var(--line-h2);
   font-weight: 700;
   color: var(--color-text);
 }
@@ -130,11 +130,6 @@
     padding: var(--space-xxl);
     gap: var(--space-md);
   }
-
-  .title {
-    font-size: var(--font-h1);
-    line-height: var(--line-h1);
-  }
 }
 
 @media (max-width: 480px) {
@@ -144,10 +139,5 @@
 
   .content {
     padding: var(--space-xl) var(--space-lg);
-  }
-
-  .title {
-    font-size: 32px;
-    line-height: 38px;
   }
 }

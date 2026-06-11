@@ -72,6 +72,43 @@
   }
 }
 
+/* Horizontal variants — on mobile the card peels left instead of down */
+@keyframes tuckLeft {
+  0% {
+    z-index: 30;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    z-index: 30;
+    transform: translate(calc(-55% - var(--space-lg)), var(--ty)) rotate(-3deg);
+  }
+  50.1% {
+    z-index: 0;
+  }
+  100% {
+    z-index: 0;
+    transform: translate(var(--tx), var(--ty)) rotate(0deg);
+  }
+}
+
+@keyframes untuckLeft {
+  0% {
+    z-index: 0;
+    transform: translate(var(--back-offset), var(--back-offset)) rotate(0deg);
+  }
+  49.9% {
+    z-index: 0;
+    transform: translate(calc(-55% - var(--space-lg)), var(--back-offset)) rotate(-3deg);
+  }
+  50% {
+    z-index: 30;
+  }
+  100% {
+    z-index: 30;
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
 .arrow {
   width: 44px;
   height: 44px;
@@ -102,6 +139,16 @@
   .stack {
     flex-basis: 100%;
     order: -1;
+    /* clip the card's leftward peel so it doesn't cause horizontal page scroll */
+    overflow: hidden;
+  }
+
+  /* peel left instead of down */
+  .tuck {
+    animation-name: tuckLeft;
+  }
+  .untuck {
+    animation-name: untuckLeft;
   }
 }
 

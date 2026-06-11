@@ -30,3 +30,8 @@
   background: var(--color-accent);
   color: var(--color-text-invert);
 }
+
+.small {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 14px;
+}

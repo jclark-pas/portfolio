@@ -15,10 +15,13 @@ export default function Hero() {
         />
         <div className={styles.content}>
           <p className={styles.eyebrow}>Product Leader based in Eugene, Oregon</p>
-          <h1 className={styles.headline}>
-            I design digital environments of access, so the excluded can be
-            included.
-          </h1>
+          <h1 className={styles.headline}>Good design opens&nbsp;doors.</h1>
+          <p className={styles.dek}>
+            I&rsquo;m a product designer and leader who makes complex software
+            feel effortless. Working alongside teams, I uncover what&rsquo;s
+            really getting in users&rsquo; way &mdash; then design the simplest
+            path through it, so more people get&nbsp;in.
+          </p>
           <div className={styles.actions}>
             <Button href="/work">See Work</Button>
             <Button href="#resume" variant="secondary">
