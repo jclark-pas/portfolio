@@ -9,10 +9,6 @@
   gap: var(--space-md);
   align-items: center;
   justify-content: space-between;
-  box-shadow:
-    0 0 1px 0 var(--color-border),
-    0 0 2px 0 rgba(77, 87, 103, 0.04),
-    0 0 4px 0 rgba(77, 87, 103, 0.08);
 }
 
 .title {

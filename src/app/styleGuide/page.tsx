@@ -1,5 +1,29 @@
 import type { Metadata } from "next";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Play,
+  VolumeX,
+  ChevronDown,
+  MousePointerClick,
+  BarChart3,
+  Bold,
+  ListTree,
+  Flame,
+  Timer,
+  ShieldCheck,
+  GraduationCap,
+  LayoutGrid,
+  Compass,
+  Sparkles,
+  Gauge,
+  Zap,
+  Layers,
+  Workflow,
+  type LucideIcon,
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
+import Button from "@/components/Button";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -110,6 +134,39 @@ const icons: { name: string; usage: string; svg: React.ReactNode }[] = [
       </svg>
     ),
   },
+  {
+    name: "Slider Handle",
+    usage: "Before/after drag handle",
+    svg: (
+      <svg width="24" height="24" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="5 3 1 7 5 11" />
+        <polyline points="9 3 13 7 9 11" />
+      </svg>
+    ),
+  },
+];
+
+const lucideIcons: { Icon: LucideIcon; name: string; usage: string }[] = [
+  { Icon: ArrowLeft, name: "ArrowLeft", usage: "Prev — case study nav, testimonials, carousel" },
+  { Icon: ArrowRight, name: "ArrowRight", usage: "Next — case study nav, testimonials, carousel" },
+  { Icon: Play, name: "Play", usage: "Video facade play button" },
+  { Icon: VolumeX, name: "VolumeX", usage: "Muted indicator on usability videos" },
+  { Icon: ChevronDown, name: "ChevronDown", usage: "Observation accordion expand" },
+  { Icon: MousePointerClick, name: "MousePointerClick", usage: "Observation — click" },
+  { Icon: BarChart3, name: "BarChart3", usage: "Observation — chart" },
+  { Icon: Bold, name: "Bold", usage: "Observation — bold" },
+  { Icon: ListTree, name: "ListTree", usage: "Observation — outline" },
+  { Icon: Flame, name: "Flame", usage: "Observation — engagement" },
+  { Icon: Timer, name: "Timer", usage: "Observation — speed" },
+  { Icon: ShieldCheck, name: "ShieldCheck", usage: "Observation — trust" },
+  { Icon: GraduationCap, name: "GraduationCap", usage: "Observation — teaching" },
+  { Icon: LayoutGrid, name: "LayoutGrid", usage: "Idea Canvas — section heading" },
+  { Icon: Compass, name: "Compass", usage: "Idea Canvas — section heading" },
+  { Icon: Sparkles, name: "Sparkles", usage: "Idea Canvas — section heading" },
+  { Icon: Gauge, name: "Gauge", usage: "Idea Canvas — section heading" },
+  { Icon: Zap, name: "Zap", usage: "Idea Canvas — pillar" },
+  { Icon: Layers, name: "Layers", usage: "Idea Canvas — pillar" },
+  { Icon: Workflow, name: "Workflow", usage: "Idea Canvas — pillar" },
 ];
 
 export default function StyleGuidePage() {
@@ -251,19 +308,86 @@ export default function StyleGuidePage() {
           </div>
         </section>
 
+        {/* Buttons */}
+        <section className={styles.section} id="buttons">
+          <h2 className={styles.sectionTitle}>Buttons</h2>
+          <p className={styles.sectionLede}>
+            Pill-shaped (<code>--radius-full</code>), 700 weight,{" "}
+            <code>--font-body2</code>. One <code>&lt;Button&gt;</code> component
+            with two variants and two sizes — renders as a link when given{" "}
+            <code>href</code>, otherwise a <code>&lt;button&gt;</code>.
+          </p>
+          <div className={styles.buttonGrid}>
+            <div className={styles.buttonCard}>
+              <div className={styles.buttonWell}>
+                <Button href="/work">See Work</Button>
+              </div>
+              <code className={styles.tokenName}>variant=&quot;primary&quot;</code>
+              <p className={styles.iconUsage}>Solid accent fill — primary CTA</p>
+            </div>
+            <div className={styles.buttonCard}>
+              <div className={styles.buttonWell}>
+                <Button href="/work" variant="secondary">
+                  Get to know Josh
+                </Button>
+              </div>
+              <code className={styles.tokenName}>variant=&quot;secondary&quot;</code>
+              <p className={styles.iconUsage}>Outlined — supporting action</p>
+            </div>
+            <div className={styles.buttonCard}>
+              <div className={styles.buttonWell}>
+                <Button href="/work" size="small">
+                  See Work
+                </Button>
+              </div>
+              <code className={styles.tokenName}>size=&quot;small&quot;</code>
+              <p className={styles.iconUsage}>Primary, compact padding</p>
+            </div>
+            <div className={styles.buttonCard}>
+              <div className={styles.buttonWell}>
+                <Button href="/work" variant="secondary" size="small">
+                  Get to know Josh
+                </Button>
+              </div>
+              <code className={styles.tokenName}>variant=&quot;secondary&quot; size=&quot;small&quot;</code>
+              <p className={styles.iconUsage}>Secondary, compact padding</p>
+            </div>
+          </div>
+        </section>
+
         {/* Icons */}
         <section className={styles.section} id="icons">
           <h2 className={styles.sectionTitle}>Icons</h2>
           <p className={styles.sectionLede}>
-            All icons are inline SVG, stroked with <code>currentColor</code>, so they
-            inherit text color and adapt to theme automatically.
+            Icons stroke with <code>currentColor</code>, so they inherit text
+            color and adapt to theme automatically. Custom marks are inline SVG;
+            the rest come from{" "}
+            <a href="https://lucide.dev" className={styles.inlineLink}>
+              lucide-react
+            </a>
+            .
           </p>
+
+          <p className={styles.subGroupLabel}>Custom (inline SVG)</p>
           <div className={styles.iconGrid}>
             {icons.map((i) => (
               <div key={i.name} className={styles.iconCard}>
                 <div className={styles.iconWell}>{i.svg}</div>
                 <p className={styles.iconName}>{i.name}</p>
                 <p className={styles.iconUsage}>{i.usage}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className={styles.subGroupLabel}>lucide-react</p>
+          <div className={styles.iconGrid}>
+            {lucideIcons.map(({ Icon, name, usage }) => (
+              <div key={name} className={styles.iconCard}>
+                <div className={styles.iconWell}>
+                  <Icon size={24} aria-hidden="true" />
+                </div>
+                <p className={styles.iconName}>{name}</p>
+                <p className={styles.iconUsage}>{usage}</p>
               </div>
             ))}
           </div>

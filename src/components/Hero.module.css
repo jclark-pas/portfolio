@@ -8,7 +8,9 @@
   margin: 0 auto;
   padding: var(--space-xxxl) var(--space-xxl);
   display: grid;
-  grid-template-columns: auto 1fr;
+  /* Proportional columns so the portrait shrinks with the viewport instead
+     of holding its full width and crushing the text column. */
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
   gap: var(--space-xxxl);
   align-items: center;
 }
@@ -24,28 +26,34 @@
 }
 
 .eyebrow {
-  font-size: var(--font-h3);
+  font-size: var(--font-body1);
   font-weight: 600;
   color: var(--color-accent);
   margin-bottom: var(--space-md);
 }
 
 .headline {
-  font-size: 44px;
-  line-height: 52px;
+  font-size: var(--font-h1);
+  line-height: var(--line-h1);
   margin-bottom: var(--space-lg);
 }
 
-@media (max-width: 480px) {
-  .headline {
-    font-size: 32px;
-    line-height: 38px;
-  }
+.dek {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+  max-width: 36em;
+  margin-bottom: var(--space-xl);
 }
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-md);
+}
+
+.actions a {
+  white-space: nowrap;
 }
 
 @media (max-width: 960px) {
