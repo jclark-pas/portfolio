@@ -12,7 +12,7 @@
 }
 
 .primary {
-  background: var(--color-accent);
+  background: var(--color-accent-bright);
   color: #ffffff;
 }
 
@@ -27,8 +27,8 @@
 }
 
 .secondary:hover {
-  background: var(--color-accent);
-  color: var(--color-text-invert);
+  background: var(--color-accent-bright);
+  color: #ffffff;
 }
 
 .small {

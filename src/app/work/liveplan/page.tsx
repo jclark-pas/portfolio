@@ -211,6 +211,7 @@ export default function LivePlanPage() {
   return (
     <>
       <Navigation />
+      <main id="main">
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -621,6 +622,7 @@ export default function LivePlanPage() {
 
       <CaseStudyNav prev={prev} next={next} />
 
+      </main>
       <Footer />
     </>
   );

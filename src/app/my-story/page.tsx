@@ -10,6 +10,7 @@ export default function MyStoryPage() {
   return (
     <>
       <Navigation />
+      <main id="main">
 
       <section className={styles.section}>
         <header className={styles.header}>
@@ -183,6 +184,7 @@ export default function MyStoryPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </>
   );

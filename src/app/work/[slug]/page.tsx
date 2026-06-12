@@ -39,6 +39,7 @@ export default async function CaseStudyPage({
   return (
     <>
       <Navigation />
+      <main id="main">
       <CaseStudyHero
         company={project.title}
         title={project.tagline}
@@ -145,6 +146,7 @@ export default async function CaseStudyPage({
       {/* Bottom Nav */}
       <CaseStudyNav prev={prev} next={next} />
 
+      </main>
       <Footer />
     </>
   );

@@ -14,6 +14,7 @@ export default function WorkIndexPage() {
   return (
     <>
       <Navigation />
+      <main id="main">
 
       <section className={styles.intro}>
         <div className={styles.introInner}>
@@ -54,6 +55,7 @@ export default function WorkIndexPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </>
   );

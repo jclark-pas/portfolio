@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Project } from "@/data/projects";
 import ProjectThumbnail from "./ProjectThumbnail";
 import styles from "./WorkCard.module.css";
@@ -10,10 +11,11 @@ export default function WorkCard({ project }: { project: Project }) {
         {project.thumbnailData ? (
           <ProjectThumbnail data={project.thumbnailData} title={project.title} />
         ) : (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
+          <Image
             src={project.thumbnail}
             alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
             className={styles.thumbnailImg}
           />
         )}

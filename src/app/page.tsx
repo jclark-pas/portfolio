@@ -22,13 +22,15 @@ export default function Home() {
   return (
     <>
       <Navigation />
+      <main id="main">
       <Hero />
 
       {/* Featured Work Section */}
-      <section id="work" className={styles.section}>
+      <section id="work" className={styles.section} aria-labelledby="featured-work-heading">
         <div className={styles.sectionInner}>
+          <h2 id="featured-work-heading" className="sr-only">Featured Work</h2>
           <div className={`${styles.sectionHeader} ${styles.workHeader}`}>
-            <p className={styles.eyebrow}>Featured Work.</p>
+            <p className={styles.eyebrow} aria-hidden="true">Featured Work.</p>
             <Link href="/work" className={styles.workCtaLink}>
               See all work <span aria-hidden="true">→</span>
             </Link>
@@ -172,6 +174,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </>

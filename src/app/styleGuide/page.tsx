@@ -173,7 +173,7 @@ export default function StyleGuidePage() {
   return (
     <>
       <Navigation />
-      <main className={styles.page}>
+      <main id="main" className={styles.page}>
         <header className={styles.header}>
           <p className={styles.kicker}>Internal · Not Published</p>
           <h1 className={styles.title}>Style Guide</h1>

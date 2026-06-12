@@ -17,6 +17,7 @@ export default function IntreventPage() {
   return (
     <>
       <Navigation />
+      <main id="main">
       <CaseStudyHero
         company={project.title}
         year={project.year}
@@ -101,6 +102,7 @@ export default function IntreventPage() {
       {/* Bottom nav */}
       <CaseStudyNav prev={prev} next={next} />
 
+      </main>
       <Footer />
     </>
   );

@@ -1,10 +1,14 @@
 /* Design Tokens from Figma */
 :root {
   /* Colors - AudioEye mode */
-  --color-accent: #DB3914;
+  /* Accent is AA-safe by default: #BD473C clears 4.5:1 as small text on the
+     cream page/card surfaces (the old brand #DB3914 only reached ~4.1:1).
+     Use --color-accent-bright for vibrant fills where the text sits ON the
+     accent (e.g. white button labels), which still clears 4.5:1. */
+  --color-accent: #BD473C;
+  --color-accent-bright: #DB3914;
   --color-accent-on-dark: #F26B47;
-  /* Accent for small text on page/card surfaces — darker so it clears WCAG AA
-     on the cream card bg (the brand --color-accent only reaches ~4.1:1 there). */
+  /* Retained alias — same value as --color-accent now that accent is AA-safe. */
   --color-accent-text: #BD473C;
   --color-surface: #FDFBF7;
   --color-text: #0B0921;
@@ -52,6 +56,9 @@
 /* Dark mode - navy (matches the dark bands used in the light theme) */
 [data-theme="dark"] {
   --color-accent: #F26B47;
+  /* Darker fill so white button labels clear 4.5:1 on dark (the lighter
+     #F26B47 only reaches ~3:1 behind white text). */
+  --color-accent-bright: #DB3914;
   --color-accent-on-dark: #F26B47;
   /* On dark surfaces the brighter accent already clears AA (~5.2:1). */
   --color-accent-text: #F26B47;
@@ -188,4 +195,38 @@ h4 {
 /* Balance multi-line headlines */
 h1, h2, h3, h4 {
   text-wrap: balance;
+}
+
+/* Visually-hidden but available to screen readers (labels, section headings) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip-to-content link: hidden until focused, then pinned to the top-left */
+.skip-link {
+  position: fixed;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 1000;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-accent-bright);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transform: translateY(-150%);
+  transition: transform 0.15s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
 }

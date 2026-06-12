@@ -583,7 +583,7 @@
 }
 
 .toggleButtonActive {
-  background: var(--color-accent);
+  background: var(--color-accent-bright);
   color: #ffffff;
 }
 

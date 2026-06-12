@@ -80,6 +80,10 @@ export default function Navigation() {
     );
 
   return (
+    <>
+    <a href="#main" className="skip-link">
+      Skip to main content
+    </a>
     <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
@@ -190,5 +194,6 @@ export default function Navigation() {
         </div>
       </div>
     </nav>
+    </>
   );
 }
