@@ -29,4 +29,11 @@ export const testimonials: TestimonialData[] = [
     title: "Product Design Manager at Rithum",
     avatar: "/images/testimonials/brooke.png",
   },
+  {
+    quote:
+      "He has the rare ability to hold a lot of inputs at once. Stakeholder feedback, customer data, competing opinions. He synthesizes it all into confident, well-reasoned design decisions. People feel heard working with him, and the output reflects it. He doesn't design in a vacuum, and it shows.",
+    name: "Spencer Petersen-Thompson",
+    title: "Product Marketing · Ex-Googler",
+    avatar: "/images/testimonials/spencer.png",
+  },
 ];

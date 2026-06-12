@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Testimonial, { TestimonialData } from "./Testimonial";
@@ -53,6 +53,27 @@ export default function TestimonialDeck({
     setTopIndex(entering);
   };
 
+  // Swipe support for touch devices: swipe left → next, right → prev.
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStart.current;
+    touchStart.current = null;
+    if (!start || count <= 1) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    // Ignore taps and mostly-vertical gestures (so page scroll still works)
+    if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
+    if (dx < 0) showNext();
+    else showPrev();
+  };
+
   return (
     <div
       className={styles.deck}
@@ -76,6 +97,8 @@ export default function TestimonialDeck({
       <div
         className={styles.stack}
         style={{ "--back-offset": `${(count - 1) * PEEK}px` } as CSSProperties}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
       >
         {testimonials.map((testimonial, i) => {
           const pos = (i - topIndex + count) % count;
