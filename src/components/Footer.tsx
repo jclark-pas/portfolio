@@ -12,7 +12,7 @@ const connect = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/joshclark17/" },
   { label: "Dribbble", href: "https://dribbble.com/joshclark17" },
   { label: "GitHub", href: "https://github.com/jclark-pas" },
-  { label: "Resume", href: "/josh-clark-resume.pdf" },
+  { label: "Resume", href: "https://drive.google.com/file/d/1FxqJBJbCU9N4INfEJqP8qQQM5SbhITbo/view?usp=sharing" },
 ];
 
 export default function Footer() {

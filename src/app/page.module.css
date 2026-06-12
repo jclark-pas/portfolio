@@ -34,6 +34,25 @@
   gap: var(--space-md);
 }
 
+/* Resume header: download button floats top-right of the headline on desktop */
+.resumeHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.resumeHeaderText {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .resumeHeader {
+    flex-direction: column;
+  }
+}
+
 .workCtaLink {
   display: inline-flex;
   align-items: center;
