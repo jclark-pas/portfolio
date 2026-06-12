@@ -150,6 +150,9 @@
 
 .cta {
   margin-top: var(--space-xl);
+  /* Match the bullet text inset (.bullets li margin-left) so the line aligns
+     with the bullet copy above, not the marker. */
+  padding-left: 27px;
 }
 
 .ctaLabel {

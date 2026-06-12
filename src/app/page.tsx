@@ -7,7 +7,6 @@ import TestimonialDeck from "@/components/TestimonialDeck";
 import ExperienceEntry from "@/components/ExperienceEntry";
 import CompactEntry from "@/components/CompactEntry";
 import StoryTeaser from "@/components/StoryTeaser";
-import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import { featuredWork } from "@/data/featuredWork";
 import { testimonials } from "@/data/testimonials";
@@ -55,21 +54,23 @@ export default function Home() {
       {/* Resume Section */}
       <section id="resume" className={styles.section}>
         <div className={styles.sectionInner}>
-          <div className={`${styles.sectionHeader} ${styles.resumeHeader}`}>
-            <div className={styles.resumeHeaderText}>
-              <p className={styles.eyebrow}>Resume.</p>
-              <h2 className={styles.sectionTitle}>
-                15+ years experience in design, product, and leadership
-              </h2>
-            </div>
-            <Button
-              href={RESUME_DOWNLOAD_URL}
-              variant="secondary"
-              size="small"
-              external
-            >
-              <Download size={16} aria-hidden="true" /> Download
-            </Button>
+          <div className={styles.sectionHeader}>
+            <p className={styles.eyebrow}>
+              Resume.
+              <a
+                href={RESUME_DOWNLOAD_URL}
+                className={styles.eyebrowDownload}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download résumé as PDF"
+                data-tooltip="Download as PDF"
+              >
+                <Download size={16} aria-hidden="true" />
+              </a>
+            </p>
+            <h2 className={styles.sectionTitle}>
+              15+ years experience in design, product, and leadership
+            </h2>
           </div>
           <div className={styles.experienceList}>
             <ExperienceEntry
