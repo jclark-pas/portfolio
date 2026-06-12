@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Download } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
@@ -6,6 +7,7 @@ import TestimonialDeck from "@/components/TestimonialDeck";
 import ExperienceEntry from "@/components/ExperienceEntry";
 import CompactEntry from "@/components/CompactEntry";
 import StoryTeaser from "@/components/StoryTeaser";
+import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import { featuredWork } from "@/data/featuredWork";
 import { testimonials } from "@/data/testimonials";
@@ -13,6 +15,9 @@ import styles from "./page.module.css";
 
 const planEditorFeature = featuredWork[0];
 const ideaCanvasFeature = featuredWork[1];
+
+const RESUME_DOWNLOAD_URL =
+  "https://drive.google.com/uc?export=download&id=1FxqJBJbCU9N4INfEJqP8qQQM5SbhITbo";
 
 export default function Home() {
   return (
@@ -50,15 +55,25 @@ export default function Home() {
       {/* Resume Section */}
       <section id="resume" className={styles.section}>
         <div className={styles.sectionInner}>
-          <div className={styles.sectionHeader}>
-            <p className={styles.eyebrow}>Resume.</p>
-            <h2 className={styles.sectionTitle}>
-              15+ years experience in design, product, and leadership
-            </h2>
+          <div className={`${styles.sectionHeader} ${styles.resumeHeader}`}>
+            <div className={styles.resumeHeaderText}>
+              <p className={styles.eyebrow}>Resume.</p>
+              <h2 className={styles.sectionTitle}>
+                15+ years experience in design, product, and leadership
+              </h2>
+            </div>
+            <Button
+              href={RESUME_DOWNLOAD_URL}
+              variant="secondary"
+              size="small"
+              external
+            >
+              <Download size={16} aria-hidden="true" /> Download
+            </Button>
           </div>
           <div className={styles.experienceList}>
             <ExperienceEntry
-              role="Staff Product Designer for LivePlan"
+              role="Staff Product Designer, LivePlan"
               company="Palo Alto Software"
               dates="March 2021 - Present"
               defaultOpen
@@ -69,7 +84,7 @@ export default function Home() {
                 "Championed LivePlan’s AI strategy, putting business-specific writing tools at the point of need — lifting writing engagement 42% and AI feature adoption 38%.",
                 "Reframed research culture from “what we think users want” to “what customers actually do,” pairing interviews with behavioral data to shape a two-year product roadmap.",
               ]}
-              skills={[5, 5, 3, 2]}
+              focusAreas={["AI Product Design", "Design Systems", "Product Strategy"]}
               cta={[
                 { href: "/work/liveplan", label: "Redesigning the Plan" },
                 { href: "/work/idea-canvas", label: "Idea Canvas" },
@@ -85,7 +100,7 @@ export default function Home() {
                 "Migrated Nulia from Sketch to Figma and built a design system and component library from scratch.",
                 "Helped Nulia earn the \u201CModern Workplace: Apps & Solutions for Microsoft Teams Partner of the Year\u201D award in 2020.",
               ]}
-              skills={[5, 5, 3, 3]}
+              focusAreas={["Accessibility (WCAG 2.1)", "Design Systems", "Global UX"]}
               cta={{ href: "/work/nulia", label: "Nulia" }}
             />
             <ExperienceEntry
@@ -98,7 +113,7 @@ export default function Home() {
                 "Served on the executive team as we grew from 8 to 24, increasing profitability while keeping Twenty Ideas a great place to work.",
                 "Spearheaded the launch of over a dozen web and mobile products.",
               ]}
-              skills={[5, 5, 5, 3]}
+              focusAreas={["Design Leadership", "Hiring & Mentorship", "Team Building"]}
               cta={[
                 { href: "/work/qlarity", label: "Qlarity" },
                 { href: "/work/intrevent", label: "Intrevent" },
@@ -114,7 +129,7 @@ export default function Home() {
                 "Established iterative discovery and design practices for new and existing products across web, mobile, and tablet.",
                 "Consistently delivered the agency’s highest levels of profitability, client satisfaction, and account longevity.",
               ]}
-              skills={[5, 5, 4, 3]}
+              focusAreas={["User Research", "Product Discovery", "UX/UI Design"]}
               cta={{ href: "/work/ktek", label: "KinderTek" }}
             />
           </div>

@@ -4,21 +4,12 @@ import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import styles from "./ExperienceEntry.module.css";
 
-const SKILLS = [
-  { label: "Design", color: "#32D4A4" },
-  { label: "Product Leadership", color: "#32AAEF" },
-  { label: "Team Leadership", color: "#1348A5" },
-  { label: "Development", color: "#FF623E" },
-] as const;
-
-export type SkillRatings = [number, number, number, number];
-
 interface ExperienceEntryProps {
   role: string;
   company: string;
   dates: string;
   bullets: ReactNode[];
-  skills: SkillRatings;
+  focusAreas: string[];
   cta?: CTA | CTA[];
   defaultOpen?: boolean;
 }
@@ -30,7 +21,7 @@ export default function ExperienceEntry({
   company,
   dates,
   bullets,
-  skills,
+  focusAreas,
   cta,
   defaultOpen = false,
 }: ExperienceEntryProps) {
@@ -81,25 +72,15 @@ export default function ExperienceEntry({
                 </p>
               ) : null}
             </div>
-            <div className={styles.skills}>
-              {SKILLS.map((skill, i) => (
-                <div key={skill.label} className={styles.skillRow}>
-                  <span className={styles.skillLabel}>{skill.label}</span>
-                  <div
-                    className={styles.skillDots}
-                    style={{ color: skill.color }}
-                  >
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <span
-                        key={j}
-                        className={`${styles.skillDot} ${
-                          j < skills[i] ? styles.filled : ""
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <div className={styles.focus}>
+              <p className={styles.focusLabel}>Focus Areas</p>
+              <div className={styles.focusBadges}>
+                {focusAreas.map((f) => (
+                  <span key={f} className={styles.focusBadge}>
+                    {f}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
