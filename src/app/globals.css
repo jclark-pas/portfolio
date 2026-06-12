@@ -3,6 +3,9 @@
   /* Colors - AudioEye mode */
   --color-accent: #DB3914;
   --color-accent-on-dark: #F26B47;
+  /* Accent for small text on page/card surfaces — darker so it clears WCAG AA
+     on the cream card bg (the brand --color-accent only reaches ~4.1:1 there). */
+  --color-accent-text: #BD473C;
   --color-surface: #FDFBF7;
   --color-text: #0B0921;
   --color-text-secondary: #130F38;
@@ -50,6 +53,8 @@
 [data-theme="dark"] {
   --color-accent: #F26B47;
   --color-accent-on-dark: #F26B47;
+  /* On dark surfaces the brighter accent already clears AA (~5.2:1). */
+  --color-accent-text: #F26B47;
   --color-surface: #15123A;
   --color-text: #FDFBF7;
   --color-text-secondary: #B9B4D6;
@@ -158,7 +163,7 @@ ul, ol {
 h1 {
   font-family: var(--font-serif);
   font-size: var(--font-h1);
-  line-height: var(--line-h1);
+  line-height: 1.15;
   font-weight: 700;
 }
 
