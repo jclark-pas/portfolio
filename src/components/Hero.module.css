@@ -34,7 +34,7 @@
 
 .headline {
   font-size: var(--font-h1);
-  line-height: var(--line-h1);
+  line-height: 1.15;
   margin-bottom: var(--space-lg);
 }
 
