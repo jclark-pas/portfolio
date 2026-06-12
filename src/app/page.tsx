@@ -107,7 +107,7 @@ export default function Home() {
             />
             <ExperienceEntry
               role="Senior UI/UX Designer"
-              company="Concentric Sky"
+              company="Concentric Sky (now part of Instructure)"
               dates="June 2012 - July 2017"
               bullets={[
                 "Served as the principal expert on customer and market insight for client work across education, healthcare, and public services, in a hybrid design/management role.",
@@ -124,7 +124,7 @@ export default function Home() {
             <div className={styles.compactList}>
               <CompactEntry
                 title="Product Designer"
-                subtitle="Concentric Sky • May 2011 - June 2012"
+                subtitle="Concentric Sky (now part of Instructure) • May 2011 - June 2012"
               />
               <CompactEntry
                 title="Lead Marketing Designer"
