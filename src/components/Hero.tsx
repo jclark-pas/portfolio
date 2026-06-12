@@ -11,6 +11,7 @@ export default function Hero() {
           src={joshHero}
           alt="Portrait illustration of Josh Clark"
           priority
+          sizes="(max-width: 960px) 360px, 550px"
           className={styles.portrait}
         />
         <div className={styles.content}>

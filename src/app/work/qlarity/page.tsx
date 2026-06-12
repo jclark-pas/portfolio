@@ -27,6 +27,7 @@ export default function QlarityPage() {
   return (
     <>
       <Navigation />
+      <main id="main">
       <CaseStudyHero
         company={project.title}
         year={project.year}
@@ -95,6 +96,7 @@ export default function QlarityPage() {
       })}
 
       <CaseStudyNav prev={prev} next={next} />
+      </main>
       <Footer />
     </>
   );

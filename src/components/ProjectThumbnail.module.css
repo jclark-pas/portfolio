@@ -8,8 +8,9 @@
   --hover-transform: none;
 }
 
-.logo,
-.overlay {
+/* Positioned wrapper carries the per-instance left/top/width/height and the
+   hover transform; the next/image fill paints inside it. */
+.box {
   position: absolute;
   display: block;
   transition: transform 0.3s ease-out;
@@ -28,7 +29,6 @@
   filter: drop-shadow(0 9px 27px rgba(0, 0, 0, 0.15));
 }
 
-.thumb:hover .logo,
-.thumb:hover .overlay {
+.thumb:hover .box {
   transform: var(--hover-transform);
 }

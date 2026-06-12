@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import styles from "./ProjectThumbnail.module.css";
 
 export type ThumbnailOverlay = {
@@ -38,11 +39,8 @@ export default function ProjectThumbnail({
 }) {
   return (
     <div className={styles.thumb} style={{ background: data.background }}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={data.logo.src}
-        alt={data.logo.alt ?? `${title} logo`}
-        className={styles.logo}
+      <span
+        className={styles.box}
         style={
           {
             left: data.logo.left,
@@ -52,14 +50,19 @@ export default function ProjectThumbnail({
             "--hover-transform": data.logo.hoverTransform ?? "scale(1.06)",
           } as CSSVars
         }
-      />
+      >
+        <Image
+          src={data.logo.src}
+          alt={data.logo.alt ?? `${title} logo`}
+          fill
+          sizes="(max-width: 768px) 50vw, 320px"
+          className={styles.logo}
+        />
+      </span>
       {data.overlays.map((o, i) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <span
           key={i}
-          src={o.src}
-          alt={o.alt ?? `${title} screenshot ${i + 1}`}
-          className={`${styles.overlay} ${o.shadow ? styles.shadow : ""}`}
+          className={styles.box}
           style={
             {
               left: o.left,
@@ -71,7 +74,16 @@ export default function ProjectThumbnail({
                 o.hoverTransform ?? "translateY(-6%) scale(1.06)",
             } as CSSVars
           }
-        />
+        >
+          <Image
+            src={o.src}
+            alt={o.alt ?? `${title} screenshot ${i + 1}`}
+            fill
+            sizes="(max-width: 768px) 50vw, 320px"
+            className={`${styles.overlay} ${o.shadow ? styles.shadow : ""}`}
+            style={o.radius ? { borderRadius: o.radius } : undefined}
+          />
+        </span>
       ))}
     </div>
   );

@@ -33,6 +33,7 @@ export default function KtekPage() {
   return (
     <>
       <Navigation />
+      <main id="main">
       <CaseStudyHero
         company={project.title}
         year={project.year}
@@ -126,6 +127,7 @@ export default function KtekPage() {
       {/* Bottom nav */}
       <CaseStudyNav prev={prev} next={next} />
 
+      </main>
       <Footer />
     </>
   );

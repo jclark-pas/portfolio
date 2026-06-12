@@ -1,6 +1,8 @@
 .deck {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: var(--space-lg);
 }
 
@@ -129,18 +131,66 @@
   color: var(--color-accent);
 }
 
+/* The wrapper owns the layout slot. On desktop flex-basis:100% forces it onto
+   its own wrapped row, centered below the cards; on mobile it collapses to an
+   inline slot ordered between the arrows (see the max-width: 700px block). */
+.playPauseWrap {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Play/pause control: subtle inline text + small glyph, no button chrome. */
+.playPause {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.playPause:hover {
+  color: var(--color-accent);
+}
+
+.playPause:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
 @media (max-width: 700px) {
   .deck {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  /* stack on its own row, arrows side by side underneath */
+  /* stack on its own row, then prev · play/pause · next side by side underneath */
   .stack {
     flex-basis: 100%;
     order: -1;
     /* clip the card's leftward peel so it doesn't cause horizontal page scroll */
     overflow: hidden;
+  }
+
+  .prev {
+    order: 1;
+  }
+
+  /* collapse the full-width wrapper to an inline slot between the arrows */
+  .playPauseWrap {
+    flex-basis: auto;
+    order: 2;
+  }
+
+  .next {
+    order: 3;
   }
 
   /* peel left instead of down */

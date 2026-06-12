@@ -111,6 +111,7 @@ export default function IdeaCanvasPage() {
   return (
     <>
       <Navigation />
+      <main id="main">
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -482,6 +483,7 @@ export default function IdeaCanvasPage() {
 
       <CaseStudyNav prev={prev} next={next} />
 
+      </main>
       <Footer />
     </>
   );
