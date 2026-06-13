@@ -91,7 +91,7 @@ export default function ExperienceEntry({
 
 function ChevronDownIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
@@ -99,7 +99,7 @@ function ChevronDownIcon() {
 
 function ChevronUpIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="6 15 12 9 18 15" />
     </svg>
   );
