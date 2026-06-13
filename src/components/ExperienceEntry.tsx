@@ -44,7 +44,7 @@ export default function ExperienceEntry({
           <p className={styles.role}>{role}</p>
         </div>
         <span className={styles.toggle} aria-hidden="true">
-          {open ? <MinusIcon /> : <PlusIcon />}
+          {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
         </span>
       </button>
       <div className={styles.contentWrapper} aria-hidden={!open}>
@@ -89,21 +89,18 @@ export default function ExperienceEntry({
   );
 }
 
-function PlusIcon() {
+function ChevronDownIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <circle cx="12" cy="12" r="10" />
-      <line x1="8" y1="12" x2="16" y2="12" />
-      <line x1="12" y1="8" x2="12" y2="16" />
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 9 12 15 18 9" />
     </svg>
   );
 }
 
-function MinusIcon() {
+function ChevronUpIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <circle cx="12" cy="12" r="10" />
-      <line x1="8" y1="12" x2="16" y2="12" />
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 15 12 9 18 15" />
     </svg>
   );
 }
