@@ -169,6 +169,8 @@
 
 @media (max-width: 480px) {
   .footer {
-    padding: var(--space-xxl) var(--space-md);
+    /* Match the homepage sections' horizontal inset (var(--space-xxl)) so the
+       footer doesn't read as cramped against the content above it on mobile. */
+    padding: var(--space-xxl) var(--space-xxl);
   }
 }
