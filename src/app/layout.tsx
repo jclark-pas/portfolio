@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Bricolage_Grotesque } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { Providers } from "./providers";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -41,7 +43,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <Providers>{children}</Providers>
+        <Analytics />
+      </body>
     </html>
   );
 }
