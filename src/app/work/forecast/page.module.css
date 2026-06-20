@@ -1,0 +1,636 @@
+/* ===== Shared layout ===== */
+.section {
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+
+.darkSection {
+  background: #0B0921;
+  color: #EFE9DB;
+  padding: var(--space-xxxl) var(--space-xxl);
+  --color-accent: var(--color-accent-on-dark);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.narrow {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+}
+
+.eyebrowOnDark {
+  color: var(--color-accent);
+}
+
+.sectionHeading {
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-bricolage), sans-serif;
+}
+
+.onDark {
+  color: #EFE9DB;
+}
+
+.prose {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+
+.prose p + p {
+  margin-top: var(--space-md);
+}
+
+.lead {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Hero ===== */
+.hero {
+  background: #0B0921;
+  color: #EFE9DB;
+  padding: var(--space-xxxl) var(--space-xxl);
+  --color-accent: var(--color-accent-on-dark);
+}
+
+.heroInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+  align-items: center;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 720px;
+}
+
+.heroIntro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 720px;
+}
+
+.heroMedia {
+  width: 100%;
+}
+
+.kicker {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.heroHeadline {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 700;
+  color: #EFE9DB;
+  text-wrap: balance;
+}
+
+.heroDescription {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(253, 251, 247, 0.8);
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xxl);
+}
+
+.metaCell dt {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.metaCell dd {
+  font-size: 16px;
+  color: #EFE9DB;
+}
+
+.heroVisual {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* No padding — the hero image bakes in its own shadow/margin */
+  padding: 0;
+  /* Gradient borrowed from the Idea Canvas featured-work card */
+  background: linear-gradient(135deg, #6f4ac7 0%, #3b82c9 50%, #f26a5d 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== Stats band ===== */
+.statsBand {
+  background: var(--color-bg-card);
+  padding: var(--space-xxl) var(--space-xxl);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.statCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.statValue {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.statTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.statLabel {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Challenge wide image ===== */
+.wideImage {
+  max-width: 1200px;
+  margin: var(--space-xxl) auto 0;
+  aspect-ratio: 16 / 9;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.wideImageSlider {
+  max-width: 1200px;
+  margin: var(--space-xxl) auto 0;
+}
+
+/* ===== Discovery ===== */
+.discoveryDetails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.discoveryItem {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.discoveryItemTitle {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.discoveryItemBody {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Discovery research image ===== */
+.researchImg {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: var(--space-xxl) auto 0;
+  border-radius: var(--radius-lg);
+}
+
+/* ===== Quote section ===== */
+.quoteSection {
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+
+.bigQuote {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: var(--font-h2);
+  line-height: var(--line-h2);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+  text-wrap: balance;
+}
+
+.quoteFollow {
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
+  color: var(--color-text-secondary);
+  max-width: 640px;
+}
+
+.quoteFollow + .quoteFollow {
+  margin-top: var(--space-md);
+}
+
+/* ===== Insights grid ===== */
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.insightCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.insightIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+}
+
+.insightTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.insightBody {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Two-column ===== */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxxl);
+  align-items: start;
+}
+
+/* Two-column unit: intro left, accordion right (matches the LivePlan
+   behavioral-analysis layout). The accordion's own .list flex sets its width. */
+.pivotLayout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xxxl);
+}
+
+.pivotIntro {
+  flex: 1 1 300px;
+}
+
+.sideImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  position: sticky;
+  top: var(--space-xxl);
+}
+
+/* ===== Pillars (dark) ===== */
+.pillarGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xxl);
+}
+
+.pillarCard {
+  background: rgba(253, 251, 247, 0.06);
+  border: 1px solid rgba(253, 251, 247, 0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.pillarIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+}
+
+.pillarTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: #EFE9DB;
+  margin-bottom: var(--space-sm);
+}
+
+.pillarBody {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(253, 251, 247, 0.8);
+}
+
+/* ===== Outcomes ===== */
+.outcomesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+/* The 3-week turnaround is a velocity story, not a metric — its own callout */
+.velocityCallout {
+  margin-top: var(--space-lg);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xxl);
+  flex-wrap: wrap;
+}
+
+.velocityText {
+  flex: 1 1 320px;
+}
+
+.velocityEyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.velocityTitle {
+  font-size: var(--font-h3);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.velocityBody {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+}
+
+/* Styled like a speed sign: white plate, bold frame, centered stack.
+   Colors are hardcoded since the plate stays white in both themes. */
+.velocityStat {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  text-align: center;
+  min-width: 150px;
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-bricolage), sans-serif;
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.velocityNumber {
+  font-size: clamp(64px, 8vw, 92px);
+  color: var(--color-accent);
+}
+
+.velocityUnit {
+  font-size: clamp(16px, 2.2vw, 22px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.outcomeCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.outcomeStat {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.outcomeTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.outcomeBody {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Screenshot gallery ===== */
+.gallerySection {
+  padding: var(--space-xxxl) var(--space-xxl);
+  background: var(--color-bg-card);
+}
+
+.galleryGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-top: var(--space-xxl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.galleryItem {
+  margin: 0;
+}
+
+.galleryImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-surface);
+  border: 1px solid rgba(11, 9, 33, 0.12);
+  border-radius: 12px;
+}
+
+/* Self-framed graphic — no surface fill, border, or radius */
+.galleryImgBare {
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+
+.galleryCap {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-top: var(--space-sm);
+  text-align: center;
+}
+
+/* ===== Image captions ===== */
+.imageCaption {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-top: var(--space-sm);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Future Vision link ===== */
+.futureLink {
+  display: inline-block;
+  margin-top: var(--space-xl);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.futureLink:hover {
+  opacity: 0.7;
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 960px) {
+  .heroInner,
+  .twoCol,
+  .tokenGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroHeadline {
+    font-size: 44px;
+    line-height: 50px;
+  }
+
+  .sectionHeading {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .pillarGrid,
+  .insightsGrid,
+  .outcomesGrid,
+  .statsGrid,
+  .discoveryDetails {
+    grid-template-columns: 1fr;
+  }
+
+  .sideImage {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .section,
+  .darkSection,
+  .quoteSection,
+  .hero,
+  .statsBand,
+  .gallerySection {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section,
+  .darkSection,
+  .quoteSection,
+  .gallerySection {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .insightCard,
+  .pillarCard,
+  .outcomeCard,
+  .statCard {
+    padding: 16px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
