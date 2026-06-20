@@ -1,7 +1,7 @@
 .list {
   flex: 1.5 1 440px;
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-light);
   border-radius: 16px;
   display: flex;
   flex-direction: column;

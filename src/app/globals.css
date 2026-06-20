@@ -15,6 +15,8 @@
   --color-text-secondary: #130F38;
   --color-bg-card: rgba(239, 233, 219, 0.5);
   --color-border: #E3DBCA;
+  /* Softer card border: --color-border lightened ~60% toward the surface. */
+  --color-border-light: #E7E1D4;
   --color-text-invert: #EFE9DB;
   --color-surface-invert: #0B0921;
 
@@ -67,6 +69,8 @@
   --color-text-secondary: #B9B4D6;
   --color-bg-card: rgba(255, 255, 255, 0.05);
   --color-border: rgba(239, 233, 219, 0.18);
+  /* Softer card border: lower-contrast line that recedes toward the dark surface. */
+  --color-border-light: rgba(239, 233, 219, 0.15);
   --color-text-invert: #15123A;
   --color-surface-invert: #FDFBF7;
 }
