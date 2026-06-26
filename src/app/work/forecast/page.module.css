@@ -145,8 +145,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* No padding — the hero image bakes in its own shadow/margin */
-  padding: 0;
+  /* Gradient mats the screenshot — padding lets it frame the image */
+  padding: clamp(20px, 3.5vw, 44px);
   /* Gradient borrowed from the Idea Canvas featured-work card */
   background: linear-gradient(135deg, #6f4ac7 0%, #3b82c9 50%, #f26a5d 100%);
   border-radius: var(--radius-lg);
@@ -156,6 +156,8 @@
 .heroImg {
   width: 100%;
   height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(11, 9, 33, 0.28);
 }
 
 /* ===== Stats band ===== */
@@ -236,12 +238,14 @@
   line-height: 1.25;
   color: var(--color-text);
   margin-bottom: var(--space-sm);
+  text-wrap: balance;
 }
 
 .discoveryItemBody {
   font-size: 15px;
   line-height: 1.5;
   color: var(--color-text-secondary);
+  text-wrap: pretty;
 }
 
 /* ===== Discovery research image ===== */
@@ -572,12 +576,21 @@
   opacity: 0.7;
 }
 
+/* ===== Related case-study cards (the pivot payoff) ===== */
+.relatedGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
 
 /* ===== Responsive ===== */
 @media (max-width: 960px) {
   .heroInner,
   .twoCol,
-  .tokenGrid {
+  .tokenGrid,
+  .relatedGrid {
     grid-template-columns: 1fr;
   }
 

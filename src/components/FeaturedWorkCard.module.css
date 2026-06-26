@@ -117,6 +117,33 @@
   outline-offset: 4px;
 }
 
+/* Stacked variant — image on top, content below, at any width (two-up grids). */
+.cardStacked {
+  grid-template-columns: 1fr;
+}
+
+.cardStacked .media {
+  min-height: 0;
+  height: 320px;
+  padding: var(--space-lg);
+}
+
+.cardStacked .content {
+  padding: var(--space-xl);
+  gap: var(--space-md);
+}
+
+.cardStacked .title {
+  font-size: var(--font-h3);
+  line-height: var(--line-h3);
+}
+
+/* Contained/smaller image in the stacked variant — the drop shadow reads as odd
+   floating it, so drop it (keep the rounded corners). */
+.cardStacked .mediaImg {
+  box-shadow: none;
+}
+
 @media (max-width: 960px) {
   .card {
     grid-template-columns: 1fr;

@@ -17,9 +17,20 @@ export interface FeaturedWork {
   imageElevated?: boolean;
 }
 
-export default function FeaturedWorkCard({ work }: { work: FeaturedWork }) {
+export default function FeaturedWorkCard({
+  work,
+  stacked = false,
+}: {
+  work: FeaturedWork;
+  /** Force the image-on-top / content-below layout at any width (for two-up grids). */
+  stacked?: boolean;
+}) {
   return (
-    <Link href={work.href} className={styles.card} aria-label={work.title}>
+    <Link
+      href={work.href}
+      className={`${styles.card}${stacked ? ` ${styles.cardStacked}` : ""}`}
+      aria-label={work.title}
+    >
       <div
         className={styles.media}
         style={

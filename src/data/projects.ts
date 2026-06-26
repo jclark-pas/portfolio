@@ -152,7 +152,7 @@ export const projects: Project[] = [
     description:
       "An AI-powered idea validation tool that helps early-stage entrepreneurs test and refine their business assumptions before committing to a full business plan.",
     color: "#1B7A7A",
-    thumbnail: "/images/thumb-idea-canvas.png",
+    thumbnail: "/images/canvas/canvas-hero.png",
     heroImage: "/images/idea-canvas/hero.png",
     roles: ["Product Design", "User Research", "Product Strategy"],
     whatIDid:

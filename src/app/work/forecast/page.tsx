@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import CohortFunnel from "./CohortFunnel";
+import FeaturedWorkCard from "@/components/FeaturedWorkCard";
+import { featuredWork } from "@/data/featuredWork";
 import ObservationAccordion, {
   type Observation,
 } from "@/components/ObservationAccordion";
@@ -51,14 +56,14 @@ function AssetPlaceholder({
 
 const flowStats = [
   {
-    value: "~⅓ fewer",
-    title: "Trips to the standalone comparison view",
+    value: "30%",
+    title: "Fewer trips to the Dashboard",
     label:
-      "After actuals moved inline, visits to the separate forecast-vs-actuals dashboard fell by roughly a third — people stopped leaving the forecast to see reality.",
+      "Once actuals lived inside the forecast, people stopped jumping out to the standalone Dashboard to see how they were tracking.",
   },
   {
-    value: "6 → 1",
-    title: "Steps to investigate an actual",
+    value: "6x Faster",
+    title: "to investigate an actual",
     label:
       "Reviewing a number used to mean tab-hopping to QuickBooks and building a report. Now it's a single click on the figure itself.",
   },
@@ -97,9 +102,9 @@ const flowObservations: Observation[] = [
   {
     icon: "speed",
     title: "The real product was the round-trips it removed",
-    summary: "Actuals lived away from where forecasting happens.",
+    summary: "We had an actuals dashboard — just not where you forecast.",
     detail:
-      "The whole initiative attacked one problem: your real numbers and your plan lived in different places, so staying honest meant constant context-switching and memory load. Bringing actuals inline — and bringing QuickBooks/Xero detail inside LivePlan — meant users stopped tab-hopping and memorizing figures. Tens of thousands of times a month, people inspected their bookkeeping detail without ever leaving the forecast.",
+      "It compared actuals to forecast and prior years, but none of it was actionable where it mattered, because the forecast itself never showed actuals. We pulled them — and the transaction detail behind them — inline. Now people check reality without leaving the forecast, tens of thousands of times a month.",
   },
   {
     icon: "click",
@@ -110,20 +115,21 @@ const flowObservations: Observation[] = [
   },
   {
     icon: "trust",
-    title: "Forecasting in the realm of reality, not possibility",
-    summary: "A forecast you can't compare to reality is just a guess.",
+    title: "Forecast the future from what actually happened",
     detail:
-      "Our most engaged customers don't write a plan and walk away — they manage against it. The vision was the Growth Plan: a living forecast wired to real bookkeeping, so an owner can see where they're off, understand why, and adjust. The craft here was about earning enough trust in the numbers that people would actually act on them — and the established businesses who used it did, some reporting to their boards off it every month.",
+      "Our domain experts agreed: the most useful input to next year's forecast is last year's actuals. So once actuals were in the forecast, we prioritized real past-period numbers — letting users build forward from them, basing year-over-year growth on what really happened instead of old predictions that never panned out.",
   },
 ];
 
+// Percentage widths (true proportions) of a responsive bar track, so the bars
+// scale with the container while each label still sits flush to its bar.
 const cohortFunnel = [
   { label: "Active accounts", note: "the whole base", width: "100%" },
-  { label: "Connected their accounting", note: "~1 in 10", width: "60%" },
-  { label: "Turned on Actuals + Forecast", note: "", width: "47%" },
-  { label: "Built Forecast Groups", note: "", width: "39%" },
-  { label: "Used transaction drill-down", note: "", width: "32%" },
-  { label: "Opened the AI monthly review", note: "a sliver", width: "20%" },
+  { label: "Connected their accounting", note: "~1 in 10", width: "10%" },
+  { label: "Turned on Actuals + Forecast", note: "", width: "6%" },
+  { label: "Built Forecast Groups", note: "", width: "5.5%" },
+  { label: "Used transaction drill-down", note: "", width: "4.5%" },
+  { label: "Opened the AI monthly review", note: "<1%", width: "1%" },
 ];
 
 const reflections = [
@@ -163,9 +169,14 @@ export default function ForecastPage() {
           </div>
           <div className={styles.heroMedia}>
             <div className={styles.heroVisual}>
-              <AssetPlaceholder
-                label="HERO — Actuals + Forecast overview: projections and real bookkeeping side by side (the Overview/dashboard screen)"
-                ratio="1399 / 964"
+              <Image
+                src="/images/forecast/forecast-hero.png"
+                alt="LivePlan Actuals + Forecast overview — projected revenue, expenses, operating income, and cash shown side by side with real bookkeeping actuals"
+                width={3096}
+                height={2016}
+                priority
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.heroImg}
               />
             </div>
           </div>
@@ -182,7 +193,7 @@ export default function ForecastPage() {
             </div>
             <div className={styles.metaCell}>
               <dt>Team</dt>
-              <dd>Forecasting pod — Design, Eng, PM</dd>
+              <dd>Discovery Trio — Designer, PM, Engineer</dd>
             </div>
             <div className={styles.metaCell}>
               <dt>Timeline</dt>
@@ -227,13 +238,34 @@ export default function ForecastPage() {
               customers don&rsquo;t write a plan and leave — they manage against it, comparing
               forecast to reality every month. Leadership believed that if we made that
               iterative work dramatically easier, we&rsquo;d retain more users over the long haul.
-              The vision had a name: the <strong>Growth Plan</strong> — turning a static business
-              plan into a living forecast wired to real accounting data.
             </p>
           </div>
         </div>
         <div className={styles.wideImageSlider}>
-          <AssetPlaceholder label="BEFORE → AFTER — the forecast editor blind to actuals, vs. actuals inline with projections" />
+          <BeforeAfterSlider
+            beforeLabel="Forecast only"
+            afterLabel="Actuals + Forecast"
+            before={
+              <Image
+                src="/images/forecast/forecast-only.png"
+                alt="The forecast before — projections only, with no view of real performance"
+                width={3096}
+                height={2016}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                priority
+              />
+            }
+            after={
+              <Image
+                src="/images/forecast/forecast-w-actuals.png"
+                alt="The forecast after — real bookkeeping actuals shown inline beside the projections"
+                width={3096}
+                height={2016}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                priority
+              />
+            }
+          />
         </div>
       </section>
 
@@ -269,7 +301,7 @@ export default function ForecastPage() {
               <p className={styles.discoveryItemBody}>
                 An actuals figure would look off, and there was no way to interrogate it without
                 leaving for QuickBooks, working out which accounts fed that line, and running a
-                report just to see what actually happened.
+                report just to see what actually&nbsp;happened.
               </p>
             </div>
             <div className={styles.discoveryItem}>
@@ -279,7 +311,7 @@ export default function ForecastPage() {
               <p className={styles.discoveryItemBody}>
                 A long, flat list didn&rsquo;t match how owners hold their business in their
                 heads. They&rsquo;d been asking for grouping and roll-ups for years — structure
-                that mirrored their mental model, not their chart of accounts.
+                that mirrored their mental model, not their chart of&nbsp;accounts.
               </p>
             </div>
           </div>
@@ -333,25 +365,22 @@ export default function ForecastPage() {
       <section className={styles.gallerySection}>
         <div className={styles.inner}>
           <p className={styles.eyebrow}>The Product</p>
-          <h2 className={styles.sectionHeading}>Reality, brought into the plan</h2>
+          <h2 className={styles.sectionHeading}>Actuals + Forecast for a true LivePlan</h2>
           <div className={styles.galleryGrid}>
             <figure className={styles.galleryItem}>
-              <AssetPlaceholder label="Forecast editor — Actuals + Forecast toggle, prior-year columns, actuals shown beside projections (Program Admin / Stephanie screen)" ratio="16 / 9" />
-              <figcaption className={styles.galleryCap}>
-                The forecast editor with actuals inline — edit against real performance without leaving the page.
-              </figcaption>
-            </figure>
-            <figure className={styles.galleryItem}>
-              <AssetPlaceholder label="Financial tables (Projected P&L) — forecast and actuals side by side with change indicators" ratio="16 / 10" />
-              <figcaption className={styles.galleryCap}>
-                Financial tables swap forecasted numbers for actual performance, side by side.
-              </figcaption>
-            </figure>
-            <figure className={styles.galleryItem}>
-              <AssetPlaceholder label="Transaction detail panel — underlying QuickBooks transactions for a single actuals figure, opened in place" ratio="16 / 9" />
-              <figcaption className={styles.galleryCap}>
-                One click on an actuals figure opens the transactions behind it — no trip to QuickBooks.
-              </figcaption>
+              <video
+                src="/videos/forecast-transactions.mp4"
+                className={styles.galleryImg}
+                width={1636}
+                height={1080}
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Clicking an actuals figure opens the underlying QuickBooks transactions in a panel, in place inside the forecast"
+              />
             </figure>
           </div>
         </div>
@@ -389,11 +418,11 @@ export default function ForecastPage() {
           </p>
           <div className={styles.outcomesGrid}>
             <div className={styles.outcomeCard}>
-              <p className={styles.outcomeStat}>~⅓</p>
-              <h3 className={styles.outcomeTitle}>Fewer trips to the standalone view</h3>
+              <p className={styles.outcomeStat}>30%</p>
+              <h3 className={styles.outcomeTitle}>Fewer trips to the Dashboard</h3>
               <p className={styles.outcomeBody}>
-                Visits to the separate comparison dashboard fell once actuals lived inside the
-                forecast — people no longer had to leave to see reality.
+                Once actuals lived inside the forecast, people stopped jumping out to the
+                standalone Dashboard to see how they were tracking.
               </p>
             </div>
             <div className={styles.outcomeCard}>
@@ -405,7 +434,7 @@ export default function ForecastPage() {
               </p>
             </div>
             <div className={styles.outcomeCard}>
-              <p className={styles.outcomeStat}>tens of thousands</p>
+              <p className={styles.outcomeStat}>10k+</p>
               <h3 className={styles.outcomeTitle}>QuickBooks round-trips avoided / month</h3>
               <p className={styles.outcomeBody}>
                 Every transaction-panel open is a time a user inspected their bookkeeping detail
@@ -421,7 +450,7 @@ export default function ForecastPage() {
         <div className={styles.inner}>
           <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>The Turn</p>
           <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
-            And it still didn&rsquo;t move the metric
+            And it still didn&rsquo;t impact churn
           </h2>
           <p className={styles.lead} style={{ color: "rgba(253,251,247,0.8)" }}>
             We built the right tool. We just built it for a moment most users never reach.
@@ -429,60 +458,25 @@ export default function ForecastPage() {
             smaller the audience.
           </p>
 
-          {/* Inline cohort funnel (illustrative widths; relative figures only) */}
-          <div
-            style={{
-              marginTop: "var(--space-xxl)",
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              maxWidth: "780px",
-            }}
-          >
-            {cohortFunnel.map((row) => (
-              <div
-                key={row.label}
-                style={{ display: "flex", alignItems: "center", gap: "16px" }}
-              >
-                <div
-                  style={{
-                    width: row.width,
-                    minWidth: "120px",
-                    padding: "12px 16px",
-                    borderRadius: "var(--radius-md)",
-                    background:
-                      "linear-gradient(90deg, var(--color-accent-on-dark), rgba(253,251,247,0.18))",
-                    color: "#0B0921",
-                    fontWeight: 600,
-                    fontSize: "15px",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {row.label}
-                </div>
-                {row.note ? (
-                  <span
-                    style={{
-                      fontSize: "14px",
-                      color: "rgba(253,251,247,0.7)",
-                      fontStyle: "italic",
-                    }}
-                  >
-                    {row.note}
-                  </span>
-                ) : null}
-              </div>
-            ))}
-          </div>
+          {/* Cohort-shrink funnel — bars start full-width, then collapse to
+              true proportion on scroll-in (see CohortFunnel). Relative figures
+              only; no exact internal counts. */}
+          <CohortFunnel rows={cohortFunnel} />
 
           <div className={styles.prose} style={{ marginTop: "var(--space-xxl)", color: "rgba(253,251,247,0.8)", maxWidth: "780px" }}>
             <p>
-              The bet assumed better forecasting tools would lower long-term churn. But most
-              LivePlan users don&rsquo;t have actuals yet — they&rsquo;re a year or more from
-              needing them, and many churn before they finish a business plan, let alone a
-              forecast. The cohort we&rsquo;d optimized for was real, and vocal, and tiny. Our own
+              Leadership thought that if we made better use of actuals data in LivePlan,
+              we&rsquo;d convince more people to connect their accounting data.
+            </p>
+            <p>
+              <strong style={{ color: "#EFE9DB", fontWeight: 600 }}>
+                But most LivePlan users don&rsquo;t have actuals yet — they&rsquo;re a year or
+                more from needing them, and many churn before they finish a business plan, let
+                alone a forecast.
+              </strong>
+            </p>
+            <p>
+              The cohort we&rsquo;d optimized for was real, and vocal, and tiny. Our own
               cancellation and reactivation data said the same thing: people left saying
               &ldquo;I&rsquo;ll come back when I&rsquo;m ready&rdquo; — and a wave of them did, a year
               and a half later.
@@ -515,13 +509,11 @@ export default function ForecastPage() {
               taught us where the pie actually was.
             </p>
           </div>
-          <div style={{ display: "flex", gap: "var(--space-lg)", flexWrap: "wrap", marginTop: "var(--space-xl)" }}>
-            <a href="/work/liveplan" className={styles.futureLink}>
-              Redesigning the Plan →
-            </a>
-            <a href="/work/idea-canvas" className={styles.futureLink}>
-              Idea Canvas →
-            </a>
+        </div>
+        <div className={styles.inner}>
+          <div className={styles.relatedGrid}>
+            <FeaturedWorkCard work={featuredWork[0]} stacked />
+            <FeaturedWorkCard work={featuredWork[1]} stacked />
           </div>
         </div>
       </section>
