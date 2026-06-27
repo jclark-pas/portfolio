@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export type CohortRow = { label: string; note: string; width: string };
+export type CohortRow = {
+  label: string;
+  note: string;
+  pct: string;
+  width: string;
+};
 
 /**
  * The cohort-shrink funnel. Every bar starts at full width (like "Active
@@ -84,6 +89,16 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
             }}
           >
             <span style={{ fontSize: "15px", color: "rgba(253,251,247,0.92)" }}>
+              <strong
+                style={{
+                  color: "var(--color-accent-on-dark)",
+                  fontWeight: 600,
+                  fontSize: "16px",
+                  marginRight: "9px",
+                }}
+              >
+                {row.pct}
+              </strong>
               {row.label}
             </span>
             {row.note ? (

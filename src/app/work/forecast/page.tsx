@@ -125,12 +125,12 @@ const flowObservations: Observation[] = [
 // Percentage widths (true proportions) of a responsive bar track, so the bars
 // scale with the container while each label still sits flush to its bar.
 const cohortFunnel = [
-  { label: "Active accounts", note: "the whole base", width: "100%" },
-  { label: "Connected their accounting", note: "~1 in 10", width: "10%" },
-  { label: "Turned on Actuals + Forecast", note: "", width: "6%" },
-  { label: "Built Forecast Groups", note: "", width: "5.5%" },
-  { label: "Used transaction drill-down", note: "", width: "4.5%" },
-  { label: "Opened the AI monthly review", note: "<1%", width: "1%" },
+  { label: "Active accounts", note: "the whole base", pct: "100%", width: "100%" },
+  { label: "Connected their accounting", note: "", pct: "10%", width: "10%" },
+  { label: "Turned on Actuals + Forecast", note: "", pct: "6%", width: "6%" },
+  { label: "Built Forecast Groups", note: "", pct: "5.5%", width: "5.5%" },
+  { label: "Used transaction drill-down", note: "", pct: "4.5%", width: "4.5%" },
+  { label: "Opened the AI monthly review", note: "", pct: "<1%", width: "1%" },
 ];
 
 const reflections = [
