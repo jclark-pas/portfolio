@@ -7,12 +7,12 @@ import CaseStudyNav from "@/components/CaseStudyNav";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import CohortFunnel from "./CohortFunnel";
 import JourneyFunnel from "./JourneyFunnel";
+import DesignShowcase from "./DesignShowcase";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import { featuredWork } from "@/data/featuredWork";
 import ObservationAccordion, {
   type Observation,
 } from "@/components/ObservationAccordion";
-import { LineChart, ReceiptText, Layers, TrendingUp } from "lucide-react";
 import styles from "./page.module.css";
 
 // DRAFT case study — not registered in projects.ts (stays off the public /work grid)
@@ -73,29 +73,6 @@ const flowStats = [
     title: "Adjusted their forecast in place",
     label:
       "Most accounts that turned on Actuals + Forecast went on to edit their forecast right there — see reality, change the plan, without switching context.",
-  },
-];
-
-const designDecisions = [
-  {
-    icon: LineChart,
-    title: "Actuals, in line with the forecast",
-    body: "Before, the forecast editor was blind — no current actuals, no prior years. You'd read your real numbers on a separate dashboard, switch back, and hold them in your head while editing. Now actuals sit right beside your projections, and you edit in place against real performance.",
-  },
-  {
-    icon: ReceiptText,
-    title: "A panel, not a tab-switch",
-    body: "See an actuals figure and wonder what's behind it? You used to leave for QuickBooks, work out which accounts mapped to that line, and run a roll-up report. Now one click opens a transaction panel in place — spot a miscode instantly, then go fix it at the source.",
-  },
-  {
-    icon: Layers,
-    title: "Structure that matches how you think",
-    body: "A chart of accounts rarely matches a mental model — sometimes too granular, sometimes not enough. Forecast Groups let users build a two-level hierarchy independent of their books. One olive-oil seller put it best: same bottle, sold direct and retail — why force separate costs for the same product?",
-  },
-  {
-    icon: TrendingUp,
-    title: "Context at the point of decision",
-    body: "Prior-year actuals came into the editor, and the dated bar graphs gave way to modern, interactive line charts — so the history you're forecasting against is visible exactly where you're making the call.",
   },
 ];
 
@@ -345,20 +322,7 @@ export default function ForecastPage() {
         <div className={styles.inner}>
           <p className={styles.eyebrow}>What We Built</p>
           <h2 className={styles.sectionHeading}>Four moves to close the gap</h2>
-          <div className={styles.insightsGrid}>
-            {designDecisions.map((d) => {
-              const Icon = d.icon;
-              return (
-                <article key={d.title} className={styles.insightCard}>
-                  <div className={styles.insightIcon} aria-hidden="true">
-                    <Icon size={22} color="#EFE9DB" strokeWidth={2} />
-                  </div>
-                  <h3 className={styles.insightTitle}>{d.title}</h3>
-                  <p className={styles.insightBody}>{d.body}</p>
-                </article>
-              );
-            })}
-          </div>
+          <DesignShowcase />
         </div>
       </section>
 
