@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import CohortFunnel from "./CohortFunnel";
+import JourneyFunnel from "./JourneyFunnel";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import { featuredWork } from "@/data/featuredWork";
 import ObservationAccordion, {
@@ -483,9 +484,7 @@ export default function ForecastPage() {
             </p>
           </div>
 
-          <div style={{ marginTop: "var(--space-xxl)" }}>
-            <AssetPlaceholder label="STRATEGY ARTIFACT — the customer-journey funnel I made: most users sit at the top (0–60 day, 'put together a plan'); forecasting/actuals serve the bottom (120+ day, 'run my business')" ratio="16 / 11" />
-          </div>
+          <JourneyFunnel />
         </div>
       </section>
 

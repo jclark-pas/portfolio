@@ -1,0 +1,307 @@
+/* Journey funnel — the strategy artifact. Inverted funnel of lifecycle jobs;
+   hovering a band scatters that step's pains / needs / desires out of the top,
+   like they spilled from inside it. Lives on the dark "Turn" section. */
+
+.wrap {
+  margin-top: var(--space-sm);
+  /* headroom so the (taller) chip stack flies into empty space, not the prose */
+  padding-top: 150px;
+  /* break out wider than the 1200px .inner cap to use the side whitespace */
+  width: min(1340px, 94vw);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---- Figure centers the funnel; annotations anchor to band edges ---- */
+.figure {
+  display: flex;
+  justify-content: center;
+}
+
+.funnel {
+  position: relative;
+  /* callouts now live inside the segments, so fill the full component width */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: visible;
+}
+
+/* each row holds the clipped band PLUS its free-flying chip burst */
+.bandRow {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+.bandRow:hover,
+.bandRow:focus-within {
+  z-index: 10;
+}
+
+.band {
+  /* set per-band via inline style: --w, --inset, --cw, --fill, --i */
+  position: relative;
+  width: 100%;
+  height: 128px;
+  margin: 0 auto;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0) 45%
+    ),
+    var(--fill);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: width 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 220ms ease,
+    opacity 220ms ease;
+  transition-delay: calc(var(--i) * 110ms), calc(var(--i) * 110ms), 0ms, 0ms;
+  font-family: inherit;
+  color: var(--color-text-invert, #fdfbf7);
+}
+
+.formed .band {
+  width: var(--w);
+  clip-path: polygon(0 0, 100% 0, calc(100% - var(--inset)) 100%, var(--inset) 100%);
+}
+
+/* segments carrying a callout get extra height to fit the chip + eyebrow + job */
+.bandTall {
+  height: 182px;
+}
+
+/* dim the rest of the funnel while one band is engaged */
+.funnel:hover .band,
+.funnel:focus-within .band {
+  opacity: 0.42;
+}
+.bandRow:hover .band,
+.bandRow:focus-within .band {
+  opacity: 1;
+  filter: brightness(1.08);
+  outline: none;
+}
+
+.bandInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: var(--cw);
+  text-align: center;
+  pointer-events: none;
+}
+
+.range {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(253, 251, 247, 0.85);
+}
+
+.job {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: balance;
+  color: rgba(253, 251, 247, 0.98);
+}
+
+/* ---- The flying chips ---- */
+.burst {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  pointer-events: none;
+}
+.bandRow:hover .burst,
+.bandRow:focus-within .burst {
+  pointer-events: auto;
+}
+
+.flyChip {
+  /* set per-chip via inline style: --tx, --ty, --rot, --j */
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 172px;
+  padding: 7px 12px;
+  border-radius: 11px;
+  background: #fdfbf7;
+  color: #1a1430;
+  font-size: 13px;
+  line-height: 1.25;
+  text-align: left;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.38);
+  white-space: normal;
+  opacity: 0;
+  transform: translate(-50%, -30%) scale(0.45);
+  transform-origin: center bottom;
+  transition: transform 480ms cubic-bezier(0.34, 1.42, 0.5, 1),
+    opacity 240ms ease;
+  transition-delay: calc(var(--j) * 45ms);
+}
+.bandRow:hover .flyChip,
+.bandRow:focus-within .flyChip {
+  opacity: 1;
+  transform: translate(calc(-50% + var(--tx) * 1px), calc(-50% + var(--ty) * 1px))
+    rotate(calc(var(--rot) * 1deg)) scale(1);
+}
+
+/* ---- Editorial callout, sitting inside the segment above the eyebrow ---- */
+.callout {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 9, 33, 0.72);
+  border: 1px solid var(--color-accent-on-dark);
+  color: #fdfbf7;
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.22;
+  text-align: center;
+  text-wrap: balance;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+}
+
+/* ---- Always-on legend / affordance ---- */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: var(--space-xl);
+}
+.legendHint {
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(253, 251, 247, 0.62);
+}
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: rgba(253, 251, 247, 0.78);
+}
+.legendItem .dot {
+  width: 11px;
+  height: 11px;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pains {
+  background: #f2c94c;
+}
+.needs {
+  background: #7fb0ff;
+}
+.desires {
+  background: #7bd8a0;
+}
+
+/* ---- Mobile: each segment becomes a self-contained, segment-tinted card
+   grouping its header with its pains / needs / desires ---- */
+@media (max-width: 720px) {
+  .wrap {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+    padding-top: 0; /* no fly-out headroom needed on mobile */
+  }
+  .funnel {
+    width: 100%;
+    gap: var(--space-lg);
+  }
+  /* the card */
+  .bandRow {
+    background: var(--fill);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  }
+  /* header: eyebrow + job, on the segment colour */
+  .formed .band,
+  .band,
+  .bandTall {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    clip-path: none;
+    border-radius: 0;
+    background: none;
+    padding: 16px 18px 14px;
+    opacity: 1 !important;
+    filter: none !important;
+    cursor: default;
+  }
+  .bandInner {
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
+  }
+  /* mobile has the room — size the type up a touch for readability */
+  .range {
+    font-size: 14px;
+  }
+  .job {
+    font-size: 21px;
+    text-wrap: initial;
+  }
+  .callout {
+    font-size: 14px;
+  }
+  .flyChip {
+    font-size: 14.5px;
+    padding: 9px 14px;
+  }
+  .legendItem,
+  .legendHint {
+    font-size: 16px;
+  }
+  /* body: the chips, slightly darker so the grouping reads as one card */
+  .burst {
+    position: static;
+    height: auto;
+    pointer-events: auto;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 18px 18px;
+    background: rgba(11, 9, 33, 0.16);
+    border-top: 1px solid rgba(253, 251, 247, 0.16);
+  }
+  .flyChip {
+    position: static;
+    opacity: 1;
+    transform: none !important;
+    max-width: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  .legendHint {
+    display: none;
+  }
+}
