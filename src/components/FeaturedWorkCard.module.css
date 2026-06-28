@@ -93,6 +93,7 @@
   color: var(--color-text-secondary);
 }
 
+/* CTA — shown only in the side-by-side layout (stacked cards omit it). */
 .cta {
   margin-top: var(--space-md);
   display: inline-flex;
@@ -118,19 +119,27 @@
 }
 
 /* Stacked variant — image on top, content below, at any width (two-up grids). */
+/* flex column (not the 2-col grid) so the media stays fixed at the top and the
+   content fills the rest — no free-space distribution pushing the meta down */
 .cardStacked {
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .cardStacked .media {
   min-height: 0;
   height: 320px;
+  flex-shrink: 0;
   padding: var(--space-lg);
 }
 
 .cardStacked .content {
+  flex: 1;
   padding: var(--space-xl);
   gap: var(--space-md);
+  /* top-align so every card's meta sits right under its image (no centering
+     stagger across cards of different copy lengths) */
+  justify-content: flex-start;
 }
 
 .cardStacked .title {

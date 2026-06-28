@@ -58,9 +58,13 @@ export default function FeaturedWorkCard({
         </p>
         <h3 className={styles.title}>{work.title}</h3>
         <p className={styles.description}>{work.description}</p>
-        <span className={styles.cta}>
-          Read case study <span aria-hidden="true">→</span>
-        </span>
+        {/* the stacked (grid) cards are fully clickable and stay clean; the
+            side-by-side layout shows an explicit CTA */}
+        {!stacked && (
+          <span className={styles.cta}>
+            Read case study <span aria-hidden="true">→</span>
+          </span>
+        )}
       </div>
     </Link>
   );
