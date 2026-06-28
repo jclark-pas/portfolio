@@ -12,9 +12,6 @@ import { featuredWork } from "@/data/featuredWork";
 import { testimonials } from "@/data/testimonials";
 import styles from "./page.module.css";
 
-const planEditorFeature = featuredWork[0];
-const ideaCanvasFeature = featuredWork[1];
-
 const RESUME_DOWNLOAD_URL =
   "https://drive.google.com/uc?export=download&id=1FxqJBJbCU9N4INfEJqP8qQQM5SbhITbo";
 
@@ -27,17 +24,18 @@ export default function Home() {
 
       {/* Featured Work Section */}
       <section id="work" className={styles.section} aria-labelledby="featured-work-heading">
-        <div className={styles.sectionInner}>
-          <h2 id="featured-work-heading" className="sr-only">Featured Work</h2>
+        <div className={`${styles.sectionInner} ${styles.workInner}`}>
+          <h2 id="featured-work-heading" className="sr-only">Case Studies</h2>
           <div className={`${styles.sectionHeader} ${styles.workHeader}`}>
-            <p className={styles.eyebrow} aria-hidden="true">Featured Work.</p>
+            <p className={styles.eyebrow} aria-hidden="true">Case Studies.</p>
             <Link href="/work" className={styles.workCtaLink}>
               See all work <span aria-hidden="true">→</span>
             </Link>
           </div>
           <div className={styles.featuredList}>
-            <FeaturedWorkCard work={planEditorFeature} />
-            <FeaturedWorkCard work={ideaCanvasFeature} />
+            {featuredWork.map((work) => (
+              <FeaturedWorkCard key={work.href} work={work} stacked />
+            ))}
           </div>
         </div>
       </section>
