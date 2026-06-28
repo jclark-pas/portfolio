@@ -30,7 +30,7 @@ const flowStats = [
     value: "30%",
     title: "Fewer trips to the Dashboard",
     label:
-      "Once actuals lived inside the forecast, people stopped jumping out to the standalone Dashboard to see how they were tracking.",
+      "Once actuals lived inside the forecast, people stopped jumping out to the standalone financial Dashboard to see how they were tracking.",
   },
   {
     value: "6x Faster",
@@ -43,6 +43,12 @@ const flowStats = [
     title: "Adjusted their forecast in place",
     label:
       "Most accounts that turned on Actuals + Forecast went on to edit their forecast right there — see reality, change the plan, without switching context.",
+  },
+  {
+    value: "0%",
+    title: "Reduction in churn",
+    label:
+      "For all of it, core churn metrics never budged. The work landed for the customers it was built for — but they were never the ones at risk of leaving.",
   },
 ];
 
@@ -84,7 +90,7 @@ const reflections = [
   {
     icon: Target,
     title: "Output is not outcome",
-    body: "We discovered, tested, and shipped genuinely good tools — and the established customers they were built for loved them. None of it moved long-term churn, because the work was aimed at a moment most users never reach. The lesson that reshaped my judgment: craft quality and business impact are different questions, and you have to keep asking the second one even when the first is going well.",
+    body: "We discovered, tested, and shipped genuinely good tools — and the established customers they were built for loved them. None of it moved churn, because we were too far down the user journey funnel for long-term impact. The lesson that reshaped my judgment: craft quality and business impact are different questions, and you have to keep asking the second one even when the first is going well.",
   },
   {
     icon: Scale,
@@ -497,7 +503,7 @@ export default function ForecastPage() {
       <section className={styles.section}>
         <div className={styles.inner}>
           <div style={{ maxWidth: "760px" }}>
-            <p className={styles.eyebrow}>What&rsquo;s Next</p>
+            <p className={styles.eyebrow}>A Vision for the Future</p>
             <h2 className={styles.sectionHeading}>AI that helps you forecast</h2>
             <div className={styles.prose}>
               <p>
