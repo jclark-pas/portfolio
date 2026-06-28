@@ -20,10 +20,16 @@
   gap: var(--space-xl);
 }
 
+/* the Case Studies section breaks out wider than the shared 1120px column
+   so the 3-up card grid has more room */
+.workInner {
+  max-width: min(1320px, 94vw);
+}
+
 .featuredList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
 }
 
 .workHeader {
@@ -171,6 +177,9 @@
   .sectionTitleLg {
     font-size: 48px;
     line-height: 60px;
+  }
+  .featuredList {
+    grid-template-columns: 1fr;
   }
 }
 

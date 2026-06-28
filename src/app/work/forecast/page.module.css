@@ -1,0 +1,495 @@
+/* ===== Shared layout ===== */
+.section {
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+
+.darkSection {
+  background: #0B0921;
+  color: #EFE9DB;
+  padding: var(--space-xxxl) var(--space-xxl);
+  --color-accent: var(--color-accent-on-dark);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.narrow {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+}
+
+.eyebrowOnDark {
+  color: var(--color-accent);
+}
+
+.sectionHeading {
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-bricolage), sans-serif;
+}
+
+.onDark {
+  color: #EFE9DB;
+}
+
+.prose {
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+
+.prose p + p {
+  margin-top: var(--space-md);
+}
+
+.proseLink {
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.15s ease;
+}
+.proseLink:hover {
+  opacity: 0.75;
+}
+
+.lead {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Hero ===== */
+.hero {
+  background: #0B0921;
+  color: #EFE9DB;
+  padding: var(--space-xxxl) var(--space-xxl);
+  --color-accent: var(--color-accent-on-dark);
+}
+
+.heroInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+  align-items: center;
+  text-align: center;
+}
+
+.heroIntro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 720px;
+}
+
+.heroMedia {
+  width: 100%;
+}
+
+.kicker {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.heroHeadline {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 700;
+  color: #EFE9DB;
+  text-wrap: balance;
+}
+
+.heroDescription {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(253, 251, 247, 0.8);
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xxl);
+}
+
+.metaCell dt {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.metaCell dd {
+  font-size: 16px;
+  color: #EFE9DB;
+}
+
+.heroVisual {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Gradient mats the screenshot — padding lets it frame the image */
+  padding: clamp(20px, 3.5vw, 44px);
+  /* Gradient borrowed from the Idea Canvas featured-work card */
+  background: linear-gradient(135deg, #6f4ac7 0%, #3b82c9 50%, #f26a5d 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(11, 9, 33, 0.28);
+}
+
+/* ===== Stats band ===== */
+.statsBand {
+  background: var(--color-bg-card);
+  padding: var(--space-xxl) var(--space-xxl);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.statCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.statValue {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.statTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.statLabel {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Challenge wide image ===== */
+
+/* ===== Discovery ===== */
+.discoveryDetails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+  /* break out wider than the 860px intro so the columns aren't cramped */
+  width: min(1100px, 92vw);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* "And yet…" — intro text beside the cohort funnel */
+.turnLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: center;
+}
+
+.discoveryItem {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.discoveryItemTitle {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  text-wrap: balance;
+}
+
+.discoveryItemBody {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+/* ===== Discovery research image ===== */
+
+/* ===== Quote section ===== */
+.quoteSection {
+  padding: var(--space-xxxl) var(--space-xxl);
+  background: var(--color-bg-card);
+}
+
+.bigQuote {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+  text-wrap: balance;
+}
+
+.quoteFollow {
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
+  color: var(--color-text-secondary);
+  max-width: 640px;
+}
+
+.quoteFollow + .quoteFollow {
+  margin-top: var(--space-md);
+}
+
+/* ===== Insights grid ===== */
+
+.insightTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+/* "What's Next" concept image, inset on a soft gradient below the intro */
+.aiShot {
+  margin-top: var(--space-xxl);
+  padding: var(--space-xxl);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #dcefe2 0%, #d8e8f3 50%, #e2e0f4 100%);
+  box-shadow: 0 18px 40px rgba(11, 9, 33, 0.18);
+}
+.aiShotImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 28px rgba(11, 9, 33, 0.22);
+}
+
+/* Reflections — coral icon beside each lesson */
+.reflection {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+.reflectionIcon {
+  display: grid;
+  place-items: center;
+  color: var(--color-accent);
+  /* nudge to sit with the title's cap height */
+  margin-top: 2px;
+}
+
+/* ===== Two-column ===== */
+
+/* Two-column unit: intro left, accordion right (matches the LivePlan
+   behavioral-analysis layout). The accordion's own .list flex sets its width. */
+.pivotLayout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xxxl);
+}
+
+.pivotIntro {
+  flex: 1 1 300px;
+}
+
+/* ===== Pillars (dark) ===== */
+
+/* ===== Outcomes ===== */
+.outcomesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+/* The 3-week turnaround is a velocity story, not a metric — its own callout */
+
+/* Styled like a speed sign: white plate, bold frame, centered stack.
+   Colors are hardcoded since the plate stays white in both themes. */
+
+.outcomeCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.outcomeStat {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.outcomeTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.outcomeBody {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Screenshot gallery ===== */
+.gallerySection {
+  padding: var(--space-xxxl) var(--space-xxl);
+  background: var(--color-bg-card);
+}
+
+/* groups a section into the same banded surface as the one above it */
+.cardBand {
+  background: var(--color-bg-card);
+}
+
+.galleryGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-top: var(--space-xxl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.galleryItem {
+  margin: 0;
+}
+
+.galleryImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-surface);
+  border: 1px solid rgba(11, 9, 33, 0.12);
+  border-radius: 12px;
+}
+
+/* Self-framed graphic — no surface fill, border, or radius */
+
+/* ===== Image captions ===== */
+
+/* ===== Future Vision link ===== */
+
+/* ===== Related case-study cards (the pivot payoff) ===== */
+.relatedGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 960px) {
+  .heroInner,
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroHeadline {
+    font-size: 44px;
+    line-height: 50px;
+  }
+
+  .sectionHeading {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .outcomesGrid,
+  .statsGrid,
+  .discoveryDetails {
+    grid-template-columns: 1fr;
+  }
+  .discoveryDetails {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+  .turnLayout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+}
+
+@media (max-width: 480px) {
+  .section,
+  .darkSection,
+  .quoteSection,
+  .hero,
+  .statsBand,
+  .gallerySection {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section,
+  .darkSection,
+  .quoteSection,
+  .gallerySection {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .outcomeCard,
+  .statCard {
+    padding: 16px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}

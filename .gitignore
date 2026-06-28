@@ -43,3 +43,6 @@ next-env.d.ts
 
 # Claude Code worktrees
 .claude/worktrees/
+
+# Case-study research notes — CONFIDENTIAL (internal metrics + customer names); keep local
+/docs/case-studies/

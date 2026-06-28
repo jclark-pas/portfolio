@@ -17,9 +17,20 @@ export interface FeaturedWork {
   imageElevated?: boolean;
 }
 
-export default function FeaturedWorkCard({ work }: { work: FeaturedWork }) {
+export default function FeaturedWorkCard({
+  work,
+  stacked = false,
+}: {
+  work: FeaturedWork;
+  /** Force the image-on-top / content-below layout at any width (for two-up grids). */
+  stacked?: boolean;
+}) {
   return (
-    <Link href={work.href} className={styles.card} aria-label={work.title}>
+    <Link
+      href={work.href}
+      className={`${styles.card}${stacked ? ` ${styles.cardStacked}` : ""}`}
+      aria-label={work.title}
+    >
       <div
         className={styles.media}
         style={
@@ -47,9 +58,13 @@ export default function FeaturedWorkCard({ work }: { work: FeaturedWork }) {
         </p>
         <h3 className={styles.title}>{work.title}</h3>
         <p className={styles.description}>{work.description}</p>
-        <span className={styles.cta}>
-          Read case study <span aria-hidden="true">→</span>
-        </span>
+        {/* the stacked (grid) cards are fully clickable and stay clean; the
+            side-by-side layout shows an explicit CTA */}
+        {!stacked && (
+          <span className={styles.cta}>
+            Read case study <span aria-hidden="true">→</span>
+          </span>
+        )}
       </div>
     </Link>
   );

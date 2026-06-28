@@ -12,9 +12,6 @@ import { featuredWork } from "@/data/featuredWork";
 import { testimonials } from "@/data/testimonials";
 import styles from "./page.module.css";
 
-const planEditorFeature = featuredWork[0];
-const ideaCanvasFeature = featuredWork[1];
-
 const RESUME_DOWNLOAD_URL =
   "https://drive.google.com/uc?export=download&id=1FxqJBJbCU9N4INfEJqP8qQQM5SbhITbo";
 
@@ -27,17 +24,18 @@ export default function Home() {
 
       {/* Featured Work Section */}
       <section id="work" className={styles.section} aria-labelledby="featured-work-heading">
-        <div className={styles.sectionInner}>
-          <h2 id="featured-work-heading" className="sr-only">Featured Work</h2>
+        <div className={`${styles.sectionInner} ${styles.workInner}`}>
+          <h2 id="featured-work-heading" className="sr-only">Case Studies</h2>
           <div className={`${styles.sectionHeader} ${styles.workHeader}`}>
-            <p className={styles.eyebrow} aria-hidden="true">Featured Work.</p>
+            <p className={styles.eyebrow} aria-hidden="true">Case Studies.</p>
             <Link href="/work" className={styles.workCtaLink}>
               See all work <span aria-hidden="true">→</span>
             </Link>
           </div>
           <div className={styles.featuredList}>
-            <FeaturedWorkCard work={planEditorFeature} />
-            <FeaturedWorkCard work={ideaCanvasFeature} />
+            {featuredWork.map((work) => (
+              <FeaturedWorkCard key={work.href} work={work} stacked />
+            ))}
           </div>
         </div>
       </section>
@@ -82,12 +80,13 @@ export default function Home() {
               defaultOpen
               bullets={[
                 "Led a ground-up redesign of LivePlan’s decade-old business plan editor, cutting early churn 25% and lifting collaborative plan comments 63%.",
+                "Led design for LivePlan’s 2025 forecasting platform overhaul, shipping Actuals + Forecast (projections side-by-side with real bookkeeping data across Revenue, Direct Costs, Personnel, and Expenses), a reimagined Forecast editor, and Forecast Groups (parent/sub-entry hierarchies for complex P&L roll-ups).",
                 "Designed and shipped Idea Canvas, an AI idea-validation tool, from concept to MVP in 3 weeks — 93% completion, and 70% of users acted on an AI pivot suggestion.",
                 "Built LivePlan’s token-based design system in Figma and code, including a theming engine that shipped a dozen themes at launch and now powers the pitch-deck feature.",
-                "Championed LivePlan’s AI strategy, putting business-specific writing tools at the point of need — lifting writing engagement 42% and AI feature adoption 38%.",
+                "Championed LivePlan’s AI strategy across writing, plan review, and financial forecasting — embedding business-specific assistance at the point of need (writing engagement +42%, AI adoption +38%).",
                 "Reframed research culture from “what we think users want” to “what customers actually do,” pairing interviews with behavioral data to shape a two-year product roadmap.",
               ]}
-              focusAreas={["AI Product Design", "Design Systems", "Product Strategy"]}
+              focusAreas={["Financial UX", "AI Product Design", "Design Systems"]}
               cta={[
                 { href: "/work/liveplan", label: "Redesigning the Plan" },
                 { href: "/work/idea-canvas", label: "Idea Canvas" },

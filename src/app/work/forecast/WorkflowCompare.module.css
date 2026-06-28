@@ -1,0 +1,336 @@
+/* The same four jobs — toggle Before/After to see where each one happened.
+   Before: a "here" pin hops across three apps. After: it never leaves the
+   forecast. Centered and stacked, with the job-to-be-done as the focal point. */
+
+.wrap {
+  position: relative;
+  margin: var(--space-xl) auto 0;
+  width: 100%;
+  text-align: center;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xxl) var(--space-xl);
+}
+
+/* ---- Component title (matches the page eyebrow style) ---- */
+.title {
+  margin: 0 0 var(--space-lg);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* ---- Before / After toggle (sits just under the title) ---- */
+.toggle {
+  display: inline-flex;
+  margin-top: var(--space-xs);
+  padding: 4px;
+  gap: 2px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+}
+.seg {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: 7px 22px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 220ms ease, color 220ms ease;
+}
+.segOn {
+  background: var(--color-accent);
+  color: #fdfbf7;
+}
+
+/* ---- The need, voiced in a speech bubble ---- */
+.bubble {
+  position: relative;
+  max-width: 38rem;
+  margin: var(--space-lg) auto 0;
+  padding: var(--space-md) var(--space-xl) var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+}
+/* down-tail pointing at the user avatar below — border + fill layers */
+.bubble::before,
+.bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+}
+.bubble::before {
+  margin-left: -11px;
+  border-width: 11px;
+  border-top-color: var(--color-border-light);
+}
+.bubble::after {
+  margin-left: -10px;
+  border-width: 10px;
+  border-top-color: var(--color-surface);
+}
+.bubble .seq {
+  margin-top: 0;
+}
+
+/* each step's need re-animates in: eyebrow → headline → lead fade up in turn */
+.need > * {
+  animation: needIn 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.need > :nth-child(2) {
+  animation-delay: 450ms;
+}
+.need > :nth-child(3) {
+  animation-delay: 900ms;
+}
+@keyframes needIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .need > * {
+    animation: none;
+  }
+}
+
+/* ---- The job to be done (focal point) ---- */
+.seq {
+  margin: var(--space-lg) 0 2px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+.headline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 22ch;
+  /* the copy is a steady 2 lines — reserve exactly that, no slack */
+  min-height: 2.3em;
+  font-family: var(--font-serif);
+  font-size: var(--font-h2);
+  line-height: var(--line-h2);
+  font-weight: 600;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+.lead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--space-xs) auto 0;
+  max-width: 34ch;
+  min-height: 1.4em;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+/* ---- The tool track: wires fan from the need down to the apps ---- */
+.track {
+  position: relative;
+  margin: var(--space-lg) auto 0;
+  max-width: 520px;
+  padding-top: 82px;
+}
+.wires {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.wire {
+  fill: none;
+  stroke: var(--color-text-secondary);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 6;
+  stroke-linecap: round;
+  opacity: 0.34;
+  transition: stroke 340ms ease, stroke-width 340ms ease, opacity 340ms ease;
+}
+.wireOn {
+  stroke: var(--color-accent);
+  stroke-width: 2.25;
+  opacity: 1;
+}
+.wireDim {
+  opacity: 0.1;
+}
+.source {
+  fill: var(--color-accent);
+}
+
+/* the user avatar travels down the active wire to the app */
+.traveler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fdfbf7;
+  box-shadow: 0 4px 12px rgba(189, 71, 60, 0.32);
+  offset-rotate: 0deg;
+  offset-distance: 100%;
+  /* longer, eased run so the retrace-up-then-down journey reads */
+  animation: wfTravel 1100ms cubic-bezier(0.45, 0, 0.25, 1);
+}
+@keyframes wfTravel {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .traveler {
+    animation: none;
+  }
+}
+
+.nodes {
+  display: flex;
+  gap: 10px;
+}
+.node {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  /* slim pill chips so the apps recede behind the need statement */
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  transition: border-color 260ms ease, background 260ms ease, color 260ms ease,
+    transform 260ms ease;
+}
+.nodeOn {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fdfbf7;
+  transform: translateY(-2px);
+}
+.dimmed {
+  opacity: 0.38;
+}
+.nodeIcon {
+  display: block;
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+}
+/* app glyphs masked in the node colour (currentColor) */
+.appIcon {
+  display: block;
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  background-color: currentColor;
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}
+.nodeLabel {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ---- Understated progress helper (sits below the loop) ----
+   ← n/N → while stepping through; ⟲ Replay once the pass ends.
+   Deliberately quiet so the focus stays on the journey. */
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  /* hold a steady height so swapping arrows ↔ replay doesn't shift layout */
+  min-height: 26px;
+  margin: var(--space-lg) auto 0;
+}
+.arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 180ms ease, opacity 180ms ease;
+}
+.arrow:hover {
+  color: var(--color-accent);
+}
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+/* simple text + icon control in the centre (play / pause / replay).
+   fixed min-width so the flanking arrows don't shift as the label changes. */
+.ctrlBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 84px;
+  padding: 4px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+.ctrlBtn:hover {
+  color: var(--color-accent);
+}
+/* replay adds a playful icon spin on hover */
+.replay svg {
+  transition: transform 240ms ease;
+}
+.replay:hover svg {
+  transform: rotate(-40deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node {
+    transition: none;
+  }
+}

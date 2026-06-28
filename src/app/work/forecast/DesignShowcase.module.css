@@ -1,0 +1,155 @@
+/* Design showcase — an image that crossfades as you open each "move" on the
+   right. Lives on the light section, so it uses the light-theme tokens. */
+
+.layout {
+  display: grid;
+  /* moves on the left, design on the right */
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: var(--space-xxxl);
+  align-items: center;
+  /* break out a bit wider than the 1200px text column */
+  width: min(1320px, 94vw);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---- The design (right) ---- */
+.media {
+  order: 2;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(11, 9, 33, 0.18);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  /* per-move gradient (set inline) fills the frame; transparent designs float on it */
+  opacity: 0;
+  transform: scale(0.99);
+  transition: opacity 420ms ease, transform 420ms ease;
+  pointer-events: none;
+}
+.slideActive {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.shot {
+  /* landscape screenshots shown whole inside the square frame */
+  object-fit: contain;
+  object-position: center;
+  border-radius: var(--radius-xl);
+}
+
+/* ---- Left column: heading above the moves ---- */
+.leftCol {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  margin-bottom: var(--space-xl);
+}
+.heading h2 {
+  margin-bottom: 0;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.itemOpen {
+  background: var(--color-bg-card);
+  border-color: var(--color-border);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  margin: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.iconWrap {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--color-accent);
+}
+
+.title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: var(--font-h4);
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: transform 240ms ease;
+}
+.itemOpen .chevron {
+  transform: rotate(180deg);
+  color: var(--color-accent-text);
+}
+
+/* expandable body */
+.bodyWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms ease;
+}
+.itemOpen .bodyWrap {
+  grid-template-rows: 1fr;
+}
+.bodyInner {
+  overflow: hidden;
+}
+.body {
+  margin: 0;
+  /* left pad aligns with the title: 20 header + 24 icon + 14 gap */
+  padding: 0 20px 20px 58px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-body2);
+  line-height: 1.6;
+}
+
+/* ---- Mobile: stack the design on top of the list ---- */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+  /* keep the design on top when stacked */
+  .media {
+    order: -1;
+  }
+  .body {
+    padding-left: 20px;
+  }
+}
