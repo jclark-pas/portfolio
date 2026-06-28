@@ -4,8 +4,8 @@ import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import CohortFunnel from "./CohortFunnel";
+import WorkflowCompare from "./WorkflowCompare";
 import JourneyFunnel from "./JourneyFunnel";
 import DesignShowcase from "./DesignShowcase";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
@@ -211,6 +211,13 @@ export default function ForecastPage() {
               actually change numbers and plan ahead, you could see nothing: not this period&rsquo;s
               actuals, not last year&rsquo;s. You were planning blind.
             </p>
+          </div>
+        </div>
+        <div className={styles.inner}>
+          <WorkflowCompare />
+        </div>
+        <div className={styles.narrow} style={{ marginTop: "var(--space-xxl)" }}>
+          <div className={styles.prose}>
             <p>
               The bet behind the work was a strategic one. Our most valuable, longest-tenured
               customers don&rsquo;t write a plan and leave — they manage against it, comparing
@@ -218,32 +225,6 @@ export default function ForecastPage() {
               iterative work dramatically easier, we&rsquo;d retain more users over the long haul.
             </p>
           </div>
-        </div>
-        <div className={styles.wideImageSlider}>
-          <BeforeAfterSlider
-            beforeLabel="Forecast only"
-            afterLabel="Actuals + Forecast"
-            before={
-              <Image
-                src="/images/forecast/forecast-only.png"
-                alt="The forecast before — projections only, with no view of real performance"
-                width={3096}
-                height={2016}
-                sizes="(max-width: 1200px) 100vw, 1200px"
-                priority
-              />
-            }
-            after={
-              <Image
-                src="/images/forecast/forecast-w-actuals.png"
-                alt="The forecast after — real bookkeeping actuals shown inline beside the projections"
-                width={3096}
-                height={2016}
-                sizes="(max-width: 1200px) 100vw, 1200px"
-                priority
-              />
-            }
-          />
         </div>
       </section>
 
