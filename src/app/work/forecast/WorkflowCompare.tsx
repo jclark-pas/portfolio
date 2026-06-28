@@ -1,7 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { UserRound, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
+import {
+  UserRound,
+  ChevronLeft,
+  ChevronRight,
+  RotateCcw,
+  Play,
+  Pause,
+} from "lucide-react";
 import styles from "./WorkflowCompare.module.css";
 
 // the three places the work happened — each shown with its real app icon.
@@ -122,7 +129,7 @@ export default function WorkflowCompare() {
       setPlaying(false);
       return;
     }
-    const t = window.setTimeout(() => setActive((a) => a + 1), 3000);
+    const t = window.setTimeout(() => setActive((a) => a + 1), 4800);
     return () => window.clearTimeout(t);
   }, [playing, active]);
 
@@ -132,9 +139,14 @@ export default function WorkflowCompare() {
   }, []);
 
   const replay = useCallback(() => {
+    // forget where the avatar was parked so it re-enters from the source
+    // (the top dot near the need) rather than travelling from the forecast
+    prevToolRef.current = null;
     setActive(0);
     setPlaying(true);
   }, []);
+
+  const togglePlay = useCallback(() => setPlaying((p) => !p), []);
 
   // flipping Before/After replays the loop from the first need
   const switchMode = useCallback((m: Mode) => {
@@ -164,10 +176,15 @@ export default function WorkflowCompare() {
     const t = wireTo(to);
     const simple = `M ${geo.sx} ${geo.sy} C ${geo.sx} ${t.mid}, ${to.cx} ${t.mid}, ${to.cx} ${t.end}`;
     const prev = prevToolRef.current;
-    if (prev == null || prev === activeTool) {
-      // first entrance, or no move (e.g. After mode stays on the forecast):
+    if (prev != null && prev === activeTool) {
+      // no real move (After mode stays on the forecast, or a resize):
       // reposition without replaying the animation
       setTravel((cur) => ({ d: simple, id: cur ? cur.id : travelIdRef.current }));
+    } else if (prev == null) {
+      // fresh entrance (first load or replay): drop in from the source down
+      // to the node, animating the whole way
+      travelIdRef.current += 1;
+      setTravel({ d: simple, id: travelIdRef.current });
     } else {
       const from = geo.nodes[prev];
       const f = wireTo(from);
@@ -207,11 +224,14 @@ export default function WorkflowCompare() {
         </button>
       </div>
 
-      {/* the user need — voiced in a speech bubble pointing at the user below */}
+      {/* the user need — voiced in a speech bubble pointing at the user below.
+          keyed so each step's need re-animates in (staggered fade-up). */}
       <div className={styles.bubble}>
-        <p className={styles.seq}>{cur.seq}</p>
-        <p className={styles.headline}>{cur.headline}</p>
-        <p className={styles.lead}>{before ? cur.lead : AFTER_LEAD}</p>
+        <div key={`${active}-${mode}`} className={styles.need}>
+          <p className={styles.seq}>{cur.seq}</p>
+          <p className={styles.headline}>{cur.headline}</p>
+          <p className={styles.lead}>{before ? cur.lead : AFTER_LEAD}</p>
+        </div>
       </div>
 
       {/* wires fan from the need down to the apps; tool nodes below */}
@@ -294,42 +314,53 @@ export default function WorkflowCompare() {
         </div>
       </div>
 
-      {/* understated helper: ← n/N → while progressing, ⟲ Replay at the end */}
+      {/* arrows flank a centre control: play/pause while progressing,
+          ⟲ Replay once the run has ended */}
       <div className={styles.progress}>
+        <button
+          type="button"
+          className={styles.arrow}
+          aria-label="Previous need"
+          onClick={() => go(active - 1)}
+          disabled={active === 0}
+        >
+          <ChevronLeft size={16} aria-hidden="true" />
+        </button>
+
         {atEnd ? (
           <button
             type="button"
-            className={styles.replay}
+            className={`${styles.ctrlBtn} ${styles.replay}`}
             onClick={replay}
           >
             <RotateCcw size={14} aria-hidden="true" />
             Replay
           </button>
         ) : (
-          <>
-            <button
-              type="button"
-              className={styles.arrow}
-              aria-label="Previous need"
-              onClick={() => go(active - 1)}
-              disabled={active === 0}
-            >
-              <ChevronLeft size={16} aria-hidden="true" />
-            </button>
-            <span className={styles.count}>
-              {active + 1}/{STEPS.length}
-            </span>
-            <button
-              type="button"
-              className={styles.arrow}
-              aria-label="Next need"
-              onClick={() => go(active + 1)}
-              disabled={active === STEPS.length - 1}
-            >
-              <ChevronRight size={16} aria-hidden="true" />
-            </button>
-          </>
+          <button
+            type="button"
+            className={styles.ctrlBtn}
+            onClick={togglePlay}
+            aria-label={playing ? "Pause" : "Play"}
+          >
+            {playing ? (
+              <Pause size={13} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+            ) : (
+              <Play size={13} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+            )}
+            {playing ? "Pause" : "Play"}
+          </button>
         )}
+
+        <button
+          type="button"
+          className={styles.arrow}
+          aria-label="Next need"
+          onClick={() => go(active + 1)}
+          disabled={active === STEPS.length - 1}
+        >
+          <ChevronRight size={16} aria-hidden="true" />
+        </button>
       </div>
     </div>
   );
