@@ -27,6 +27,7 @@ const STEPS: Step[] = [
   {
     range: "Pre-Signup",
     job: "I need to know if my idea is worth pursuing",
+    callout: "New customers were here",
     topEdge: 100,
     bottomEdge: 84,
     signals: [
@@ -42,7 +43,7 @@ const STEPS: Step[] = [
   {
     range: "0–60 days",
     job: "I need to put together a plan",
-    callout: "Our users were struggling here",
+    callout: "Our current users were struggling here",
     topEdge: 84,
     bottomEdge: 68,
     signals: [
@@ -190,12 +191,12 @@ export default function JourneyFunnel() {
                   .map((s) => s.text)
                   .join("; ")}`}
               >
+                {step.callout ? (
+                  <span className={styles.callout}>{step.callout}</span>
+                ) : null}
                 <span className={styles.bandInner}>
                   <span className={styles.range}>{step.range}</span>
                   <span className={styles.job}>{step.job}</span>
-                  {step.callout ? (
-                    <span className={styles.callout}>{step.callout}</span>
-                  ) : null}
                 </span>
               </button>
 
@@ -204,10 +205,9 @@ export default function JourneyFunnel() {
                 {step.signals.map((sig, j) => (
                   <span
                     key={sig.text}
-                    className={styles.flyChip}
+                    className={`${styles.flyChip} ${styles[sig.category]}`}
                     style={chipVars(j, step.signals.length)}
                   >
-                    <span className={`${styles.dot} ${styles[sig.category]}`} />
                     {sig.text}
                   </span>
                 ))}
