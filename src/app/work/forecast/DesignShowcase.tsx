@@ -16,8 +16,8 @@ type Move = {
   icon: LucideIcon;
   title: string;
   body: string;
-  /** the design we shipped; null = still a labeled placeholder */
-  image: string | null;
+  /** the design we shipped */
+  image: string;
   /** backdrop the (transparent) design floats on */
   gradient: string;
 };
@@ -64,32 +64,21 @@ export default function DesignShowcase({
     <div className={styles.layout}>
       {/* left — the design, crossfading as the active move changes */}
       <div className={styles.media}>
-        {MOVES.map((m, i) =>
-          m.image ? (
-            <div
-              key={m.title}
-              className={`${styles.slide} ${active === i ? styles.slideActive : ""}`}
-              style={{ background: m.gradient }}
-            >
-              <Image
-                src={m.image}
-                alt={m.title}
-                fill
-                sizes="(max-width: 900px) 100vw, 50vw"
-                className={styles.shot}
-              />
-            </div>
-          ) : (
-            <div
-              key={m.title}
-              className={`${styles.slide} ${styles.placeholder} ${
-                active === i ? styles.slideActive : ""
-              }`}
-            >
-              <span>🖼 Design — {m.title}</span>
-            </div>
-          )
-        )}
+        {MOVES.map((m, i) => (
+          <div
+            key={m.title}
+            className={`${styles.slide} ${active === i ? styles.slideActive : ""}`}
+            style={{ background: m.gradient }}
+          >
+            <Image
+              src={m.image}
+              alt={m.title}
+              fill
+              sizes="(max-width: 900px) 100vw, 50vw"
+              className={styles.shot}
+            />
+          </div>
+        ))}
       </div>
 
       {/* left column — section heading above the moves */}

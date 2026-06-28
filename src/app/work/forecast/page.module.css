@@ -80,10 +80,6 @@
   text-align: center;
 }
 
-.heroContent {
-  max-width: 720px;
-}
-
 .heroIntro {
   display: flex;
   flex-direction: column;
@@ -203,19 +199,6 @@
 }
 
 /* ===== Challenge wide image ===== */
-.wideImage {
-  max-width: 1200px;
-  margin: var(--space-xxl) auto 0;
-  aspect-ratio: 16 / 9;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-}
-
-.wideImageSlider {
-  max-width: 1200px;
-  margin: var(--space-xxl) auto 0;
-}
 
 /* ===== Discovery ===== */
 .discoveryDetails {
@@ -261,14 +244,6 @@
 }
 
 /* ===== Discovery research image ===== */
-.researchImg {
-  display: block;
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
-  margin: var(--space-xxl) auto 0;
-  border-radius: var(--radius-lg);
-}
 
 /* ===== Quote section ===== */
 .quoteSection {
@@ -298,30 +273,6 @@
 }
 
 /* ===== Insights grid ===== */
-.insightsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
-}
-
-.insightCard {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-}
-
-.insightIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--color-accent);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-md);
-}
 
 .insightTitle {
   font-size: 22px;
@@ -361,19 +312,7 @@
   margin-top: 2px;
 }
 
-.insightBody {
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-}
-
 /* ===== Two-column ===== */
-.twoCol {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xxxl);
-  align-items: start;
-}
 
 /* Two-column unit: intro left, accordion right (matches the LivePlan
    behavioral-analysis layout). The accordion's own .list flex sets its width. */
@@ -388,55 +327,7 @@
   flex: 1 1 300px;
 }
 
-.sideImage {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  position: sticky;
-  top: var(--space-xxl);
-}
-
 /* ===== Pillars (dark) ===== */
-.pillarGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
-  margin-top: var(--space-xxl);
-}
-
-.pillarCard {
-  background: rgba(253, 251, 247, 0.06);
-  border: 1px solid rgba(253, 251, 247, 0.12);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-}
-
-.pillarIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--color-accent);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-md);
-}
-
-.pillarTitle {
-  font-size: 22px;
-  font-weight: 600;
-  color: #EFE9DB;
-  margin-bottom: var(--space-sm);
-}
-
-.pillarBody {
-  font-size: 16px;
-  line-height: 1.5;
-  color: rgba(253, 251, 247, 0.8);
-}
 
 /* ===== Outcomes ===== */
 .outcomesGrid {
@@ -447,77 +338,9 @@
 }
 
 /* The 3-week turnaround is a velocity story, not a metric — its own callout */
-.velocityCallout {
-  margin-top: var(--space-lg);
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border-light);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-xxl);
-  flex-wrap: wrap;
-}
-
-.velocityText {
-  flex: 1 1 320px;
-}
-
-.velocityEyebrow {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: var(--space-sm);
-}
-
-.velocityTitle {
-  font-size: var(--font-h3);
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-xs);
-}
-
-.velocityBody {
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-  max-width: 56ch;
-}
 
 /* Styled like a speed sign: white plate, bold frame, centered stack.
    Colors are hardcoded since the plate stays white in both themes. */
-.velocityStat {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  text-align: center;
-  min-width: 150px;
-  padding: var(--space-md) var(--space-xl);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-xl);
-  font-family: var(--font-bricolage), sans-serif;
-  font-weight: 700;
-  line-height: 0.9;
-}
-
-.velocityNumber {
-  font-size: clamp(64px, 8vw, 92px);
-  color: var(--color-accent);
-}
-
-.velocityUnit {
-  font-size: clamp(16px, 2.2vw, 22px);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text);
-}
 
 .outcomeCard {
   background: var(--color-bg-card);
@@ -583,47 +406,10 @@
 }
 
 /* Self-framed graphic — no surface fill, border, or radius */
-.galleryImgBare {
-  background: none;
-  border: 0;
-  border-radius: 0;
-}
-
-.galleryCap {
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-  font-style: italic;
-  margin-top: var(--space-sm);
-  text-align: center;
-}
 
 /* ===== Image captions ===== */
-.imageCaption {
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-  font-style: italic;
-  margin-top: var(--space-sm);
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 /* ===== Future Vision link ===== */
-.futureLink {
-  display: inline-block;
-  margin-top: var(--space-xl);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-.futureLink:hover {
-  opacity: 0.7;
-}
 
 /* ===== Related case-study cards (the pivot payoff) ===== */
 .relatedGrid {
@@ -633,12 +419,9 @@
   margin-top: var(--space-xl);
 }
 
-
 /* ===== Responsive ===== */
 @media (max-width: 960px) {
   .heroInner,
-  .twoCol,
-  .tokenGrid,
   .relatedGrid {
     grid-template-columns: 1fr;
   }
@@ -653,8 +436,6 @@
     line-height: 40px;
   }
 
-  .pillarGrid,
-  .insightsGrid,
   .outcomesGrid,
   .statsGrid,
   .discoveryDetails {
@@ -670,9 +451,6 @@
     gap: var(--space-xl);
   }
 
-  .sideImage {
-    position: static;
-  }
 }
 
 @media (max-width: 480px) {
@@ -694,8 +472,6 @@
     padding-bottom: 40px;
   }
 
-  .insightCard,
-  .pillarCard,
   .outcomeCard,
   .statCard {
     padding: 16px;

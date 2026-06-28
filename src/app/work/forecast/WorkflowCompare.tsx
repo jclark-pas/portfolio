@@ -85,6 +85,11 @@ export default function WorkflowCompare() {
       setGeo({ w: tr.width, sx: tr.width / 2, sy: 6, h, nodes });
     };
     measure();
+    // re-measure once the web font lands, so the wires/avatar don't sit on
+    // pre-font geometry on first paint
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      document.fonts.ready.then(measure);
+    }
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, []);

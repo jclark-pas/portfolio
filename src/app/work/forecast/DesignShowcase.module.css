@@ -47,21 +47,6 @@
   border-radius: var(--radius-xl);
 }
 
-.placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--space-xl);
-  background: var(--color-surface);
-  border: 1.5px dashed var(--color-border);
-  box-shadow: none;
-  color: var(--color-text-secondary);
-  font-size: 14px;
-  font-style: italic;
-  line-height: 1.5;
-}
-
 /* ---- Left column: heading above the moves ---- */
 .leftCol {
   order: 1;
