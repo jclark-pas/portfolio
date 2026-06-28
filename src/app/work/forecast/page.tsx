@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import { Target, Scale, Users } from "lucide-react";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
@@ -25,36 +24,6 @@ export const metadata: Metadata = {
     "Leading LivePlan's 2025 forecasting overhaul — and learning that the right tool, aimed at the wrong moment in the customer journey, still can't move the metric that matters.",
   robots: { index: false, follow: false },
 };
-
-/* ---- Placeholder for an image/video asset we haven't dropped in yet ---- */
-function AssetPlaceholder({
-  label,
-  ratio = "16 / 9",
-}: {
-  label: string;
-  ratio?: string;
-}) {
-  const style: CSSProperties = {
-    aspectRatio: ratio,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    padding: "var(--space-xl)",
-    border: "1.5px dashed var(--color-border)",
-    borderRadius: "var(--radius-lg)",
-    background: "var(--color-bg-card)",
-    color: "var(--color-text-secondary)",
-    fontSize: "14px",
-    lineHeight: 1.5,
-    fontStyle: "italic",
-  };
-  return (
-    <div style={style}>
-      <span>🖼 {label}</span>
-    </div>
-  );
-}
 
 const flowStats = [
   {
@@ -523,27 +492,32 @@ export default function ForecastPage() {
       {/* ===== Next steps / future ===== */}
       <section className={styles.section}>
         <div className={styles.inner}>
-          <div className={styles.twoCol}>
-            <div>
-              <p className={styles.eyebrow}>What&rsquo;s Next</p>
-              <h2 className={styles.sectionHeading}>AI that helps you forecast</h2>
-              <div className={styles.prose}>
-                <p>
-                  The loudest signal in our research wasn&rsquo;t for another table — it was for
-                  help building the forecast in the first place. We&rsquo;re now exploring an AI
-                  assistant that can help owners draft and refine a forecast without losing
-                  control of the numbers: escalation patterns, feedback loops, and confidence
-                  cues that keep the human in charge.
-                </p>
-                <p>
-                  It&rsquo;s the same craft thread — make the numbers approachable — applied earlier,
-                  where more people can feel it.
-                </p>
-              </div>
+          <div style={{ maxWidth: "760px" }}>
+            <p className={styles.eyebrow}>What&rsquo;s Next</p>
+            <h2 className={styles.sectionHeading}>AI that helps you forecast</h2>
+            <div className={styles.prose}>
+              <p>
+                The loudest signal in our research wasn&rsquo;t for another table — it was for
+                help building the forecast in the first place. We&rsquo;re now exploring an AI
+                assistant that can help owners draft and refine a forecast without losing
+                control of the numbers: escalation patterns, feedback loops, and confidence
+                cues that keep the human in charge.
+              </p>
+              <p>
+                It&rsquo;s the same craft thread — make the numbers approachable — applied earlier,
+                where more people can feel it.
+              </p>
             </div>
-            <div>
-              <AssetPlaceholder label="Concept — AI forecasting assistant (prototype frames)" ratio="4 / 3" />
-            </div>
+          </div>
+          <div className={styles.aiShot}>
+            <Image
+              src="/images/forecast/ai-forecasting.png"
+              alt="Concept frames for the AI forecasting assistant"
+              width={1420}
+              height={816}
+              sizes="(max-width: 1280px) 94vw, 1200px"
+              className={styles.aiShotImg}
+            />
           </div>
         </div>
       </section>
