@@ -6,7 +6,7 @@
   /* moves on the left, design on the right */
   grid-template-columns: 0.95fr 1.05fr;
   gap: var(--space-xxl);
-  align-items: start;
+  align-items: center;
   margin-top: var(--space-xl);
   /* break out a bit wider than the 1200px text column */
   width: min(1320px, 94vw);
@@ -19,23 +19,17 @@
   order: 2;
   position: relative;
   aspect-ratio: 1 / 1;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    rgba(242, 107, 71, 0.16),
-    rgba(189, 71, 60, 0.08) 55%,
-    rgba(11, 9, 33, 0.05)
-  );
+  box-shadow: 0 18px 40px rgba(11, 9, 33, 0.18);
 }
 
 .slide {
   position: absolute;
-  inset: 18px;
+  inset: 0;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background: var(--color-surface);
-  box-shadow: 0 18px 40px rgba(11, 9, 33, 0.22);
+  /* per-move gradient (set inline) fills the frame; transparent designs float on it */
   opacity: 0;
   transform: scale(0.99);
   transition: opacity 420ms ease, transform 420ms ease;
@@ -69,9 +63,19 @@
   line-height: 1.5;
 }
 
-/* ---- The moves (left) ---- */
-.list {
+/* ---- Left column: heading above the moves ---- */
+.leftCol {
   order: 1;
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  margin-bottom: var(--space-xl);
+}
+.heading h2 {
+  margin-bottom: 0;
+}
+.list {
   display: flex;
   flex-direction: column;
   gap: 10px;

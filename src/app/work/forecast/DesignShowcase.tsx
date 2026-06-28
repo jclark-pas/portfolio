@@ -18,6 +18,8 @@ type Move = {
   body: string;
   /** the design we shipped; null = still a labeled placeholder */
   image: string | null;
+  /** backdrop the (transparent) design floats on */
+  gradient: string;
 };
 
 const MOVES: Move[] = [
@@ -26,28 +28,36 @@ const MOVES: Move[] = [
     title: "Actuals, in line with the forecast",
     body: "Before, the forecast editor was blind — no current actuals, no prior years. You'd read your real numbers on a separate dashboard, switch back, and hold them in your head while editing. Now actuals sit right beside your projections, and you edit in place against real performance.",
     image: "/images/forecast/forecast-inlineactuals.png",
+    gradient: "linear-gradient(135deg, #dcefe2 0%, #d8e8f3 50%, #e2e0f4 100%)",
   },
   {
     icon: ReceiptText,
     title: "A panel, not a tab-switch",
     body: "See an actuals figure and wonder what's behind it? You used to leave for QuickBooks, work out which accounts mapped to that line, and run a roll-up report. Now one click opens a transaction panel in place — spot a miscode instantly, then go fix it at the source.",
-    image: "/images/forecast/forecast-transaction-panel.png",
+    image: "/images/forecast/forecast-panel.png",
+    gradient: "linear-gradient(135deg, #fce4d6 0%, #f6dde6 50%, #e7e3f4 100%)",
   },
   {
     icon: Layers,
     title: "Structure that matches how you think",
     body: "A chart of accounts rarely matches a mental model — sometimes too granular, sometimes not enough. Forecast Groups let users build a two-level hierarchy independent of their books. One olive-oil seller put it best: same bottle, sold direct and retail — why force separate costs for the same product?",
-    image: null,
+    image: "/images/forecast/forecast-groups.png",
+    gradient: "linear-gradient(135deg, #fcebcf 0%, #f8e0d6 50%, #f2dde8 100%)",
   },
   {
     icon: TrendingUp,
     title: "Context at the point of decision",
     body: "Prior-year actuals came into the editor, and the dated bar graphs gave way to modern, interactive line charts — so the history you're forecasting against is visible exactly where you're making the call.",
-    image: null,
+    image: "/images/forecast/forecast-chart.png",
+    gradient: "linear-gradient(135deg, #eadff4 0%, #dde3f6 50%, #d9edf1 100%)",
   },
 ];
 
-export default function DesignShowcase() {
+export default function DesignShowcase({
+  header,
+}: {
+  header?: React.ReactNode;
+}) {
   const [active, setActive] = useState(0);
 
   return (
@@ -59,6 +69,7 @@ export default function DesignShowcase() {
             <div
               key={m.title}
               className={`${styles.slide} ${active === i ? styles.slideActive : ""}`}
+              style={{ background: m.gradient }}
             >
               <Image
                 src={m.image}
@@ -81,9 +92,11 @@ export default function DesignShowcase() {
         )}
       </div>
 
-      {/* right — the moves, one open at a time */}
-      <div className={styles.list}>
-        {MOVES.map((m, i) => {
+      {/* left column — section heading above the moves */}
+      <div className={styles.leftCol}>
+        {header ? <div className={styles.heading}>{header}</div> : null}
+        <div className={styles.list}>
+          {MOVES.map((m, i) => {
           const Icon = m.icon;
           const open = active === i;
           return (
@@ -109,8 +122,9 @@ export default function DesignShowcase() {
                 </div>
               </div>
             </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

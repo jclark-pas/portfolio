@@ -320,9 +320,16 @@ export default function ForecastPage() {
       {/* ===== Design decisions / what we built ===== */}
       <section className={styles.section}>
         <div className={styles.inner}>
-          <p className={styles.eyebrow}>What We Built</p>
-          <h2 className={styles.sectionHeading}>Four moves to close the gap</h2>
-          <DesignShowcase />
+          <DesignShowcase
+            header={
+              <>
+                <p className={styles.eyebrow}>What We Built</p>
+                <h2 className={styles.sectionHeading}>
+                  Four moves to close the gap
+                </h2>
+              </>
+            }
+          />
         </div>
       </section>
 
