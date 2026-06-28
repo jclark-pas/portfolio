@@ -230,6 +230,17 @@
   background: #fdfbf7;
 }
 
+/* ---- Tablet: stop breaking out of the section. Below the 960 container
+   width there's no side whitespace to use, so keep the funnel inside the
+   padded column instead of bleeding toward the viewport edges. ---- */
+@media (max-width: 960px) {
+  .wrap {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+}
+
 /* ---- Mobile: each segment becomes a self-contained, segment-tinted card
    grouping its header with its pains / needs / desires ---- */
 @media (max-width: 720px) {

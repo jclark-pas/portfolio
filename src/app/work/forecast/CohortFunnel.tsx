@@ -17,7 +17,19 @@ export type CohortRow = {
  */
 export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
   const [shrunk, setShrunk] = useState(false);
+  // On narrow screens the side-by-side bar + label doesn't fit, so the label
+  // gets clipped; below this width every row stacks its label under the bar.
+  const [narrow, setNarrow] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(max-width: 560px)");
+    const update = () => setNarrow(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -55,7 +67,7 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
         flexDirection: "column",
         gap: "14px",
         width: "100%",
-        padding: "var(--space-xl)",
+        padding: narrow ? "var(--space-lg)" : "var(--space-xl)",
         background: "rgba(253, 251, 247, 0.05)",
         border: "1px solid rgba(253, 251, 247, 0.14)",
         borderRadius: "var(--radius-xl)",
@@ -63,8 +75,10 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
     >
       {rows.map((row, i) => {
         // the full-width 100% bar leaves no room for a side label, so its
-        // label sits underneath; the narrower bars keep labels to the right
-        const labelUnder = i === 0;
+        // label sits underneath; the narrower bars keep labels to the right —
+        // except on narrow screens, where every label stacks under its bar so
+        // nothing gets clipped
+        const labelUnder = i === 0 || narrow;
         const bar = (
           <div
             style={{
@@ -86,7 +100,7 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
               flexDirection: "column",
               lineHeight: 1.2,
               flexShrink: 0,
-              whiteSpace: "nowrap",
+              whiteSpace: narrow ? "normal" : "nowrap",
             }}
           >
             <span
