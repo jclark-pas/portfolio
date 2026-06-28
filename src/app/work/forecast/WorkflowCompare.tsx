@@ -1,36 +1,51 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  LayoutDashboard,
-  ReceiptText,
-  LineChart,
-  ChevronLeft,
-  ChevronRight,
-  Play,
-  Pause,
-  UserRound,
-} from "lucide-react";
+import { UserRound, ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./WorkflowCompare.module.css";
 
+// the three places the work happened — each shown with its real app icon.
+// app glyphs (brand: false) are masked so they tint with the node color;
+// QuickBooks keeps its full-colour brand mark.
 const TOOLS = [
-  { name: "Dashboard", Icon: LayoutDashboard },
-  { name: "QuickBooks", Icon: ReceiptText },
-  { name: "The forecast", Icon: LineChart },
+  { name: "Dashboard", icon: "/images/forecast/dashboard.svg", brand: false },
+  { name: "QuickBooks", icon: "/images/forecast/qbo-logo.svg", brand: true },
+  { name: "The forecast", icon: "/images/forecast/forecast.svg", brand: false },
 ];
 
 const STEPS = [
-  { job: "I need to see how I’m tracking", tool: 0, trail: "Opened the dashboard" },
-  { job: "I need to trust my actuals", tool: 1, trail: "Jumped to QuickBooks" },
-  { job: "I need to spot trends and opportunities", tool: 0, trail: "Back to the dashboard" },
-  { job: "I need to adjust my forecast", tool: 2, trail: "Finally, into the forecast" },
+  {
+    seq: "First,",
+    headline: "I want to see how I’m tracking against my forecast.",
+    lead: "That information is in the…",
+    tool: 0,
+  },
+  {
+    seq: "Then,",
+    headline: "I might have questions about the numbers I’m seeing.",
+    lead: "So I need to head over to…",
+    tool: 1,
+  },
+  {
+    seq: "After that,",
+    headline: "I need to spot trends and opportunities.",
+    lead: "To do that, I’ll go back to the…",
+    tool: 0,
+  },
+  {
+    seq: "Finally,",
+    headline: "I need to adjust my forecast based on what I found.",
+    lead: "I can’t do that here — only in the…",
+    tool: 2,
+  },
 ];
 
-function switchesUpTo(n: number) {
-  let s = 0;
-  for (let k = 1; k <= n; k++) if (STEPS[k].tool !== STEPS[k - 1].tool) s++;
-  return s;
-}
+// after: the same needs, but every one is met in one place
+const AFTER_LEAD = "Now I can do all of it right here, in the…";
+
+// wires (and the avatar) stop this far above the cards so the avatar
+// hovers over an app rather than covering its icon
+const NODE_GAP = 26;
 
 type Mode = "before" | "after";
 type Geo = {
@@ -95,7 +110,7 @@ export default function WorkflowCompare() {
     if (!playing) return;
     const t = window.setInterval(
       () => setActive((a) => (a + 1) % STEPS.length),
-      1700
+      3000
     );
     return () => window.clearInterval(t);
   }, [playing]);
@@ -109,9 +124,119 @@ export default function WorkflowCompare() {
   const before = mode === "before";
   const activeTool = before ? cur.tool : 2;
 
+  // path of the active wire, for the avatar to travel along
+  const an = geo?.nodes[activeTool];
+  const activeWireD = geo && an
+    ? (() => {
+        const end = an.top - NODE_GAP;
+        const midY = geo.sy + (end - geo.sy) * 0.5;
+        return `M ${geo.sx} ${geo.sy} C ${geo.sx} ${midY}, ${an.cx} ${midY}, ${an.cx} ${end}`;
+      })()
+    : null;
+
   return (
     <div className={styles.wrap} ref={rootRef}>
-      {/* before / after toggle */}
+      <h3 className={styles.title}>The iterative forecasting loop</h3>
+
+      {/* the user need — the focal point */}
+      <p className={styles.seq}>{cur.seq}</p>
+      <p className={styles.headline}>{cur.headline}</p>
+      <p className={styles.lead}>{before ? cur.lead : AFTER_LEAD}</p>
+
+      {/* wires fan from the need down to the apps; tool nodes below */}
+      <div className={styles.track} ref={trackRef}>
+        {geo ? (
+          <svg
+            className={styles.wires}
+            width={geo.w}
+            height={geo.h}
+            viewBox={`0 0 ${geo.w} ${geo.h}`}
+            aria-hidden="true"
+          >
+            {geo.nodes.map((n, k) => {
+              const on = k === activeTool;
+              const dim = !before && k !== 2;
+              const end = n.top - NODE_GAP;
+              const midY = geo.sy + (end - geo.sy) * 0.5;
+              const d = `M ${geo.sx} ${geo.sy} C ${geo.sx} ${midY}, ${n.cx} ${midY}, ${n.cx} ${end}`;
+              return (
+                <path
+                  key={TOOLS[k].name}
+                  d={d}
+                  className={`${styles.wire} ${on ? styles.wireOn : ""} ${
+                    dim ? styles.wireDim : ""
+                  }`}
+                />
+              );
+            })}
+            <circle cx={geo.sx} cy={geo.sy} r="3.5" className={styles.source} />
+          </svg>
+        ) : null}
+
+        {activeWireD ? (
+          <div
+            key={`${active}-${mode}`}
+            className={styles.traveler}
+            style={{ offsetPath: `path('${activeWireD}')` }}
+            role="img"
+            aria-label="The user, heading to the app"
+          >
+            <UserRound size={18} aria-hidden="true" />
+          </div>
+        ) : null}
+
+        <div className={styles.nodes} ref={nodesRef}>
+          {TOOLS.map((t, k) => {
+            const on = k === activeTool;
+            const dim = !before && k !== 2;
+            return (
+              <div
+                key={t.name}
+                className={`${styles.node} ${on ? styles.nodeOn : ""} ${
+                  dim ? styles.dimmed : ""
+                }`}
+              >
+                {t.brand ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={t.icon}
+                    alt=""
+                    width={22}
+                    height={22}
+                    className={styles.nodeIcon}
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <span
+                    className={styles.appIcon}
+                    style={{
+                      maskImage: `url(${t.icon})`,
+                      WebkitMaskImage: `url(${t.icon})`,
+                    }}
+                    aria-hidden="true"
+                  />
+                )}
+                <span className={styles.nodeLabel}>{t.name}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* step dots — autoplay runs until you tap one */}
+      <div className={styles.dots}>
+        {STEPS.map((s, i) => (
+          <button
+            key={s.headline}
+            type="button"
+            className={`${styles.dot} ${i === active ? styles.dotOn : ""}`}
+            aria-label={`Go to need ${i + 1}`}
+            onClick={() => go(i)}
+          />
+        ))}
+      </div>
+
+      {/* before / after toggle — flips the whole loop */}
       <div className={styles.toggle} role="tablist" aria-label="Before or after">
         <button
           type="button"
@@ -133,113 +258,22 @@ export default function WorkflowCompare() {
         </button>
       </div>
 
-      {/* the user need — the focal point */}
-      <div
-        className={styles.user}
-        role="img"
-        aria-label={`User need ${active + 1} of 4`}
+      <button
+        type="button"
+        className={`${styles.nav} ${styles.navPrev}`}
+        aria-label="Previous need"
+        onClick={() => go(active - 1)}
       >
-        <UserRound size={22} aria-hidden="true" />
-      </div>
-      <h3 className={styles.jobTitle}>{cur.job}</h3>
-
-      {/* wires fan from the need down to the apps; tool nodes below */}
-      <div className={styles.track} ref={trackRef}>
-        {geo ? (
-          <svg
-            className={styles.wires}
-            width={geo.w}
-            height={geo.h}
-            viewBox={`0 0 ${geo.w} ${geo.h}`}
-            aria-hidden="true"
-          >
-            {geo.nodes.map((n, k) => {
-              const on = k === activeTool;
-              const dim = !before && k !== 2;
-              const midY = geo.sy + (n.top - geo.sy) * 0.5;
-              const d = `M ${geo.sx} ${geo.sy} C ${geo.sx} ${midY}, ${n.cx} ${midY}, ${n.cx} ${n.top}`;
-              return (
-                <path
-                  key={TOOLS[k].name}
-                  d={d}
-                  className={`${styles.wire} ${on ? styles.wireOn : ""} ${
-                    dim ? styles.wireDim : ""
-                  }`}
-                />
-              );
-            })}
-            <circle cx={geo.sx} cy={geo.sy} r="3.5" className={styles.source} />
-          </svg>
-        ) : null}
-
-        <div className={styles.nodes} ref={nodesRef}>
-          {TOOLS.map((t, k) => {
-            const Icon = t.Icon;
-            const on = k === activeTool;
-            const dim = !before && k !== 2;
-            return (
-              <div
-                key={t.name}
-                className={`${styles.node} ${on ? styles.nodeOn : ""} ${
-                  dim ? styles.dimmed : ""
-                }`}
-              >
-                <Icon className={styles.nodeIcon} size={22} aria-hidden="true" />
-                <span className={styles.nodeLabel}>{t.name}</span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* status line */}
-      <p className={styles.status}>
-        <span className={styles.switchNum}>{before ? switchesUpTo(active) : 0}</span>{" "}
-        app switches
-        <span className={styles.dotSep} aria-hidden="true">
-          ·
-        </span>
-        {before ? cur.trail : "Never left the forecast"}
-      </p>
-
-      {/* step controls */}
-      <div className={styles.controls}>
-        <button
-          type="button"
-          className={styles.btn}
-          aria-label="Previous need"
-          onClick={() => go(active - 1)}
-        >
-          <ChevronLeft size={18} />
-        </button>
-        <button
-          type="button"
-          className={styles.btn}
-          aria-label={playing ? "Pause" : "Play"}
-          onClick={() => setPlaying((p) => !p)}
-        >
-          {playing ? <Pause size={18} /> : <Play size={18} />}
-        </button>
-        <div className={styles.dots}>
-          {STEPS.map((s, i) => (
-            <button
-              key={s.job}
-              type="button"
-              className={`${styles.dot} ${i === active ? styles.dotOn : ""}`}
-              aria-label={`Go to need ${i + 1}`}
-              onClick={() => go(i)}
-            />
-          ))}
-        </div>
-        <button
-          type="button"
-          className={styles.btn}
-          aria-label="Next need"
-          onClick={() => go(active + 1)}
-        >
-          <ChevronRight size={18} />
-        </button>
-      </div>
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        type="button"
+        className={`${styles.nav} ${styles.navNext}`}
+        aria-label="Next need"
+        onClick={() => go(active + 1)}
+      >
+        <ChevronRight size={20} />
+      </button>
     </div>
   );
 }

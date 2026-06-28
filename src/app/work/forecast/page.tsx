@@ -211,9 +211,14 @@ export default function ForecastPage() {
               actually change numbers and plan ahead, you could see nothing: not this period&rsquo;s
               actuals, not last year&rsquo;s. You were planning blind.
             </p>
+            <p>
+              Comparing actuals to your forecast, confirming those actuals were correct, then
+              updating your forecast in response — that everyday loop was a multi-step,
+              multi-app process:
+            </p>
           </div>
         </div>
-        <div className={styles.inner}>
+        <div className={styles.narrow}>
           <WorkflowCompare />
         </div>
         <div className={styles.narrow} style={{ marginTop: "var(--space-xxl)" }}>
