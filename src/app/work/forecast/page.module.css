@@ -330,6 +330,21 @@
   margin-bottom: var(--space-sm);
 }
 
+/* Reflections — coral icon beside each lesson */
+.reflection {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+.reflectionIcon {
+  display: grid;
+  place-items: center;
+  color: var(--color-accent);
+  /* nudge to sit with the title's cap height */
+  margin-top: 2px;
+}
+
 .insightBody {
   font-size: 16px;
   line-height: 1.5;

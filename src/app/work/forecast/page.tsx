@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
+import { Target, Scale, Users } from "lucide-react";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -112,14 +113,17 @@ const cohortFunnel = [
 
 const reflections = [
   {
+    icon: Target,
     title: "Output is not outcome",
     body: "We discovered, tested, and shipped genuinely good tools — and the established customers they were built for loved them. None of it moved long-term churn, because the work was aimed at a moment most users never reach. The lesson that reshaped my judgment: craft quality and business impact are different questions, and you have to keep asking the second one even when the first is going well.",
   },
   {
+    icon: Scale,
     title: "Disagree, then commit — and bring evidence",
     body: "Leadership made a reasonable bet that better forecasting would retain users for the long haul. I disagreed, and I made the case with what I was hearing from customers and the data I had: most users churn long before they have actuals to forecast against. I was overruled, so I committed and helped build the best version of the bet we could. When the churn result came in flat, the same evidence is what let us course-correct fast.",
   },
   {
+    icon: Users,
     title: "Whose needs you optimize for is a design decision",
     body: "Our loudest, highest-value users were a tiny, unrepresentative slice. Listening to them was right; treating their needs as the whole story was the trap. The fix wasn't to listen less — it was to map the needs against the journey, and notice that the leverage on retention sat at the top of the funnel, not the bottom.",
   },
@@ -498,12 +502,20 @@ export default function ForecastPage() {
         <div className={styles.narrow}>
           <h2 className={styles.sectionHeading}>Reflections</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-xl)", marginTop: "var(--space-lg)" }}>
-            {reflections.map((r) => (
-              <div key={r.title}>
-                <h3 className={styles.insightTitle}>{r.title}</h3>
-                <p className={styles.prose}>{r.body}</p>
-              </div>
-            ))}
+            {reflections.map((r) => {
+              const Icon = r.icon;
+              return (
+                <div key={r.title} className={styles.reflection}>
+                  <span className={styles.reflectionIcon} aria-hidden="true">
+                    <Icon size={24} strokeWidth={2} />
+                  </span>
+                  <div>
+                    <h3 className={styles.insightTitle}>{r.title}</h3>
+                    <p className={styles.prose}>{r.body}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
