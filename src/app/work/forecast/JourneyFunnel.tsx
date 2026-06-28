@@ -101,12 +101,6 @@ const STEPS: Step[] = [
   },
 ];
 
-const LEGEND: { category: Category; label: string }[] = [
-  { category: "pains", label: "Pains" },
-  { category: "needs", label: "Needs" },
-  { category: "desires", label: "Desires" },
-];
-
 // Fill deepens and drifts coral → rose down the funnel (a nod to the FigJam
 // pink, kept in the warm brand family). Vibrant enough for cream text on navy.
 const BAND_FILLS = ["#B95C32", "#C2563F", "#CB5050", "#D44A5C", "#DD4369"];
@@ -180,6 +174,21 @@ export default function JourneyFunnel() {
 
   return (
     <div className={styles.wrap} ref={ref}>
+      <p className={styles.legend}>
+        Hover over a segment to see{" "}
+        <span className={styles.legendItem}>
+          <span className={`${styles.dot} ${styles.pains}`} /> Pains
+        </span>
+        ,{" "}
+        <span className={styles.legendItem}>
+          <span className={`${styles.dot} ${styles.needs}`} /> Needs
+        </span>
+        , and{" "}
+        <span className={styles.legendItem}>
+          <span className={`${styles.dot} ${styles.desires}`} /> Desires
+        </span>
+      </p>
+
       <div className={`${styles.figure} ${formed ? styles.formed : ""}`}>
         <div className={styles.funnel} aria-label="Customer journey stages">
           {STEPS.map((step, i) => (
@@ -215,16 +224,6 @@ export default function JourneyFunnel() {
             </div>
           ))}
         </div>
-      </div>
-
-      <div className={styles.legend}>
-        <span className={styles.legendHint}>Hover a stage</span>
-        {LEGEND.map((l) => (
-          <span key={l.category} className={styles.legendItem}>
-            <span className={`${styles.dot} ${styles[l.category]}`} />
-            {l.label}
-          </span>
-        ))}
       </div>
     </div>
   );

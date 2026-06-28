@@ -89,12 +89,18 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
               whiteSpace: "nowrap",
             }}
           >
-            <span style={{ fontSize: "15px", color: "rgba(253,251,247,0.92)" }}>
+            <span
+              style={{
+                fontSize: "17px",
+                fontWeight: 500,
+                color: "rgba(253,251,247,1)",
+              }}
+            >
               <strong
                 style={{
                   color: "var(--color-accent-on-dark)",
-                  fontWeight: 600,
-                  fontSize: "16px",
+                  fontWeight: 700,
+                  fontSize: "19px",
                   marginRight: "9px",
                 }}
               >

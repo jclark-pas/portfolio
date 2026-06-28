@@ -54,7 +54,7 @@
 /* ---- The need, voiced in a speech bubble ---- */
 .bubble {
   position: relative;
-  max-width: 30rem;
+  max-width: 38rem;
   margin: var(--space-lg) auto 0;
   padding: var(--space-md) var(--space-xl) var(--space-lg);
   background: var(--color-surface);
@@ -129,8 +129,8 @@
   /* the copy is a steady 2 lines — reserve exactly that, no slack */
   min-height: 2.3em;
   font-family: var(--font-serif);
-  font-size: var(--font-h3);
-  line-height: var(--line-h3);
+  font-size: var(--font-h2);
+  line-height: var(--line-h2);
   font-weight: 600;
   color: var(--color-text);
   text-wrap: balance;

@@ -54,6 +54,10 @@ const AFTER_LEAD = "Now I can do all of it right here, in the…";
 // hovers over an app rather than covering its icon
 const NODE_GAP = 26;
 
+// dwell on each need before advancing; the wrap-around back to the first need
+// waits twice as long so the restart reads as a deliberate beat, not a skip
+const STEP_MS = 4800;
+
 type Mode = "before" | "after";
 type Geo = {
   w: number;
@@ -122,14 +126,15 @@ export default function WorkflowCompare() {
     return () => io.disconnect();
   }, []);
 
-  // play through the needs once, then stop on the last one (no loop)
+  // play through the needs on a continuous loop; the wrap from the last need
+  // back to the first dwells twice as long so the restart reads deliberately
   useEffect(() => {
     if (!playing) return;
-    if (active >= STEPS.length - 1) {
-      setPlaying(false);
-      return;
-    }
-    const t = window.setTimeout(() => setActive((a) => a + 1), 4800);
+    const last = active >= STEPS.length - 1;
+    const t = window.setTimeout(
+      () => setActive((a) => (a + 1) % STEPS.length),
+      last ? STEP_MS * 2 : STEP_MS
+    );
     return () => window.clearTimeout(t);
   }, [playing, active]);
 

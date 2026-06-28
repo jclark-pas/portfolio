@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Target, Scale, Users } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
@@ -55,7 +56,7 @@ const flowStats = [
 const flowObservations: Observation[] = [
   {
     icon: "speed",
-    title: "The real product was the round-trips it removed",
+    title: "The real benefit was the round-trips it removed",
     summary: "We had an actuals dashboard — just not where you forecast.",
     detail:
       "It compared actuals to forecast and prior years, but none of it was actionable where it mattered, because the forecast itself never showed actuals. We pulled them — and the transaction detail behind them — inline. Now people check reality without leaving the forecast, tens of thousands of times a month.",
@@ -95,7 +96,7 @@ const reflections = [
   {
     icon: Scale,
     title: "Disagree, then commit — and bring evidence",
-    body: "Leadership made a reasonable bet that better forecasting would retain users for the long haul. I disagreed, and I made the case with what I was hearing from customers and the data I had: most users churn long before they have actuals to forecast against. I was overruled, so I committed and helped build the best version of the bet we could. When the churn result came in flat, the same evidence is what let us course-correct fast.",
+    body: "It was a reasonable bet — that better forecasting would retain users for the long haul — and I saw it differently. What I was hearing from customers and the data I had pointed the other way: most users churn long before they have actuals to forecast against. I made that case early, then committed fully and helped build the best version of the bet we could. The lesson that stuck: disagree early and bring evidence, commit completely once the call is made, and keep that evidence close so the team can course-correct together when the results come in.",
   },
   {
     icon: Users,
@@ -146,7 +147,7 @@ export default function ForecastPage() {
           <dl className={styles.metaRow}>
             <div className={styles.metaCell}>
               <dt>Role</dt>
-              <dd>Staff Product Designer (lead)</dd>
+              <dd>Design Lead</dd>
             </div>
             <div className={styles.metaCell}>
               <dt>Team</dt>
@@ -206,7 +207,7 @@ export default function ForecastPage() {
             <p>
               The bet behind the work was a strategic one. Our most valuable, longest-tenured
               customers don&rsquo;t write a plan and leave — they manage against it, comparing
-              forecast to reality every month. Leadership believed that if we made that
+              forecast to reality every month. The thinking went that if we made that
               iterative work dramatically easier, we&rsquo;d retain more users over the long haul.
             </p>
           </div>
@@ -457,28 +458,21 @@ export default function ForecastPage() {
               eliminate experience rot, meet basic expectations.
             </p>
             <p>
-              That redirect is what produced the work I&rsquo;m proudest of at LivePlan — the
-              business-plan redesign that cut early churn, and Idea Canvas, which meets people
-              before they even have a plan. The forecasting work didn&rsquo;t grow the pie. It
-              taught us where the pie actually was.
+              That redirect is what produced the work I&rsquo;m proudest of at LivePlan — the{" "}
+              <Link href="/work/liveplan" className={styles.proseLink}>
+                business-plan redesign
+              </Link>{" "}
+              that cut early churn, and{" "}
+              <Link href="/work/idea-canvas" className={styles.proseLink}>
+                Idea Canvas
+              </Link>
+              , which meets people before they even have a plan. The forecasting work didn&rsquo;t
+              grow the pie. It taught us where the pie actually was.
             </p>
           </div>
         </div>
-        <div className={styles.inner}>
-          <div className={styles.relatedGrid}>
-            {featuredWork
-              .filter((w) => w.href !== "/work/forecast")
-              .slice(0, 2)
-              .map((w) => (
-                <FeaturedWorkCard key={w.href} work={w} stacked />
-              ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ===== Reflections ===== */}
-      <section className={styles.section}>
-        <div className={styles.narrow}>
+        <div className={styles.narrow} style={{ marginTop: "var(--space-xxxl)" }}>
           <h2 className={styles.sectionHeading}>Reflections</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-xl)", marginTop: "var(--space-lg)" }}>
             {reflections.map((r) => {
@@ -495,6 +489,17 @@ export default function ForecastPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        <div className={styles.inner} style={{ marginTop: "var(--space-xxxl)" }}>
+          <div className={styles.relatedGrid}>
+            {featuredWork
+              .filter((w) => w.href !== "/work/forecast")
+              .slice(0, 2)
+              .map((w) => (
+                <FeaturedWorkCard key={w.href} work={w} stacked />
+              ))}
           </div>
         </div>
       </section>
