@@ -206,10 +206,11 @@ export default function ForecastPage() {
           <div className={styles.prose}>
             <p>
               LivePlan helps small businesses build a financial forecast. But the forecast
-              and the real world lived apart. A separate dashboard could show your projections
-              against your actual bookkeeping — yet inside the forecast editor, where you
-              actually change numbers and plan ahead, you could see nothing: not this period&rsquo;s
-              actuals, not last year&rsquo;s. You were planning blind.
+              and their actual financials lived apart. For years, LivePlan has had a separate
+              dashboard that shows projections against actual financial performance pulled from
+              bookkeeping. Yet inside the forecast editor — where you actually change numbers and
+              plan ahead — you could see nothing: not this period&rsquo;s actuals, not last
+              year&rsquo;s. You were planning blind.
             </p>
             <p>
               Comparing actuals to your forecast, confirming those actuals were correct, then
@@ -345,7 +346,7 @@ export default function ForecastPage() {
       </section>
 
       {/* ===== Keeping people in flow (accordion) ===== */}
-      <section className={styles.section}>
+      <section className={`${styles.section} ${styles.cardBand}`}>
         <div className={`${styles.inner} ${styles.pivotLayout}`}>
           <div className={styles.pivotIntro}>
             <p className={styles.eyebrow}>The Craft</p>
@@ -406,39 +407,57 @@ export default function ForecastPage() {
       {/* ===== The reckoning (dark) ===== */}
       <section className={styles.darkSection}>
         <div className={styles.inner}>
-          <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>The Turn</p>
-          <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
-            And it still didn&rsquo;t impact churn
-          </h2>
-          <p className={styles.lead} style={{ color: "rgba(253,251,247,0.8)" }}>
-            We built the right tool. We just built it for a moment most users never reach.
-            Engagement shrank at every step down the funnel — and the deeper the feature, the
-            smaller the audience.
-          </p>
+          <div className={styles.turnLayout}>
+            <div>
+              <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>And yet&hellip;</p>
+              <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
+                Churn remained the same
+              </h2>
+              <p
+                className={styles.lead}
+                style={{ color: "rgba(253,251,247,0.8)", marginBottom: 0 }}
+              >
+                We built the right tool. We just built it for a moment most of our{" "}
+                <strong>core users were months if not years away from</strong>. Engagement
+                shrank at every step down the funnel — and the deeper the feature, the
+                smaller the audience.
+              </p>
+            </div>
 
-          {/* Cohort-shrink funnel — bars start full-width, then collapse to
-              true proportion on scroll-in (see CohortFunnel). Relative figures
-              only; no exact internal counts. */}
-          <CohortFunnel rows={cohortFunnel} />
+            {/* Cohort-shrink funnel — bars start full-width, then collapse to
+                true proportion on scroll-in (see CohortFunnel). Labels sit under
+                each bar so it fits this column. Relative figures only. */}
+            <CohortFunnel rows={cohortFunnel} />
+          </div>
 
-          <div className={styles.prose} style={{ marginTop: "var(--space-xxl)", color: "rgba(253,251,247,0.8)", maxWidth: "780px" }}>
-            <p>
-              Leadership thought that if we made better use of actuals data in LivePlan,
-              we&rsquo;d convince more people to connect their accounting data.
-            </p>
-            <p>
-              <strong style={{ color: "#EFE9DB", fontWeight: 600 }}>
-                But most LivePlan users don&rsquo;t have actuals yet — they&rsquo;re a year or
-                more from needing them, and many churn before they finish a business plan, let
-                alone a forecast.
-              </strong>
-            </p>
-            <p>
-              The cohort we&rsquo;d optimized for was real, and vocal, and tiny. Our own
-              cancellation and reactivation data said the same thing: people left saying
-              &ldquo;I&rsquo;ll come back when I&rsquo;m ready&rdquo; — and a wave of them did, a year
-              and a half later.
-            </p>
+          <div style={{ marginTop: "var(--space-xxxl)", maxWidth: "820px" }}>
+            <h3
+              style={{
+                fontFamily: "var(--font-bricolage), sans-serif",
+                fontSize: "var(--font-h2)",
+                lineHeight: "var(--line-h2)",
+                fontWeight: 600,
+                color: "#EFE9DB",
+                marginBottom: "var(--space-md)",
+              }}
+            >
+              Meeting our actual users where they are
+            </h3>
+            <div
+              className={styles.prose}
+              style={{ color: "rgba(253,251,247,0.8)", marginBottom: "var(--space-xl)" }}
+            >
+              <p>
+                Most users simply weren&rsquo;t there yet. They came to LivePlan to write a
+                business plan — iterative forecasting sat steps, sometimes years, further down
+                their journey, with plenty that could stall them along the way.
+              </p>
+              <p>
+                So I mapped that journey as a funnel, to show leadership just how far most
+                users were from the moment we&rsquo;d been building for — and why it was time
+                to pivot:
+              </p>
+            </div>
           </div>
 
           <JourneyFunnel />

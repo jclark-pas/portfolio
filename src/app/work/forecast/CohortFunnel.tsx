@@ -51,10 +51,9 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
     <div
       ref={ref}
       style={{
-        marginTop: "var(--space-xxl)",
         display: "flex",
         flexDirection: "column",
-        gap: "12px",
+        gap: "14px",
         width: "100%",
         padding: "var(--space-xl)",
         background: "rgba(253, 251, 247, 0.05)",
@@ -62,11 +61,11 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
         borderRadius: "var(--radius-xl)",
       }}
     >
-      {rows.map((row, i) => (
-        <div
-          key={row.label}
-          style={{ width: "66%", display: "flex", alignItems: "center", gap: "14px" }}
-        >
+      {rows.map((row, i) => {
+        // the full-width 100% bar leaves no room for a side label, so its
+        // label sits underneath; the narrower bars keep labels to the right
+        const labelUnder = i === 0;
+        const bar = (
           <div
             style={{
               width: shrunk ? row.width : "100%",
@@ -79,6 +78,8 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
               transitionDelay: `${i * 110}ms`,
             }}
           />
+        );
+        const label = (
           <div
             style={{
               display: "flex",
@@ -107,8 +108,26 @@ export default function CohortFunnel({ rows }: { rows: CohortRow[] }) {
               </em>
             ) : null}
           </div>
-        </div>
-      ))}
+        );
+        return (
+          <div
+            key={row.label}
+            style={
+              labelUnder
+                ? { display: "flex", flexDirection: "column", gap: "7px" }
+                : {
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    overflow: "hidden",
+                  }
+            }
+          >
+            {bar}
+            {label}
+          </div>
+        );
+      })}
     </div>
   );
 }

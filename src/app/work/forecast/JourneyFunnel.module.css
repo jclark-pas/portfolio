@@ -3,9 +3,9 @@
    like they spilled from inside it. Lives on the dark "Turn" section. */
 
 .wrap {
-  margin-top: var(--space-sm);
-  /* headroom so the (taller) chip stack flies into empty space, not the prose */
-  padding-top: 150px;
+  margin-top: 0;
+  /* small headroom; the chip stack is allowed to fly up over the copy on hover */
+  padding-top: var(--space-lg);
   /* break out wider than the 1200px .inner cap to use the side whitespace */
   width: min(1340px, 94vw);
   margin-left: 50%;

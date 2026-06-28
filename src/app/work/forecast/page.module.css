@@ -223,6 +223,18 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
   margin-top: var(--space-xl);
+  /* break out wider than the 860px intro so the columns aren't cramped */
+  width: min(1100px, 92vw);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* "And yet…" — intro text beside the cohort funnel */
+.turnLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: center;
 }
 
 .discoveryItem {
@@ -261,12 +273,13 @@
 /* ===== Quote section ===== */
 .quoteSection {
   padding: var(--space-xxxl) var(--space-xxl);
+  background: var(--color-bg-card);
 }
 
 .bigQuote {
   font-family: var(--font-bricolage), sans-serif;
-  font-size: var(--font-h2);
-  line-height: var(--line-h2);
+  font-size: 44px;
+  line-height: 52px;
   font-weight: 600;
   color: var(--color-text);
   margin-bottom: var(--space-xl);
@@ -510,6 +523,11 @@
   background: var(--color-bg-card);
 }
 
+/* groups a section into the same banded surface as the one above it */
+.cardBand {
+  background: var(--color-bg-card);
+}
+
 .galleryGrid {
   display: flex;
   flex-direction: column;
@@ -610,6 +628,15 @@
   .statsGrid,
   .discoveryDetails {
     grid-template-columns: 1fr;
+  }
+  .discoveryDetails {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+  .turnLayout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
   }
 
   .sideImage {
