@@ -460,8 +460,12 @@ export default function ForecastPage() {
         </div>
         <div className={styles.inner}>
           <div className={styles.relatedGrid}>
-            <FeaturedWorkCard work={featuredWork[0]} stacked />
-            <FeaturedWorkCard work={featuredWork[1]} stacked />
+            {featuredWork
+              .filter((w) => w.href !== "/work/forecast")
+              .slice(0, 2)
+              .map((w) => (
+                <FeaturedWorkCard key={w.href} work={w} stacked />
+              ))}
           </div>
         </div>
       </section>

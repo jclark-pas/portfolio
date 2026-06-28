@@ -3,7 +3,7 @@ import type { FeaturedWork } from "@/components/FeaturedWorkCard";
 export const featuredWork: FeaturedWork[] = [
   {
     number: "01",
-    eyebrow: "LivePlan · Forecast",
+    eyebrow: "LivePlan · Actuals in Forecast",
     title: "When the forecast met reality",
     description:
       "Bringing real accounting actuals into the forecast so owners could plan against reality — and the strategic story of why great craft didn't move churn, and where the real leverage was.",
