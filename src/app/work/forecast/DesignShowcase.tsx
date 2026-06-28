@@ -25,28 +25,28 @@ type Move = {
 const MOVES: Move[] = [
   {
     icon: LineChart,
-    title: "Actuals, in line with the forecast",
-    body: "The forecast editor was blind — no actuals, no prior years. You'd read your real numbers on a separate dashboard and edit from memory. Now they sit right beside your projections, so you edit against reality in place.",
+    title: "Actuals that update the forecast",
+    body: "The forecast editor was blind — no actuals, no prior years. Now they sit inline, recalculating your future projections from your real past performance.",
     image: "/images/forecast/forecast-inlineactuals.png",
     gradient: "linear-gradient(135deg, #dcefe2 0%, #d8e8f3 50%, #e2e0f4 100%)",
   },
   {
     icon: ReceiptText,
-    title: "A panel, not a tab-switch",
-    body: "Wonder what's behind an actuals figure? You used to leave for QuickBooks and run a roll-up report to find out. Now one click opens a transaction panel in place — spot a miscode, then fix it at the source.",
+    title: "A transaction panel, to keep you in flow",
+    body: "Wonder what's behind an actuals figure? You used to leave for QuickBooks and run a roll-up report to find out. Now one click opens a transaction panel in place — no need to leave your forecast flow.",
     image: "/images/forecast/forecast-panel.png",
     gradient: "linear-gradient(135deg, #fce4d6 0%, #f6dde6 50%, #e7e3f4 100%)",
   },
   {
     icon: Layers,
-    title: "Structure that matches how you think",
-    body: "A chart of accounts rarely matches how you think — too granular here, not enough there. Forecast Groups build a two-level hierarchy independent of your books. As one olive-oil seller put it: same bottle, sold direct and retail — why force separate costs?",
+    title: "Forecast groups for organization",
+    body: "A chart of accounts rarely matches how you think — too granular here, not enough there. Forecast Groups build a two-level hierarchy independent of your books. The feature was a win-win, benefiting even forecasters without actuals.",
     image: "/images/forecast/forecast-groups.png",
     gradient: "linear-gradient(135deg, #fcebcf 0%, #f8e0d6 50%, #f2dde8 100%)",
   },
   {
     icon: TrendingUp,
-    title: "Context at the point of decision",
+    title: "Not just charts — a timeline of performance",
     body: "Prior-year actuals came into the editor, and dated bar graphs gave way to interactive line charts — so the history you're forecasting against sits right where you make the call.",
     image: "/images/forecast/forecast-chart.png",
     gradient: "linear-gradient(135deg, #eadff4 0%, #dde3f6 50%, #d9edf1 100%)",
@@ -111,7 +111,7 @@ export default function DesignShowcase({
                 onClick={() => setActive(i)}
               >
                 <span className={styles.iconWrap} aria-hidden="true">
-                  <Icon size={20} strokeWidth={2} />
+                  <Icon size={24} strokeWidth={2} />
                 </span>
                 <h3 className={styles.title}>{m.title}</h3>
                 <ChevronDown className={styles.chevron} size={18} aria-hidden="true" />
