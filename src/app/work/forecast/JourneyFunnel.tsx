@@ -25,11 +25,26 @@ type Step = {
  */
 const STEPS: Step[] = [
   {
+    range: "Pre-Signup",
+    job: "I need to know if my idea is worth pursuing",
+    topEdge: 100,
+    bottomEdge: 84,
+    signals: [
+      { text: "Is there an audience for this?", category: "needs" },
+      { text: "Competitor research is hard and time-consuming", category: "pains" },
+      { text: "Sizing up the market opportunity", category: "needs" },
+      { text: "I might be talking myself into a bad idea", category: "pains" },
+      { text: "A gut-check before I commit time or money", category: "needs" },
+      { text: "Validate my idea before I go all-in", category: "desires" },
+      { text: "The confidence to actually start", category: "desires" },
+    ],
+  },
+  {
     range: "0–60 days",
     job: "I need to put together a plan",
     callout: "Our users were struggling here",
-    topEdge: 100,
-    bottomEdge: 80,
+    topEdge: 84,
+    bottomEdge: 68,
     signals: [
       { text: "Writing from a blank slate is exhausting", category: "pains" },
       { text: "Re-writing inaccurate AI is tedious", category: "pains" },
@@ -43,8 +58,8 @@ const STEPS: Step[] = [
   {
     range: "60–90 days",
     job: "I need to share, publish & present my plan",
-    topEdge: 80,
-    bottomEdge: 60,
+    topEdge: 68,
+    bottomEdge: 54,
     signals: [
       { text: "Not knowing if anyone's actually reading my plan", category: "pains" },
       { text: "Share my plan with an investor", category: "needs" },
@@ -55,7 +70,7 @@ const STEPS: Step[] = [
   {
     range: "90–120 days",
     job: "I need to execute my plan",
-    topEdge: 60,
+    topEdge: 54,
     bottomEdge: 42,
     signals: [
       { text: "Standing up bookkeeping from scratch", category: "pains" },
@@ -93,7 +108,7 @@ const LEGEND: { category: Category; label: string }[] = [
 
 // Fill deepens and drifts coral → rose down the funnel (a nod to the FigJam
 // pink, kept in the warm brand family). Vibrant enough for cream text on navy.
-const BAND_FILLS = ["#C2563F", "#CB5050", "#D44A5C", "#DD4369"];
+const BAND_FILLS = ["#B95C32", "#C2563F", "#CB5050", "#D44A5C", "#DD4369"];
 
 function bandVars(step: Step, i: number) {
   const w = step.topEdge;
@@ -114,12 +129,12 @@ function bandVars(step: Step, i: number) {
 // Where each chip lands when it bursts out of the top — a wide upward fountain,
 // deterministic so it's stable across renders. j = index, n = count in the step.
 function chipVars(j: number, n: number) {
-  // Spread left → right across the segment's top edge…
+  // Spread left → right across the segment's wide top edge…
   const xFrac = n === 1 ? 0 : (j / (n - 1)) * 2 - 1; // -1..1
-  const reachX = 250; // keep narrow so outer chips stay on-screen
+  const reachX = 400; // wide fan so the chips don't crowd each other
   const tx = Math.round(xFrac * reachX);
   // …and cycle three height tiers so they stack taller, not wider.
-  const tiers = [44, 92, 140];
+  const tiers = [40, 104, 168];
   const arc = Math.round(Math.abs(xFrac) * 14); // outer chips dip slightly
   const ty = -(tiers[j % 3] - arc);
   const rot = (j % 2 === 0 ? 1 : -1) * (2 + ((j * 13) % 5)); // small tilt
