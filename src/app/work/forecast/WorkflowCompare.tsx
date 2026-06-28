@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { UserRound, ChevronLeft, ChevronRight } from "lucide-react";
+import { UserRound, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 import styles from "./WorkflowCompare.module.css";
 
 // the three places the work happened — each shown with its real app icon.
@@ -61,9 +61,13 @@ export default function WorkflowCompare() {
   const [mode, setMode] = useState<Mode>("before");
   const [playing, setPlaying] = useState(false);
   const [geo, setGeo] = useState<Geo | null>(null);
+  // the avatar's journey path; `id` bumps only on a real move so it replays
+  const [travel, setTravel] = useState<{ d: string; id: number } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const nodesRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const prevToolRef = useRef<number | null>(null);
+  const travelIdRef = useRef(1);
 
   // measure the wire geometry: source point (top) + each tool's top-centre
   useEffect(() => {
@@ -106,42 +110,104 @@ export default function WorkflowCompare() {
     return () => io.disconnect();
   }, []);
 
+  // play through the needs once, then stop on the last one (no loop)
   useEffect(() => {
     if (!playing) return;
-    const t = window.setInterval(
-      () => setActive((a) => (a + 1) % STEPS.length),
-      3000
-    );
-    return () => window.clearInterval(t);
-  }, [playing]);
+    if (active >= STEPS.length - 1) {
+      setPlaying(false);
+      return;
+    }
+    const t = window.setTimeout(() => setActive((a) => a + 1), 3000);
+    return () => window.clearTimeout(t);
+  }, [playing, active]);
 
   const go = useCallback((n: number) => {
     setPlaying(false);
     setActive(((n % STEPS.length) + STEPS.length) % STEPS.length);
   }, []);
 
+  const replay = useCallback(() => {
+    setActive(0);
+    setPlaying(true);
+  }, []);
+
+  // flipping Before/After replays the loop from the first need
+  const switchMode = useCallback((m: Mode) => {
+    setMode(m);
+    setActive(0);
+    setPlaying(true);
+  }, []);
+
+  // the run has finished its pass and is parked on the last need
+  const atEnd = !playing && active === STEPS.length - 1;
+
   const cur = STEPS[active];
   const before = mode === "before";
   const activeTool = before ? cur.tool : 2;
 
-  // path of the active wire, for the avatar to travel along
-  const an = geo?.nodes[activeTool];
-  const activeWireD = geo && an
-    ? (() => {
-        const end = an.top - NODE_GAP;
-        const midY = geo.sy + (end - geo.sy) * 0.5;
-        return `M ${geo.sx} ${geo.sy} C ${geo.sx} ${midY}, ${an.cx} ${midY}, ${an.cx} ${end}`;
-      })()
-    : null;
+  // build the avatar's travel path. A move retraces from where it stands, back
+  // up to the branch point, then down to the next app — one continuous journey.
+  useEffect(() => {
+    if (!geo) return;
+    const to = geo.nodes[activeTool];
+    if (!to) return;
+    const wireTo = (n: { cx: number; top: number }) => {
+      const end = n.top - NODE_GAP;
+      const mid = geo.sy + (end - geo.sy) * 0.5;
+      return { end, mid };
+    };
+    const t = wireTo(to);
+    const simple = `M ${geo.sx} ${geo.sy} C ${geo.sx} ${t.mid}, ${to.cx} ${t.mid}, ${to.cx} ${t.end}`;
+    const prev = prevToolRef.current;
+    if (prev == null || prev === activeTool) {
+      // first entrance, or no move (e.g. After mode stays on the forecast):
+      // reposition without replaying the animation
+      setTravel((cur) => ({ d: simple, id: cur ? cur.id : travelIdRef.current }));
+    } else {
+      const from = geo.nodes[prev];
+      const f = wireTo(from);
+      // from the current app → up to the source → down to the next app
+      const d =
+        `M ${from.cx} ${f.end} C ${from.cx} ${f.mid}, ${geo.sx} ${f.mid}, ${geo.sx} ${geo.sy}` +
+        ` C ${geo.sx} ${t.mid}, ${to.cx} ${t.mid}, ${to.cx} ${t.end}`;
+      travelIdRef.current += 1;
+      setTravel({ d, id: travelIdRef.current });
+    }
+    prevToolRef.current = activeTool;
+  }, [activeTool, geo]);
 
   return (
     <div className={styles.wrap} ref={rootRef}>
-      <h3 className={styles.title}>The iterative forecasting loop</h3>
+      <h3 className={styles.title}>User Journey</h3>
 
-      {/* the user need — the focal point */}
-      <p className={styles.seq}>{cur.seq}</p>
-      <p className={styles.headline}>{cur.headline}</p>
-      <p className={styles.lead}>{before ? cur.lead : AFTER_LEAD}</p>
+      {/* before / after toggle — flips the whole loop */}
+      <div className={styles.toggle} role="tablist" aria-label="Before or after">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={before}
+          className={`${styles.seg} ${before ? styles.segOn : ""}`}
+          onClick={() => switchMode("before")}
+        >
+          Before
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={!before}
+          className={`${styles.seg} ${!before ? styles.segOn : ""}`}
+          onClick={() => switchMode("after")}
+        >
+          After
+        </button>
+      </div>
+
+      {/* the user need — voiced in a speech bubble pointing at the user below */}
+      <div className={styles.bubble}>
+        <p className={styles.seq}>{cur.seq}</p>
+        <p className={styles.headline}>{cur.headline}</p>
+        <p className={styles.lead}>{before ? cur.lead : AFTER_LEAD}</p>
+      </div>
 
       {/* wires fan from the need down to the apps; tool nodes below */}
       <div className={styles.track} ref={trackRef}>
@@ -173,13 +239,13 @@ export default function WorkflowCompare() {
           </svg>
         ) : null}
 
-        {activeWireD ? (
+        {travel ? (
           <div
-            key={`${active}-${mode}`}
+            key={travel.id}
             className={styles.traveler}
-            style={{ offsetPath: `path('${activeWireD}')` }}
+            style={{ offsetPath: `path('${travel.d}')` }}
             role="img"
-            aria-label="The user, heading to the app"
+            aria-label="The user, moving to the app"
           >
             <UserRound size={18} aria-hidden="true" />
           </div>
@@ -223,57 +289,43 @@ export default function WorkflowCompare() {
         </div>
       </div>
 
-      {/* step dots — autoplay runs until you tap one */}
-      <div className={styles.dots}>
-        {STEPS.map((s, i) => (
+      {/* understated helper: ← n/N → while progressing, ⟲ Replay at the end */}
+      <div className={styles.progress}>
+        {atEnd ? (
           <button
-            key={s.headline}
             type="button"
-            className={`${styles.dot} ${i === active ? styles.dotOn : ""}`}
-            aria-label={`Go to need ${i + 1}`}
-            onClick={() => go(i)}
-          />
-        ))}
+            className={styles.replay}
+            onClick={replay}
+          >
+            <RotateCcw size={14} aria-hidden="true" />
+            Replay
+          </button>
+        ) : (
+          <>
+            <button
+              type="button"
+              className={styles.arrow}
+              aria-label="Previous need"
+              onClick={() => go(active - 1)}
+              disabled={active === 0}
+            >
+              <ChevronLeft size={16} aria-hidden="true" />
+            </button>
+            <span className={styles.count}>
+              {active + 1}/{STEPS.length}
+            </span>
+            <button
+              type="button"
+              className={styles.arrow}
+              aria-label="Next need"
+              onClick={() => go(active + 1)}
+              disabled={active === STEPS.length - 1}
+            >
+              <ChevronRight size={16} aria-hidden="true" />
+            </button>
+          </>
+        )}
       </div>
-
-      {/* before / after toggle — flips the whole loop */}
-      <div className={styles.toggle} role="tablist" aria-label="Before or after">
-        <button
-          type="button"
-          role="tab"
-          aria-selected={before}
-          className={`${styles.seg} ${before ? styles.segOn : ""}`}
-          onClick={() => setMode("before")}
-        >
-          Before
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={!before}
-          className={`${styles.seg} ${!before ? styles.segOn : ""}`}
-          onClick={() => setMode("after")}
-        >
-          After
-        </button>
-      </div>
-
-      <button
-        type="button"
-        className={`${styles.nav} ${styles.navPrev}`}
-        aria-label="Previous need"
-        onClick={() => go(active - 1)}
-      >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        type="button"
-        className={`${styles.nav} ${styles.navNext}`}
-        aria-label="Next need"
-        onClick={() => go(active + 1)}
-      >
-        <ChevronRight size={20} />
-      </button>
     </div>
   );
 }
