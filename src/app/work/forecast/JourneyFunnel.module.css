@@ -289,7 +289,13 @@
     font-size: 21px;
     text-wrap: initial;
   }
+  /* the callout is absolutely positioned on desktop (the band reserves height
+     for it). On mobile the band is auto-height, so float it back into flow as a
+     full-bleed ribbon at the top of the card — otherwise it overlaps the header. */
   .callout {
+    position: static;
+    display: block;
+    margin: -16px -18px 14px; /* bleed to the card edges, then gap before the header */
     font-size: 14px;
   }
   .flyChip {
