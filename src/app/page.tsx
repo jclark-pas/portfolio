@@ -13,7 +13,7 @@ import { testimonials } from "@/data/testimonials";
 import styles from "./page.module.css";
 
 const RESUME_DOWNLOAD_URL =
-  "https://drive.google.com/uc?export=download&id=1FxqJBJbCU9N4INfEJqP8qQQM5SbhITbo";
+  "https://drive.google.com/uc?export=download&id=1DGHqxANFJxMhypH82vOhf_COCVt8VIAj";
 
 export default function Home() {
   return (
