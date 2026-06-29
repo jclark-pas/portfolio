@@ -275,6 +275,12 @@
     opacity: 1 !important;
     filter: none !important;
     cursor: default;
+    /* The band centers a single child on desktop (flex row). In card mode the
+       callout is back in flow, so stack children in a column and let them fill
+       the width — otherwise the callout and header sit side-by-side and overlap. */
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
   }
   .bandInner {
     width: 100%;
