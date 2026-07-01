@@ -1,13 +1,8 @@
 .entry {
   width: 100%;
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
-  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
-
-.entry:has(.header:hover) {
-  border-color: var(--color-accent);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .entry:has(.header:hover):not(.open) {

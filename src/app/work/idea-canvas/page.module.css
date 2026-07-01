@@ -172,7 +172,6 @@
 
 .statCard {
   background: var(--color-surface);
-  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   display: flex;
@@ -225,7 +224,6 @@
 
 .discoveryItem {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
 }
@@ -289,7 +287,6 @@
 
 .insightCard {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
 }
@@ -360,7 +357,6 @@
 
 .pillarCard {
   background: rgba(253, 251, 247, 0.06);
-  border: 1px solid rgba(253, 251, 247, 0.12);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
 }
@@ -403,7 +399,6 @@
   padding: var(--space-xl);
   border-radius: var(--radius-lg);
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -472,7 +467,6 @@
 
 .outcomeCard {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
 }

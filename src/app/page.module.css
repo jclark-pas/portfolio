@@ -27,9 +27,9 @@
 }
 
 .featuredList {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
 }
 
 .workHeader {
@@ -177,9 +177,6 @@
   .sectionTitleLg {
     font-size: 48px;
     line-height: 60px;
-  }
-  .featuredList {
-    grid-template-columns: 1fr;
   }
 }
 
