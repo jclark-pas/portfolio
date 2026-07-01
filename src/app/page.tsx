@@ -33,8 +33,8 @@ export default function Home() {
             </Link>
           </div>
           <div className={styles.featuredList}>
-            {featuredWork.map((work) => (
-              <FeaturedWorkCard key={work.href} work={work} stacked />
+            {featuredWork.slice(0, 2).map((work) => (
+              <FeaturedWorkCard key={work.href} work={work} />
             ))}
           </div>
         </div>

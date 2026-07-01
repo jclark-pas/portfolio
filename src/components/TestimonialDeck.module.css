@@ -22,7 +22,6 @@
   border-radius: var(--radius-xl);
   /* opaque base so stacked cards don't show through the translucent card bg */
   background: var(--color-surface);
-  border: 1px solid var(--color-border-light);
   box-shadow: 0 2px 8px rgba(11, 9, 33, 0.05);
   transform: translate(var(--tx), var(--ty));
   transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
