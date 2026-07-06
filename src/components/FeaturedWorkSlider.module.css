@@ -1,0 +1,77 @@
+/* Horizontal case-study track. Cards keep a fixed width: when they all fit
+   they sit centered and static; when the viewport is too narrow the row
+   becomes a swipe slider and the overflowing edge fades into the background. */
+.viewport {
+  /* holds the scroll track plus the two edge scrims (pinned to the viewport
+     edges). --gutter (set from JS) is the content-column inset; the negative
+     margin bleeds the track out to the full viewport width. */
+  position: relative;
+  margin-inline: calc(-1 * var(--gutter, 0px));
+}
+
+.track {
+  display: flex;
+  gap: var(--space-xl);
+  /* start-aligned so the first card stays locked to the column gutter (and the
+     header) whether the row fits or scrolls */
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x proximity;
+  /* leading/trailing gutter aligns the first/last card with the page column
+     even though the track spans the full viewport */
+  padding-inline: var(--gutter, 0px);
+  scroll-padding-inline: var(--gutter, 0px);
+  /* small breathing room top/bottom for the cards' subtle hover lift */
+  padding-block: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  flex: 0 0 400px;
+  max-width: 80vw;
+  scroll-snap-align: start;
+}
+
+/* Edge scrims — a gradient of the page background pinned to each edge. Their
+   opacity is driven by scroll distance (in the component) so the "shadow" eases
+   in as you scroll rather than popping on. The eased colour stops keep the fade
+   soft (no hard band). */
+.fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-surface) 0,
+    color-mix(in srgb, var(--color-surface) 80%, transparent) 30px,
+    color-mix(in srgb, var(--color-surface) 42%, transparent) 60px,
+    color-mix(in srgb, var(--color-surface) 12%, transparent) 90px,
+    transparent 120px
+  );
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--color-surface) 0,
+    color-mix(in srgb, var(--color-surface) 80%, transparent) 30px,
+    color-mix(in srgb, var(--color-surface) 42%, transparent) 60px,
+    color-mix(in srgb, var(--color-surface) 12%, transparent) 90px,
+    transparent 120px
+  );
+}

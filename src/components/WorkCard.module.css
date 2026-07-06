@@ -1,15 +1,10 @@
 .card {
   display: flex;
   flex-direction: column;
-  background: var(--color-surface);
+  /* same surface as the featured cards above */
+  background: var(--color-bg-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 28px 64px rgba(11, 9, 33, 0.16);
 }
 
 /* Full-bleed image on top */

@@ -51,12 +51,6 @@
   color: var(--color-accent);
 }
 
-.featuredList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-}
-
 .moreWorkGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

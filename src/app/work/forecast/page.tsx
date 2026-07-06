@@ -5,15 +5,11 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
-import CohortFunnel from "./CohortFunnel";
 import WorkflowCompare from "./WorkflowCompare";
 import JourneyFunnel from "./JourneyFunnel";
 import DesignShowcase from "./DesignShowcase";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import { featuredWork } from "@/data/featuredWork";
-import ObservationAccordion, {
-  type Observation,
-} from "@/components/ObservationAccordion";
 import styles from "./page.module.css";
 
 // DRAFT case study — not registered in projects.ts (stays off the public /work grid)
@@ -26,6 +22,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+// One consolidated stats band: three wins, then the deliberate dissonance (0% churn).
 const flowStats = [
   {
     value: "30%",
@@ -40,10 +37,10 @@ const flowStats = [
       "Reviewing a number used to mean tab-hopping to QuickBooks and building a report. Now it's a single click on the figure itself.",
   },
   {
-    value: "3 in 4",
-    title: "Adjusted their forecast in place",
+    value: "10k+",
+    title: "QuickBooks round-trips avoided / month",
     label:
-      "Most accounts that turned on Actuals + Forecast went on to edit their forecast right there — see reality, change the plan, without switching context.",
+      "Every transaction-panel open is a time a user inspected their bookkeeping detail without ever leaving LivePlan.",
   },
   {
     value: "0%",
@@ -53,50 +50,16 @@ const flowStats = [
   },
 ];
 
-const flowObservations: Observation[] = [
-  {
-    icon: "speed",
-    title: "The real benefit was the round-trips it removed",
-    summary: "We had an actuals dashboard — just not where you forecast.",
-    detail:
-      "It compared actuals to forecast and prior years, but none of it was actionable where it mattered, because the forecast itself never showed actuals. We pulled them — and the transaction detail behind them — inline. Now people check reality without leaving the forecast, tens of thousands of times a month.",
-  },
-  {
-    icon: "click",
-    title: "Designing inside a hard engineering constraint",
-    summary: "No drag-and-drop, no multi-select — and it still had to feel obvious.",
-    detail:
-      "Table virtualization (rows off-screen aren't loaded) ruled out the two most obvious ways to organize Forecast Groups: drag-and-drop and multi-select. I had to invent a create/add/remove interaction without either, then user-test it hard. The behavior backed it up: about 8 in 10 people who created a group populated it, most built a true two-level hierarchy, and they added items to groups roughly fifty times for every one they removed — the model landed on the first try.",
-  },
-  {
-    icon: "trust",
-    title: "Forecast the future from what actually happened",
-    detail:
-      "Our domain experts agreed: the most useful input to next year's forecast is last year's actuals. So once actuals were in the forecast, we prioritized real past-period numbers — letting users build forward from them, basing year-over-year growth on what really happened instead of old predictions that never panned out.",
-  },
-];
-
-// Percentage widths (true proportions) of a responsive bar track, so the bars
-// scale with the container while each label still sits flush to its bar.
-const cohortFunnel = [
-  { label: "Active accounts", note: "the whole base", pct: "100%", width: "100%" },
-  { label: "Connected their accounting", note: "", pct: "10%", width: "10%" },
-  { label: "Turned on Actuals + Forecast", note: "", pct: "6%", width: "6%" },
-  { label: "Built Forecast Groups", note: "", pct: "5.5%", width: "5.5%" },
-  { label: "Used transaction drill-down", note: "", pct: "4.5%", width: "4.5%" },
-  { label: "Opened the AI monthly review", note: "", pct: "<1%", width: "1%" },
-];
-
 const reflections = [
   {
     icon: Target,
     title: "Output is not outcome",
-    body: "We discovered, tested, and shipped genuinely good tools — and the established customers they were built for loved them. None of it moved churn, because we were too far down the user journey funnel for long-term impact. The lesson that reshaped my judgment: craft quality and business impact are different questions, and you have to keep asking the second one even when the first is going well.",
+    body: "We shipped genuinely good tools, and the customers they were built for loved them — but none of it moved churn, because we were too far down the journey funnel to matter. The lesson that reshaped my judgment: craft quality and business impact are different questions, and you have to keep asking the second even when the first is going well.",
   },
   {
     icon: Scale,
     title: "Disagree, then commit — and bring evidence",
-    body: "It was a reasonable bet — that better forecasting would retain users for the long haul — and I saw it differently. What I was hearing from customers and the data I had pointed the other way: most users churn long before they have actuals to forecast against. I made that case early, then committed fully and helped build the best version of the bet we could. The lesson that stuck: disagree early and bring evidence, commit completely once the call is made, and keep that evidence close so the team can course-correct together when the results come in.",
+    body: "It was a reasonable bet — that better forecasting would retain users long-term — but the customers and data I had pointed the other way: most users churn long before they have actuals to forecast against. I made that case early, committed fully, and helped build the best version of the bet we could. The lesson: disagree early with evidence, commit completely once the call is made, and keep that evidence close so the team can course-correct together when results come in.",
   },
   {
     icon: Users,
@@ -139,10 +102,10 @@ export default function ForecastPage() {
             </div>
           </div>
           <p className={styles.heroDescription}>
-            I led design for LivePlan&rsquo;s 2025 forecasting overhaul — bringing real
-            accounting actuals into the forecast so owners could plan against reality, not
-            just possibility. The craft landed for the customers it was built for. It still
-            didn&rsquo;t move the metric we were chasing — and why is the more useful story.
+            I led design for LivePlan&rsquo;s 2025 forecasting overhaul, bringing real
+            accounting actuals into the forecast so owners could plan against reality. The
+            craft landed for the customers it was built for — but it didn&rsquo;t move the
+            metric we were chasing, and why is the more useful story.
           </p>
           <dl className={styles.metaRow}>
             <div className={styles.metaCell}>
@@ -185,17 +148,12 @@ export default function ForecastPage() {
           </h2>
           <div className={styles.prose}>
             <p>
-              LivePlan helps small businesses build a financial forecast. But the forecast
-              and their actual financials lived apart. For years, LivePlan has had a separate
-              dashboard that shows projections against actual financial performance pulled from
-              bookkeeping. Yet inside the forecast editor — where you actually change numbers and
-              plan ahead — you could see nothing: not this period&rsquo;s actuals, not last
-              year&rsquo;s. You were planning blind.
-            </p>
-            <p>
-              Comparing actuals to your forecast, confirming those actuals were correct, then
-              updating your forecast in response — that everyday loop was a multi-step,
-              multi-app process:
+              LivePlan helps small businesses build a financial forecast — but the forecast
+              and their actual financials lived apart. A separate dashboard compared
+              projections to bookkeeping, yet inside the forecast editor, where you actually
+              change numbers, you could see neither this period&rsquo;s actuals nor last
+              year&rsquo;s. You were planning blind, and the everyday loop of comparing and
+              adjusting was a multi-step, multi-app process:
             </p>
           </div>
         </div>
@@ -214,7 +172,7 @@ export default function ForecastPage() {
         </div>
       </section>
 
-      {/* ===== Discovery ===== */}
+      {/* ===== Discovery → Key insight ===== */}
       <section className={styles.section}>
         <div className={styles.narrow}>
           <p className={styles.eyebrow}>Discovery</p>
@@ -223,43 +181,11 @@ export default function ForecastPage() {
           </h2>
           <p className={styles.lead}>
             We talked to the customers who do this work every month — established owners
-            reconciling plan against actuals. We didn&rsquo;t have to dig for the friction. The
-            same questions came up, unprompted, again and again:
+            reconciling plan against actuals. We didn&rsquo;t have to dig for the friction:
+            the same three asks came up unprompted — see actuals where you plan, interrogate
+            a number without leaving for QuickBooks, and organize the forecast the way you
+            actually think.
           </p>
-        </div>
-        <div className={styles.narrow}>
-          <div className={styles.discoveryDetails}>
-            <div className={styles.discoveryItem}>
-              <h3 className={styles.discoveryItemTitle}>
-                &ldquo;Why can&rsquo;t I see my actuals where I&rsquo;m planning?&rdquo;
-              </h3>
-              <p className={styles.discoveryItemBody}>
-                Real performance lived on a separate dashboard. The moment they sat down to
-                change the forecast, the numbers they needed were a tab away — so they memorized,
-                switched back, and hoped they had it right.
-              </p>
-            </div>
-            <div className={styles.discoveryItem}>
-              <h3 className={styles.discoveryItemTitle}>
-                &ldquo;Wait — what is that number?&rdquo;
-              </h3>
-              <p className={styles.discoveryItemBody}>
-                An actuals figure would look off, and there was no way to interrogate it without
-                leaving for QuickBooks, working out which accounts fed that line, and running a
-                report just to see what actually&nbsp;happened.
-              </p>
-            </div>
-            <div className={styles.discoveryItem}>
-              <h3 className={styles.discoveryItemTitle}>
-                &ldquo;Let me organize this the way I think.&rdquo;
-              </h3>
-              <p className={styles.discoveryItemBody}>
-                A long, flat list didn&rsquo;t match how owners hold their business in their
-                heads. They&rsquo;d been asking for grouping and roll-ups for years — structure
-                that mirrored their mental model, not their chart of&nbsp;accounts.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -275,11 +201,6 @@ export default function ForecastPage() {
             The job wasn&rsquo;t to add a comparison feature — it was to collapse the distance
             between where you see your performance and where you plan your future, so reviewing
             reality stops being a chore and becomes part of the flow.
-          </p>
-          <p className={styles.quoteFollow}>
-            That framing drove every decision that followed: bring actuals to the forecast,
-            bring the bookkeeping detail inside the tool, and keep the table calm even as it
-            got more powerful.
           </p>
         </div>
       </section>
@@ -325,89 +246,23 @@ export default function ForecastPage() {
         </div>
       </section>
 
-      {/* ===== Keeping people in flow (accordion) ===== */}
-      <section className={`${styles.section} ${styles.cardBand}`}>
-        <div className={`${styles.inner} ${styles.pivotLayout}`}>
-          <div className={styles.pivotIntro}>
-            <p className={styles.eyebrow}>The Craft</p>
-            <h2 className={styles.sectionHeading}>Keeping people in flow</h2>
-            <div className={styles.prose}>
-              <p>
-                Every decision here was a fight against context-switching. The measure of
-                success wasn&rsquo;t a new screen — it was the round-trips, the tab-switches, and
-                the memorized numbers we could make disappear.
-              </p>
-            </div>
-          </div>
-          <ObservationAccordion observations={flowObservations} />
-        </div>
-      </section>
-
-      {/* ===== Outcomes for the people it was for ===== */}
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>What It Proved</p>
-          <h2 className={styles.sectionHeading}>
-            It worked — for the people it was built for
-          </h2>
-          <p className={styles.lead}>
-            Among the customers who&rsquo;d connected their accounting, the work landed. They
-            stopped leaving the forecast to check reality, investigated their numbers in a
-            click, and adjusted their plans in place.
-          </p>
-          <div className={styles.outcomesGrid}>
-            <div className={styles.outcomeCard}>
-              <p className={styles.outcomeStat}>30%</p>
-              <h3 className={styles.outcomeTitle}>Fewer trips to the Dashboard</h3>
-              <p className={styles.outcomeBody}>
-                Once actuals lived inside the forecast, people stopped jumping out to the
-                standalone Dashboard to see how they were tracking.
-              </p>
-            </div>
-            <div className={styles.outcomeCard}>
-              <p className={styles.outcomeStat}>8 in 10</p>
-              <h3 className={styles.outcomeTitle}>Groups created, then populated</h3>
-              <p className={styles.outcomeBody}>
-                Despite a design with no drag-and-drop or multi-select, most users who started a
-                group filled it — added items ~50&times; for every one removed. The model clicked.
-              </p>
-            </div>
-            <div className={styles.outcomeCard}>
-              <p className={styles.outcomeStat}>10k+</p>
-              <h3 className={styles.outcomeTitle}>QuickBooks round-trips avoided / month</h3>
-              <p className={styles.outcomeBody}>
-                Every transaction-panel open is a time a user inspected their bookkeeping detail
-                without ever leaving LivePlan.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===== The reckoning (dark) ===== */}
       <section className={styles.darkSection}>
         <div className={styles.inner}>
-          <div className={styles.turnLayout}>
-            <div>
-              <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>And yet&hellip;</p>
-              <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
-                Churn remained the same
-              </h2>
-              <p
-                className={styles.lead}
-                style={{ color: "rgba(253,251,247,0.8)", marginBottom: 0 }}
-              >
-                We built the right tool. We just built it for a moment most of our{" "}
-                <strong>core users were months if not years away from</strong>. Engagement
-                shrank at every step down the funnel — and the deeper the feature, the
-                smaller the audience.
-              </p>
-            </div>
-
-            {/* Cohort-shrink funnel — bars start full-width, then collapse to
-                true proportion on scroll-in (see CohortFunnel). Labels sit under
-                each bar so it fits this column. Relative figures only. */}
-            <CohortFunnel rows={cohortFunnel} />
+          <div style={{ maxWidth: "820px" }}>
+            <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>And yet&hellip;</p>
+            <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
+              Churn remained the same
+            </h2>
+            <p
+              className={styles.lead}
+              style={{ color: "rgba(253,251,247,0.8)", marginBottom: 0 }}
+            >
+              We built the right tool. We just built it for a moment most of our{" "}
+              <strong>core users were months if not years away from</strong>. Engagement
+              shrank at every step down the funnel — and the deeper the feature, the
+              smaller the audience.
+            </p>
           </div>
 
           <div style={{ marginTop: "var(--space-xxxl)", maxWidth: "820px" }}>
@@ -498,7 +353,7 @@ export default function ForecastPage() {
               .filter((w) => w.href !== "/work/forecast")
               .slice(0, 2)
               .map((w) => (
-                <FeaturedWorkCard key={w.href} work={w} stacked />
+                <FeaturedWorkCard key={w.href} work={w} />
               ))}
           </div>
         </div>
@@ -514,13 +369,9 @@ export default function ForecastPage() {
               <p>
                 The loudest signal in our research wasn&rsquo;t for another table — it was for
                 help building the forecast in the first place. We&rsquo;re now exploring an AI
-                assistant that can help owners draft and refine a forecast without losing
-                control of the numbers: escalation patterns, feedback loops, and confidence
-                cues that keep the human in charge.
-              </p>
-              <p>
-                It&rsquo;s the same craft thread — make the numbers approachable — applied earlier,
-                where more people can feel it.
+                assistant that helps owners draft and refine a forecast without losing control
+                of the numbers — the same craft thread, make the numbers approachable, applied
+                earlier where more people can feel it.
               </p>
             </div>
           </div>

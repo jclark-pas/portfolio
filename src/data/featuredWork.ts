@@ -4,20 +4,23 @@ export const featuredWork: FeaturedWork[] = [
   {
     number: "01",
     eyebrow: "LivePlan · Actuals in Forecast",
-    title: "When the forecast met reality",
+    title: "Actuals in the Forecast",
+    subtitle: "Making iterative forecasting easier",
     description:
       "Bringing real accounting actuals into the forecast so owners could plan against reality — and the strategic story of why great craft didn't move churn, and where the real leverage was.",
     href: "/work/forecast",
     imageBackground:
-      "linear-gradient(135deg, #1B3A5C 0%, #2C7DA0 45%, #E8743B 100%)",
-    image: "/images/forecast/forecast-hero.png",
-    imageWidth: 3096,
-    imageHeight: 2016,
+      "linear-gradient(135deg, #dcefe2 0%, #d8e8f3 50%, #e2e0f4 100%)",
+    image: "/images/forecast/forecast-inlineactuals.png",
+    imageWidth: 916,
+    imageHeight: 919,
+    imageSnug: true,
   },
   {
     number: "02",
     eyebrow: "LivePlan · Plan Editor",
     title: "Redesigning the Plan",
+    subtitle: "The business plan editor, reimagined",
     description:
       "Reimagining a decade-old business plan editor — making it faster to write, easier to customize, and smarter with AI while maintaining the structure investors trust.",
     href: "/work/liveplan",
@@ -31,6 +34,7 @@ export const featuredWork: FeaturedWork[] = [
     number: "03",
     eyebrow: "LivePlan · Idea Canvas",
     title: "From Idea to Plan",
+    subtitle: "An AI canvas for shaping ideas",
     description:
       "An AI-assisted canvas that helps entrepreneurs shape a fuzzy idea into a fundable plan — moving users from blank page to first draft in minutes.",
     href: "/work/idea-canvas",

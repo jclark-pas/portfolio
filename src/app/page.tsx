@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Download } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import FeaturedWorkCard from "@/components/FeaturedWorkCard";
+import FeaturedWorkSlider from "@/components/FeaturedWorkSlider";
 import TestimonialDeck from "@/components/TestimonialDeck";
 import ExperienceEntry from "@/components/ExperienceEntry";
 import CompactEntry from "@/components/CompactEntry";
@@ -32,11 +32,7 @@ export default function Home() {
               See all work <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <div className={styles.featuredList}>
-            {featuredWork.slice(0, 2).map((work) => (
-              <FeaturedWorkCard key={work.href} work={work} />
-            ))}
-          </div>
+          <FeaturedWorkSlider items={featuredWork} />
         </div>
       </section>
 
