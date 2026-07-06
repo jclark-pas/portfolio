@@ -26,12 +26,6 @@
   max-width: min(1320px, 94vw);
 }
 
-.featuredList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-}
-
 .workHeader {
   display: flex;
   align-items: center;

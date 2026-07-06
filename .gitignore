@@ -46,3 +46,6 @@ next-env.d.ts
 
 # Case-study research notes — CONFIDENTIAL (internal metrics + customer names); keep local
 /docs/case-studies/
+
+# Parallel dev server build cache (second Claude chat on same tree)
+/.next-dev*/

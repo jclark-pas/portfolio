@@ -1,16 +1,13 @@
 .card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
+  /* whole card (image + text) holds one fixed ratio; the media fills whatever
+     vertical space the title/subtitle don't use */
+  aspect-ratio: 404 / 521;
   background: var(--color-bg-card);
-  border-radius: var(--radius-xl);
+  border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   outline: none;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 60px rgba(11, 9, 33, 0.08);
 }
 
 .card:focus-visible {
@@ -18,18 +15,38 @@
   outline-offset: 4px;
 }
 
+/* Image-led banner on top — the gradient panel holds a centered, contained
+   product shot so nothing gets cropped across the different source ratios. */
 .media {
   position: relative;
+  /* fill the space above the text within the card's fixed ratio */
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
-  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-xxl);
-  background: linear-gradient(135deg, #15123A 0%, #2A2557 100%);
+  padding: var(--space-xl);
+  /* gradient is set per-card via --media-gradient; sized a touch larger than
+     the panel so it has room to drift on hover */
+  background-image: var(
+    --media-gradient,
+    linear-gradient(135deg, #15123a 0%, #2a2557 100%)
+  );
+  /* a touch larger than the panel so the gradient has room to drift on hover
+     without cropping too much of the spectrum at rest */
+  background-size: 140% 140%;
+  background-position: 50% 50%;
+  transition: background-position 0.8s ease;
+  /* inset the gradient/image so the card background reads as a border;
+     inner radius = card radius (20) − inset (12) for concentric corners */
+  margin: 12px 12px 0;
+  border-radius: 8px;
 }
 
 .mediaImg {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: auto;
   max-height: 100%;
@@ -45,133 +62,122 @@
   box-shadow: none;
 }
 
-.card:hover .mediaImg {
-  transform: scale(1.04);
+/* Registered so the glow's radius can animate — a smooth bloom that grows only
+   the light, not the whole box. (Scaling the box exposed its rectangular edge
+   where the radial ran bright near the top-left corner.) */
+@property --glow-radius {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 22%;
 }
 
+/* Radial light bloom — sits over the gradient but behind the image (z-index 0
+   vs the image's 1), fading and blooming outward from a point on hover. */
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 25%,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0) var(--glow-radius)
+  );
+  --glow-radius: 22%;
+  opacity: 0;
+  transition: opacity 0.55s ease, --glow-radius 0.55s ease;
+  pointer-events: none;
+}
+
+.card:hover .media::after {
+  opacity: 1;
+  --glow-radius: 55%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media::after {
+    transition: opacity 0.4s ease;
+  }
+}
+
+/* Snug variant — a transparent screenshot pinned into the bottom-right corner,
+   bleeding off the edge on the soft gradient (mirrors the DesignShowcase). */
+.mediaSnug {
+  padding: 0;
+}
+
+.mediaImgSnug {
+  z-index: 1;
+  object-fit: contain;
+  /* push past the right edge (>100%) so the table bleeds off into the corner
+     rather than floating with a gradient gap; small vertical margins keep a
+     hint of gradient top and bottom — mirrors the DesignShowcase framing */
+  object-position: 116% 50%;
+  padding: var(--space-md) 0 var(--space-md) var(--space-lg);
+  transition: transform 0.4s ease;
+}
+
+.card:hover .mediaImgSnug {
+  transform: scale(1.02);
+}
+
+.card:hover .mediaImg {
+  transform: scale(1.03);
+}
+
+/* Fun: the gradient behind the image gently drifts while hovering, so the color
+   stops flow and one hue extends over another. Honors reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .card:hover .media {
+    animation: mediaGradientDrift 4.5s ease-in-out infinite;
+  }
+}
+
+/* Sweep the spectrum corner-to-corner: out to the bottom-right, then all the
+   way across to the top-left, and back — anchored at center so hover in/out
+   don't jump. */
+@keyframes mediaGradientDrift {
+  0% {
+    background-position: 50% 50%;
+  }
+  30% {
+    background-position: 100% 100%;
+  }
+  70% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 50% 50%;
+  }
+}
+
+/* Just title + one quiet subtitle line below — nothing else. */
 .content {
-  padding: 64px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-  justify-content: center;
-}
-
-.meta {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-md);
-  font-size: var(--font-body2);
-  color: var(--color-accent);
-  font-weight: 600;
-}
-
-.number {
-  font-family: var(--font-mono, "Fira Code"), monospace;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.eyebrow {
-  color: var(--color-text);
-  font-weight: 600;
+  gap: var(--space-xs);
+  padding: var(--space-lg) var(--space-xl) var(--space-xl);
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: var(--font-h2);
-  line-height: var(--line-h2);
+  font-size: var(--font-h4);
+  line-height: var(--line-h4);
   font-weight: 700;
-  color: var(--color-text);
-}
-
-.description {
-  font-size: var(--font-body1);
-  line-height: var(--line-body1);
-  color: var(--color-text-secondary);
-}
-
-/* CTA — shown only in the side-by-side layout (stacked cards omit it). */
-.cta {
-  margin-top: var(--space-md);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-size: var(--font-body1);
-  font-weight: 600;
   color: var(--color-accent);
-  width: fit-content;
-  padding: 6px 0;
-  border-radius: var(--radius-md);
-  transition: gap 0.2s ease;
-  outline: none;
 }
 
-.cta:hover {
-  gap: var(--space-sm);
-}
-
-.cta:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
-}
-
-/* Stacked variant — image on top, content below, at any width (two-up grids). */
-/* flex column (not the 2-col grid) so the media stays fixed at the top and the
-   content fills the rest — no free-space distribution pushing the meta down */
-.cardStacked {
-  display: flex;
-  flex-direction: column;
-}
-
-.cardStacked .media {
-  min-height: 0;
-  height: 320px;
-  flex-shrink: 0;
-  padding: var(--space-lg);
-}
-
-.cardStacked .content {
-  flex: 1;
-  padding: var(--space-xl);
-  gap: var(--space-md);
-  /* top-align so every card's meta sits right under its image (no centering
-     stagger across cards of different copy lengths) */
-  justify-content: flex-start;
-}
-
-.cardStacked .title {
-  font-size: var(--font-h3);
-  line-height: var(--line-h3);
-}
-
-/* Contained/smaller image in the stacked variant — the drop shadow reads as odd
-   floating it, so drop it (keep the rounded corners). */
-.cardStacked .mediaImg {
-  box-shadow: none;
-}
-
-@media (max-width: 960px) {
-  .card {
-    grid-template-columns: 1fr;
-  }
-
-  .media {
-    min-height: 320px;
-  }
-
-  .content {
-    padding: var(--space-xxl);
-    gap: var(--space-md);
-  }
+.subtitle {
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 480px) {
   .media {
-    min-height: 220px;
+    padding: var(--space-lg);
   }
 
   .content {
-    padding: var(--space-xl) var(--space-lg);
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
   }
 }

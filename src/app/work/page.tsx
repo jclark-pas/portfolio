@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import WorkCard from "@/components/WorkCard";
-import FeaturedWorkCard from "@/components/FeaturedWorkCard";
+import FeaturedWorkSlider from "@/components/FeaturedWorkSlider";
 import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
 import { featuredWork, featuredSlugs } from "@/data/featuredWork";
@@ -34,11 +34,7 @@ export default function WorkIndexPage() {
           <div className={styles.sectionHeader}>
             <p className={styles.subsectionLabel}>Featured</p>
           </div>
-          <div className={styles.featuredList}>
-            {featuredWork.map((work) => (
-              <FeaturedWorkCard key={work.number} work={work} />
-            ))}
-          </div>
+          <FeaturedWorkSlider items={featuredWork} />
         </div>
       </section>
 
