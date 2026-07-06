@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "next-dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3001,
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "NEXT_DIST_DIR=.next-dev3002 npx next dev -p 3002"],
+      "port": 3002,
       "autoPort": true
     }
   ]
