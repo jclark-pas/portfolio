@@ -1,0 +1,55 @@
+/* Principles — numbered, so the "how I work" reads as a point of view.
+   Full-width responsive grid: 3-up on wide, 2-up on tablet, stacked on mobile. */
+.principleList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl) var(--space-xxl);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.principle {
+  display: flex;
+  gap: var(--space-md);
+  align-items: baseline;
+}
+
+.principleNum {
+  font-family: var(--font-serif);
+  font-size: var(--font-h4);
+  font-weight: 700;
+  color: var(--color-accent);
+  flex: 0 0 auto;
+}
+
+.principleTitle {
+  font-size: var(--font-body1);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+  /* even out the two-line titles instead of a long line + orphan */
+  text-wrap: balance;
+}
+
+.principleBody {
+  font-size: var(--font-body2);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  /* avoid a lone last word on its own line */
+  text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .principleList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .principleList {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}

@@ -1,6 +1,6 @@
 .card {
   display: grid;
-  grid-template-columns: 0.85fr 1fr;
+  grid-template-columns: 0.8fr 1fr;
   align-items: stretch;
   background: var(--color-bg-card);
   border-radius: var(--radius-xl);
@@ -22,7 +22,7 @@
 
 .media {
   position: relative;
-  min-height: 320px;
+  min-height: 220px;
 }
 
 .img {
@@ -31,15 +31,15 @@
 }
 
 .content {
-  padding: var(--space-xxl);
+  padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .eyebrow {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -48,18 +48,18 @@
 
 .headline {
   font-family: var(--font-serif);
-  font-size: 28px;
-  line-height: 1.15;
+  font-size: 22px;
+  line-height: 1.2;
   font-weight: 700;
   color: var(--color-text);
   text-wrap: balance;
 }
 
 .body {
-  font-size: var(--font-body1);
+  font-size: var(--font-body2);
   line-height: 1.5;
   color: var(--color-text-secondary);
-  max-width: 48ch;
+  max-width: 46ch;
 }
 
 .cta {
@@ -67,7 +67,7 @@
   align-items: center;
   gap: var(--space-xs);
   margin-top: var(--space-xs);
-  font-size: var(--font-body1);
+  font-size: var(--font-body2);
   font-weight: 600;
   color: var(--color-accent);
 }
@@ -96,14 +96,14 @@
   }
 
   .media {
-    min-height: 240px;
+    min-height: 190px;
   }
 
   .content {
-    padding: var(--space-xl) var(--space-lg);
+    padding: var(--space-lg);
   }
 
   .headline {
-    font-size: var(--font-h3);
+    font-size: 20px;
   }
 }

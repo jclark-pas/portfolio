@@ -2,6 +2,12 @@
   padding: var(--space-xxxl) var(--space-xxl);
 }
 
+/* Full-width tinted band — sets a section apart from the plain surface so the
+   white cards inside it read as lifted. */
+.panel {
+  background: var(--color-bg-card);
+}
+
 .sectionInner {
   /* Homepage sections share one centered 1120px column so the card grids
      (Work, Testimonials) and the text-heavy Resume layout read as a single
@@ -32,6 +38,17 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--space-md);
+}
+
+.workHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.workSubtitle {
+  font-size: var(--font-body1);
+  color: var(--color-text-secondary);
 }
 
 /* Inline download icon on the "Resume." eyebrow, with a hover/focus tooltip */
@@ -159,25 +176,38 @@
   color: var(--color-text);
 }
 
+/* Approach heading sits a notch below the full section-title scale. */
+.approachTitle {
+  font-size: 44px;
+  line-height: 54px;
+}
+
+@media (max-width: 960px) {
+  .approachTitle {
+    font-size: 38px;
+    line-height: 48px;
+  }
+}
+
 .sectionTitleLg {
   font-family: var(--font-serif);
-  font-size: 56px;
-  line-height: 68px;
+  font-size: 44px;
+  line-height: 54px;
   font-weight: 700;
   color: var(--color-text);
 }
 
 @media (max-width: 960px) {
   .sectionTitleLg {
-    font-size: 48px;
-    line-height: 60px;
+    font-size: 38px;
+    line-height: 48px;
   }
 }
 
 @media (max-width: 480px) {
   .sectionTitleLg {
-    font-size: 40px;
-    line-height: 55px;
+    font-size: 32px;
+    line-height: 42px;
   }
 }
 
