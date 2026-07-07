@@ -20,8 +20,8 @@ export default function StoryTeaser() {
           How the worst day of my life made me a better design leader.
         </h3>
         <p className={styles.body}>
-          There&rsquo;s a story underneath the r&eacute;sum&eacute; — one that
-          reshaped how I lead, how I design, and who I refuse to leave out.
+          A story underneath the r&eacute;sum&eacute; — one that reshaped how I
+          lead and design.
         </p>
         <span className={styles.cta}>
           Read my story <span aria-hidden="true">→</span>

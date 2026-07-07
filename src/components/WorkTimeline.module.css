@@ -1,0 +1,161 @@
+/* Full-bleed horizontal timeline. Mirrors FeaturedWorkSlider: --gutter (set
+   from JS) is the content-column inset; the negative margin bleeds the track
+   to the viewport edges while the first/last node stay column-aligned. */
+.viewport {
+  position: relative;
+  margin-inline: calc(-1 * var(--gutter, 0px));
+}
+
+.track {
+  display: flex;
+  gap: var(--space-xl);
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x proximity;
+  padding-inline: var(--gutter, 0px);
+  scroll-padding-inline: var(--gutter, 0px);
+  padding-block: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.node {
+  flex: 0 0 320px;
+  max-width: 80vw;
+  scroll-snap-align: start;
+}
+
+/* The rail: a horizontal line at the node's dot, bridging the gap to the next
+   node so consecutive nodes form one continuous spine. */
+.rail {
+  position: relative;
+  height: 14px;
+  margin-bottom: var(--space-md);
+}
+
+.rail::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  /* extend across the inter-node gap so the spine reads as unbroken */
+  right: calc(-1 * var(--space-xl));
+  height: 2px;
+  transform: translateY(-50%);
+  background: var(--color-border);
+}
+
+/* Last node's rail shouldn't trail a line off the end. */
+.node:last-child .rail::before {
+  right: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-border) 60%,
+    transparent 100%
+  );
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  z-index: 1;
+}
+
+.dotCurrent {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 18%, transparent);
+}
+
+.dates {
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.nowTag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-full);
+  padding: 1px 8px;
+}
+
+.company {
+  font-family: var(--font-serif);
+  font-size: var(--font-h3);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.role {
+  font-size: var(--font-body2);
+  font-weight: 600;
+  color: var(--color-accent-text);
+  margin-bottom: var(--space-md);
+}
+
+.outcome {
+  font-size: var(--font-body2);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+/* Edge scrims — page-background gradient pinned to each edge; opacity driven by
+   scroll distance in the component so the fade eases in rather than popping. */
+.fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-surface) 0,
+    color-mix(in srgb, var(--color-surface) 80%, transparent) 30px,
+    color-mix(in srgb, var(--color-surface) 42%, transparent) 60px,
+    color-mix(in srgb, var(--color-surface) 12%, transparent) 90px,
+    transparent 120px
+  );
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--color-surface) 0,
+    color-mix(in srgb, var(--color-surface) 80%, transparent) 30px,
+    color-mix(in srgb, var(--color-surface) 42%, transparent) 60px,
+    color-mix(in srgb, var(--color-surface) 12%, transparent) 90px,
+    transparent 120px
+  );
+}

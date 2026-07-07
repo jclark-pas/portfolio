@@ -177,7 +177,7 @@ export default function MyStoryPage() {
         </div>
 
         <div className={styles.resumeCta}>
-          <Button href="/#resume">View Experience</Button>
+          <Button href="/#experience">View Experience</Button>
           <Button href="/work" variant="secondary">
             View Work
           </Button>
