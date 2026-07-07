@@ -211,31 +211,6 @@
   }
 }
 
-.experienceList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.subsection {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding-top: var(--space-xl);
-}
-
-.subsectionLabel {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-accent);
-}
-
-.compactList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
 .storyTeaser {
   margin-top: var(--space-xxxl);
 }
