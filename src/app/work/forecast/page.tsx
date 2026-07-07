@@ -22,34 +22,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// One consolidated stats band: three wins, then the deliberate dissonance (0% churn).
-const flowStats = [
-  {
-    value: "30%",
-    title: "Fewer trips to the Dashboard",
-    label:
-      "Once actuals lived inside the forecast, people stopped jumping out to the standalone financial Dashboard to see how they were tracking.",
-  },
-  {
-    value: "6x Faster",
-    title: "to investigate an actual",
-    label:
-      "Reviewing a number used to mean tab-hopping to QuickBooks and building a report. Now it's a single click on the figure itself.",
-  },
-  {
-    value: "10k+",
-    title: "QuickBooks round-trips avoided / month",
-    label:
-      "Every transaction-panel open is a time a user inspected their bookkeeping detail without ever leaving LivePlan.",
-  },
-  {
-    value: "0%",
-    title: "Reduction in churn",
-    label:
-      "For all of it, core churn metrics never budged. The work landed for the customers it was built for — but they were never the ones at risk of leaving.",
-  },
-];
-
 const reflections = [
   {
     icon: Target,
@@ -124,21 +96,6 @@ export default function ForecastPage() {
         </div>
       </section>
 
-      {/* ===== Flow wins (stats band) ===== */}
-      <section className={styles.statsBand}>
-        <div className={styles.inner}>
-          <div className={styles.statsGrid}>
-            {flowStats.map((s) => (
-              <div key={s.title} className={styles.statCard}>
-                <p className={styles.statValue}>{s.value}</p>
-                <p className={styles.statTitle}>{s.title}</p>
-                <p className={styles.statLabel}>{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ===== The Challenge ===== */}
       <section className={styles.section}>
         <div className={styles.narrow}>
@@ -181,11 +138,43 @@ export default function ForecastPage() {
           </h2>
           <p className={styles.lead}>
             We talked to the customers who do this work every month — established owners
-            reconciling plan against actuals. We didn&rsquo;t have to dig for the friction:
-            the same three asks came up unprompted — see actuals where you plan, interrogate
-            a number without leaving for QuickBooks, and organize the forecast the way you
-            actually think.
+            reconciling plan against actuals. We didn&rsquo;t have to dig for the friction. The
+            same questions came up, unprompted, again and again:
           </p>
+        </div>
+        <div className={styles.narrow}>
+          <div className={styles.discoveryDetails}>
+            <div className={styles.discoveryItem}>
+              <h3 className={styles.discoveryItemTitle}>
+                &ldquo;Why can&rsquo;t I see my actuals where I&rsquo;m planning?&rdquo;
+              </h3>
+              <p className={styles.discoveryItemBody}>
+                Real performance lived on a separate dashboard. The moment they sat down to
+                change the forecast, the numbers they needed were a tab away — so they memorized,
+                switched back, and hoped they had it right.
+              </p>
+            </div>
+            <div className={styles.discoveryItem}>
+              <h3 className={styles.discoveryItemTitle}>
+                &ldquo;Wait — what is that number?&rdquo;
+              </h3>
+              <p className={styles.discoveryItemBody}>
+                An actuals figure would look off, and there was no way to interrogate it without
+                leaving for QuickBooks, working out which accounts fed that line, and running a
+                report just to see what actually&nbsp;happened.
+              </p>
+            </div>
+            <div className={styles.discoveryItem}>
+              <h3 className={styles.discoveryItemTitle}>
+                &ldquo;Let me organize this the way I think.&rdquo;
+              </h3>
+              <p className={styles.discoveryItemBody}>
+                A long, flat list didn&rsquo;t match how owners hold their business in their
+                heads. They&rsquo;d been asking for grouping and roll-ups for years — structure
+                that mirrored their mental model, not their chart of&nbsp;accounts.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -224,8 +213,6 @@ export default function ForecastPage() {
       {/* ===== Product gallery (placeholders) ===== */}
       <section className={styles.gallerySection}>
         <div className={styles.inner}>
-          <p className={styles.eyebrow}>The Product</p>
-          <h2 className={styles.sectionHeading}>Actuals + Forecast for a true LivePlan</h2>
           <div className={styles.galleryGrid}>
             <figure className={styles.galleryItem}>
               <video
@@ -242,6 +229,47 @@ export default function ForecastPage() {
                 aria-label="Clicking an actuals figure opens the underlying QuickBooks transactions in a panel, in place inside the forecast"
               />
             </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Outcomes for the people it was for ===== */}
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>What It Proved</p>
+          <h2 className={styles.sectionHeading}>
+            It worked — for the people it was built for
+          </h2>
+          <p className={styles.lead}>
+            Among the customers who&rsquo;d connected their accounting, the work landed. They
+            stopped leaving the forecast to check reality, investigated their numbers in a
+            click, and adjusted their plans in place.
+          </p>
+          <div className={styles.outcomesGrid}>
+            <div className={styles.outcomeCard}>
+              <p className={styles.outcomeStat}>30%</p>
+              <h3 className={styles.outcomeTitle}>Fewer trips to the Dashboard</h3>
+              <p className={styles.outcomeBody}>
+                Once actuals lived inside the forecast, people stopped jumping out to the
+                standalone Dashboard to see how they were tracking.
+              </p>
+            </div>
+            <div className={styles.outcomeCard}>
+              <p className={styles.outcomeStat}>8 in 10</p>
+              <h3 className={styles.outcomeTitle}>Groups created, then populated</h3>
+              <p className={styles.outcomeBody}>
+                Despite a design with no drag-and-drop or multi-select, most users who started a
+                group filled it — added items ~50&times; for every one removed. The model clicked.
+              </p>
+            </div>
+            <div className={styles.outcomeCard}>
+              <p className={styles.outcomeStat}>10k+</p>
+              <h3 className={styles.outcomeTitle}>QuickBooks round-trips avoided / month</h3>
+              <p className={styles.outcomeBody}>
+                Every transaction-panel open is a time a user inspected their bookkeeping detail
+                without ever leaving LivePlan.
+              </p>
+            </div>
           </div>
         </div>
       </section>

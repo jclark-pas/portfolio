@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import styles from "./JourneyFunnel.module.css";
 
 type Category = "pains" | "needs" | "desires";
@@ -143,6 +144,9 @@ function chipVars(j: number, n: number) {
 
 export default function JourneyFunnel() {
   const [formed, setFormed] = useState(false);
+  // mobile accordion: which band is expanded (default 0–60 days). Desktop
+  // ignores this — it reveals each burst on hover instead.
+  const [active, setActive] = useState(1);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -191,11 +195,19 @@ export default function JourneyFunnel() {
 
       <div className={`${styles.figure} ${formed ? styles.formed : ""}`}>
         <div className={styles.funnel} aria-label="Customer journey stages">
-          {STEPS.map((step, i) => (
-            <div key={step.range} className={styles.bandRow} style={bandVars(step, i)}>
+          {STEPS.map((step, i) => {
+            const open = active === i;
+            return (
+            <div
+              key={step.range}
+              className={`${styles.bandRow} ${open ? styles.rowOpen : ""}`}
+              style={bandVars(step, i)}
+            >
               <button
                 type="button"
                 className={`${styles.band} ${step.callout ? styles.bandTall : ""}`}
+                aria-expanded={open}
+                onClick={() => setActive(open ? -1 : i)}
                 aria-label={`${step.range}: ${step.job}. ${step.signals
                   .map((s) => s.text)
                   .join("; ")}`}
@@ -206,23 +218,35 @@ export default function JourneyFunnel() {
                 <span className={styles.bandInner}>
                   <span className={styles.range}>{step.range}</span>
                   <span className={styles.job}>{step.job}</span>
+                  {/* tap-to-expand affordance — shown on mobile only (see CSS) */}
+                  <ChevronDown
+                    className={styles.disclosure}
+                    size={22}
+                    aria-hidden="true"
+                  />
                 </span>
               </button>
 
-              {/* chips live OUTSIDE the clipped band so they can fly free */}
+              {/* chips live OUTSIDE the clipped band so they can fly free;
+                  the inner wrapper is the collapsible body on mobile */}
               <div className={styles.burst} aria-hidden="true">
-                {step.signals.map((sig, j) => (
-                  <span
-                    key={sig.text}
-                    className={`${styles.flyChip} ${styles[sig.category]}`}
-                    style={chipVars(j, step.signals.length)}
-                  >
-                    {sig.text}
-                  </span>
-                ))}
+                <div className={styles.burstInner}>
+                  <div className={styles.burstBody}>
+                    {step.signals.map((sig, j) => (
+                      <span
+                        key={sig.text}
+                        className={`${styles.flyChip} ${styles[sig.category]}`}
+                        style={chipVars(j, step.signals.length)}
+                      >
+                        {sig.text}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

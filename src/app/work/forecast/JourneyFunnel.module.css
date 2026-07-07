@@ -115,6 +115,12 @@
   color: rgba(253, 251, 247, 0.98);
 }
 
+/* tap-to-expand chevron — the funnel is hover-driven on desktop, so this is
+   only revealed in the mobile accordion (see the 720px block) */
+.disclosure {
+  display: none;
+}
+
 /* ---- The flying chips ---- */
 .burst {
   position: absolute;
@@ -127,6 +133,14 @@
 .bandRow:hover .burst,
 .bandRow:focus-within .burst {
   pointer-events: auto;
+}
+
+/* On desktop these wrappers are transparent (chips fly out absolutely); on
+   mobile burstInner becomes the clip that slides open and burstBody the padded
+   panel inside it. */
+.burstInner,
+.burstBody {
+  display: contents;
 }
 
 .flyChip {
@@ -274,7 +288,7 @@
     padding: 16px 18px 14px;
     opacity: 1 !important;
     filter: none !important;
-    cursor: default;
+    cursor: pointer;
     /* The band centers a single child on desktop (flex row). In card mode the
        callout is back in flow, so stack children in a column and let them fill
        the width — otherwise the callout and header sit side-by-side and overlap. */
@@ -284,8 +298,18 @@
   }
   .bandInner {
     width: 100%;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
+  }
+  /* tap affordance under the job */
+  .disclosure {
+    display: block;
+    margin-top: 8px;
+    color: rgba(253, 251, 247, 0.7);
+    transition: transform 240ms ease;
+  }
+  .rowOpen .disclosure {
+    transform: rotate(180deg);
   }
   /* mobile has the room — size the type up a touch for readability */
   .range {
@@ -311,24 +335,84 @@
   .legend {
     font-size: 16px;
   }
-  /* body: the chips, slightly darker so the grouping reads as one card */
+  /* body slides open: animating grid-template-rows 0fr → 1fr reveals the exact
+     content height with no magic number, on a soft ease. */
   .burst {
     position: static;
+    /* reset the desktop height:100% — an explicit height stops the 0fr row from
+       collapsing, so the body never fully closes */
     height: auto;
     pointer-events: auto;
     margin: 0;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 460ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .rowOpen .burst {
+    grid-template-rows: 1fr;
+  }
+  /* the collapsible body: overflow:hidden lets the grid row shrink to 0, and
+     also holds the chips' padded, tinted panel */
+  .burstInner {
+    display: block;
+    overflow: hidden;
+    min-height: 0;
+  }
+  .burstBody {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 14px 18px 18px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 26px 28px;
     background: rgba(11, 9, 33, 0.16);
     border-top: 1px solid rgba(253, 251, 247, 0.16);
   }
+  /* not cards — a simple list: cream text with a category-coloured dot */
   .flyChip {
     position: static;
-    opacity: 1;
-    transform: none !important;
     max-width: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: rgba(253, 251, 247, 0.95);
+    font-size: 15px;
+    line-height: 1.45;
+    text-align: left;
+    /* fade + rise in, staggered as the body reveals. transform stays reset so a
+       touch-triggered :hover can't fire the desktop fly-out. */
+    opacity: 0;
+    transform: translateY(6px) !important;
+    transition: opacity 300ms ease, transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--j) * 45ms);
+  }
+  /* strip the pill fill/outline the category classes add on desktop */
+  .flyChip.pains,
+  .flyChip.needs,
+  .flyChip.desires {
+    background: none;
+    border: 0;
+  }
+  .flyChip::before {
+    content: "";
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    margin-top: 6px;
+    border-radius: 50%;
+  }
+  .flyChip.pains::before {
+    background: #f2c94c;
+  }
+  .flyChip.needs::before {
+    background: #7fb0ff;
+  }
+  .flyChip.desires::before {
+    background: #7bd8a0;
+  }
+  .rowOpen .burstInner .flyChip {
+    opacity: 1;
+    transform: translateY(0) !important;
   }
 }

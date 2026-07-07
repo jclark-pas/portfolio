@@ -17,7 +17,7 @@ import styles from "./WorkflowCompare.module.css";
 const TOOLS = [
   { name: "Dashboard", icon: "/images/forecast/dashboard.svg", brand: false },
   { name: "QuickBooks", icon: "/images/forecast/qbo-logo.svg", brand: true },
-  { name: "The forecast", icon: "/images/forecast/forecast.svg", brand: false },
+  { name: "Forecast", icon: "/images/forecast/forecast.svg", brand: false },
 ];
 
 const STEPS = [
