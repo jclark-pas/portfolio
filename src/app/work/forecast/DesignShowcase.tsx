@@ -108,6 +108,21 @@ export default function DesignShowcase({
               <div className={styles.bodyWrap} aria-hidden={!open}>
                 <div className={styles.bodyInner}>
                   <p className={styles.body}>{m.body}</p>
+                  {/* per-step image — hidden on desktop (the media column shows
+                      it there), revealed inline within the open step on mobile */}
+                  <div
+                    className={styles.itemShot}
+                    style={{ background: m.gradient }}
+                    aria-hidden="true"
+                  >
+                    <Image
+                      src={m.image}
+                      alt=""
+                      fill
+                      sizes="100vw"
+                      className={styles.itemShotImg}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

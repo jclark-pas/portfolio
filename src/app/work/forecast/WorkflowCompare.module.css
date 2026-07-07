@@ -334,3 +334,26 @@
     transition: none;
   }
 }
+
+/* ---- Mobile: three labelled app pills are tight on a narrow screen, so let
+   them shrink to fit rather than overflowing the page. The wires re-measure
+   from the nodes' actual positions on resize, so they follow. ---- */
+@media (max-width: 720px) {
+  .nodes {
+    gap: 6px;
+  }
+  .node {
+    min-width: 0;
+    padding: 7px 9px;
+    gap: 5px;
+  }
+  .nodeIcon,
+  .appIcon {
+    width: 15px;
+    height: 15px;
+  }
+  .nodeLabel {
+    font-size: 12px;
+    line-height: 1.15;
+  }
+}
