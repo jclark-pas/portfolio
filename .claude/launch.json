@@ -4,8 +4,8 @@
     {
       "name": "next-dev",
       "runtimeExecutable": "sh",
-      "runtimeArgs": ["-c", "NEXT_DIST_DIR=.next-dev3002 npx next dev -p 3002"],
-      "port": 3002,
+      "runtimeArgs": ["-c", "NEXT_DIST_DIR=.next-dev3007 npx next dev -p 3007"],
+      "port": 3007,
       "autoPort": true
     }
   ]

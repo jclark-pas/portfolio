@@ -1,21 +1,36 @@
 import type { Metadata } from "next";
-import { Poppins, Bricolage_Grotesque } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "./providers";
 import "./globals.css";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+// General Sans (Fontshare) — self-hosted variable font, primary typeface for
+// headings and body. Matches GitBook's marketing type.
+const generalSans = localFont({
+  src: [
+    {
+      path: "./fonts/GeneralSans-Variable.woff2",
+      weight: "200 700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/GeneralSans-VariableItalic.woff2",
+      weight: "200 700",
+      style: "italic",
+    },
+  ],
   display: "swap",
-  variable: "--font-poppins",
+  variable: "--font-general-sans",
 });
 
-const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+// Geist Mono (Vercel) — self-hosted variable font, monospace for code and
+// label accents.
+const geistMono = localFont({
+  src: "./fonts/GeistMono-Variable.woff2",
+  weight: "100 900",
+  style: "normal",
   display: "swap",
-  variable: "--font-bricolage",
+  variable: "--font-geist-mono",
 });
 
 const BRAND =
@@ -35,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${poppins.variable} ${bricolage.variable}`} suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" className={`${generalSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -43,7 +58,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={poppins.className}>
+      <body className={generalSans.className}>
         <Providers>{children}</Providers>
         <Analytics />
       </body>

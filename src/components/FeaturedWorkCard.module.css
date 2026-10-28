@@ -163,7 +163,8 @@
   font-size: var(--font-h4);
   line-height: var(--line-h4);
   font-weight: 700;
-  color: var(--color-accent);
+  /* GitBook keeps card titles in ink and lets orange carry fills/accents. */
+  color: var(--color-text);
 }
 
 .subtitle {

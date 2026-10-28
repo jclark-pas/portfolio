@@ -5,20 +5,26 @@
      cream page/card surfaces (the old brand #DB3914 only reached ~4.1:1).
      Use --color-accent-bright for vibrant fills where the text sits ON the
      accent (e.g. white button labels), which still clears 4.5:1. */
-  --color-accent: #BD473C;
-  --color-accent-bright: #DB3914;
-  --color-accent-on-dark: #F26B47;
-  /* Retained alias — same value as --color-accent now that accent is AA-safe. */
-  --color-accent-text: #BD473C;
-  --color-surface: #FDFBF7;
-  --color-text: #0B0921;
-  --color-text-secondary: #130F38;
-  --color-bg-card: rgba(239, 233, 219, 0.5);
-  --color-border: #E3DBCA;
-  /* Softer card border: --color-border lightened ~60% toward the surface. */
-  --color-border-light: #E7E1D4;
-  --color-text-invert: #EFE9DB;
-  --color-surface-invert: #0B0921;
+  /* GitBook orange throughout — the brand's signature #FE551B for both text
+     accents and fills. Note: on the cream surface #FE551B lands ~3:1, below
+     WCAG AA for small text; chosen for brand fidelity over the stricter
+     contrast of the earlier deep orange. */
+  --color-accent: #FE551B;
+  --color-accent-bright: #FE551B;
+  --color-accent-on-dark: #FE551B;
+  --color-accent-text: #FE551B;
+  /* White base with neutral greys, GitBook-style (replacing the cream palette). */
+  --color-surface: #FFFFFF;
+  --color-text: #141417;
+  --color-text-secondary: #52525B;
+  /* Tinted sections/cards sit a hair off white as a light neutral grey. */
+  --color-bg-card: #F4F4F5;
+  --color-border: #E4E4E7;
+  /* Softer card border: a lighter neutral line. */
+  --color-border-light: #ECECEE;
+  /* Text on the dark primary button is white; the button fill is near-black. */
+  --color-text-invert: #FFFFFF;
+  --color-surface-invert: #141417;
 
   /* Spacing - Desktop */
   --space-xs: 4px;
@@ -37,7 +43,15 @@
   --radius-full: 60px;
 
   /* Typography - Desktop */
-  --font-serif: var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif;
+  /* Primary typeface: General Sans (self-hosted). The --font-serif name is a
+     legacy alias retained so existing component CSS keeps resolving. */
+  --font-sans: var(--font-general-sans), system-ui, sans-serif;
+  --font-serif: var(--font-sans);
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  /* Legacy aliases — both the old display and body faces now resolve to
+     General Sans, so existing component CSS needs no changes. */
+  --font-bricolage: var(--font-sans);
+  --font-poppins: var(--font-sans);
   --font-h1: 56px;
   --line-h1: 68px;
   --font-h2: 32px;
@@ -62,24 +76,25 @@
   --shadow-xl: 0 24px 60px rgba(11, 9, 33, 0.18);
 }
 
-/* Dark mode - navy (matches the dark bands used in the light theme) */
+/* Dark mode — true black base with light-grey surfaces and text (GitBook-style),
+   replacing the earlier navy. */
 [data-theme="dark"] {
-  --color-accent: #F26B47;
-  /* Darker fill so white button labels clear 4.5:1 on dark (the lighter
-     #F26B47 only reaches ~3:1 behind white text). */
-  --color-accent-bright: #DB3914;
-  --color-accent-on-dark: #F26B47;
-  /* On dark surfaces the brighter accent already clears AA (~5.2:1). */
-  --color-accent-text: #F26B47;
-  --color-surface: #15123A;
-  --color-text: #FDFBF7;
-  --color-text-secondary: #B9B4D6;
-  --color-bg-card: rgba(255, 255, 255, 0.05);
-  --color-border: rgba(239, 233, 219, 0.18);
+  /* GitBook orange on near-black clears AA as text (~4.6:1 on #0E0E11). */
+  --color-accent: #FE551B;
+  --color-accent-bright: #FE551B;
+  --color-accent-on-dark: #FE551B;
+  --color-accent-text: #FE551B;
+  --color-surface: #0E0E11;
+  --color-text: #F4F4F5;
+  --color-text-secondary: #A1A1AA;
+  /* Elevated panels/cards sit a step up from the black page as a dark grey. */
+  --color-bg-card: #18181B;
+  --color-border: rgba(255, 255, 255, 0.12);
   /* Softer card border: lower-contrast line that recedes toward the dark surface. */
-  --color-border-light: rgba(239, 233, 219, 0.15);
-  --color-text-invert: #15123A;
-  --color-surface-invert: #FDFBF7;
+  --color-border-light: rgba(255, 255, 255, 0.08);
+  /* Primary button is a light surface with dark text on the black design. */
+  --color-text-invert: #0E0E11;
+  --color-surface-invert: #F4F4F5;
 
   /* Elevation — deeper black so cards still read as raised on the navy surface
      (the light-theme ink shadow disappears against dark). */

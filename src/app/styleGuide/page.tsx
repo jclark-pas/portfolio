@@ -226,9 +226,9 @@ export default function StyleGuidePage() {
         <section className={styles.section} id="typography">
           <h2 className={styles.sectionTitle}>Typography</h2>
           <p className={styles.sectionLede}>
-            Two families: <strong>Bricolage Grotesque</strong> for display (H1 only),{" "}
-            <strong>Poppins</strong> for everything else. Sizes scale down at 960px
-            (tablet) and 480px (mobile).
+            One family: <strong>General Sans</strong> for display and body, with{" "}
+            <strong>Geist Mono</strong> for code and label accents. Sizes scale down
+            at 960px (tablet) and 480px (mobile).
           </p>
           <div className={styles.typeStack}>
             {typeScale.map((t) => (
@@ -237,7 +237,7 @@ export default function StyleGuidePage() {
                   <p className={styles.typeLabel}>{t.label}</p>
                   <code className={styles.tokenName}>{t.token}</code>
                   <p className={styles.typeSpec}>
-                    {t.family === "serif" ? "Bricolage Grotesque" : "Poppins"} ·{" "}
+                    General Sans ·{" "}
                     {t.weight} · {t.size} / {t.lineHeight}
                   </p>
                 </div>
