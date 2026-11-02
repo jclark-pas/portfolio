@@ -33,7 +33,9 @@
 }
 
 .item {
-  flex: 0 0 400px;
+  /* match the 3-up "More work" grid card width: (content column − 2 gaps) / 3,
+     using the same --max-width and --space-xl gap as that grid */
+  flex: 0 0 calc((var(--max-width) - 2 * var(--space-xl)) / 3);
   max-width: 80vw;
   scroll-snap-align: start;
 }
