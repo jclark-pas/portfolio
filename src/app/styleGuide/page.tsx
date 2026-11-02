@@ -3,25 +3,25 @@ import {
   ArrowLeft,
   ArrowRight,
   Play,
-  VolumeX,
-  ChevronDown,
-  MousePointerClick,
-  BarChart3,
-  Bold,
-  ListTree,
+  SpeakerX as VolumeX,
+  CaretDown as ChevronDown,
+  CursorClick as MousePointerClick,
+  ChartBar as BarChart3,
+  TextB as Bold,
+  TreeStructure as ListTree,
   Flame,
   Timer,
   ShieldCheck,
   GraduationCap,
-  LayoutGrid,
+  GridFour as LayoutGrid,
   Compass,
-  Sparkles,
+  Sparkle as Sparkles,
   Gauge,
-  Zap,
-  Layers,
-  Workflow,
-  type LucideIcon,
-} from "lucide-react";
+  Lightning as Zap,
+  Stack as Layers,
+  FlowArrow as Workflow,
+} from "@phosphor-icons/react/dist/ssr";
+import type { Icon as LucideIcon } from "@phosphor-icons/react";
 import Navigation from "@/components/Navigation";
 import Button from "@/components/Button";
 import styles from "./page.module.css";
@@ -146,27 +146,27 @@ const icons: { name: string; usage: string; svg: React.ReactNode }[] = [
   },
 ];
 
-const lucideIcons: { Icon: LucideIcon; name: string; usage: string }[] = [
+const phosphorIcons: { Icon: LucideIcon; name: string; usage: string }[] = [
   { Icon: ArrowLeft, name: "ArrowLeft", usage: "Prev — case study nav, testimonials, carousel" },
   { Icon: ArrowRight, name: "ArrowRight", usage: "Next — case study nav, testimonials, carousel" },
   { Icon: Play, name: "Play", usage: "Video facade play button" },
-  { Icon: VolumeX, name: "VolumeX", usage: "Muted indicator on usability videos" },
-  { Icon: ChevronDown, name: "ChevronDown", usage: "Observation accordion expand" },
-  { Icon: MousePointerClick, name: "MousePointerClick", usage: "Observation — click" },
-  { Icon: BarChart3, name: "BarChart3", usage: "Observation — chart" },
-  { Icon: Bold, name: "Bold", usage: "Observation — bold" },
-  { Icon: ListTree, name: "ListTree", usage: "Observation — outline" },
+  { Icon: VolumeX, name: "SpeakerX", usage: "Muted indicator on usability videos" },
+  { Icon: ChevronDown, name: "CaretDown", usage: "Observation accordion expand" },
+  { Icon: MousePointerClick, name: "CursorClick", usage: "Observation — click" },
+  { Icon: BarChart3, name: "ChartBar", usage: "Observation — chart" },
+  { Icon: Bold, name: "TextB", usage: "Observation — bold" },
+  { Icon: ListTree, name: "TreeStructure", usage: "Observation — outline" },
   { Icon: Flame, name: "Flame", usage: "Observation — engagement" },
   { Icon: Timer, name: "Timer", usage: "Observation — speed" },
   { Icon: ShieldCheck, name: "ShieldCheck", usage: "Observation — trust" },
   { Icon: GraduationCap, name: "GraduationCap", usage: "Observation — teaching" },
-  { Icon: LayoutGrid, name: "LayoutGrid", usage: "Idea Canvas — section heading" },
+  { Icon: LayoutGrid, name: "GridFour", usage: "Idea Canvas — section heading" },
   { Icon: Compass, name: "Compass", usage: "Idea Canvas — section heading" },
-  { Icon: Sparkles, name: "Sparkles", usage: "Idea Canvas — section heading" },
+  { Icon: Sparkles, name: "Sparkle", usage: "Idea Canvas — section heading" },
   { Icon: Gauge, name: "Gauge", usage: "Idea Canvas — section heading" },
-  { Icon: Zap, name: "Zap", usage: "Idea Canvas — pillar" },
-  { Icon: Layers, name: "Layers", usage: "Idea Canvas — pillar" },
-  { Icon: Workflow, name: "Workflow", usage: "Idea Canvas — pillar" },
+  { Icon: Zap, name: "Lightning", usage: "Idea Canvas — pillar" },
+  { Icon: Layers, name: "Stack", usage: "Idea Canvas — pillar" },
+  { Icon: Workflow, name: "FlowArrow", usage: "Idea Canvas — pillar" },
 ];
 
 export default function StyleGuidePage() {
@@ -226,9 +226,9 @@ export default function StyleGuidePage() {
         <section className={styles.section} id="typography">
           <h2 className={styles.sectionTitle}>Typography</h2>
           <p className={styles.sectionLede}>
-            Two families: <strong>Bricolage Grotesque</strong> for display (H1 only),{" "}
-            <strong>Poppins</strong> for everything else. Sizes scale down at 960px
-            (tablet) and 480px (mobile).
+            One family: <strong>General Sans</strong> for display and body, with{" "}
+            <strong>Geist Mono</strong> for code and label accents. Sizes scale down
+            at 960px (tablet) and 480px (mobile).
           </p>
           <div className={styles.typeStack}>
             {typeScale.map((t) => (
@@ -237,7 +237,7 @@ export default function StyleGuidePage() {
                   <p className={styles.typeLabel}>{t.label}</p>
                   <code className={styles.tokenName}>{t.token}</code>
                   <p className={styles.typeSpec}>
-                    {t.family === "serif" ? "Bricolage Grotesque" : "Poppins"} ·{" "}
+                    General Sans ·{" "}
                     {t.weight} · {t.size} / {t.lineHeight}
                   </p>
                 </div>
@@ -359,13 +359,13 @@ export default function StyleGuidePage() {
         <section className={styles.section} id="icons">
           <h2 className={styles.sectionTitle}>Icons</h2>
           <p className={styles.sectionLede}>
-            Icons stroke with <code>currentColor</code>, so they inherit text
+            Icons fill with <code>currentColor</code>, so they inherit text
             color and adapt to theme automatically. Custom marks are inline SVG;
             the rest come from{" "}
-            <a href="https://lucide.dev" className={styles.inlineLink}>
-              lucide-react
-            </a>
-            .
+            <a href="https://phosphoricons.com" className={styles.inlineLink}>
+              Phosphor
+            </a>{" "}
+            at the duotone weight.
           </p>
 
           <p className={styles.subGroupLabel}>Custom (inline SVG)</p>
@@ -379,12 +379,12 @@ export default function StyleGuidePage() {
             ))}
           </div>
 
-          <p className={styles.subGroupLabel}>lucide-react</p>
+          <p className={styles.subGroupLabel}>Phosphor (duotone)</p>
           <div className={styles.iconGrid}>
-            {lucideIcons.map(({ Icon, name, usage }) => (
+            {phosphorIcons.map(({ Icon, name, usage }) => (
               <div key={name} className={styles.iconCard}>
                 <div className={styles.iconWell}>
-                  <Icon size={24} aria-hidden="true" />
+                  <Icon size={24} weight="duotone" aria-hidden="true" />
                 </div>
                 <p className={styles.iconName}>{name}</p>
                 <p className={styles.iconUsage}>{usage}</p>

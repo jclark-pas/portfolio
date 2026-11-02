@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Download } from "lucide-react";
+import { Download } from "@phosphor-icons/react/dist/ssr";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import FeaturedWorkSlider from "@/components/FeaturedWorkSlider";
@@ -78,7 +78,7 @@ export default function Home() {
                 aria-label="Download résumé as PDF"
                 data-tooltip="Download résumé (PDF)"
               >
-                <Download size={16} aria-hidden="true" />
+                <Download size={16} weight="duotone" aria-hidden="true" />
               </a>
             </p>
           </div>

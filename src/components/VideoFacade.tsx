@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Play } from "lucide-react";
+import { Play } from "@phosphor-icons/react";
 import styles from "./VideoFacade.module.css";
 
 interface VideoFacadeProps {
@@ -38,7 +38,7 @@ export default function VideoFacade({ videoId, title, poster }: VideoFacadeProps
             className={styles.poster}
           />
           <span className={styles.playButton} aria-hidden="true">
-            <Play fill="currentColor" />
+            <Play />
           </span>
         </button>
       )}

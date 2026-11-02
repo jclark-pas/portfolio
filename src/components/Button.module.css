@@ -11,13 +11,17 @@
   text-decoration: none;
 }
 
+/* GitBook-style dark primary. Invert tokens flip per theme: near-black with
+   cream text in light mode, cream with navy text in dark mode. Orange is kept
+   as an accent (brand mark, eyebrows, links, secondary button) rather than the
+   primary fill. */
 .primary {
-  background: var(--color-accent-bright);
-  color: #ffffff;
+  background: var(--color-surface-invert);
+  color: var(--color-text-invert);
 }
 
 .primary:hover {
-  filter: brightness(0.9);
+  opacity: 0.9;
 }
 
 .secondary {
@@ -27,8 +31,9 @@
 }
 
 .secondary:hover {
-  background: var(--color-accent-bright);
-  color: #ffffff;
+  background: var(--color-surface-invert);
+  color: var(--color-text-invert);
+  border-color: var(--color-surface-invert);
 }
 
 .small {

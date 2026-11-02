@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
+import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import styles from "./ExperienceEntry.module.css";
 
 interface ExperienceEntryProps {
@@ -44,7 +45,7 @@ export default function ExperienceEntry({
           <p className={styles.role}>{role}</p>
         </div>
         <span className={styles.toggle} aria-hidden="true">
-          {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
+          {open ? <CaretUp /> : <CaretDown />}
         </span>
       </button>
       <div className={styles.contentWrapper} aria-hidden={!open}>
@@ -86,21 +87,5 @@ export default function ExperienceEntry({
         </div>
       </div>
     </div>
-  );
-}
-
-function ChevronDownIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  );
-}
-
-function ChevronUpIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="6 15 12 9 18 15" />
-    </svg>
   );
 }

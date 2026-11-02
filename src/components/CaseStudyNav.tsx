@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import styles from "./CaseStudyNav.module.css";
 
 interface NavItem {
@@ -18,12 +18,12 @@ export default function CaseStudyNav({
   return (
     <nav className={styles.bottomNav}>
       <Link href={`/work/${prev.slug}`} className={`${styles.navLink} ${styles.prev}`}>
-        <ArrowLeft className={styles.icon} size={20} aria-hidden="true" />
+        <ArrowLeft className={styles.icon} size={20} weight="duotone" aria-hidden="true" />
         <span className={styles.navLabel}>{prev.navTitle ?? prev.title}</span>
       </Link>
       <Link href={`/work/${next.slug}`} className={`${styles.navLink} ${styles.next}`}>
         <span className={styles.navLabel}>{next.navTitle ?? next.title}</span>
-        <ArrowRight className={styles.icon} size={20} aria-hidden="true" />
+        <ArrowRight className={styles.icon} size={20} weight="duotone" aria-hidden="true" />
       </Link>
     </nav>
   );

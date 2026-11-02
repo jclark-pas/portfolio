@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Target, Scale, Users } from "lucide-react";
+import { Target, Scales as Scale, Users } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
@@ -363,7 +363,7 @@ export default function ForecastPage() {
               return (
                 <div key={r.title} className={styles.reflection}>
                   <span className={styles.reflectionIcon} aria-hidden="true">
-                    <Icon size={24} strokeWidth={2} />
+                    <Icon size={24} weight="duotone" />
                   </span>
                   <div>
                     <h3 className={styles.insightTitle}>{r.title}</h3>

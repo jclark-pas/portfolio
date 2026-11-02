@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import {
-  ChevronDown,
-  MousePointerClick,
-  BarChart3,
-  Bold,
-  ListTree,
+  CaretDown as ChevronDown,
+  CursorClick as MousePointerClick,
+  ChartBar as BarChart3,
+  TextB as Bold,
+  TreeStructure as ListTree,
   Flame,
   Timer,
   ShieldCheck,
   GraduationCap,
-  type LucideIcon,
-} from "lucide-react";
+  type Icon as LucideIcon,
+} from "@phosphor-icons/react";
 import styles from "./ObservationAccordion.module.css";
 
 // Server components can't pass component functions across the client boundary,

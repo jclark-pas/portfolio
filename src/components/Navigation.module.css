@@ -46,7 +46,8 @@
 }
 
 .logoDot {
-  color: var(--color-accent);
+  /* Brand mark uses the full GitBook orange, not the muted text orange. */
+  color: var(--color-accent-bright);
 }
 
 .links {
