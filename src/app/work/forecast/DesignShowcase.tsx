@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import {
-  LineChart,
-  ReceiptText,
-  Layers,
-  TrendingUp,
-  ChevronDown,
-  type LucideIcon,
-} from "lucide-react";
+  ChartLine as LineChart,
+  Receipt as ReceiptText,
+  Stack as Layers,
+  TrendUp as TrendingUp,
+  CaretDown as ChevronDown,
+  type Icon as LucideIcon,
+} from "@phosphor-icons/react";
 import styles from "./DesignShowcase.module.css";
 
 type Move = {

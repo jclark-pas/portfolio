@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
+import { ArrowLeft, ArrowRight, Pause, Play } from "@phosphor-icons/react";
 import Testimonial, { TestimonialData } from "./Testimonial";
 import styles from "./TestimonialDeck.module.css";
 
@@ -166,9 +166,9 @@ export default function TestimonialDeck({
             aria-pressed={userPaused}
           >
             {userPaused ? (
-              <Play size={14} fill="currentColor" aria-hidden="true" />
+              <Play size={14} aria-hidden="true" />
             ) : (
-              <Pause size={14} fill="currentColor" aria-hidden="true" />
+              <Pause size={14} aria-hidden="true" />
             )}
             <span>{userPaused ? "Play" : "Pause"}</span>
           </button>

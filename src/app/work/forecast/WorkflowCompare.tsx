@@ -2,13 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  UserRound,
-  ChevronLeft,
-  ChevronRight,
-  RotateCcw,
+  User as UserRound,
+  CaretLeft as ChevronLeft,
+  CaretRight as ChevronRight,
+  ArrowCounterClockwise as RotateCcw,
   Play,
   Pause,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 import styles from "./WorkflowCompare.module.css";
 
 // the three places the work happened — each shown with its real app icon.
@@ -349,9 +349,9 @@ export default function WorkflowCompare() {
             aria-label={playing ? "Pause" : "Play"}
           >
             {playing ? (
-              <Pause size={13} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+              <Pause size={13} aria-hidden="true" />
             ) : (
-              <Play size={13} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+              <Play size={13} aria-hidden="true" />
             )}
             {playing ? "Pause" : "Play"}
           </button>

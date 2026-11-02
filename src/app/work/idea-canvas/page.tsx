@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { getAdjacentProjects } from "@/data/projects";
-import { LayoutGrid, Compass, Sparkles, Gauge, Zap, Layers, Workflow } from "lucide-react";
+import { GridFour as LayoutGrid, Compass, Sparkle as Sparkles, Gauge, Lightning as Zap, Stack as Layers, FlowArrow as Workflow } from "@phosphor-icons/react/dist/ssr";
 import ObservationAccordion, {
   type Observation,
 } from "@/components/ObservationAccordion";
@@ -287,7 +287,7 @@ export default function IdeaCanvasPage() {
               return (
               <article key={i.title} className={styles.insightCard}>
                 <div className={styles.insightIcon} aria-hidden="true">
-                  <Icon size={22} color="#EFE9DB" strokeWidth={2} />
+                  <Icon size={22} color="#EFE9DB" weight="duotone" />
                 </div>
                 <h3 className={styles.insightTitle}>{i.title}</h3>
                 <p className={styles.insightBody}>{i.body}</p>
@@ -387,7 +387,7 @@ export default function IdeaCanvasPage() {
               return (
               <article key={p.title} className={styles.pillarCard}>
                 <div className={styles.pillarIcon} aria-hidden="true">
-                  <Icon size={22} color="#EFE9DB" strokeWidth={2} />
+                  <Icon size={22} color="#EFE9DB" weight="duotone" />
                 </div>
                 <h3 className={styles.pillarTitle}>{p.title}</h3>
                 <p className={styles.pillarBody}>{p.body}</p>

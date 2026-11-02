@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import BeforeAfterToggle from "./BeforeAfterToggle";
-import { VolumeX } from "lucide-react";
+import { SpeakerX as VolumeX } from "@phosphor-icons/react/dist/ssr";
 import ObservationAccordion, {
   type Observation,
 } from "@/components/ObservationAccordion";
@@ -511,7 +511,7 @@ export default function LivePlanPage() {
               aria-label="Usability test session recording"
             />
             <span className={styles.videoMutedBadge}>
-              <VolumeX size={14} strokeWidth={2} aria-hidden="true" />
+              <VolumeX size={14} weight="duotone" aria-hidden="true" />
               No sound — for privacy
             </span>
           </div>
