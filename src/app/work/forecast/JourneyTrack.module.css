@@ -39,19 +39,19 @@
   stroke-width: 1.5;
   stroke-dasharray: 4 4;
 }
-/* the stretch between the markers marches orange... */
+/* the stretch between the markers, in orange; it holds still */
 .gapLine {
   stroke: var(--color-accent);
   stroke-width: 2;
   stroke-dasharray: 4 4;
-  animation: march 0.5s linear infinite;
 }
+/* the bracket's dashes march with this */
 @keyframes march {
   to {
     stroke-dashoffset: -8;
   }
 }
-/* ...with a soft pulse riding it from where users were to where we built.
+/* a soft pulse riding the bracket from where we built to where users were.
    pathLength=100 and a gap longer than the line, so one dash travels. */
 .pulse {
   stroke: var(--color-accent);
@@ -199,12 +199,19 @@
   padding-top: 2px;
   text-align: center;
 }
-.gap::before {
-  content: "";
+/* dashed and marching like the rail; each segment is drawn in the direction
+   of travel (down, right-to-left, up), so the dashes flow toward Plan */
+.bracket {
   display: block;
-  height: 10px;
-  border: 1px solid var(--color-accent);
-  border-top: 0;
+  width: 100%;
+  height: 12px;
+  overflow: visible;
+}
+.bracket line:not(.pulse) {
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  animation: march 0.5s linear infinite;
 }
 .gapLabel {
   display: block;
@@ -370,8 +377,7 @@
 
 /* ambient loops rest while the track is off screen (only the loops — pausing
    everything would freeze the bubble's fade-in on its invisible first frame) */
-.wrap:not([data-live]) .gapLine,
-.wrap:not([data-live]) .pulse,
+.wrap:not([data-live]) .bracket line,
 .wrap:not([data-live]) .ring rect {
   animation-play-state: paused;
 }

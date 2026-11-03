@@ -3,6 +3,13 @@
   padding: var(--space-xxxl) var(--space-xxl);
 }
 
+/* a section that ends in a framed card already carries its own whitespace,
+   so it runs into the next section closer. Doubled class so it also beats
+   the mobile .section padding below. */
+.section.tightBottom {
+  padding-bottom: var(--space-lg);
+}
+
 .inner {
   max-width: 1200px;
   margin: 0 auto;

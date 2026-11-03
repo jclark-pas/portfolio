@@ -177,24 +177,25 @@ export default function JourneyTrack() {
         className={styles.track}
         style={{ gridTemplateColumns: `repeat(${COLS}, minmax(0, 1fr))` }}
       >
-        {/* the line runs tile centre to tile centre; the stretch from where
-            users were to where we built marches orange with a pulse on it */}
+        {/* the line runs tile centre to tile centre: grey either side, orange
+            between where users were and where we built. The grey stops where
+            the orange starts, so the two never overlap. It holds still — the
+            bracket below carries the motion. */}
         <svg className={styles.line} aria-hidden="true">
-          <line x1={centre(0)} x2={centre(COLS - 1)} y1="4" y2="4" className={styles.rail} />
+          <line x1={centre(0)} x2={centre(USERS_AT)} y1="4" y2="4" className={styles.rail} />
           <line
-            x1={centre(USERS_AT)}
-            x2={centre(BUILT_AT)}
+            x1={centre(BUILT_AT)}
+            x2={centre(COLS - 1)}
             y1="4"
             y2="4"
-            className={styles.gapLine}
+            className={styles.rail}
           />
           <line
             x1={centre(USERS_AT)}
             x2={centre(BUILT_AT)}
             y1="4"
             y2="4"
-            pathLength={100}
-            className={styles.pulse}
+            className={styles.gapLine}
           />
         </svg>
 
@@ -246,7 +247,9 @@ export default function JourneyTrack() {
           );
         })}
 
-        {/* how far apart the two markers sit */}
+        {/* how far apart the two markers sit: a dashed bracket that flows
+            down from "We built here", right to left, and up into "Most
+            users" — the move the team needed to make */}
         <div
           className={styles.gap}
           style={{
@@ -254,6 +257,19 @@ export default function JourneyTrack() {
             paddingInline: BRACKET_INSET,
           }}
         >
+          <svg className={styles.bracket} aria-hidden="true">
+            <line x1="100%" y1="0" x2="100%" y2="100%" />
+            <line x1="100%" y1="100%" x2="0" y2="100%" />
+            <line x1="0" y1="100%" x2="0" y2="0" />
+            <line
+              x1="100%"
+              y1="100%"
+              x2="0"
+              y2="100%"
+              pathLength={100}
+              className={styles.pulse}
+            />
+          </svg>
           <span className={styles.gapLabel}>Months, if not years, away</span>
         </div>
       </div>

@@ -275,7 +275,7 @@ export default function ForecastPage() {
       </section>
 
       {/* ===== The reckoning ===== */}
-      <section className={styles.section}>
+      <section className={`${styles.section} ${styles.tightBottom}`}>
         <div className={styles.narrow}>
           <p className={styles.eyebrow}>And yet&hellip;</p>
           <h2 className={styles.sectionHeading}>Churn remained the same</h2>
