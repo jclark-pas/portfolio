@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import WorkflowCompare from "./WorkflowCompare";
-import JourneyFunnel from "./JourneyFunnel";
+import JourneyTrack from "./JourneyTrack";
 import DesignShowcase from "./DesignShowcase";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import { featuredWork } from "@/data/featuredWork";
@@ -274,56 +274,20 @@ export default function ForecastPage() {
         </div>
       </section>
 
-      {/* ===== The reckoning (dark) ===== */}
-      <section className={styles.darkSection}>
-        <div className={styles.inner}>
-          <div style={{ maxWidth: "820px" }}>
-            <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>And yet&hellip;</p>
-            <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
-              Churn remained the same
-            </h2>
-            <p
-              className={styles.lead}
-              style={{ color: "rgba(253,251,247,0.8)", marginBottom: 0 }}
-            >
-              We built the right tool. We just built it for a moment most of our{" "}
-              <strong>core users were months if not years away from</strong>. Engagement
-              shrank at every step down the funnel — and the deeper the feature, the
-              smaller the audience.
+      {/* ===== The reckoning ===== */}
+      <section className={`${styles.section} ${styles.tightBottom}`}>
+        <div className={styles.narrow}>
+          <p className={styles.eyebrow}>And yet&hellip;</p>
+          <h2 className={styles.sectionHeading}>Churn remained the same</h2>
+          <div className={styles.prose}>
+            <p>
+              We built the right tool for the wrong people, at the wrong time in their
+              journey. Most of our users were still writing their first plan — months, if
+              not years, away from the moment we&rsquo;d built for.
             </p>
           </div>
 
-          <div style={{ marginTop: "var(--space-xxxl)", maxWidth: "820px" }}>
-            <h3
-              style={{
-                fontFamily: "var(--font-bricolage), sans-serif",
-                fontSize: "var(--font-h2)",
-                lineHeight: "var(--line-h2)",
-                fontWeight: 600,
-                color: "#EFE9DB",
-                marginBottom: "var(--space-md)",
-              }}
-            >
-              Meeting our actual users where they are
-            </h3>
-            <div
-              className={styles.prose}
-              style={{ color: "rgba(253,251,247,0.8)", marginBottom: "var(--space-xl)" }}
-            >
-              <p>
-                Most users simply weren&rsquo;t there yet. They came to LivePlan to write a
-                business plan — iterative forecasting sat steps, sometimes years, further down
-                their journey, with plenty that could stall them along the way.
-              </p>
-              <p>
-                So I mapped that journey as a funnel, to show leadership just how far most
-                users were from the moment we&rsquo;d been building for — and why it was time
-                to pivot:
-              </p>
-            </div>
-          </div>
-
-          <JourneyFunnel />
+          <JourneyTrack />
         </div>
       </section>
 

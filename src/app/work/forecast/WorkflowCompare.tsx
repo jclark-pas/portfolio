@@ -1,18 +1,23 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  User as UserRound,
-  CaretLeft as ChevronLeft,
-  CaretRight as ChevronRight,
-  ArrowCounterClockwise as RotateCcw,
-  Play,
-  Pause,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
+import {
+  User,
+  Target,
+  MagnifyingGlass,
+  TrendUp,
+  SlidersHorizontal,
+  Check,
 } from "@phosphor-icons/react";
 import styles from "./WorkflowCompare.module.css";
 
 // the three places the work happened — each shown with its real app icon.
-// app glyphs (brand: false) are masked so they tint with the node color;
+// app glyphs (brand: false) are masked so they tint with the tile color;
 // QuickBooks keeps its full-colour brand mark.
 const TOOLS = [
   { name: "Dashboard", icon: "/images/forecast/dashboard.svg", brand: false },
@@ -26,207 +31,266 @@ const STEPS = [
     headline: "I want to see how I’m tracking against my forecast.",
     lead: "That information is in the…",
     tool: 0,
+    label: "Track",
+    icon: Target,
   },
   {
     seq: "Then,",
     headline: "I might have questions about the numbers I’m seeing.",
     lead: "So I need to head over to…",
     tool: 1,
+    label: "Investigate",
+    icon: MagnifyingGlass,
   },
   {
     seq: "After that,",
     headline: "I need to spot trends and opportunities.",
     lead: "To do that, I’ll go back to the…",
     tool: 0,
+    label: "Spot trends",
+    icon: TrendUp,
   },
   {
     seq: "Finally,",
     headline: "I need to adjust my forecast based on what I found.",
     lead: "I can’t do that here — only in the…",
     tool: 2,
+    label: "Adjust",
+    icon: SlidersHorizontal,
   },
 ];
 
 // after: the same needs, but every one is met in one place
 const AFTER_LEAD = "Now I can do all of it right here, in the…";
 
-// wires (and the avatar) stop this far above the cards so the avatar
-// hovers over an app rather than covering its icon
-const NODE_GAP = 26;
-
-// dwell on each need before advancing; the wrap-around back to the first need
-// waits twice as long so the restart reads as a deliberate beat, not a skip
+// dwell on each need before advancing. The story plays Before straight into
+// After; After's last need dwells twice as long so the restart reads as a
+// deliberate beat, not a skip.
 const STEP_MS = 4800;
+const LAST = STEPS.length - 1;
+
+// The diagram is drawn on a fixed 600×270 grid: the SVG uses it as its viewBox
+// and the HTML tiles are placed at percentages of it, so wires and tiles stay
+// locked together at any width without measuring the DOM.
+const W = 600;
+const H = 270;
+const at = (p: { x: number; y: number }) =>
+  ({ "--x": `${(p.x / W) * 100}%`, "--y": `${(p.y / H) * 100}%` }) as CSSProperties;
+
+// tiles are 64 units square, so ±32 reaches an edge
+const USER = { x: 300, y: 44 };
+const USER_FOOT = USER.y + 32;
+
+// before: one tile per app along the bottom, wired to the user with
+// GitBook-style elbowed connectors
+const APP_POS = [
+  { x: 120, y: 200 },
+  { x: 300, y: 200 },
+  { x: 480, y: 200 },
+];
+const WIRES = [
+  "M288 76 V110 Q288 122 276 122 H132 Q120 122 120 134 V168",
+  "M300 76 V168",
+  "M312 76 V110 Q312 122 324 122 H468 Q480 122 480 134 V168",
+];
+
+// after: the forecast becomes a hub ringed by a loop track. Each need is a
+// station on the loop, and a comet travels the track from one to the next.
+const LOOP_L = 40;
+const LOOP_R = 560;
+const LOOP_T = 112;
+const LOOP_B = 220;
+const R = (LOOP_B - LOOP_T) / 2;
+const LOOP = `M${LOOP_L + R} ${LOOP_T} H${LOOP_R - R} A${R} ${R} 0 0 1 ${LOOP_R - R} ${LOOP_B} H${LOOP_L + R} A${R} ${R} 0 0 1 ${LOOP_L + R} ${LOOP_T} Z`;
+const ENTRY = `M${USER.x} ${USER_FOOT} V${LOOP_T}`;
+const HUB = { x: 300, y: (LOOP_T + LOOP_B) / 2 };
+const STRAIGHT = LOOP_R - LOOP_L - 2 * R;
+const ARC = Math.PI * R;
+const LOOP_LEN = 2 * STRAIGHT + 2 * ARC;
+// distance along LOOP (it starts top-left, heading right) to a point on the
+// top run, or on the bottom run (reached after the top run and right arc)
+const onTop = (x: number) => ({ x, y: LOOP_T, d: x - (LOOP_L + R) });
+const onBottom = (x: number) => ({
+  x,
+  y: LOOP_B,
+  d: STRAIGHT + ARC + (LOOP_R - R - x),
+});
+const STATIONS = [onTop(150), onTop(450), onBottom(450), onBottom(150)];
+// where each station sits along the loop, as a % of its length
+const stationPct = (k: number) => (STATIONS[k].d / LOOP_LEN) * 100;
+// the comet's length, as a % of the loop
+const COMET = 10;
 
 type Mode = "before" | "after";
-type Geo = {
-  w: number;
-  sx: number;
-  sy: number;
-  h: number;
-  nodes: { cx: number; top: number }[];
-};
+
+// a dashed, marching outline drawn just outside a tile (shown when active)
+function Ring({ rx }: { rx: number }) {
+  return (
+    <svg className={styles.ring} aria-hidden="true">
+      <rect width="100%" height="100%" rx={rx} />
+    </svg>
+  );
+}
+
+function AppGlyph({ tool }: { tool: (typeof TOOLS)[number] }) {
+  return tool.brand ? (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={tool.icon} alt="" className={styles.brandIcon} aria-hidden="true" />
+  ) : (
+    <span
+      className={styles.appIcon}
+      style={{ maskImage: `url(${tool.icon})`, WebkitMaskImage: `url(${tool.icon})` }}
+      aria-hidden="true"
+    />
+  );
+}
 
 export default function WorkflowCompare() {
   const [active, setActive] = useState(0);
   const [mode, setMode] = useState<Mode>("before");
-  const [playing, setPlaying] = useState(false);
-  const [geo, setGeo] = useState<Geo | null>(null);
-  // the avatar's journey path; `id` bumps only on a real move so it replays
-  const [travel, setTravel] = useState<{ d: string; id: number } | null>(null);
+  // the story starts the first time it scrolls into view...
+  const [started, setStarted] = useState(false);
+  // ...and holds on the current need while a reader hovers, tabs into it, or
+  // taps it on a touch screen (tap again to let it run). Tracked separately so
+  // ending one kind of hold doesn't cancel another.
+  const [hoverHold, setHoverHold] = useState(false);
+  const [focusHold, setFocusHold] = useState(false);
+  const [touchHold, setTouchHold] = useState(false);
+  // ambient motion (marching wires, comet) only runs while on screen
+  const [live, setLive] = useState(false);
+  // where the comet sits on the loop, in % — it only ever moves to the nearest
+  // copy of the next station, so stepping past the last one keeps orbiting
+  const [comet, setComet] = useState(stationPct(0));
+  // bumps on each entry to After so the comet mounts in place, not mid-flight
+  const [afterRun, setAfterRun] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
-  const nodesRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const prevToolRef = useRef<number | null>(null);
-  const travelIdRef = useRef(1);
 
-  // measure the wire geometry: source point (top) + each tool's top-centre
-  useEffect(() => {
-    const measure = () => {
-      const track = trackRef.current;
-      const nodesEl = nodesRef.current;
-      if (!track || !nodesEl) return;
-      const tr = track.getBoundingClientRect();
-      const nodes = ([...nodesEl.children] as HTMLElement[]).map((n) => {
-        const r = n.getBoundingClientRect();
-        return { cx: r.left - tr.left + r.width / 2, top: r.top - tr.top };
-      });
-      if (!nodes.length) return;
-      const h = Math.min(...nodes.map((n) => n.top));
-      setGeo({ w: tr.width, sx: tr.width / 2, sy: 6, h, nodes });
-    };
-    measure();
-    // re-measure once the web font lands, so the wires/avatar don't sit on
-    // pre-font geometry on first paint
-    if (typeof document !== "undefined" && document.fonts?.ready) {
-      document.fonts.ready.then(measure);
-    }
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
-
-  // autoplay through the needs once it scrolls into view (unless reduced motion)
+  // There are no playback controls, so the needs advance for everyone —
+  // reduced-motion visitors included (their CSS drops the motion, so the text
+  // and diagram just change in place). Everything rests while off screen.
   useEffect(() => {
     const el = rootRef.current;
-    if (!el) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced || typeof IntersectionObserver === "undefined") return;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setLive(true);
+      setStarted(true);
+      return;
+    }
     const io = new IntersectionObserver(
       (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            setPlaying(true);
-            io.disconnect();
-          }
-        }
+        // the newest entry wins if several crossings queued up
+        const e = entries[entries.length - 1];
+        setLive(e.isIntersecting);
+        if (e.intersectionRatio >= 0.4) setStarted(true);
       },
-      { threshold: 0.4 }
+      { threshold: [0, 0.4] }
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
-  // play through the needs on a continuous loop; the wrap from the last need
-  // back to the first dwells twice as long so the restart reads deliberately
-  useEffect(() => {
-    if (!playing) return;
-    const last = active >= STEPS.length - 1;
-    const t = window.setTimeout(
-      () => setActive((a) => (a + 1) % STEPS.length),
-      last ? STEP_MS * 2 : STEP_MS
-    );
-    return () => window.clearTimeout(t);
-  }, [playing, active]);
+  // the story only advances while it's on screen and nobody is holding it
+  const running = started && live && !hoverHold && !focusHold && !touchHold;
+  const before = mode === "before";
+  const dwell = !before && active === LAST ? STEP_MS * 2 : STEP_MS;
 
-  const go = useCallback((n: number) => {
-    setPlaying(false);
-    setActive(((n % STEPS.length) + STEPS.length) % STEPS.length);
-  }, []);
-
-  const replay = useCallback(() => {
-    // forget where the avatar was parked so it re-enters from the source
-    // (the top dot near the need) rather than travelling from the forecast
-    prevToolRef.current = null;
-    setActive(0);
-    setPlaying(true);
-  }, []);
-
-  const togglePlay = useCallback(() => setPlaying((p) => !p), []);
-
-  // flipping Before/After replays the loop from the first need
-  const switchMode = useCallback((m: Mode) => {
+  // move to a need in a scene; going to After (fresh, or restarting it from
+  // its tab) parks the comet on that need's station and remounts it, so it
+  // never flies there — or backwards round the loop — from its last spot
+  const enter = (m: Mode, step: number) => {
+    if (m === "after") {
+      setComet(stationPct(step));
+      setAfterRun((r) => r + 1);
+    }
     setMode(m);
-    setActive(0);
-    setPlaying(true);
-  }, []);
+    setActive(step);
+  };
 
-  // the run has finished its pass and is parked on the last need
-  const atEnd = !playing && active === STEPS.length - 1;
+  // play through Before, roll straight into After, then loop back to Before.
+  // a hold clears the timer, so the need gets its full dwell on release.
+  useEffect(() => {
+    if (!running) return;
+    const t = window.setTimeout(() => {
+      if (active < LAST) setActive(active + 1);
+      else enter(before ? "after" : "before", 0);
+    }, dwell);
+    return () => window.clearTimeout(t);
+    // enter() closes over mode, which is a dependency here
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [running, active, mode]);
+
+  // in After, glide the comet to the active need's station
+  useEffect(() => {
+    if (mode !== "after") return;
+    const target = stationPct(active);
+    setComet((c) => target + 100 * Math.round((c - target) / 100));
+  }, [active, mode]);
 
   const cur = STEPS[active];
-  const before = mode === "before";
   const activeTool = before ? cur.tool : 2;
 
-  // build the avatar's travel path. A move retraces from where it stands, back
-  // up to the branch point, then down to the next app — one continuous journey.
-  useEffect(() => {
-    if (!geo) return;
-    const to = geo.nodes[activeTool];
-    if (!to) return;
-    const wireTo = (n: { cx: number; top: number }) => {
-      const end = n.top - NODE_GAP;
-      const mid = geo.sy + (end - geo.sy) * 0.5;
-      return { end, mid };
-    };
-    const t = wireTo(to);
-    const simple = `M ${geo.sx} ${geo.sy} C ${geo.sx} ${t.mid}, ${to.cx} ${t.mid}, ${to.cx} ${t.end}`;
-    const prev = prevToolRef.current;
-    if (prev != null && prev === activeTool) {
-      // no real move (After mode stays on the forecast, or a resize):
-      // reposition without replaying the animation
-      setTravel((cur) => ({ d: simple, id: cur ? cur.id : travelIdRef.current }));
-    } else if (prev == null) {
-      // fresh entrance (first load or replay): drop in from the source down
-      // to the node, animating the whole way
-      travelIdRef.current += 1;
-      setTravel({ d: simple, id: travelIdRef.current });
-    } else {
-      const from = geo.nodes[prev];
-      const f = wireTo(from);
-      // from the current app → up to the source → down to the next app
-      const d =
-        `M ${from.cx} ${f.end} C ${from.cx} ${f.mid}, ${geo.sx} ${f.mid}, ${geo.sx} ${geo.sy}` +
-        ` C ${geo.sx} ${t.mid}, ${to.cx} ${t.mid}, ${to.cx} ${t.end}`;
-      travelIdRef.current += 1;
-      setTravel({ d, id: travelIdRef.current });
-    }
-    prevToolRef.current = activeTool;
-  }, [activeTool, geo]);
+  // a scene's dots: done, current, or still to come
+  const dotState = (m: Mode, k: number) => {
+    if (m !== mode) return m === "before" ? styles.done : "";
+    if (k < active) return styles.done;
+    return k === active ? styles.now : "";
+  };
 
   return (
-    <div className={styles.wrap} ref={rootRef}>
+    <div
+      className={styles.wrap}
+      ref={rootRef}
+      onPointerEnter={(e) => e.pointerType === "mouse" && setHoverHold(true)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && setHoverHold(false)}
+      // a tap anywhere but the tabs toggles a touch hold
+      onPointerUp={(e) => {
+        if (e.pointerType !== "touch") return;
+        if ((e.target as Element).closest('[role="tablist"]')) return;
+        setTouchHold((h) => !h);
+      }}
+      // only keyboard focus holds; a mouse click on a tab shouldn't pin it
+      onFocus={(e) => e.target.matches(":focus-visible") && setFocusHold(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setFocusHold(false);
+      }}
+    >
       <h3 className={styles.title}>User Journey</h3>
 
-      {/* before / after toggle — flips the whole loop */}
-      <div className={styles.toggle} role="tablist" aria-label="Before or after">
-        <button
-          type="button"
-          role="tab"
-          aria-selected={before}
-          className={`${styles.seg} ${before ? styles.segOn : ""}`}
-          onClick={() => switchMode("before")}
-        >
-          Before
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={!before}
-          className={`${styles.seg} ${!before ? styles.segOn : ""}`}
-          onClick={() => switchMode("after")}
-        >
-          After
-        </button>
+      {/* before / after toggle, doubling as the story's progress: a dot per
+          need, the current one filling over its dwell. After nudges when it's
+          up next, so the second half is easy to find. */}
+      <div
+        className={styles.toggle}
+        role="tablist"
+        aria-label="Before or after"
+        data-playing={running || undefined}
+      >
+        {(["before", "after"] as const).map((m) => (
+          <button
+            key={m}
+            type="button"
+            role="tab"
+            aria-selected={mode === m}
+            className={`${styles.seg} ${mode === m ? styles.segOn : ""} ${
+              m === "after" && before && active === LAST ? styles.segNext : ""
+            }`}
+            onClick={() => enter(m, 0)}
+          >
+            {m === "before" ? "Before" : "After"}
+            <span className={styles.dots} aria-hidden="true">
+              {STEPS.map((s, k) => (
+                <span key={s.label} className={`${styles.dot} ${dotState(m, k)}`}>
+                  {m === mode && k === active ? (
+                    <span
+                      key={`${mode}-${active}-${running}`}
+                      className={styles.fill}
+                      style={{ "--dwell": `${dwell}ms` } as CSSProperties}
+                    />
+                  ) : null}
+                </span>
+              ))}
+            </span>
+          </button>
+        ))}
       </div>
 
       {/* the user need — voiced in a speech bubble pointing at the user below.
@@ -239,133 +303,106 @@ export default function WorkflowCompare() {
         </div>
       </div>
 
-      {/* wires fan from the need down to the apps; tool nodes below */}
-      <div className={styles.track} ref={trackRef}>
-        {geo ? (
-          <svg
-            className={styles.wires}
-            width={geo.w}
-            height={geo.h}
-            viewBox={`0 0 ${geo.w} ${geo.h}`}
-            aria-hidden="true"
-          >
-            {geo.nodes.map((n, k) => {
-              const on = k === activeTool;
-              const dim = !before && k !== 2;
-              const end = n.top - NODE_GAP;
-              const midY = geo.sy + (end - geo.sy) * 0.5;
-              const d = `M ${geo.sx} ${geo.sy} C ${geo.sx} ${midY}, ${n.cx} ${midY}, ${n.cx} ${end}`;
-              return (
-                <path
-                  key={TOOLS[k].name}
-                  d={d}
-                  className={`${styles.wire} ${on ? styles.wireOn : ""} ${
-                    dim ? styles.wireDim : ""
-                  }`}
-                />
-              );
-            })}
-            <circle cx={geo.sx} cy={geo.sy} r="3.5" className={styles.source} />
-          </svg>
-        ) : null}
+      <div className={styles.canvas} data-mode={mode} data-live={live || undefined}>
+        <svg className={styles.svg} viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
+          {/* before: wires fan from the user to each app; the active one
+              marches and carries a pulse down to the app */}
+          <g className={styles.beforeLayer}>
+            {WIRES.map((d, k) => (
+              <path
+                key={TOOLS[k].name}
+                d={d}
+                className={`${styles.wire} ${k === activeTool ? styles.wireOn : ""}`}
+              />
+            ))}
+            {before ? (
+              <path
+                key={`pulse-${active}`}
+                d={WIRES[activeTool]}
+                pathLength={100}
+                className={styles.pulse}
+              />
+            ) : null}
+            {APP_POS.map((p, k) => (
+              <circle
+                key={TOOLS[k].name}
+                cx={p.x}
+                cy={p.y - 32}
+                r={3.5}
+                className={`${styles.port} ${k === activeTool ? styles.portOn : ""}`}
+              />
+            ))}
+          </g>
 
-        {travel ? (
-          <div
-            key={travel.id}
-            className={styles.traveler}
-            style={{ offsetPath: `path('${travel.d}')` }}
-            role="img"
-            aria-label="The user, moving to the app"
-          >
-            <UserRound size={18} aria-hidden="true" />
-          </div>
-        ) : null}
+          {/* after: one loop around the forecast, a comet orbiting it */}
+          <g className={styles.afterLayer}>
+            <path d={LOOP} className={styles.loop} />
+            {(["comet", "cometCore"] as const).map((c) => (
+              <path
+                key={`${c}-${afterRun}`}
+                d={LOOP}
+                pathLength={100}
+                className={styles[c]}
+                style={{ strokeDashoffset: -(comet - COMET / 2) }}
+              />
+            ))}
+            <path d={ENTRY} className={`${styles.wire} ${styles.wireOn}`} />
+            <path d={ENTRY} pathLength={100} className={styles.pulse} />
+            <circle cx={USER.x} cy={LOOP_T} r={3.5} className={styles.portOn} />
+          </g>
 
-        <div className={styles.nodes} ref={nodesRef}>
-          {TOOLS.map((t, k) => {
-            const on = k === activeTool;
-            const dim = !before && k !== 2;
-            return (
-              <div
-                key={t.name}
-                className={`${styles.node} ${on ? styles.nodeOn : ""} ${
-                  dim ? styles.dimmed : ""
-                }`}
-              >
-                {t.brand ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={t.icon}
-                    alt=""
-                    width={22}
-                    height={22}
-                    className={styles.nodeIcon}
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <span
-                    className={styles.appIcon}
-                    style={{
-                      maskImage: `url(${t.icon})`,
-                      WebkitMaskImage: `url(${t.icon})`,
-                    }}
-                    aria-hidden="true"
-                  />
-                )}
-                <span className={styles.nodeLabel}>{t.name}</span>
-              </div>
-            );
-          })}
+          <circle cx={USER.x} cy={USER_FOOT} r={3.5} className={styles.portOn} />
+        </svg>
+
+        <div className={`${styles.tile} ${styles.user}`} style={at(USER)}>
+          <span className={styles.avatar}>
+            <User size="58%" aria-hidden="true" />
+          </span>
         </div>
-      </div>
 
-      {/* arrows flank a centre control: play/pause while progressing,
-          ⟲ Replay once the run has ended */}
-      <div className={styles.progress}>
-        <button
-          type="button"
-          className={styles.arrow}
-          aria-label="Previous need"
-          onClick={() => go(active - 1)}
-          disabled={active === 0}
-        >
-          <ChevronLeft size={16} aria-hidden="true" />
-        </button>
-
-        {atEnd ? (
-          <button
-            type="button"
-            className={`${styles.ctrlBtn} ${styles.replay}`}
-            onClick={replay}
+        {TOOLS.map((t, k) => (
+          <div
+            key={t.name}
+            className={`${styles.tile} ${styles.app} ${
+              before && k === activeTool ? styles.on : ""
+            }`}
+            style={at(before ? APP_POS[k] : HUB)}
+            aria-hidden={!before}
           >
-            <RotateCcw size={14} aria-hidden="true" />
-            Replay
-          </button>
-        ) : (
-          <button
-            type="button"
-            className={styles.ctrlBtn}
-            onClick={togglePlay}
-            aria-label={playing ? "Pause" : "Play"}
-          >
-            {playing ? (
-              <Pause size={13} aria-hidden="true" />
-            ) : (
-              <Play size={13} aria-hidden="true" />
-            )}
-            {playing ? "Pause" : "Play"}
-          </button>
-        )}
+            <Ring rx={17} />
+            <AppGlyph tool={t} />
+            <span className={styles.label}>{t.name}</span>
+          </div>
+        ))}
 
-        <button
-          type="button"
-          className={styles.arrow}
-          aria-label="Next need"
-          onClick={() => go(active + 1)}
-          disabled={active === STEPS.length - 1}
-        >
-          <ChevronRight size={16} aria-hidden="true" />
-        </button>
+        <div className={`${styles.tile} ${styles.hub}`} style={at(HUB)} aria-hidden={before}>
+          <Ring rx={17} />
+          <AppGlyph tool={TOOLS[2]} />
+          <span className={styles.hubLabel}>{TOOLS[2].name}</span>
+        </div>
+
+        {STEPS.map((s, k) => {
+          const Glyph = s.icon;
+          return (
+            <div
+              key={s.label}
+              className={`${styles.tile} ${styles.station} ${
+                !before && k === active ? styles.on : ""
+              } ${k < 2 ? styles.top : ""}`}
+              style={{ ...at(STATIONS[k]), "--i": k } as CSSProperties}
+              aria-hidden={before}
+            >
+              <Ring rx={17} />
+              <Glyph size="46%" aria-hidden="true" />
+              {!before && k <= active ? (
+                <span className={styles.check}>
+                  <Check size="62%" weight="bold" aria-hidden="true" />
+                </span>
+              ) : null}
+              <span className={styles.label}>{s.label}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
