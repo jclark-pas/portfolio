@@ -279,6 +279,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 14px;
 }
 /* the line-art faces are drawn in black, so the disc stays a light tint of
    the persona's colour in both themes */
@@ -309,7 +310,7 @@
   color: var(--color-text-secondary);
 }
 .quote {
-  margin: 12px 0 0;
+  margin: 0;
   font-family: var(--font-serif);
   font-size: 18px;
   line-height: 1.35;
@@ -321,7 +322,7 @@
   display: flex;
   align-items: baseline;
   gap: 8px;
-  margin: 10px 0 0;
+  margin: 4px 0 0;
   font-size: 14px;
   line-height: 1.45;
   color: var(--color-text-secondary);

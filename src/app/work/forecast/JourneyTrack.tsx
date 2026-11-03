@@ -153,6 +153,12 @@ export default function JourneyTrack() {
       >
         <div className={styles.bubble}>
           <div key={active} className={styles.bubbleInner}>
+            <p className={styles.quote}>“{stage.job}”</p>
+            <p className={styles.pain}>
+              <span className={styles.painTag}>Pain</span>
+              {stage.pain}
+            </p>
+            {/* who said it, signed off underneath like a testimonial */}
             <div className={styles.who}>
               <span className={styles.avatar}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -163,11 +169,6 @@ export default function JourneyTrack() {
                 <span className={styles.whoRole}>{stage.role}</span>
               </span>
             </div>
-            <p className={styles.quote}>“{stage.job}”</p>
-            <p className={styles.pain}>
-              <span className={styles.painTag}>Pain</span>
-              {stage.pain}
-            </p>
           </div>
         </div>
         <span className={styles.tail} />
