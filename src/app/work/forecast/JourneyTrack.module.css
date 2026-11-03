@@ -266,7 +266,15 @@
 :global([data-theme="dark"]) .bubble {
   box-shadow: none;
 }
+.bubble {
+  display: grid;
+}
 .bubbleInner {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+.bubbleInner[data-on] {
+  visibility: visible;
   animation: voiceIn 320ms ease both;
 }
 @keyframes voiceIn {
@@ -383,6 +391,19 @@
   animation-play-state: paused;
 }
 
+/* with scripting off nothing would ever set data-shown, so skip the entrance */
+@media (scripting: none) {
+  .wrap .stage,
+  .wrap .marker,
+  .wrap .gap,
+  .wrap .gapLine,
+  .wrap .pulse,
+  .wrap .voice {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* printing or saving a PDF before scrolling here: show everything, still */
 @media print {
   .wrap * {
@@ -420,7 +441,7 @@
   }
   /* the last column is too narrow to centre its pill without spilling past
      the card, so it hugs the edge — the bracket's end still lands under it */
-  .markerBuilt {
+  .markerLast {
     justify-self: end;
   }
   .name {
@@ -431,10 +452,5 @@
   }
   .quote {
     font-size: 17px;
-  }
-  /* full-width bubbles wrap differently per stage; hold the tallest so the
-     page below doesn't jump as the reader taps between stages */
-  .bubble {
-    min-height: 180px;
   }
 }

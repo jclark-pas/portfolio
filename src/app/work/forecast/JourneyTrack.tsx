@@ -80,8 +80,6 @@ const STAGES = [
   },
 ];
 
-
-
 // where most users were, and where the forecasting work was aimed
 const USERS_AT = 1;
 const BUILT_AT = 4;
@@ -132,8 +130,6 @@ export default function JourneyTrack() {
     return () => io.disconnect();
   }, []);
 
-  const stage = STAGES[active];
-
   return (
     <div
       ref={ref}
@@ -148,28 +144,38 @@ export default function JourneyTrack() {
           is visual only. */}
       <div
         className={styles.voice}
-        style={{ "--cp": (active + 0.5) / COLS, "--hue": stage.hue } as React.CSSProperties}
+        style={{ "--cp": (active + 0.5) / COLS } as React.CSSProperties}
         aria-hidden="true"
       >
+        {/* every stage's voice sits in the same grid cell, so the bubble
+            always takes the tallest one's height and the track below never
+            jumps as the reader moves between stages; only the active one shows */}
         <div className={styles.bubble}>
-          <div key={active} className={styles.bubbleInner}>
-            <p className={styles.quote}>“{stage.job}”</p>
-            <p className={styles.pain}>
-              <span className={styles.painTag}>Pain</span>
-              {stage.pain}
-            </p>
-            {/* who said it, signed off underneath like a testimonial */}
-            <div className={styles.who}>
-              <span className={styles.avatar}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={stage.avatar} alt="" width={40} height={40} />
-              </span>
-              <span>
-                <span className={styles.whoName}>{stage.who}</span>
-                <span className={styles.whoRole}>{stage.role}</span>
-              </span>
+          {STAGES.map((s, i) => (
+            <div
+              key={s.name}
+              className={styles.bubbleInner}
+              data-on={i === active || undefined}
+              style={{ "--hue": s.hue } as React.CSSProperties}
+            >
+              <p className={styles.quote}>“{s.job}”</p>
+              <p className={styles.pain}>
+                <span className={styles.painTag}>Pain</span>
+                {s.pain}
+              </p>
+              {/* who said it, signed off underneath like a testimonial */}
+              <div className={styles.who}>
+                <span className={styles.avatar}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={s.avatar} alt="" width={40} height={40} />
+                </span>
+                <span>
+                  <span className={styles.whoName}>{s.who}</span>
+                  <span className={styles.whoRole}>{s.role}</span>
+                </span>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
         <span className={styles.tail} />
       </div>
@@ -210,7 +216,9 @@ export default function JourneyTrack() {
         </span>
         <span
           id="journey-built"
-          className={`${styles.marker} ${styles.markerBuilt}`}
+          className={`${styles.marker} ${styles.markerBuilt} ${
+            BUILT_AT === COLS - 1 ? styles.markerLast : ""
+          }`}
           style={{ gridColumn: BUILT_AT + 1 }}
         >
           We built here
@@ -227,7 +235,7 @@ export default function JourneyTrack() {
               } ${i === BUILT_AT ? styles.built : ""}`}
               style={{ gridColumn: i + 1, "--i": i } as React.CSSProperties}
               // the button carries the job and pain itself, so the visual
-              // bubble below needn't announce on every focus
+              // bubble above needn't announce on every focus
               aria-label={`${s.name}, ${s.range}: ${s.job}. Pain: ${s.pain}`}
               aria-describedby={
                 i === USERS_AT ? "journey-users" : i === BUILT_AT ? "journey-built" : undefined
