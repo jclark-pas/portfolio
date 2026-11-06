@@ -16,7 +16,8 @@ export const metadata: Metadata = {
     "Designing Idea Canvas, LivePlan's validation tool for people who don't have a plan yet: a guided Lean Canvas that researches each assumption as it's written and turns a weak rating into a pivot. 70% acted on a pivot suggestion.",
 };
 
-// the three moves, each headed by the change it made for the first-timer
+// the three moves, each headed by the change it made for the first-timer,
+// and the row for the two directions that lost
 const moves: {
   title: string;
   body: string;
@@ -48,6 +49,15 @@ const moves: {
     alt: "An Idea Check result listing top concerns for a dog food idea and recommending a pivot to a safe supplement, with an Add to Canvas button",
     width: 1866,
     height: 1438,
+  },
+  // the two directions that lost in quick tests, after the three that won
+  {
+    title: "What didn’t work first",
+    body: "Two earlier directions lost in quick tests: a single-page canvas, which looked like the wall of boxes we were trying to escape, and a chat interface, which felt endless and buried the pivot opportunities. The guided page kept the structure of a canvas and the pace of a conversation.",
+    src: "/images/canvas/canvas-quick-test.png",
+    alt: "The single-page canvas as first tested: nine empty Lean Canvas boxes on one screen, from Problems to Revenue Streams",
+    width: 1024,
+    height: 812,
   },
 ];
 
@@ -204,28 +214,6 @@ export default function IdeaCanvasPage() {
                   </div>
                 </div>
               ))}
-              {/* the two directions that lost in quick tests, after the three that won */}
-              <div className={beats.move}>
-                <div className={beats.media}>
-                  <Image
-                    src="/images/canvas/canvas-quick-test.png"
-                    alt="The single-page canvas as first tested: nine empty Lean Canvas boxes on one screen, from Problems to Revenue Streams"
-                    width={1024}
-                    height={812}
-                    sizes="(max-width: 960px) 100vw, 650px"
-                    className={beats.shot}
-                  />
-                </div>
-                <div>
-                  <h3 className={beats.moveTitle}>What didn&rsquo;t work first</h3>
-                  <p className={beats.moveBody}>
-                    Two earlier directions lost in quick tests: a single-page canvas, which
-                    looked like the wall of boxes we were trying to escape, and a chat
-                    interface, which felt endless and buried the pivot opportunities. The
-                    guided page kept the structure of a canvas and the pace of a conversation.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
           <div className={`${styles.narrow} ${beats.after}`}>
