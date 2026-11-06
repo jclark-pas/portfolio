@@ -20,7 +20,7 @@ export const metadata = { title: "LivePlan" };
 const moves: { title: string; body: string; comparison: Comparison }[] = [
   {
     title: "From read-then-edit to just writing",
-    body: "Everything is editable inline. Write, reorder and restructure in the document, with no detail views and no lost context. Comments live there too, so a team can work in the plan together.",
+    body: "Everything is editable inline. Write, reorder and restructure in the document, with no detail views and no lost context. Comments and collaborative editing live there too, so a team can work in the plan together.",
     comparison: {
       title: "Inline editing",
       before: {
