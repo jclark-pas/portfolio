@@ -1,0 +1,251 @@
+/* The plan redesign told in five beats. Shares the hero, section and prose
+   styles with ./page.module.css; this file only holds what the beats add: the
+   light hero, the moves with their before/after toggles, the stat rows. */
+
+/* the hero on the card gray instead of the shared dark hero: same layout
+   classes from ./page.module.css, but the page colors and the page accent */
+.hero {
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+.hero h1,
+.hero dl dd {
+  color: var(--color-text);
+}
+.hero .heroFrame {
+  background: var(--color-surface);
+  border-color: var(--color-border-light);
+}
+@media (max-width: 480px) {
+  .hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* the one-line lead under the hero image, before the meta row */
+.heroLine {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+/* what the replays showed, as a plain list in the prose */
+.findings {
+  margin: var(--space-md) 0;
+  padding-left: 1.2em;
+  list-style: disc;
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+.findings li::marker {
+  color: var(--color-accent);
+}
+.findings li + li {
+  margin-top: var(--space-xs);
+}
+
+/* the reframe, pulled out of the prose */
+.pull {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-text);
+  max-width: 26ch;
+  margin: var(--space-xl) 0;
+  padding-left: var(--space-md);
+  border-left: 3px solid var(--color-accent);
+  text-wrap: balance;
+}
+
+/* three moves: a before/after toggle on one side, the words on the other.
+   Every other move swaps sides, so the media zips down the page. The token
+   card is its own row in .moves, not a move, and the selector counts only
+   moves, so the swap stays intact. */
+.moves {
+  display: grid;
+  /* the videos all move, so each move gets room to breathe */
+  gap: calc(var(--space-xxxl) + var(--space-lg));
+  margin-top: var(--space-xxl);
+}
+.move {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: center;
+}
+/* the swap moves the media into the second column, so that row
+   also flips its column widths, keeping every video the same size */
+.move:nth-child(even of .move) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+}
+.move:nth-child(even of .move) .media {
+  order: 2;
+}
+.moveTitle {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  text-wrap: balance;
+}
+.moveBody {
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+/* the token diagrams, tabbed, full width under the token move. The grid gap
+   is sized for the space between moves; this card belongs to the move above
+   it, so it pulls up to sit closer to that move than to the next one. */
+.tokens {
+  margin-top: calc(var(--space-xl) - var(--space-xxxl) - var(--space-lg));
+  padding: var(--space-xl);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+}
+.tokenPanel {
+  margin-top: var(--space-lg);
+  animation: tokenIn 240ms ease both;
+}
+@keyframes tokenIn {
+  from {
+    opacity: 0;
+  }
+}
+.tokenTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+.tokenBody {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  max-width: 70ch;
+}
+.tokenImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tokenPanel {
+    animation: none;
+  }
+}
+
+/* a section on the card gray; its stat tiles go white so they still read */
+.cardBand {
+  background: var(--color-bg-card);
+}
+.cardBand .stat {
+  background: var(--color-surface);
+}
+
+/* stat rows: value and label, nothing under them */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+.stat {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+.statValue {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+  font-variant-numeric: tabular-nums;
+}
+.statLabel {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+/* the usability clip beside the fast-follow it surfaced */
+.testing {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: center;
+  margin-top: var(--space-xl);
+}
+.clip {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+  background: var(--color-bg-card);
+}
+.clipNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-xs);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+.picker {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+/* the three lessons, in a line each */
+.lesson {
+  font-weight: 500;
+  color: var(--color-text);
+}
+/* a full-width still inside the page column */
+.still {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+@media (max-width: 960px) {
+  .move,
+  .move:nth-child(even of .move),
+  .testing {
+    grid-template-columns: 1fr;
+  }
+  /* stacked, the media always leads */
+  .move:nth-child(even of .move) .media {
+    order: 0;
+  }
+  .pull {
+    font-size: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .stat {
+    padding: var(--space-md);
+  }
+  .heroLine {
+    font-size: 20px;
+  }
+}
