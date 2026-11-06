@@ -158,10 +158,10 @@ export default function LivePlanPage() {
           </div>
         </section>
 
-        {/* ===== What the replays showed ===== */}
+        {/* ===== Research ===== */}
         <section className={`${styles.section} ${beats.cardBand}`}>
           <div className={styles.narrow}>
-            <p className={styles.eyebrow}>What the replays showed</p>
+            <p className={styles.eyebrow}>Research</p>
             <h2 className={styles.sectionHeading}>Watching people work around the product</h2>
             <div className={styles.prose}>
               <p>

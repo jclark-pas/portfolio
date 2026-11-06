@@ -38,12 +38,19 @@
 .findings {
   margin: var(--space-md) 0 0;
   padding-left: 1.2em;
+  list-style: disc;
   font-size: var(--font-body1);
   line-height: var(--line-body1);
   color: var(--color-text-secondary);
 }
+.findings li::marker {
+  color: var(--color-accent);
+}
 .findings li + li {
   margin-top: var(--space-xs);
+}
+.findings + div {
+  margin-top: var(--space-md);
 }
 
 /* the reframe, pulled out of the prose */
