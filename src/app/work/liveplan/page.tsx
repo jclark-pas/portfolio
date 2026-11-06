@@ -191,8 +191,8 @@ export default function LivePlanPage() {
                 separate edit mode.
               </li>
               <li>
-                Charts rebuilt in Excel and pasted back as images. The native charting sat
-                where no one looked.
+                Users were building charts in Excel and pasting them in their plan as images.
+                LivePlan&rsquo;s native charting couldn&rsquo;t be found.
               </li>
               <li>Whole lines bolded to fake headings, because there were no heading styles.</li>
               <li>
