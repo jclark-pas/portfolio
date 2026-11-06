@@ -51,6 +51,10 @@ const moves: {
   },
 ];
 
+// from the Idea Canvas Feature Eval dashboard in Amplitude, non-staff users
+// since the March 27 2026 tracking fix: 3,363 of 4,529 starters added an item
+// to problem, target market and solution; 605 of 858 Idea Check users in April
+// replaced an item; 1,574 of 1,747 AI votes were "helpful"
 const results = [
   { value: "74%", label: "completed the core sections of the canvas" },
   { value: "70%", label: "acted on a pivot suggestion" },
@@ -141,7 +145,7 @@ export default function IdeaCanvasPage() {
             <h2 className={styles.sectionHeading}>Validation felt like homework</h2>
             <div className={styles.prose}>
               <p>
-                Three streams again: marketing&rsquo;s search and sentiment data, about a dozen
+                Three streams: marketing&rsquo;s search and sentiment data, about a dozen
                 interviews with early-stage customers who were using the Business Plan as a
                 makeshift validation tool and with educators who teach validation to
                 first-time founders, and a review of VenturePlanner and Leanstack. The
