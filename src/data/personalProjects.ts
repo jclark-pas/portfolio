@@ -1,0 +1,104 @@
+import type { ThumbnailData } from "@/components/ProjectThumbnail";
+
+// Side projects with a live site of their own. Each card links out instead
+// of to a case study. Thumbnails are composed the same way as the work cards:
+// a background, a logo, and screenshots placed as percentages of the box.
+export interface PersonalProject {
+  title: string;
+  description: string;
+  /** the live site */
+  href: string;
+  /** what the link shows, usually the bare domain */
+  host: string;
+  platforms: string;
+  thumbnail: ThumbnailData;
+}
+
+export const personalProjects: PersonalProject[] = [
+  {
+    title: "Plannery",
+    description:
+      "A group trip planner for the person who always ends up planning it. Real city guides, a day-by-day itinerary with travel times that add up, voting for the group, and AI that proposes changes for you to approve.",
+    href: "https://getplannery.com",
+    host: "getplannery.com",
+    platforms: "Web and iOS",
+    thumbnail: {
+      background: "linear-gradient(160deg, #F3F3E9 0%, #ECEFE2 60%, #DDE7D6 100%)",
+      logo: {
+        src: "/projects/personal/plannery-lockup.png",
+        alt: "Plannery",
+        left: "33%",
+        top: "9%",
+        width: "34%",
+        height: "10.9%",
+        hoverTransform: "scale(1.04)",
+      },
+      overlays: [
+        {
+          src: "/projects/personal/plannery-03.png",
+          alt: "Plannery showing a day's route on a map of Barcelona",
+          left: "16%",
+          top: "34%",
+          width: "29%",
+          height: "73.3%",
+          shadow: true,
+          hoverTransform: "translateY(-5%) scale(1.03)",
+        },
+        {
+          src: "/projects/personal/plannery-01.png",
+          alt: "Plannery's day-by-day itinerary for a Barcelona trip",
+          left: "53%",
+          top: "27%",
+          width: "29%",
+          height: "73.3%",
+          shadow: true,
+          hoverTransform: "translateY(-7%) scale(1.03)",
+        },
+      ],
+    },
+  },
+  {
+    title: "PurplePain",
+    description:
+      "A private pain journal for iPhone and Apple Watch. Four check-ins a day on a cool-to-hot scale, logged beside sleep, mood, activity and weather, with a calendar and trends that show what moves together. Everything stays on the phone.",
+    href: "https://purplepain.app",
+    host: "purplepain.app",
+    platforms: "iOS and watchOS",
+    thumbnail: {
+      background: "linear-gradient(160deg, #1B0A33 0%, #3B1680 55%, #120A1F 100%)",
+      logo: {
+        src: "/projects/personal/purplepain-logo.png",
+        alt: "PurplePain",
+        left: "28%",
+        top: "7%",
+        width: "44%",
+        height: "31%",
+        hoverTransform: "scale(1.04)",
+      },
+      overlays: [
+        {
+          src: "/projects/personal/purplepain-trends.jpg",
+          alt: "PurplePain's trends screen: pain over the month as a bar chart",
+          left: "17%",
+          top: "46%",
+          width: "28%",
+          height: "87%",
+          radius: "14px",
+          shadow: true,
+          hoverTransform: "translateY(-5%) scale(1.03)",
+        },
+        {
+          src: "/projects/personal/purplepain-today.jpg",
+          alt: "PurplePain's today screen: a day's pain score and four check-ins",
+          left: "55%",
+          top: "40%",
+          width: "28%",
+          height: "87%",
+          radius: "14px",
+          shadow: true,
+          hoverTransform: "translateY(-7%) scale(1.03)",
+        },
+      ],
+    },
+  },
+];

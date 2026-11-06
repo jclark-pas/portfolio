@@ -1,9 +1,11 @@
 import Navigation from "@/components/Navigation";
 import WorkCard from "@/components/WorkCard";
+import PersonalProjectCard from "@/components/PersonalProjectCard";
 import FeaturedWorkSlider from "@/components/FeaturedWorkSlider";
 import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
 import { featuredWork, featuredSlugs } from "@/data/featuredWork";
+import { personalProjects } from "@/data/personalProjects";
 import styles from "./page.module.css";
 
 export const metadata = { title: "Work" };
@@ -46,6 +48,20 @@ export default function WorkIndexPage() {
           <div className={styles.moreWorkGrid}>
             {otherProjects.map((project) => (
               <WorkCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* side projects with a site of their own; the cards link out */}
+      <section className={styles.section}>
+        <div className={styles.sectionInner}>
+          <div className={styles.sectionHeader}>
+            <p className={styles.subsectionLabel}>Personal Projects</p>
+          </div>
+          <div className={styles.personalGrid}>
+            {personalProjects.map((project) => (
+              <PersonalProjectCard key={project.href} project={project} />
             ))}
           </div>
         </div>
