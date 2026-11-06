@@ -14,7 +14,11 @@ import beats from "./beats.module.css";
 // The plan redesign in five beats: the problem, what the replays showed, three
 // moves, tested then shipped, the results. The original, longer telling is
 // kept at ./original for reference.
-export const metadata = { title: "LivePlan" };
+export const metadata = {
+  title: "LivePlan",
+  description:
+    "Rebuilding LivePlan's business plan editor around where people actually write: inline editing, a token-based theme system and AI help in context. Early churn fell 25%.",
+};
 
 // the three moves, each headed by the change it made for the writer
 const moves: { title: string; body: string; comparison: Comparison }[] = [
@@ -149,8 +153,8 @@ export default function LivePlanPage() {
             <Image
               src="/images/liveplan/editor-before.png"
               alt="The legacy LivePlan editor: modal-heavy, fixed templates, sidebar-only AI"
-              width={2400}
-              height={1350}
+              width={4080}
+              height={2400}
               sizes="(max-width: 1200px) 100vw, 1200px"
               className={beats.still}
               priority
@@ -335,8 +339,8 @@ export default function LivePlanPage() {
                 <Image
                   src="/images/liveplan/editor-before.png"
                   alt="The legacy LivePlan editor: modal-heavy, fixed templates, sidebar-only AI"
-                  width={2400}
-                  height={1350}
+                  width={4080}
+                  height={2400}
                   sizes="(max-width: 1200px) 100vw, 1200px"
                 />
               }
@@ -344,8 +348,8 @@ export default function LivePlanPage() {
                 <Image
                   src="/images/liveplan/editor-after.png"
                   alt="The redesigned LivePlan editor: inline writing, themed output, contextual AI"
-                  width={2400}
-                  height={1350}
+                  width={4080}
+                  height={2400}
                   sizes="(max-width: 1200px) 100vw, 1200px"
                 />
               }
