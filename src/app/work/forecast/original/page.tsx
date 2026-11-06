@@ -5,18 +5,20 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
-import WorkflowCompare from "./WorkflowCompare";
-import JourneyTrack from "./JourneyTrack";
-import DesignShowcase from "./DesignShowcase";
+import WorkflowCompare from "../WorkflowCompare";
+import JourneyTrack from "../JourneyTrack";
+import DesignShowcase from "../DesignShowcase";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import { featuredWork } from "@/data/featuredWork";
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 
-// DRAFT case study — not registered in projects.ts (stays off the public /work grid)
-// and marked noindex below. All numbers are rounded/relative; all customer quotes are
+// The ORIGINAL, longer telling of the Forecast story, kept for reference at
+// /work/forecast/original after the four-beat version took over /work/forecast.
+// Not registered in projects.ts (stays off the public /work grid) and marked
+// noindex below. All numbers are rounded/relative; all customer quotes are
 // anonymized and still need consent before this ships. Image slots are placeholders.
 export const metadata: Metadata = {
-  title: "Actuals + Forecast (draft)",
+  title: "Actuals + Forecast (original draft)",
   description:
     "Leading LivePlan's 2025 forecasting overhaul — and learning that the right tool, aimed at the wrong moment in the customer journey, still can't move the metric that matters.",
   robots: { index: false, follow: false },
