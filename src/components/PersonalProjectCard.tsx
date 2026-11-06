@@ -14,7 +14,11 @@ export default function PersonalProjectCard({ project }: { project: PersonalProj
       className={styles.card}
     >
       <div className={styles.thumb}>
-        <ProjectThumbnail data={project.thumbnail} title={project.title} />
+        <ProjectThumbnail
+          data={project.thumbnail}
+          title={project.title}
+          sizes="(max-width: 720px) 100vw, 680px"
+        />
       </div>
       <div className={styles.body}>
         <div className={styles.heading}>
@@ -25,7 +29,7 @@ export default function PersonalProjectCard({ project }: { project: PersonalProj
         <span className={styles.visit}>
           {project.host}
           <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
-          <span className={styles.srOnly}>(opens in a new tab)</span>
+          <span className="sr-only">(opens in a new tab)</span>
         </span>
       </div>
     </a>

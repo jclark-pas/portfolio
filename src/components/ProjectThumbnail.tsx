@@ -33,9 +33,12 @@ type CSSVars = CSSProperties & { "--hover-transform"?: string };
 export default function ProjectThumbnail({
   data,
   title,
+  // how wide the box renders, for next/image; the work grid's cards by default
+  sizes = "(max-width: 768px) 50vw, 320px",
 }: {
   data: ThumbnailData;
   title: string;
+  sizes?: string;
 }) {
   return (
     <div className={styles.thumb} style={{ background: data.background }}>
@@ -55,7 +58,7 @@ export default function ProjectThumbnail({
           src={data.logo.src}
           alt={data.logo.alt ?? `${title} logo`}
           fill
-          sizes="(max-width: 768px) 50vw, 320px"
+          sizes={sizes}
           className={styles.logo}
         />
       </span>
@@ -79,7 +82,7 @@ export default function ProjectThumbnail({
             src={o.src}
             alt={o.alt ?? `${title} screenshot ${i + 1}`}
             fill
-            sizes="(max-width: 768px) 50vw, 320px"
+            sizes={sizes}
             className={`${styles.overlay} ${o.shadow ? styles.shadow : ""}`}
             style={o.radius ? { borderRadius: o.radius } : undefined}
           />
