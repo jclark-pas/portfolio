@@ -19,7 +19,7 @@ export const metadata = { title: "LivePlan" };
 // the three moves, each headed by the change it made for the writer
 const moves: { title: string; body: string; comparison: Comparison }[] = [
   {
-    title: "From a modal to the page",
+    title: "From read-then-edit to just writing",
     body: "Everything is editable inline. Write, reorder and restructure in the document, with no detail views and no lost context. Comments and presence live there too, so a team can work in the plan together.",
     comparison: {
       title: "Inline editing",
