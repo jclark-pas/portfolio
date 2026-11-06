@@ -175,7 +175,6 @@ export default function StyleGuidePage() {
       <Navigation />
       <main id="main" className={styles.page}>
         <header className={styles.header}>
-          <p className={styles.kicker}>Internal · Not Published</p>
           <h1 className={styles.title}>Style Guide</h1>
           <p className={styles.lede}>
             Living reference for the design tokens powering this portfolio. Numbers
