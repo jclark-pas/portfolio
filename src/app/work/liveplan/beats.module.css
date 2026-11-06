@@ -66,7 +66,8 @@
    so the swap stays intact. */
 .moves {
   display: grid;
-  gap: var(--space-xxl);
+  /* the videos all move, so each move gets room to breathe */
+  gap: calc(var(--space-xxxl) + var(--space-lg));
   margin-top: var(--space-xxl);
 }
 .move {
@@ -74,6 +75,11 @@
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: var(--space-xl);
   align-items: center;
+}
+/* the swap moves the media into the second column, so that row
+   also flips its column widths, keeping every video the same size */
+.move:nth-child(even of .move) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
 }
 .move:nth-child(even of .move) .media {
   order: 2;
@@ -97,7 +103,7 @@
    it pulls up to sit closer to that move than to the next one. */
 .montage {
   display: block;
-  margin-top: calc(var(--space-md) - var(--space-xxl));
+  margin-top: calc(var(--space-md) - var(--space-xxxl) - var(--space-lg));
   width: 100%;
   height: auto;
   border-radius: var(--radius-lg);
@@ -190,6 +196,7 @@
 
 @media (max-width: 960px) {
   .move,
+  .move:nth-child(even of .move),
   .testing {
     grid-template-columns: 1fr;
   }
