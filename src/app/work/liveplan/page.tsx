@@ -20,7 +20,7 @@ export const metadata = { title: "LivePlan" };
 const moves: { title: string; body: string; comparison: Comparison }[] = [
   {
     title: "From a modal to the page",
-    body: "Everything is editable inline. Write, reorder and restructure in the document, with no detail views and no lost context.",
+    body: "Everything is editable inline. Write, reorder and restructure in the document, with no detail views and no lost context. Comments and presence live there too, so a team can work in the plan together.",
     comparison: {
       title: "Inline editing",
       before: {
@@ -35,7 +35,7 @@ const moves: { title: string; body: string; comparison: Comparison }[] = [
   },
   {
     title: "From fixed templates to a token system",
-    body: "A dozen themes at launch, each editable down to the token. Colors, fonts and chart styles cascade from the screen to the PDF to the pitch deck. Nine font pairings and fifteen palettes give 135 looks.",
+    body: "Fifteen themes at launch, each editable down to the token. Colors, fonts and chart styles cascade from the screen to the PDF to the pitch deck.",
     comparison: {
       title: "Theme customization",
       before: {
@@ -135,38 +135,25 @@ export default function LivePlanPage() {
             </h2>
             <div className={styles.prose}>
               <p>
-                LivePlan helps entrepreneurs write business plans. Its editor was ten years
-                old. New users churned before they&rsquo;d finished a first section, and
+                LivePlan helps entrepreneurs write business plans. The editor hadn&rsquo;t changed
+                in a decade. New users churned before they&rsquo;d finished a first section, and
                 seasoned users built workarounds for basics. The brief: make it faster to
                 write, easier to customize and smarter with AI, without losing the guided
                 structure lenders and investors trusted.
               </p>
             </div>
           </div>
+          {/* only the old editor here; the redesign waits for the moves, and the
+              before/after pair closes the page */}
           <div className={styles.wideImageSlider}>
-            <BeforeAfterSlider
-              beforeLabel="Before"
-              afterLabel="After"
-              before={
-                <Image
-                  src="/images/liveplan/editor-before.png"
-                  alt="The legacy LivePlan editor: modal-heavy, fixed templates, sidebar-only AI"
-                  width={2400}
-                  height={1350}
-                  sizes="(max-width: 1200px) 100vw, 1200px"
-                  priority
-                />
-              }
-              after={
-                <Image
-                  src="/images/liveplan/editor-after.png"
-                  alt="The redesigned LivePlan editor: inline writing, themed output, contextual AI"
-                  width={2400}
-                  height={1350}
-                  sizes="(max-width: 1200px) 100vw, 1200px"
-                  priority
-                />
-              }
+            <Image
+              src="/images/liveplan/editor-before.png"
+              alt="The legacy LivePlan editor: modal-heavy, fixed templates, sidebar-only AI"
+              width={2400}
+              height={1350}
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className={beats.still}
+              priority
             />
           </div>
         </section>
@@ -175,15 +162,28 @@ export default function LivePlanPage() {
         <section className={`${styles.section} ${beats.cardBand}`}>
           <div className={styles.narrow}>
             <p className={styles.eyebrow}>What the replays showed</p>
-            <h2 className={styles.sectionHeading}>
-              Users weren&rsquo;t missing features. They couldn&rsquo;t find them.
-            </h2>
+            <h2 className={styles.sectionHeading}>Watching people work around the product</h2>
             <div className={styles.prose}>
               <p>
                 I ran three streams of research: interviews with new signups and power users,
                 session replays in Amplitude, and sessions with our customer advocacy team.
-                The replays did the most work. Four things kept happening:
+                The replays did the most work.
               </p>
+            </div>
+          </div>
+          <div className={styles.discoveryImages}>
+            <Image
+              src="/images/liveplan/research-screens.png"
+              alt="Two research inputs side by side: an Amplitude session replay of a user in the legacy editor, and a recording from a one-on-one customer interview"
+              width={1317}
+              height={470}
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className={styles.discoveryImg}
+            />
+          </div>
+          <div className={styles.narrow} style={{ marginTop: "var(--space-xl)" }}>
+            <div className={styles.prose}>
+              <p>Four things kept happening in the replays:</p>
             </div>
             <ul className={beats.findings}>
               <li>
@@ -199,9 +199,16 @@ export default function LivePlanPage() {
                 The outline treated as fixed. Customizing it lived in another part of the app.
               </li>
             </ul>
+            <div className={styles.prose}>
+              <p>
+                Interviews added two more. People had tried generic AI and didn&rsquo;t trust it
+                with their plan. And they wanted the plan to look like their business, not a
+                template.
+              </p>
+            </div>
             <p className={beats.pull}>
               They weren&rsquo;t struggling because the features didn&rsquo;t exist. They
-              couldn&rsquo;t find them, trust them, or make them their own.
+              couldn&rsquo;t find them, make them their own, or trust them.
             </p>
             <div className={styles.prose}>
               <p>
@@ -209,16 +216,6 @@ export default function LivePlanPage() {
                 of building new capability.
               </p>
             </div>
-          </div>
-          <div className={styles.discoveryImages}>
-            <Image
-              src="/images/liveplan/research-screens.png"
-              alt="Two research inputs side by side: an Amplitude session replay of a user in the legacy editor, and a recording from a one-on-one customer interview"
-              width={1317}
-              height={470}
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              className={styles.discoveryImg}
-            />
           </div>
         </section>
 
@@ -254,6 +251,12 @@ export default function LivePlanPage() {
           <div className={styles.narrow}>
             <p className={styles.eyebrow}>Tested, then shipped</p>
             <h2 className={styles.sectionHeading}>Usability rounds before a line of code</h2>
+            <div className={styles.prose}>
+              <p>
+                Before engineering started, the designs went in front of users in several
+                rounds.
+              </p>
+            </div>
             <div className={beats.stats}>
               {testing.map((s) => (
                 <div key={s.label} className={beats.stat}>
@@ -321,14 +324,29 @@ export default function LivePlanPage() {
               </p>
             </div>
           </div>
-          <div className={styles.inner}>
-            <Image
-              src="/images/liveplan/plan-hero.png"
-              alt="The redesigned LivePlan editor: sidebar outline, rich inline content, contextual AI tools, and a themed plan in view"
-              width={3732}
-              height={2884}
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              className={beats.closing}
+          {/* the bookend: where the editor started, and where it ended up */}
+          <div className={styles.wideImageSlider}>
+            <BeforeAfterSlider
+              beforeLabel="Before"
+              afterLabel="After"
+              before={
+                <Image
+                  src="/images/liveplan/editor-before.png"
+                  alt="The legacy LivePlan editor: modal-heavy, fixed templates, sidebar-only AI"
+                  width={2400}
+                  height={1350}
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                />
+              }
+              after={
+                <Image
+                  src="/images/liveplan/editor-after.png"
+                  alt="The redesigned LivePlan editor: inline writing, themed output, contextual AI"
+                  width={2400}
+                  height={1350}
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                />
+              }
             />
           </div>
         </section>

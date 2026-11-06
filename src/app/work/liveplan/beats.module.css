@@ -214,12 +214,11 @@
   font-weight: 500;
   color: var(--color-text);
 }
-/* the editor with everything in one surface, closing the page */
-.closing {
+/* a full-width still inside the page column */
+.still {
   display: block;
   width: 100%;
   height: auto;
-  margin-top: var(--space-xl);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border-light);
 }
