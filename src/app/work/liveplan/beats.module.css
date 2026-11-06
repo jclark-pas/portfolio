@@ -103,7 +103,7 @@
    it pulls up to sit closer to that move than to the next one. */
 .montage {
   display: block;
-  margin-top: calc(var(--space-md) - var(--space-xxxl) - var(--space-lg));
+  margin-top: calc(var(--space-xl) - var(--space-xxxl) - var(--space-lg));
   width: 100%;
   height: auto;
   border-radius: var(--radius-lg);
