@@ -7,6 +7,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getAdjacentProjects } from "@/data/projects";
 import { SpeakerX } from "@phosphor-icons/react/dist/ssr";
 import BeforeAfterToggle, { type Comparison } from "./BeforeAfterToggle";
+import TokenTabs from "./TokenTabs";
 import styles from "./page.module.css";
 import beats from "./beats.module.css";
 
@@ -240,17 +241,8 @@ export default function LivePlanPage() {
                       <p className={beats.moveBody}>{m.body}</p>
                     </div>
                   </div>
-                  {/* the montage of themes sits full width under the token move */}
-                  {i === 1 ? (
-                    <Image
-                      src="/images/liveplan/themes-showcase.png"
-                      alt="A montage of LivePlan plan covers and pages across many themes, showing how the token system restyles typography, color and charts across the whole document"
-                      width={1403}
-                      height={473}
-                      sizes="(max-width: 1200px) 100vw, 1200px"
-                      className={beats.montage}
-                    />
-                  ) : null}
+                  {/* the two token diagrams sit full width under the token move */}
+                  {i === 1 ? <TokenTabs /> : null}
                 </Fragment>
               ))}
             </div>

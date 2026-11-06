@@ -61,9 +61,9 @@
 }
 
 /* three moves: a before/after toggle on one side, the words on the other.
-   Every other move swaps sides, so the media zips down the page. The montage
-   is its own row in .moves, not a move, and the selector counts only moves,
-   so the swap stays intact. */
+   Every other move swaps sides, so the media zips down the page. The token
+   card is its own row in .moves, not a move, and the selector counts only
+   moves, so the swap stays intact. */
 .moves {
   display: grid;
   /* the videos all move, so each move gets room to breathe */
@@ -98,16 +98,46 @@
   color: var(--color-text-secondary);
   text-wrap: pretty;
 }
-/* a full-width still under a move, for the montage. The grid gap is sized
-   for the space between moves; the montage belongs to the move above it, so
-   it pulls up to sit closer to that move than to the next one. */
-.montage {
-  display: block;
+/* the token diagrams, tabbed, full width under the token move. The grid gap
+   is sized for the space between moves; this card belongs to the move above
+   it, so it pulls up to sit closer to that move than to the next one. */
+.tokens {
   margin-top: calc(var(--space-xl) - var(--space-xxxl) - var(--space-lg));
+  padding: var(--space-xl);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+}
+.tokenPanel {
+  margin-top: var(--space-lg);
+  animation: tokenIn 240ms ease both;
+}
+@keyframes tokenIn {
+  from {
+    opacity: 0;
+  }
+}
+.tokenTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+.tokenBody {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  max-width: 70ch;
+}
+.tokenImg {
+  display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border-light);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tokenPanel {
+    animation: none;
+  }
 }
 
 /* a section on the card gray; its stat tiles go white so they still read */
