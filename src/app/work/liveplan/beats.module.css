@@ -92,9 +92,12 @@
   color: var(--color-text-secondary);
   text-wrap: pretty;
 }
-/* a full-width still under a move, for the montage */
+/* a full-width still under a move, for the montage. The grid gap is sized
+   for the space between moves; the montage belongs to the move above it, so
+   it pulls up to sit closer to that move than to the next one. */
 .montage {
   display: block;
+  margin-top: calc(var(--space-md) - var(--space-xxl));
   width: 100%;
   height: auto;
   border-radius: var(--radius-lg);
