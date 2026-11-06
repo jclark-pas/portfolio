@@ -2,8 +2,8 @@
    jobs, with two markers: where most users were (Plan) and where we built
    (Run). The orange stretch between them is the argument; a voice-of-the-
    customer bubble gives each stage a person. Borrows GitBook's diagram
-   language — tiles, dashed rails, a marching ring, a travelling pulse — and
-   sits in the same card as the User Journey above. */
+   language — tiles, dashed rails, a marching ring, a travelling pulse — in
+   its own card under the churn copy. */
 
 .wrap {
   --tile: 56px;
@@ -24,7 +24,7 @@
   grid-template-rows: auto auto auto;
 }
 
-/* ---- The rail: tile centre to tile centre, behind the tiles ---- */
+/* ---- The rail: tile center to tile center, behind the tiles ---- */
 .line {
   position: absolute;
   top: calc(var(--tile) / 2 - 4px);
@@ -191,11 +191,11 @@
   box-shadow: 0 0 0 2px var(--color-accent);
 }
 
-/* ---- The gap: a bracket hanging from the two pills, Plan's centre to Run's ---- */
+/* ---- The gap: a bracket hanging from the two pills, Plan's center to Run's ---- */
 .gap {
   grid-row: 3;
   /* the side padding (half a column, set inline) lands the bracket's ends on
-     the column centres, right under each pill */
+     the column centers, right under each pill */
   padding-top: 2px;
   text-align: center;
 }
@@ -225,7 +225,7 @@
    Its own row above the track, so it never covers the marker pills or the
    copy above the card. A size container, so the bubble and its tail can be
    placed in cqw with a transform (no layout work as it slides between
-   stages). --cp is the selected tile's centre as a 0–1 fraction of the width. */
+   stages). --cp is the selected tile's center as a 0–1 fraction of the width. */
 .voice {
   --bw: min(420px, 100cqw);
   container-type: inline-size;
@@ -258,7 +258,7 @@
   border-radius: 14px;
   box-shadow: 0 1px 2px rgba(20, 20, 23, 0.05),
     0 10px 24px -8px rgba(20, 20, 23, 0.12);
-  /* centred under the tile, but never past either edge of the track */
+  /* centered under the tile, but never past either edge of the track */
   transform: translateX(
     clamp(0px, calc(var(--cp) * 100cqw - var(--bw) / 2), calc(100cqw - var(--bw)))
   );
@@ -290,7 +290,7 @@
   margin-top: 14px;
 }
 /* the line-art faces are drawn in black, so the disc stays a light tint of
-   the persona's colour in both themes */
+   the persona's color in both themes */
 .avatar {
   flex-shrink: 0;
   width: 40px;
@@ -439,7 +439,7 @@
     padding: 4px 9px;
     font-size: 11px;
   }
-  /* the last column is too narrow to centre its pill without spilling past
+  /* the last column is too narrow to center its pill without spilling past
      the card, so it hugs the edge — the bracket's end still lands under it */
   .markerLast {
     justify-self: end;

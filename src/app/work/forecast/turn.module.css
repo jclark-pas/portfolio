@@ -1,0 +1,145 @@
+/* The Forecast story in four beats. Shares the hero, section and prose styles
+   with ./page.module.css; this file only holds what the beats add: the product
+   moves, the pull quote, the stat row. */
+
+/* the hero on the card gray instead of the shared dark hero: same layout
+   classes from ./page.module.css, but the page colors and the page accent */
+.hero {
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+.hero h1,
+.hero dl dd {
+  color: var(--color-text);
+}
+@media (max-width: 480px) {
+  .hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* the one-line lead under the hero image, before the meta row */
+.heroLine {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+/* three moves: the shipped design on a soft backdrop, the words beside it.
+   The PNGs are transparent designs that float on the gradient, edge to edge,
+   so the frame carries the radius and shadow. */
+.moves {
+  display: grid;
+  gap: var(--space-xxl);
+  margin-top: var(--space-xxl);
+}
+.move {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: center;
+}
+/* every other move swaps sides, so the shots zip down the page */
+.move:nth-child(even) .shot {
+  order: 2;
+}
+.shot {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(11, 9, 33, 0.18);
+}
+.shotImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.moveTitle {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  text-wrap: balance;
+}
+.moveBody {
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+/* the reframe, pulled out of the prose */
+.pull {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-text);
+  max-width: 24ch;
+  margin: var(--space-xl) 0;
+  padding-left: var(--space-md);
+  border-left: 3px solid var(--color-accent);
+  text-wrap: balance;
+}
+
+/* the numbers for the people it served: value and label, nothing under them */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+.stat {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+.statValue {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+  font-variant-numeric: tabular-nums;
+}
+.statLabel {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+/* the one line the story leaves you with */
+.lesson {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+@media (max-width: 960px) {
+  .move,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  /* stacked, the shot always leads */
+  .move:nth-child(even) .shot {
+    order: 0;
+  }
+  .pull {
+    font-size: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .stat {
+    padding: var(--space-md);
+  }
+  .heroLine {
+    font-size: 20px;
+  }
+}

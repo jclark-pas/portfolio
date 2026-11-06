@@ -85,10 +85,10 @@ const USERS_AT = 1;
 const BUILT_AT = 4;
 
 // the rail, gap, and bracket are laid out from the column count, so they stay
-// on the tile centres if a stage is added or a marker moves
+// on the tile centers if a stage is added or a marker moves
 const COLS = STAGES.length;
-const centre = (i: number) => `${((i + 0.5) / COLS) * 100}%`;
-// half a column, as a % of the bracket's own span, to land on the centres
+const center = (i: number) => `${((i + 0.5) / COLS) * 100}%`;
+// half a column, as a % of the bracket's own span, to land on the centers
 const BRACKET_INSET = `${50 / (BUILT_AT - USERS_AT + 1)}%`;
 
 // a dashed, marching outline drawn just outside the selected tile
@@ -139,7 +139,7 @@ export default function JourneyTrack() {
     >
       {/* the voice of the customer at the selected stage, in a bubble above
           the track whose tail points down at its tile. --cp is that tile's
-          centre as a fraction of the width; the CSS slides the bubble over it,
+          center as a fraction of the width; the CSS slides the bubble over it,
           kept in bounds. The buttons already carry this text, so the bubble
           is visual only. */}
       <div
@@ -184,22 +184,22 @@ export default function JourneyTrack() {
         className={styles.track}
         style={{ gridTemplateColumns: `repeat(${COLS}, minmax(0, 1fr))` }}
       >
-        {/* the line runs tile centre to tile centre: grey either side, orange
-            between where users were and where we built. The grey stops where
+        {/* the line runs tile center to tile center: gray either side, orange
+            between where users were and where we built. The gray stops where
             the orange starts, so the two never overlap. It holds still — the
             bracket below carries the motion. */}
         <svg className={styles.line} aria-hidden="true">
-          <line x1={centre(0)} x2={centre(USERS_AT)} y1="4" y2="4" className={styles.rail} />
+          <line x1={center(0)} x2={center(USERS_AT)} y1="4" y2="4" className={styles.rail} />
           <line
-            x1={centre(BUILT_AT)}
-            x2={centre(COLS - 1)}
+            x1={center(BUILT_AT)}
+            x2={center(COLS - 1)}
             y1="4"
             y2="4"
             className={styles.rail}
           />
           <line
-            x1={centre(USERS_AT)}
-            x2={centre(BUILT_AT)}
+            x1={center(USERS_AT)}
+            x2={center(BUILT_AT)}
             y1="4"
             y2="4"
             className={styles.gapLine}

@@ -18,7 +18,7 @@ import styles from "./WorkflowCompare.module.css";
 
 // the three places the work happened — each shown with its real app icon.
 // app glyphs (brand: false) are masked so they tint with the tile color;
-// QuickBooks keeps its full-colour brand mark.
+// QuickBooks keeps its full-color brand mark.
 const TOOLS = [
   { name: "Dashboard", icon: "/images/forecast/dashboard.svg", brand: false },
   { name: "QuickBooks", icon: "/images/forecast/qbo-logo.svg", brand: true },

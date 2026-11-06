@@ -216,7 +216,7 @@
    diagram language: marching dashed wires, a pulse riding the active wire,
    a comet orbiting a loop, and check badges that pop. */
 .canvas {
-  /* check-badge colours, adjusted for dark mode below */
+  /* check-badge colors, adjusted for dark mode below */
   --ok-bg: #e1f8ec;
   --ok-fg: #1d7253;
   position: relative;
@@ -433,7 +433,7 @@
   color: var(--color-accent);
 }
 
-/* app glyphs masked in the tile colour (currentColor) */
+/* app glyphs masked in the tile color (currentColor) */
 .appIcon {
   display: block;
   width: 44%;

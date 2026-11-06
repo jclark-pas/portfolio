@@ -1,387 +1,274 @@
 import type { Metadata } from "next";
-import { Target, Scales as Scale, Users } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
-import WorkflowCompare from "./WorkflowCompare";
-import JourneyTrack from "./JourneyTrack";
-import DesignShowcase from "./DesignShowcase";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
 import { featuredWork } from "@/data/featuredWork";
+import WorkflowCompare from "./WorkflowCompare";
+import JourneyTrack from "./JourneyTrack";
 import styles from "./page.module.css";
+import turn from "./turn.module.css";
 
-// DRAFT case study — not registered in projects.ts (stays off the public /work grid)
-// and marked noindex below. All numbers are rounded/relative; all customer quotes are
-// anonymized and still need consent before this ships. Image slots are placeholders.
+// DRAFT case study, told in four beats: the bet, the build, the reckoning, the
+// turn. The original, longer telling is kept at ./original for reference. Not
+// registered in projects.ts (stays off the public /work grid) and marked noindex
+// below. Numbers are rounded; customer quotes are anonymized and still need
+// consent before this ships.
 export const metadata: Metadata = {
-  title: "Actuals + Forecast (draft)",
+  title: "When the forecast met reality (draft)",
   description:
-    "Leading LivePlan's 2025 forecasting overhaul — and learning that the right tool, aimed at the wrong moment in the customer journey, still can't move the metric that matters.",
+    "Leading LivePlan's 2025 forecasting overhaul, and learning that the right tool, shipped at the wrong moment in the customer journey, can't move the metric that matters.",
   robots: { index: false, follow: false },
 };
 
-const reflections = [
+// the three moves, each headed by the change it made for the owner
+const moves = [
   {
-    icon: Target,
-    title: "Output is not outcome",
-    body: "We shipped genuinely good tools, and the customers they were built for loved them — but none of it moved churn, because we were too far down the journey funnel to matter. The lesson that reshaped my judgment: craft quality and business impact are different questions, and you have to keep asking the second even when the first is going well.",
+    name: "From a tab away to in the cell",
+    body: "This period's and last year's actuals sit inline and recalculate the projection from real performance. The editor used to run blind to both.",
+    image: "/images/forecast/forecast-inlineactuals.png",
+    width: 916,
+    height: 919,
+    alt: "The forecast editor with this period's actuals and last year's figures shown inline beside the projection",
+    gradient: "linear-gradient(135deg, #dcefe2 0%, #d8e8f3 50%, #e2e0f4 100%)",
   },
   {
-    icon: Scale,
-    title: "Disagree, then commit — and bring evidence",
-    body: "It was a reasonable bet — that better forecasting would retain users long-term — but the customers and data I had pointed the other way: most users churn long before they have actuals to forecast against. I made that case early, committed fully, and helped build the best version of the bet we could. The lesson: disagree early with evidence, commit completely once the call is made, and keep that evidence close so the team can course-correct together when results come in.",
+    name: "From a QuickBooks report to one click",
+    body: "Click any actuals figure and the QuickBooks transactions behind it open in place. No leaving, no roll-up report, no losing your place in the forecast.",
+    image: "/images/forecast/forecast-panel.png",
+    width: 1131,
+    height: 1135,
+    alt: "The transaction panel open beside the forecast, listing the QuickBooks transactions behind one actuals figure",
+    gradient: "linear-gradient(135deg, #fce4d6 0%, #f6dde6 50%, #e7e3f4 100%)",
   },
   {
-    icon: Users,
-    title: "Whose needs you optimize for is a design decision",
-    body: "Our loudest, highest-value users were a tiny, unrepresentative slice. Listening to them was right; treating their needs as the whole story was the trap. The fix wasn't to listen less — it was to map the needs against the journey, and notice that the leverage on retention sat at the top of the funnel, not the bottom.",
+    name: "From a chart of accounts to how you think",
+    body: "A two-level hierarchy independent of the books, so the forecast matches how an owner holds the business in their head. Shipped without drag-and-drop or multi-select.",
+    image: "/images/forecast/forecast-groups.png",
+    width: 916,
+    height: 919,
+    alt: "Forecast rows organized into named groups with roll-up totals",
+    gradient: "linear-gradient(135deg, #fcebcf 0%, #f8e0d6 50%, #f2dde8 100%)",
   },
 ];
 
-export default function ForecastPage() {
+const stats = [
+  { value: "30%", label: "fewer trips to the Dashboard" },
+  { value: "10k+", label: "QuickBooks round-trips avoided a month" },
+  { value: "8 in 10", label: "groups created were filled" },
+];
+
+export default function ForecastTurnPage() {
   const prev = { slug: "idea-canvas", title: "Idea Canvas" };
-  const next = {
-    slug: "liveplan",
-    title: "LivePlan",
-    navTitle: "Redesigning the Plan",
-  };
+  const next = { slug: "liveplan", title: "LivePlan", navTitle: "Redesigning the Plan" };
 
   return (
     <>
       <Navigation />
       <main id="main">
-
-      {/* ===== Hero ===== */}
-      <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <div className={styles.heroIntro}>
-            <p className={styles.kicker}>LivePlan · Financial Forecasting · 2025</p>
-            <h1 className={styles.heroHeadline}>When the forecast met reality</h1>
-          </div>
-          <div className={styles.heroMedia}>
-            <div className={styles.heroVisual}>
-              <Image
-                src="/images/forecast/forecast-hero.png"
-                alt="LivePlan Actuals + Forecast overview — projected revenue, expenses, operating income, and cash shown side by side with real bookkeeping actuals"
-                width={3096}
-                height={2016}
-                priority
-                sizes="(max-width: 1100px) 100vw, 1100px"
-                className={styles.heroImg}
-              />
+        {/* ===== Hero: the promise of a turn ===== */}
+        <section className={turn.hero}>
+          <div className={styles.heroInner}>
+            <div className={styles.heroIntro}>
+              <p className={styles.kicker}>LivePlan · Financial Forecasting · 2025</p>
+              <h1 className={styles.heroHeadline}>When the forecast met reality</h1>
             </div>
-          </div>
-          <p className={styles.heroDescription}>
-            I led design for LivePlan&rsquo;s 2025 forecasting overhaul, bringing real
-            accounting actuals into the forecast so owners could plan against reality. The
-            craft landed for the customers it was built for — but it didn&rsquo;t move the
-            metric we were chasing, and why is the more useful story.
-          </p>
-          <dl className={styles.metaRow}>
-            <div className={styles.metaCell}>
-              <dt>Role</dt>
-              <dd>Design Lead</dd>
+            <div className={styles.heroMedia}>
+              <div className={styles.heroVisual}>
+                <Image
+                  src="/images/forecast/forecast-hero.png"
+                  alt="LivePlan Actuals + Forecast overview: projected revenue, expenses, operating income and cash shown beside real bookkeeping actuals"
+                  width={3096}
+                  height={2016}
+                  priority
+                  sizes="(max-width: 1100px) 100vw, 1100px"
+                  className={styles.heroImg}
+                />
+              </div>
             </div>
-            <div className={styles.metaCell}>
-              <dt>Team</dt>
-              <dd>Discovery Trio — Designer, PM, Engineer</dd>
-            </div>
-            <div className={styles.metaCell}>
-              <dt>Timeline</dt>
-              <dd>Shipped Aug–Oct 2025</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
-
-      {/* ===== The Challenge ===== */}
-      <section className={styles.section}>
-        <div className={styles.narrow}>
-          <p className={styles.eyebrow}>The Challenge</p>
-          <h2 className={styles.sectionHeading}>
-            A forecast that couldn&rsquo;t see reality.
-          </h2>
-          <div className={styles.prose}>
-            <p>
-              LivePlan helps small businesses build a financial forecast — but the forecast
-              and their actual financials lived apart. A separate dashboard compared
-              projections to bookkeeping, yet inside the forecast editor, where you actually
-              change numbers, you could see neither this period&rsquo;s actuals nor last
-              year&rsquo;s. You were planning blind, and the everyday loop of comparing and
-              adjusting was a multi-step, multi-app process:
-            </p>
+            <p className={turn.heroLine}>A story about shipping the right thing at the wrong time.</p>
+            <dl className={styles.metaRow}>
+              <div className={styles.metaCell}>
+                <dt>Role</dt>
+                <dd>Design Lead</dd>
+              </div>
+              <div className={styles.metaCell}>
+                <dt>Shipped</dt>
+                <dd>Aug–Oct 2025</dd>
+              </div>
+              <div className={styles.metaCell}>
+                <dt>Outcome</dt>
+                <dd>
+                  Loved by the owners it served.
+                  <br />
+                  Churn unchanged.
+                </dd>
+              </div>
+            </dl>
           </div>
-        </div>
-        <div className={styles.narrow}>
-          <WorkflowCompare />
-        </div>
-        <div className={styles.narrow} style={{ marginTop: "var(--space-xxl)" }}>
-          <div className={styles.prose}>
-            <p>
-              The bet behind the work was a strategic one. Our most valuable, longest-tenured
-              customers don&rsquo;t write a plan and leave — they manage against it, comparing
-              forecast to reality every month. The thinking went that if we made that
-              iterative work dramatically easier, we&rsquo;d retain more users over the long haul.
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ===== Discovery → Key insight ===== */}
-      <section className={styles.section}>
-        <div className={styles.narrow}>
-          <p className={styles.eyebrow}>Discovery</p>
-          <h2 className={styles.sectionHeading}>
-            Listening to the people who live in their forecast
-          </h2>
-          <p className={styles.lead}>
-            We talked to the customers who do this work every month — established owners
-            reconciling plan against actuals. We didn&rsquo;t have to dig for the friction. The
-            same questions came up, unprompted, again and again:
-          </p>
-        </div>
-        <div className={styles.narrow}>
-          <div className={styles.discoveryDetails}>
-            <div className={styles.discoveryItem}>
-              <h3 className={styles.discoveryItemTitle}>
-                &ldquo;Why can&rsquo;t I see my actuals where I&rsquo;m planning?&rdquo;
-              </h3>
-              <p className={styles.discoveryItemBody}>
-                Real performance lived on a separate dashboard. The moment they sat down to
-                change the forecast, the numbers they needed were a tab away — so they memorized,
-                switched back, and hoped they had it right.
-              </p>
-            </div>
-            <div className={styles.discoveryItem}>
-              <h3 className={styles.discoveryItemTitle}>
-                &ldquo;Wait — what is that number?&rdquo;
-              </h3>
-              <p className={styles.discoveryItemBody}>
-                An actuals figure would look off, and there was no way to interrogate it without
-                leaving for QuickBooks, working out which accounts fed that line, and running a
-                report just to see what actually&nbsp;happened.
-              </p>
-            </div>
-            <div className={styles.discoveryItem}>
-              <h3 className={styles.discoveryItemTitle}>
-                &ldquo;Let me organize this the way I think.&rdquo;
-              </h3>
-              <p className={styles.discoveryItemBody}>
-                A long, flat list didn&rsquo;t match how owners hold their business in their
-                heads. They&rsquo;d been asking for grouping and roll-ups for years — structure
-                that mirrored their mental model, not their chart of&nbsp;accounts.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== Key insight quote ===== */}
-      <section className={styles.quoteSection}>
-        <div className={styles.narrow}>
-          <p className={styles.eyebrow}>Key Insight</p>
-          {/* TODO: anonymized; confirm framing — no real names ship */}
-          <blockquote className={styles.bigQuote}>
-            A forecast you can&rsquo;t compare to reality is just a guess.
-          </blockquote>
-          <p className={styles.quoteFollow}>
-            The job wasn&rsquo;t to add a comparison feature — it was to collapse the distance
-            between where you see your performance and where you plan your future, so reviewing
-            reality stops being a chore and becomes part of the flow.
-          </p>
-        </div>
-      </section>
-
-      {/* ===== Design decisions / what we built ===== */}
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <DesignShowcase
-            header={
-              <>
-                <p className={styles.eyebrow}>What We Built</p>
-                <h2 className={styles.sectionHeading}>
-                  Four moves to close the gap
-                </h2>
-              </>
-            }
-          />
-        </div>
-      </section>
-
-      {/* ===== Product gallery (placeholders) ===== */}
-      <section className={styles.gallerySection}>
-        <div className={styles.inner}>
-          <div className={styles.galleryGrid}>
-            <figure className={styles.galleryItem}>
-              <video
-                src="/videos/forecast-transactions.mp4"
-                className={styles.galleryImg}
-                width={1636}
-                height={1080}
-                controls
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Clicking an actuals figure opens the underlying QuickBooks transactions in a panel, in place inside the forecast"
-              />
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== Outcomes for the people it was for ===== */}
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <p className={styles.eyebrow}>What It Proved</p>
-          <h2 className={styles.sectionHeading}>
-            It worked — for the people it was built for
-          </h2>
-          <p className={styles.lead}>
-            Among the customers who&rsquo;d connected their accounting, the work landed. They
-            stopped leaving the forecast to check reality, investigated their numbers in a
-            click, and adjusted their plans in place.
-          </p>
-          <div className={styles.outcomesGrid}>
-            <div className={styles.outcomeCard}>
-              <p className={styles.outcomeStat}>30%</p>
-              <h3 className={styles.outcomeTitle}>Fewer trips to the Dashboard</h3>
-              <p className={styles.outcomeBody}>
-                Once actuals lived inside the forecast, people stopped jumping out to the
-                standalone Dashboard to see how they were tracking.
-              </p>
-            </div>
-            <div className={styles.outcomeCard}>
-              <p className={styles.outcomeStat}>8 in 10</p>
-              <h3 className={styles.outcomeTitle}>Groups created, then populated</h3>
-              <p className={styles.outcomeBody}>
-                Despite a design with no drag-and-drop or multi-select, most users who started a
-                group filled it — added items ~50&times; for every one removed. The model clicked.
-              </p>
-            </div>
-            <div className={styles.outcomeCard}>
-              <p className={styles.outcomeStat}>10k+</p>
-              <h3 className={styles.outcomeTitle}>QuickBooks round-trips avoided / month</h3>
-              <p className={styles.outcomeBody}>
-                Every transaction-panel open is a time a user inspected their bookkeeping detail
-                without ever leaving LivePlan.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== The reckoning ===== */}
-      <section className={`${styles.section} ${styles.tightBottom}`}>
-        <div className={styles.narrow}>
-          <p className={styles.eyebrow}>And yet&hellip;</p>
-          <h2 className={styles.sectionHeading}>Churn remained the same</h2>
-          <div className={styles.prose}>
-            <p>
-              We built the right tool for the wrong people, at the wrong time in their
-              journey. Most of our users were still writing their first plan — months, if
-              not years, away from the moment we&rsquo;d built for.
-            </p>
-          </div>
-
-          <JourneyTrack />
-        </div>
-      </section>
-
-      {/* ===== The pivot ===== */}
-      <section className={styles.section}>
-        <div className={styles.narrow}>
-          <p className={styles.eyebrow}>The Pivot</p>
-          <h2 className={styles.sectionHeading}>Moving up the funnel</h2>
-          <div className={styles.prose}>
-            <p>
-              When the churn numbers came back flat, the same evidence that predicted it pointed
-              the way out. Instead of building deeper for the few who&rsquo;d arrived, we moved
-              <em> up</em> the journey — toward the 30-to-90-day window where most users actually
-              decide whether to stay. The brief became simpler and harder: reduce burden,
-              eliminate experience rot, meet basic expectations.
-            </p>
-            <p>
-              That redirect is what produced the work I&rsquo;m proudest of at LivePlan — the{" "}
-              <Link href="/work/liveplan" className={styles.proseLink}>
-                business-plan redesign
-              </Link>{" "}
-              that cut early churn, and{" "}
-              <Link href="/work/idea-canvas" className={styles.proseLink}>
-                Idea Canvas
-              </Link>
-              , which meets people before they even have a plan. The forecasting work didn&rsquo;t
-              grow the pie. It taught us where the pie actually was.
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.narrow} style={{ marginTop: "var(--space-xxxl)" }}>
-          <h2 className={styles.sectionHeading}>Reflections</h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-xl)", marginTop: "var(--space-lg)" }}>
-            {reflections.map((r) => {
-              const Icon = r.icon;
-              return (
-                <div key={r.title} className={styles.reflection}>
-                  <span className={styles.reflectionIcon} aria-hidden="true">
-                    <Icon size={24} weight="duotone" />
-                  </span>
-                  <div>
-                    <h3 className={styles.insightTitle}>{r.title}</h3>
-                    <p className={styles.prose}>{r.body}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className={styles.inner} style={{ marginTop: "var(--space-xxxl)" }}>
-          <div className={styles.relatedGrid}>
-            {featuredWork
-              .filter((w) => w.href !== "/work/forecast")
-              .slice(0, 2)
-              .map((w) => (
-                <FeaturedWorkCard key={w.href} work={w} />
-              ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== Next steps / future ===== */}
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <div style={{ maxWidth: "760px" }}>
-            <p className={styles.eyebrow}>A Vision for the Future</p>
-            <h2 className={styles.sectionHeading}>AI that helps you forecast</h2>
+        {/* ===== The bet ===== */}
+        <section className={styles.section}>
+          <div className={styles.narrow}>
+            <p className={styles.eyebrow}>The bet</p>
+            <h2 className={styles.sectionHeading}>
+              Could we keep customers by making the monthly loop effortless?
+            </h2>
             <div className={styles.prose}>
               <p>
-                The loudest signal in our research wasn&rsquo;t for another table — it was for
-                help building the forecast in the first place. We&rsquo;re now exploring an AI
-                assistant that helps owners draft and refine a forecast without losing control
-                of the numbers — the same craft thread, make the numbers approachable, applied
-                earlier where more people can feel it.
+                LivePlan helps small-business owners build a financial forecast. Their real
+                numbers lived somewhere else: a dashboard that compared plan to actuals after
+                the fact. Inside the editor, where you change the numbers, you could see
+                neither this period&rsquo;s actuals nor last year&rsquo;s. Comparing and
+                adjusting meant a loop across three tools.
               </p>
             </div>
           </div>
-          <div className={styles.aiShot}>
-            <Image
-              src="/images/forecast/ai-forecasting.png"
-              alt="Concept frames for the AI forecasting assistant"
-              width={1420}
-              height={816}
-              sizes="(max-width: 1280px) 94vw, 1200px"
-              className={styles.aiShotImg}
-            />
+          <div className={styles.narrow}>
+            <WorkflowCompare />
           </div>
-        </div>
-      </section>
+          <div className={styles.narrow} style={{ marginTop: "var(--space-xxl)" }}>
+            <div className={styles.prose}>
+              <p>
+                Our longest-tenured customers don&rsquo;t write a plan and leave. They manage
+                against it, every month. The bet: make that loop dramatically easier and
+                we&rsquo;d keep more of them.
+              </p>
+              <p>
+                The data I had said something else: most users churn long before they have
+                actuals to forecast against. I said so, early. Then the call was made, and I
+                committed to building the best version of it.
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <CaseStudyNav prev={prev} next={next} />
+        {/* ===== The build ===== */}
+        <section className={`${styles.section} ${styles.cardBand}`}>
+          <div className={styles.narrow}>
+            <p className={styles.eyebrow}>The build</p>
+            <h2 className={styles.sectionHeading}>Put reality where the planning happens</h2>
+            <div className={styles.prose}>
+              <p>
+                The owners who do this every month didn&rsquo;t need prompting. Why can&rsquo;t
+                I see my actuals where I&rsquo;m planning? What is that number? Let me organize
+                this the way I think.
+              </p>
+            </div>
+            <p className={turn.pull}>
+              A forecast you can&rsquo;t compare to reality is just a guess.
+            </p>
+            <div className={styles.prose}>
+              <p>
+                So the job wasn&rsquo;t a comparison feature. It was to collapse the distance
+                between seeing your performance and planning your future.
+              </p>
+            </div>
+          </div>
+          <div className={styles.inner}>
+            <div className={turn.moves}>
+              {moves.map((m) => (
+                <div key={m.name} className={turn.move}>
+                  <div className={turn.shot} style={{ background: m.gradient }}>
+                    <Image
+                      src={m.image}
+                      alt={m.alt}
+                      width={m.width}
+                      height={m.height}
+                      sizes="(max-width: 960px) 100vw, 640px"
+                      className={turn.shotImg}
+                    />
+                  </div>
+                  <div>
+                    <h3 className={turn.moveTitle}>{m.name}</h3>
+                    <p className={turn.moveBody}>{m.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
+        {/* ===== The reckoning ===== */}
+        <section className={`${styles.section} ${styles.tightBottom}`}>
+          <div className={styles.narrow}>
+            <p className={styles.eyebrow}>The reckoning</p>
+            <h2 className={styles.sectionHeading}>It worked. And churn didn&rsquo;t move.</h2>
+            <div className={styles.prose}>
+              <p>
+                For the owners with connected accounting, the work landed. They stopped leaving
+                the forecast to check reality, investigated numbers in a click, and adjusted
+                plans in place.
+              </p>
+            </div>
+            <div className={turn.stats}>
+              {stats.map((s) => (
+                <div key={s.label} className={turn.stat}>
+                  <p className={turn.statValue}>{s.value}</p>
+                  <p className={turn.statLabel}>{s.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className={styles.prose}>
+              <p>
+                Then the churn numbers came back flat. We had built the right tool for the
+                wrong people, at the wrong time in their journey. Most of our users were still
+                writing their first plan, months if not years from the moment we&rsquo;d built
+                for.
+              </p>
+            </div>
+          </div>
+          {/* the argument of the whole page, so it gets the full width */}
+          <div className={styles.inner}>
+            <JourneyTrack />
+          </div>
+        </section>
+
+        {/* ===== The turn ===== */}
+        <section className={styles.section}>
+          <div className={styles.narrow}>
+            <p className={styles.eyebrow}>The turn</p>
+            <h2 className={styles.sectionHeading}>Moving up the funnel</h2>
+            <div className={styles.prose}>
+              <p>
+                The same evidence that predicted the result pointed the way out. We moved up
+                the journey, to the 30-to-90-day window where most users decide whether to
+                stay. The brief got simpler and harder: reduce burden, fix experience rot, meet
+                basic expectations.
+              </p>
+              <p>
+                That redirect is where the metric finally moved. The{" "}
+                <Link href="/work/liveplan" className={styles.proseLink}>
+                  business-plan redesign
+                </Link>{" "}
+                cut early churn by 25%, and{" "}
+                <Link href="/work/idea-canvas" className={styles.proseLink}>
+                  Idea Canvas
+                </Link>{" "}
+                now meets people before they even have a plan. The forecasting work
+                didn&rsquo;t grow the pie. It taught us where the pie was.
+              </p>
+              <p className={turn.lesson}>
+                Output is not outcome. Whether the work is good and whether it moved the business
+                are different questions, and I keep asking the second even when the first is
+                going well.
+              </p>
+            </div>
+            <div className={styles.relatedGrid}>
+              {featuredWork
+                .filter((w) => w.href !== "/work/forecast")
+                .slice(0, 2)
+                .map((w) => (
+                  <FeaturedWorkCard key={w.href} work={w} />
+                ))}
+            </div>
+          </div>
+        </section>
+
+        <CaseStudyNav prev={prev} next={next} />
       </main>
       <Footer />
     </>
