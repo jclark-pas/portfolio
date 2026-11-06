@@ -1,0 +1,208 @@
+/* The plan redesign told in five beats. Shares the hero, section and prose
+   styles with ./page.module.css; this file only holds what the beats add: the
+   light hero, the moves with their before/after toggles, the stat rows. */
+
+/* the hero on the card gray instead of the shared dark hero: same layout
+   classes from ./page.module.css, but the page colors and the page accent */
+.hero {
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  padding: var(--space-xxxl) var(--space-xxl);
+}
+.hero h1,
+.hero dl dd {
+  color: var(--color-text);
+}
+.hero .heroFrame {
+  background: var(--color-surface);
+  border-color: var(--color-border-light);
+}
+@media (max-width: 480px) {
+  .hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* the one-line lead under the hero image, before the meta row */
+.heroLine {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+/* what the replays showed, as a plain list in the prose */
+.findings {
+  margin: var(--space-md) 0 0;
+  padding-left: 1.2em;
+  font-size: var(--font-body1);
+  line-height: var(--line-body1);
+  color: var(--color-text-secondary);
+}
+.findings li + li {
+  margin-top: var(--space-xs);
+}
+
+/* the reframe, pulled out of the prose */
+.pull {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-text);
+  max-width: 26ch;
+  margin: var(--space-xl) 0;
+  padding-left: var(--space-md);
+  border-left: 3px solid var(--color-accent);
+  text-wrap: balance;
+}
+
+/* three moves: a before/after toggle on one side, the words on the other.
+   Every other move swaps sides, so the media zips down the page. The montage
+   is its own row in .moves, not a move, and the selector counts only moves,
+   so the swap stays intact. */
+.moves {
+  display: grid;
+  gap: var(--space-xxl);
+  margin-top: var(--space-xxl);
+}
+.move {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: center;
+}
+.move:nth-child(even of .move) .media {
+  order: 2;
+}
+.moveTitle {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  text-wrap: balance;
+}
+.moveBody {
+  font-size: var(--font-body2);
+  line-height: var(--line-body2);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+/* a full-width still under a move, for the montage */
+.montage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+/* a section on the card gray; its stat tiles go white so they still read */
+.cardBand {
+  background: var(--color-bg-card);
+}
+.cardBand .stat {
+  background: var(--color-surface);
+}
+
+/* stat rows: value and label, nothing under them */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+.stat {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+.statValue {
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+  font-variant-numeric: tabular-nums;
+}
+.statLabel {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+/* the usability clip beside the fast-follow it surfaced */
+.testing {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: center;
+  margin-top: var(--space-xl);
+}
+.clip {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+  background: var(--color-bg-card);
+}
+.clipNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-xs);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+.picker {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+/* the three lessons, in a line each */
+.lesson {
+  font-weight: 500;
+  color: var(--color-text);
+}
+/* the editor with everything in one surface, closing the page */
+.closing {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+@media (max-width: 960px) {
+  .move,
+  .testing {
+    grid-template-columns: 1fr;
+  }
+  /* stacked, the media always leads */
+  .move:nth-child(even of .move) .media {
+    order: 0;
+  }
+  .pull {
+    font-size: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .stat {
+    padding: var(--space-md);
+  }
+  .heroLine {
+    font-size: 20px;
+  }
+}
