@@ -13,10 +13,10 @@
 .hero dl dd {
   color: var(--color-text);
 }
-/* the shared hero frame paints a brand gradient; the beats keep it plain */
+/* the hero frame keeps the shared brand gradient from ./page.module.css,
+   so the shot sits on color while the section stays on the card gray */
 .hero .heroFrame {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border-light);
+  padding: var(--space-lg);
 }
 @media (max-width: 480px) {
   .hero {
