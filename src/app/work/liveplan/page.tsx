@@ -219,10 +219,10 @@ export default function LivePlanPage() {
           </div>
         </section>
 
-        {/* ===== Three moves ===== */}
+        {/* ===== The solution ===== */}
         <section className={styles.section}>
           <div className={styles.narrow}>
-            <p className={styles.eyebrow}>Three moves</p>
+            <p className={styles.eyebrow}>The solution</p>
             <h2 className={styles.sectionHeading}>Put everything where the writing happens</h2>
           </div>
           <div className={styles.inner}>
