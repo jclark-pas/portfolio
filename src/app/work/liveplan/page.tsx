@@ -246,10 +246,10 @@ export default function LivePlanPage() {
           </div>
         </section>
 
-        {/* ===== Tested, then shipped ===== */}
+        {/* ===== Usability testing ===== */}
         <section className={`${styles.section} ${beats.cardBand}`}>
           <div className={styles.narrow}>
-            <p className={styles.eyebrow}>Tested, then shipped</p>
+            <p className={styles.eyebrow}>Usability testing</p>
             <h2 className={styles.sectionHeading}>Usability rounds before a line of code</h2>
             <div className={styles.prose}>
               <p>
