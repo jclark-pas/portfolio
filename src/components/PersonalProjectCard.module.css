@@ -13,13 +13,10 @@
   outline-offset: 2px;
 }
 
-/* the composed thumbnail on top, square-cornered so it meets the card edge */
+/* the composed thumbnail on top; the card's own corners clip it */
 .thumb {
   width: 100%;
-}
-.thumb > div {
-  border-radius: 0;
-  box-shadow: none;
+  overflow: hidden;
 }
 
 .body {

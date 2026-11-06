@@ -10,8 +10,6 @@ export interface PersonalProject {
   description: string;
   /** the live site */
   href: string;
-  /** what the link shows, usually the bare domain */
-  host: string;
   platforms: string;
   thumbnail: ThumbnailData;
 }
@@ -22,7 +20,6 @@ export const personalProjects: PersonalProject[] = [
     description:
       "A group trip planner for the person who always ends up planning it. Real city guides, a day-by-day itinerary with travel times that add up, voting for the group, and AI that proposes changes for you to approve.",
     href: "https://www.getplannery.com",
-    host: "getplannery.com",
     platforms: "Web and iOS",
     thumbnail: {
       background: "linear-gradient(160deg, #F3F3E9 0%, #ECEFE2 60%, #DDE7D6 100%)",
@@ -66,7 +63,6 @@ export const personalProjects: PersonalProject[] = [
     description:
       "A private pain journal for iPhone and Apple Watch. Four check-ins a day on a cool-to-hot scale, logged beside sleep, mood, activity and weather, with a calendar and trends that show what moves together. Everything stays on the phone.",
     href: "https://purplepain.app",
-    host: "purplepain.app",
     platforms: "iOS and watchOS",
     thumbnail: {
       background: "linear-gradient(160deg, #1B0A33 0%, #3B1680 55%, #120A1F 100%)",

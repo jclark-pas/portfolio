@@ -6,6 +6,8 @@ import styles from "./PersonalProjectCard.module.css";
 // A work card that leaves the site: the whole card is the link, and the
 // footer line says where it goes.
 export default function PersonalProjectCard({ project }: { project: PersonalProject }) {
+  // the link line shows the bare domain, taken from the href so they can't drift apart
+  const host = new URL(project.href).hostname.replace(/^www\./, "");
   return (
     <a
       href={project.href}
@@ -17,7 +19,7 @@ export default function PersonalProjectCard({ project }: { project: PersonalProj
         <ProjectThumbnail
           data={project.thumbnail}
           title={project.title}
-          sizes="(max-width: 720px) 100vw, 680px"
+          sizes="(max-width: 720px) 100vw, (max-width: 1480px) 50vw, 680px"
         />
       </div>
       <div className={styles.body}>
@@ -27,7 +29,7 @@ export default function PersonalProjectCard({ project }: { project: PersonalProj
         </div>
         <p className={styles.description}>{project.description}</p>
         <span className={styles.visit}>
-          {project.host}
+          {host}
           <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
           <span className="sr-only">(opens in a new tab)</span>
         </span>
