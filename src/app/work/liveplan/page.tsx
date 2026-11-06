@@ -35,7 +35,7 @@ const moves: { title: string; body: string; comparison: Comparison }[] = [
   },
   {
     title: "From fixed templates to a token system",
-    body: "Twelve themes at launch with independent color, type, image, and layout variables allow users hundreds of customizable plan output options, on screen and in print. Colors, fonts and chart styles cascade from the screen to the PDF to the pitch deck.",
+    body: "Twelve themes at launch with independent color, type, image, and layout variables allow users hundreds of customizable plan output options, on screen, in print, and in the pitch deck.",
     comparison: {
       title: "Theme customization",
       before: {
