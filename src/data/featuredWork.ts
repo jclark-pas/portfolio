@@ -41,8 +41,8 @@ export const featuredWork: FeaturedWork[] = [
     imageBackground:
       "linear-gradient(135deg, #6F4AC7 0%, #3B82C9 50%, #F26A5D 100%)",
     image: "/images/canvas/canvas-hero.png",
-    imageWidth: 1399,
-    imageHeight: 964,
+    imageWidth: 1503,
+    imageHeight: 1052,
     imageElevated: true,
   },
 ];

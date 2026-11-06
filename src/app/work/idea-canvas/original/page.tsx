@@ -1,0 +1,492 @@
+import Image from "next/image";
+import CaseStudyNav from "@/components/CaseStudyNav";
+import type { Metadata } from "next";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { getAdjacentProjects } from "@/data/projects";
+import { GridFour as LayoutGrid, Compass, Sparkle as Sparkles, Gauge, Lightning as Zap, Stack as Layers, FlowArrow as Workflow } from "@phosphor-icons/react/dist/ssr";
+import ObservationAccordion, {
+  type Observation,
+} from "@/components/ObservationAccordion";
+import VideoFacade from "@/components/VideoFacade";
+import styles from "../page.module.css";
+
+// The ORIGINAL, longer telling of the Idea Canvas, kept for reference at
+// /work/idea-canvas/original after the four-beat version took over
+// /work/idea-canvas. Not linked from anywhere and marked noindex.
+export const metadata: Metadata = {
+  title: "Idea Canvas (original)",
+  robots: { index: false, follow: false },
+};
+
+const stats = [
+  { value: "93.4%", title: "Finished the canvas", label: "Nearly everyone who started completed the core sections — the simplified design kept people from dropping off." },
+  { value: "70%", title: "Acted on a pivot suggestion", label: "Most users took the AI up on its suggestions, so the guidance felt like help, not orders." },
+  { value: "90.7%", title: "Rated the AI helpful", label: "Users found the AI's evidence and feedback genuinely useful — not generic filler." },
+];
+
+const insights = [
+  {
+    title: "Breaking the Canvas Paradigm",
+    icon: LayoutGrid,
+    body: "The traditional single-page canvas is hard to read on screen and its information density is intimidating to people without MBAs. We used the space afforded by a web app — not a piece of paper — to make the task more approachable.",
+  },
+  {
+    title: "Choosing the Right Framework",
+    icon: Compass,
+    body: "Educators had strong (almost cult-level) opinions about Lean Canvas vs. BMC. The BMC assumes you've already validated your problem and solution — exactly what our users hadn't done. We went with Lean Canvas, but engineered the tool to be framework-agnostic for education partners.",
+  },
+  {
+    title: "AI-First Validation",
+    icon: Sparkles,
+    body: "Traditional canvases are great collection tools, but they don't validate anything. We leveraged our existing Market Research deep-research capabilities to provide instant evidence analysis on each assumption — rating them strong, moderate, or weak.",
+  },
+  {
+    title: "From Evidence to Confidence",
+    icon: Gauge,
+    body: "Individual assumptions get evidence ratings, but the Idea Check evaluates the entire business holistically — examining market size, revenue model, regulatory risks, competition, and fatal flaws — producing a confidence score with specific pivot suggestions.",
+  },
+];
+
+const observations: Observation[] = [
+  {
+    icon: "engagement",
+    title: "Weak evidence drives engagement, not hopelessness.",
+    detail: "A weak rating can read as a dead end, but it's really the most engaging moment in the flow. Instead of leaving users stuck, the AI treats that signal as a starting point — surfacing stronger, evidence-backed assumptions in adjacent areas. If a more profitable market shares the same problem, for instance, it points users toward a concrete pivot rather than just flagging the weakness.",
+  },
+  {
+    icon: "speed",
+    title: "Vet a pivot in minutes, not weeks",
+    detail: "The value isn't just faster research — it's being able to vet a pivot the moment it's suggested. Instead of spending days, or weeks, confirming whether a new market or business model actually holds up, the AI researches the alternative on demand so you can see the evidence and commit to the change in minutes. That speed is what makes it realistic to explore several directions rather than betting everything on the first idea.",
+  },
+  {
+    icon: "trust",
+    title: "Cited sources build trust",
+    detail: "Every rating is backed by deep research and the citations behind it — research papers, market data, and real community discussion. Because users can click through and check the evidence themselves, they never have to wonder whether the AI hallucinated an answer. That verifiability is what makes the guidance feel trustworthy enough to act on.",
+  },
+  {
+    icon: "teaching",
+    title: "Adopted as a teaching tool",
+    detail: "Entrepreneurship educators adopted the canvas as a classroom tool, using it to help students pressure-test their business ideas against real market evidence. And it's only growing from there — a forthcoming custom-canvas option will let each program bring its own preferred methodology to the same evidence engine.",
+  },
+];
+
+const pillars = [
+  {
+    icon: Zap,
+    title: "Immediate Feedback",
+    body: "Every assumption gets instant AI analysis. No batch processing, no submit-and-wait. The design prioritizes the feeling of having a knowledgeable co-founder looking over your shoulder.",
+  },
+  {
+    icon: Layers,
+    title: "Progressive Complexity",
+    body: "Start with a simple problem statement, layer on solution, market, channels, and revenue. The Idea Check only appears after sufficient sections are complete, preventing premature judgment.",
+  },
+  {
+    icon: Workflow,
+    title: "Seamless Transition",
+    body: "Because the canvas framework maps to LivePlan's business plan template, validated assumptions flow directly into a full business plan — users who've done the hard thinking don't have to start over.",
+  },
+];
+
+const outcomes = [
+  {
+    stat: "93.4%",
+    title: "Finished the canvas",
+    body: "Nearly everyone who started completed the core sections — the simplified design kept people from dropping off.",
+  },
+  {
+    stat: "70%",
+    title: "Acted on a pivot suggestion",
+    body: "Most users took the AI up on its suggestions, so the guidance felt like help, not orders.",
+  },
+  {
+    stat: "90.7%",
+    title: "Rated the AI helpful",
+    body: "Users found the AI's evidence and feedback genuinely useful — not generic filler.",
+  },
+];
+
+export default function IdeaCanvasPage() {
+  const { prev, next } = getAdjacentProjects("idea-canvas");
+
+  return (
+    <>
+      <Navigation />
+      <main id="main">
+
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <div className={styles.heroIntro}>
+            <p className={styles.kicker}>LivePlan · AI-Powered Business Validation</p>
+            <h1 className={styles.heroHeadline}>Idea Canvas</h1>
+          </div>
+          <div className={styles.heroMedia}>
+            <div className={styles.heroVisual}>
+              <Image
+                src="/images/canvas/canvas-hero.png"
+                alt="Idea Canvas interface — Balance & Flow wellness center validation session, with an Idea Check confidence panel and evidence ratings on each assumption"
+                width={1399}
+                height={964}
+                priority
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.heroImg}
+              />
+            </div>
+          </div>
+          <p className={styles.heroDescription}>
+            I designed an AI-powered idea validation tool that helps early-stage entrepreneurs
+            test and refine their business assumptions before committing to a full business
+            plan — transforming LivePlan from an execution tool into a discovery platform.
+          </p>
+          <dl className={styles.metaRow}>
+            <div className={styles.metaCell}>
+              <dt>Role</dt>
+              <dd>Product Designer &amp; Researcher</dd>
+            </div>
+            <div className={styles.metaCell}>
+              <dt>Team</dt>
+              <dd>Discovery Pod (Designer, Engineer, PM)</dd>
+            </div>
+            <div className={styles.metaCell}>
+              <dt>Timeline</dt>
+              <dd>3 weeks to MVP</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section className={styles.statsBand}>
+        <div className={styles.inner}>
+          <div className={styles.statsGrid}>
+            {stats.map((s) => (
+              <div key={s.title} className={styles.statCard}>
+                <p className={styles.statValue}>{s.value}</p>
+                <p className={styles.statTitle}>{s.title}</p>
+                <p className={styles.statLabel}>{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.narrow}>
+          <p className={styles.eyebrow}>The Challenge</p>
+          <h2 className={styles.sectionHeading}>
+            The right tool for the wrong stage.
+          </h2>
+          <div className={styles.prose}>
+            <p>
+              LivePlan&rsquo;s existing users were already past the idea stage — they had a
+              business concept and needed help with funding and execution. But marketing research
+              revealed massive untapped demand higher in the funnel. Keyword search volume and
+              Reddit sentiment analysis showed thousands of early-stage entrepreneurs asking
+              variations of the same question: &ldquo;Is this a good idea for a business?&rdquo;
+            </p>
+            <p>
+              The existing Business Plan tool could technically be used for idea validation, but
+              it was like using a sledgehammer to hang a picture. The world of entrepreneurship
+              already had several tools to help with this: most notably the Business Model Canvas
+              and Lean Canvas. However, those canvasses are intimidating and difficult to execute
+              on for normal business owners.
+            </p>
+            <p>
+              The opportunity was clear: build a dedicated tool for idea validation that could
+              capture users earlier in their journey and naturally funnel them into LivePlan&rsquo;s
+              core business planning experience.
+            </p>
+          </div>
+        </div>
+        <div className={styles.wideImageSlider}>
+          <VideoFacade
+            videoId="VNTO36yMo1A"
+            title="Idea Canvas walkthrough"
+            poster="/images/canvas/video-poster.jpg"
+          />
+        </div>
+        <p className={styles.imageCaption}>A walkthrough of the Idea Canvas validation experience</p>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.narrow}>
+          <p className={styles.eyebrow}>Discovery</p>
+          <h2 className={styles.sectionHeading}>
+            Understanding the market and the user
+          </h2>
+          <p className={styles.lead}>
+            The discovery team — myself as designer and researcher, an engineer, and a PM —
+            worked closely with marketing to define the market need and funnel fit. We approached
+            validation from three angles simultaneously.
+          </p>
+        </div>
+        <Image
+          src="/images/canvas/canvas-research.png"
+          alt="Discovery artifacts — keyword search volume data, Reddit community screenshots showing early-stage founder questions, and competitive analysis of VenturePlanner and Leanstack"
+          width={1717}
+          height={980}
+          sizes="(max-width: 1200px) 100vw, 1200px"
+          className={styles.researchImg}
+        />
+        <div className={styles.narrow}>
+          <div className={styles.discoveryDetails}>
+            <div className={styles.discoveryItem}>
+              <h3 className={styles.discoveryItemTitle}>Market signals</h3>
+              <p className={styles.discoveryItemBody}>
+                Marketing identified the opportunity through keyword search volume for business
+                validation tools and social sentiment analysis of early-stage entrepreneur
+                communities, particularly Reddit.
+              </p>
+            </div>
+            <div className={styles.discoveryItem}>
+              <h3 className={styles.discoveryItemTitle}>User research</h3>
+              <p className={styles.discoveryItemBody}>
+                I conducted interviews with existing early-stage customers using the Business
+                Plan as a makeshift validation tool, and with entrepreneurship educators who
+                teach business validation to first-time founders.
+              </p>
+            </div>
+            <div className={styles.discoveryItem}>
+              <h3 className={styles.discoveryItemTitle}>Competitive analysis</h3>
+              <p className={styles.discoveryItemBody}>
+                We reviewed tools like VenturePlanner and Leanstack to understand the landscape
+                and identify gaps that a LivePlan-native validation tool could uniquely fill.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.quoteSection}>
+        <div className={styles.narrow}>
+          <p className={styles.eyebrow}>Key Insight</p>
+          <blockquote className={styles.bigQuote}>
+            Business planning feels like work. It should feel like discovery.
+          </blockquote>
+          <p className={styles.quoteFollow}>
+            Most idea validation tools require you to identify the assumptions, and then
+            go out and figure out if they&rsquo;re true — which is a lot of work. After
+            hearing from users that this process is overwhelming and difficult, we wanted
+            this new experience to feel like users were checking something off their
+            to-do list, rather than adding items to it.
+          </p>
+          <p className={styles.quoteFollow}>
+            This framing shaped every design decision that followed — from the section-by-section
+            AI feedback to the confidence score that tells you whether your idea has legs.
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>Design Decisions</p>
+          <h2 className={styles.sectionHeading}>
+            Four ideas that shaped the product
+          </h2>
+          <div className={styles.insightsGrid}>
+            {insights.map((i) => {
+              const Icon = i.icon;
+              return (
+              <article key={i.title} className={styles.insightCard}>
+                <div className={styles.insightIcon} aria-hidden="true">
+                  <Icon size={22} color="#EFE9DB" weight="duotone" />
+                </div>
+                <h3 className={styles.insightTitle}>{i.title}</h3>
+                <p className={styles.insightBody}>{i.body}</p>
+              </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.gallerySection}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>The Product</p>
+          <h2 className={styles.sectionHeading}>What we built</h2>
+          <div className={styles.galleryGrid}>
+            <figure className={styles.galleryItem}>
+              <Image
+                src="/images/canvas/idea-canvas-full.png"
+                alt="Full Idea Canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption"
+                width={1199}
+                height={1093}
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                className={styles.galleryImg}
+              />
+              <figcaption className={styles.galleryCap}>
+                Full canvas view — a complete business idea being validated section by section, with AI evidence ratings visible on each assumption
+              </figcaption>
+            </figure>
+
+            <figure className={styles.galleryItem}>
+              <Image
+                src="/images/canvas/assumption-panel.png"
+                alt="Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment"
+                width={1350}
+                height={735}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className={`${styles.galleryImg} ${styles.galleryImgBare}`}
+              />
+              <figcaption className={styles.galleryCap}>
+                Evidence detail panel — strong / moderate / weak rating with sourced research papers, market data, and community sentiment
+              </figcaption>
+            </figure>
+
+            <figure className={styles.galleryItem}>
+              <Image
+                src="/images/canvas/idea-check-panel.png"
+                alt="Pivot suggestions — AI-generated alternatives surfaced when an assumption's evidence is weak"
+                width={1263}
+                height={964}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className={`${styles.galleryImg} ${styles.galleryImgBare}`}
+              />
+              <figcaption className={styles.galleryCap}>
+                Pivot suggestions — AI-generated alternatives surfaced when evidence is weak
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={`${styles.inner} ${styles.pivotLayout}`}>
+          <div className={styles.pivotIntro}>
+            <p className={styles.eyebrow}>The star of the product</p>
+            <h2 className={styles.sectionHeading}>
+              The Pivot Engine
+            </h2>
+            <div className={styles.prose}>
+              <p>
+                When an assumption has weak evidence, the AI doesn&rsquo;t just flag it — it
+                analyzes adjacent possibilities and suggests concrete alternatives. If your
+                solution is &ldquo;Dog food made of dog poop&rdquo; (illegal and unsafe), the
+                system suggests pivoting to &ldquo;Nutritional supplements that help dogs stop
+                eating poop.&rdquo;
+              </p>
+              <p>
+                70% of users replace their original assumption with the suggested alternative —
+                proof that AI works best as a collaborative partner, not just a critic.
+              </p>
+            </div>
+          </div>
+          <ObservationAccordion observations={observations} />
+        </div>
+      </section>
+
+      <section className={styles.darkSection}>
+        <div className={styles.inner}>
+          <p className={`${styles.eyebrow} ${styles.eyebrowOnDark}`}>
+            Design Approach
+          </p>
+          <h2 className={`${styles.sectionHeading} ${styles.onDark}`}>
+            Three principles behind the experience
+          </h2>
+          <div className={styles.pillarGrid}>
+            {pillars.map((p) => {
+              const Icon = p.icon;
+              return (
+              <article key={p.title} className={styles.pillarCard}>
+                <div className={styles.pillarIcon} aria-hidden="true">
+                  <Icon size={22} color="#EFE9DB" weight="duotone" />
+                </div>
+                <h3 className={styles.pillarTitle}>{p.title}</h3>
+                <p className={styles.pillarBody}>{p.body}</p>
+              </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <p className={styles.eyebrow}>Outcomes</p>
+          <h2 className={styles.sectionHeading}>What we shipped, and what it proved</h2>
+          <p className={styles.lead}>
+            The numbers confirmed the bet: the tool was approachable, the AI guidance
+            landed, and we proved it fast. Idea Canvas also gave LivePlan a way to help
+            people while they&rsquo;re still exploring an idea — before they&rsquo;re
+            ready for a full business plan.
+          </p>
+          <div className={styles.outcomesGrid}>
+            {outcomes.map((o) => (
+              <div key={o.title} className={styles.outcomeCard}>
+                <p className={styles.outcomeStat}>{o.stat}</p>
+                <h3 className={styles.outcomeTitle}>{o.title}</h3>
+                <p className={styles.outcomeBody}>{o.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className={styles.velocityCallout}>
+            <p className={styles.velocityStat}>
+              <span className={styles.velocityNumber}>3</span>
+              <span className={styles.velocityUnit}>weeks</span>
+            </p>
+            <div className={styles.velocityText}>
+              <p className={styles.velocityEyebrow}>Shipped Fast</p>
+              <h3 className={styles.velocityTitle}>From first concept to a shipped MVP</h3>
+              <p className={styles.velocityBody}>
+                Start to finish — fast enough to prove the bet before over-investing.
+                The whole thing went from a blank canvas to a working product in a single
+                sprint cycle.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <div className={styles.twoCol}>
+            <div>
+              <p className={styles.eyebrow}>Future Vision</p>
+              <h2 className={styles.sectionHeading}>
+                Traditional validation, meet AI
+              </h2>
+              <div className={styles.prose}>
+                <p>
+                  I designed a comprehensive traditional validation toolkit staged for future
+                  release — customer discovery interview guides, landing page smoke tests,
+                  pricing and revenue model surveys, and online community sentiment analysis
+                  panels.
+                </p>
+                <p>
+                  Each instrument generates ready-to-use research tools with share links, turning
+                  LivePlan into the user&rsquo;s repository for both AI and human-gathered
+                  validation data. Staged design ensures the feature can grow without requiring
+                  a redesign.
+                </p>
+              </div>
+              <a
+                href="https://discovery-assumption-test-panels.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.futureLink}
+              >
+                Explore the prototype →
+              </a>
+            </div>
+            <div>
+              <Image
+                src="/images/canvas/validation-toolkit.png"
+                alt="Prototype screens from the traditional validation toolkit — customer discovery interview guide with auto-generated shareable link and sentiment analysis panel"
+                width={2696}
+                height={2708}
+                sizes="(max-width: 900px) 100vw, 550px"
+                className={styles.sideImage}
+              />
+              <p className={styles.imageCaption}>Prototype screens from the traditional validation toolkit — customer discovery interview guide with auto-generated shareable link and sentiment analysis panel</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CaseStudyNav prev={prev} next={next} />
+
+      </main>
+      <Footer />
+    </>
+  );
+}
