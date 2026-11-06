@@ -187,8 +187,8 @@ export default function LivePlanPage() {
             </div>
             <ul className={beats.findings}>
               <li>
-                Two extra clicks for every edit, bouncing between a read-only view and a
-                separate edit mode.
+                The list/detail app structure created two extra clicks for every edit,
+                bouncing between a read-only view and a separate edit mode.
               </li>
               <li>
                 Users were building charts in Excel and pasting them in their plan as images.
