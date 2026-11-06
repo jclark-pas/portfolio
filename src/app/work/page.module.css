@@ -57,9 +57,22 @@
   gap: var(--space-xl);
 }
 
+/* two side projects, so two wider cards */
+.personalGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
 @media (max-width: 960px) {
   .moreWorkGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .personalGrid {
+    grid-template-columns: 1fr;
   }
 }
 
