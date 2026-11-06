@@ -42,7 +42,7 @@
 
 /* Edge scrims — a gradient of the page background pinned to each edge. Their
    opacity is driven by scroll distance (in the component) so the "shadow" eases
-   in as you scroll rather than popping on. The eased colour stops keep the fade
+   in as you scroll rather than popping on. The eased color stops keep the fade
    soft (no hard band). */
 .fade {
   position: absolute;
