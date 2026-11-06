@@ -245,7 +245,7 @@ export default function LivePlanPage() {
                     <Image
                       src="/images/liveplan/themes-showcase.png"
                       alt="A montage of LivePlan plan covers and pages across many themes, showing how the token system restyles typography, color and charts across the whole document"
-                      width={1440}
+                      width={1403}
                       height={473}
                       sizes="(max-width: 1200px) 100vw, 1200px"
                       className={beats.montage}
