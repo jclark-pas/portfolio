@@ -254,7 +254,9 @@ export default function LivePlanPage() {
             <div className={styles.prose}>
               <p>
                 Before engineering started, the designs went in front of users in several
-                rounds.
+                rounds of usability testing. We created a target design, recruited actual
+                customers, tested the design, and iterated based on the feedback until we got
+                it right.
               </p>
             </div>
             <div className={beats.stats}>
