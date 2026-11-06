@@ -35,7 +35,7 @@ const moves: { title: string; body: string; comparison: Comparison }[] = [
   },
   {
     title: "From fixed templates to a token system",
-    body: "Fifteen themes at launch, each editable down to the token. Colors, fonts and chart styles cascade from the screen to the PDF to the pitch deck.",
+    body: "Twelve themes at launch, each editable down to the token. Colors, fonts and chart styles cascade from the screen to the PDF to the pitch deck.",
     comparison: {
       title: "Theme customization",
       before: {
