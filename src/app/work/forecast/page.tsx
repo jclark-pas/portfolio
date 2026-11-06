@@ -188,7 +188,8 @@ export default function ForecastTurnPage() {
                   </div>
                 </div>
               ))}
-            </div>          </div>
+            </div>
+          </div>
         </section>
 
         {/* ===== The reckoning ===== */}

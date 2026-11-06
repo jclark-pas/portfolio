@@ -10,7 +10,7 @@
   padding: var(--space-xxxl) var(--space-xxl);
 }
 .hero h1,
-.hero dd {
+.hero dl dd {
   color: var(--color-text);
 }
 @media (max-width: 480px) {

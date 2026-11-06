@@ -2,8 +2,8 @@
    jobs, with two markers: where most users were (Plan) and where we built
    (Run). The orange stretch between them is the argument; a voice-of-the-
    customer bubble gives each stage a person. Borrows GitBook's diagram
-   language — tiles, dashed rails, a marching ring, a travelling pulse — and
-   sits in the same card as the User Journey above. */
+   language — tiles, dashed rails, a marching ring, a travelling pulse — in
+   its own card under the churn copy. */
 
 .wrap {
   --tile: 56px;
