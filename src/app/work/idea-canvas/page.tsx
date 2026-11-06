@@ -93,10 +93,6 @@ export default function IdeaCanvasPage() {
                 <dd>Product Designer &amp; Researcher</dd>
               </div>
               <div className={styles.metaCell}>
-                <dt>Team</dt>
-                <dd>Designer, engineer, PM</dd>
-              </div>
-              <div className={styles.metaCell}>
                 <dt>Shipped</dt>
                 <dd>MVP in 3 weeks</dd>
               </div>
