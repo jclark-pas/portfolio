@@ -49,7 +49,7 @@ const moves: { title: string; body: string; comparison: Comparison }[] = [
     },
   },
   {
-    title: "From a sidebar to the sentence",
+    title: "AI help, where you need it",
     body: "AI writing tools at the point of need, with business-specific instructions and control over tone, length and scope. People didn’t distrust AI. They distrusted generic AI.",
     comparison: {
       title: "AI writing tools",
