@@ -166,7 +166,7 @@
 .title {
   font-family: var(--font-bricolage), sans-serif;
   font-size: 44px;
-  line-height: 52px;
+  line-height: var(--line-h1);
   font-weight: 700;
   text-wrap: balance;
 }
@@ -188,6 +188,6 @@
   .fourFacts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 480px) {
-  .title { font-size: 34px; line-height: 1.15; }
+  .title { font-size: 34px; line-height: var(--line-h1); }
   .heroLine { font-size: 20px; }
 }
