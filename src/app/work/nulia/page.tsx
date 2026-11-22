@@ -28,18 +28,6 @@ export default function NuliaPage() {
         palette="violet"
         imageWidth={1600}
         imageHeight={846}
-        artwork={
-          <div className={styles.heroArtwork} role="img" aria-label="Nulia's learning dashboard layered over an outcome detail screen">
-            <div className={styles.heroOutcome}>
-              <div className={styles.heroOutcomeCrop}>
-                <Image src={project.heroImage} alt="" width={1600} height={846} priority quality={90} sizes="(max-width: 480px) calc(100vw - 32px), (max-width: 880px) calc(100vw - 80px), 800px" />
-              </div>
-            </div>
-            <div className={styles.heroDashboard}>
-              <Image src={project.heroImage} alt="" width={1600} height={846} priority quality={90} sizes="(max-width: 480px) calc(100vw - 32px), (max-width: 880px) calc(100vw - 80px), 800px" />
-            </div>
-          </div>
-        }
       />
 
       {/* What I did */}
