@@ -15,7 +15,6 @@ interface CaseStudyHeroProps {
   palette?: "forecast" | "liveplan" | "canvas" | "safari" | "mint" | "violet" | "coral" | "sage";
   /** Composed artwork already has its own silhouette and shadow. */
   floatingImage?: boolean;
-  artwork?: ReactNode;
   facts?: { label: string; value: ReactNode }[];
 }
 
@@ -31,7 +30,6 @@ export default function CaseStudyHero({
   imageMaxWidth = 800,
   palette = "forecast",
   floatingImage = false,
-  artwork,
   facts,
 }: CaseStudyHeroProps) {
   // Keep two source pixels per CSS pixel on Retina screens, with a quieter
@@ -48,7 +46,7 @@ export default function CaseStudyHero({
           <p className={styles.heroLine}>{description}</p>
         </div>
         <div className={styles.heroMedia} style={{ maxWidth: displayWidth }}>
-          {artwork ?? <div className={floatingImage ? undefined : styles.heroVisual}>
+          <div className={floatingImage ? undefined : styles.heroVisual}>
             <Image
               src={heroImage}
               alt={imageAlt}
@@ -59,7 +57,7 @@ export default function CaseStudyHero({
               sizes={`(max-width: 480px) min(calc(100vw - 32px), ${displayWidth}px), min(calc(100vw - 80px), ${displayWidth}px)`}
               className={styles.heroImg}
             />
-          </div>}
+          </div>
         </div>
         {facts && facts.length > 0 && (
           <dl className={`${styles.heroMeta} ${facts.length === 4 ? styles.fourFacts : ""}`}>
