@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
+import CaseStudyHero from "@/components/CaseStudyHero";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import { getAdjacentProjects } from "@/data/projects";
@@ -79,44 +80,22 @@ export default function IdeaCanvasPage() {
       <Navigation />
       <main id="main">
         {/* ===== Hero ===== */}
-        <section className={beats.hero}>
-          <div className={styles.heroInner}>
-            <div className={styles.heroIntro}>
-              <p className={styles.kicker}>LivePlan · Idea Validation · 2026</p>
-              <h1 className={styles.heroHeadline}>Idea Canvas</h1>
-            </div>
-            <div className={styles.heroMedia}>
-              <div className={`${styles.heroVisual} ${beats.heroFrame}`}>
-                <Image
-                  src="/images/canvas/canvas-hero.png"
-                  alt="The Idea Canvas with the Idea Check panel open beside it, showing a confidence rating and top concerns for a business idea"
-                  width={1503}
-                  height={1052}
-                  priority
-                  sizes="(max-width: 1100px) 100vw, 1100px"
-                  className={styles.heroImg}
-                />
-              </div>
-            </div>
-            <p className={beats.heroLine}>
-              A validation tool for people who don&rsquo;t have a plan yet.
-            </p>
-            <dl className={styles.metaRow}>
-              <div className={styles.metaCell}>
-                <dt>Role</dt>
-                <dd>Product Designer &amp; Researcher</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Shipped</dt>
-                <dd>MVP in 3 weeks</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Outcome</dt>
-                <dd>70% acted on a pivot suggestion</dd>
-              </div>
-            </dl>
-          </div>
-        </section>
+        <CaseStudyHero
+          company="LivePlan · Idea Validation · 2026"
+          title="Idea Canvas"
+          description="A validation tool for people who don’t have a plan yet."
+          heroImage="/images/canvas/canvas-hero.png"
+          imageAlt="The Idea Canvas with the Idea Check panel open beside it, showing a confidence rating and top concerns for a business idea"
+          imageWidth={1503}
+          imageHeight={1052}
+          palette="canvas"
+          floatingImage
+          facts={[
+            { label: "Role", value: "Product Designer & Researcher" },
+            { label: "Shipped", value: "MVP in 3 weeks" },
+            { label: "Outcome", value: "70% acted on a pivot suggestion" },
+          ]}
+        />
 
         {/* ===== The problem ===== */}
         <section className={styles.section}>

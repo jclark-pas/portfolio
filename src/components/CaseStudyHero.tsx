@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import styles from "./CaseStudyHero.module.css";
 
 interface CaseStudyHeroProps {
@@ -7,10 +8,15 @@ interface CaseStudyHeroProps {
   title: string;
   description: string;
   heroImage: string;
-  /** When set, the hero image sits on this background (inset/padded) instead of directly on the band. */
-  imageBackground?: string;
-  imageWidth?: number;
-  imageHeight?: number;
+  imageAlt?: string;
+  imageWidth: number;
+  imageHeight: number;
+  imageMaxWidth?: number;
+  palette?: "forecast" | "liveplan" | "canvas" | "safari" | "mint" | "violet" | "coral" | "sage";
+  /** Composed artwork already has its own silhouette and shadow. */
+  floatingImage?: boolean;
+  artwork?: ReactNode;
+  facts?: { label: string; value: ReactNode }[];
 }
 
 export default function CaseStudyHero({
@@ -19,43 +25,51 @@ export default function CaseStudyHero({
   title,
   description,
   heroImage,
-  imageBackground,
+  imageAlt = title,
   imageWidth,
   imageHeight,
+  imageMaxWidth = 800,
+  palette = "forecast",
+  floatingImage = false,
+  artwork,
+  facts,
 }: CaseStudyHeroProps) {
+  // Keep two source pixels per CSS pixel on Retina screens, with a quieter
+  // maximum size even when a larger export is available.
+  const displayWidth = Math.min(imageMaxWidth, 800, Math.floor(imageWidth / 2));
+
   return (
-    <section className={styles.hero}>
-      <div className={styles.inner}>
-        <p className={styles.company}>
-          {company}
-          {year ? ` / ${year}` : ""}
-        </p>
-        <h1 className={styles.title}>{title}</h1>
-        <p className={styles.tagline}>{description}</p>
-        {imageBackground ? (
-          <div
-            className={styles.imageAreaFramed}
-            style={{ background: imageBackground }}
-          >
+    <section className={`${styles.hero} ${styles[palette] ?? ""}`}>
+      <div className={styles.heroBackground} aria-hidden="true" />
+      <div className={styles.heroInner}>
+        <div className={styles.heroIntro}>
+          <p className={styles.company}>{company}{year ? ` / ${year}` : ""}</p>
+          <h1 className={styles.title}>{title}</h1>
+          <p className={styles.heroLine}>{description}</p>
+        </div>
+        <div className={styles.heroMedia} style={{ maxWidth: displayWidth }}>
+          {artwork ?? <div className={floatingImage ? undefined : styles.heroVisual}>
             <Image
               src={heroImage}
-              alt={title}
-              width={imageWidth ?? 1584}
-              height={imageHeight ?? 1260}
-              sizes="(max-width: 1120px) 100vw, 1120px"
-              className={styles.heroImgInset}
-            />
-          </div>
-        ) : (
-          <div className={styles.imageArea}>
-            <Image
-              src={heroImage}
-              alt={title}
-              fill
-              sizes="960px"
+              alt={imageAlt}
+              width={imageWidth}
+              height={imageHeight}
+              priority
+              quality={90}
+              sizes={`(max-width: 480px) min(calc(100vw - 32px), ${displayWidth}px), min(calc(100vw - 80px), ${displayWidth}px)`}
               className={styles.heroImg}
             />
-          </div>
+          </div>}
+        </div>
+        {facts && facts.length > 0 && (
+          <dl className={`${styles.heroMeta} ${facts.length === 4 ? styles.fourFacts : ""}`}>
+            {facts.map(({ label, value }) => (
+              <div className={styles.metaCell} key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
         )}
       </div>
     </section>

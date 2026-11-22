@@ -34,6 +34,10 @@ export default function QlarityPage() {
         title={project.tagline}
         description={project.description}
         heroImage={project.heroImage}
+        palette="sage"
+        imageWidth={1840}
+        imageHeight={1128}
+        floatingImage
       />
 
       {/* What I did */}

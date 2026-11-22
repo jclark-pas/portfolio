@@ -1,40 +1,3 @@
-/* The Idea Canvas told in four beats. Shares the hero, section and prose
-   styles with ./page.module.css; this file only holds what the beats add: the
-   light hero, the moves with their screenshots, the stat rows. */
-
-/* the hero on the card gray instead of the shared dark hero: same layout
-   classes from ./page.module.css, but the page colors and the page accent */
-.hero {
-  background: var(--color-bg-card);
-  color: var(--color-text);
-  padding: var(--space-xxxl) var(--space-xxl);
-}
-.hero h1,
-.hero dl dd {
-  color: var(--color-text);
-}
-/* the hero frame keeps the shared brand gradient from ./page.module.css,
-   so the shot sits on color while the section stays on the card gray */
-.hero .heroFrame {
-  padding: var(--space-lg);
-}
-@media (max-width: 480px) {
-  .hero {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-
-/* the one-line lead under the hero image, before the meta row */
-.heroLine {
-  font-family: var(--font-bricolage), sans-serif;
-  font-size: 24px;
-  line-height: 1.3;
-  font-weight: 500;
-  color: var(--color-text);
-  text-wrap: balance;
-}
-
 /* what the interviews kept turning up, as a plain list in the prose */
 .findings {
   margin: var(--space-md) 0;
@@ -179,8 +142,5 @@
 @media (max-width: 480px) {
   .stat {
     padding: var(--space-md);
-  }
-  .heroLine {
-    font-size: 20px;
   }
 }

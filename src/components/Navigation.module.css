@@ -6,6 +6,12 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Let the curved heroes meet the plain header without a dividing line. Restore
+   the separator when the sticky navigation sits over page content. */
+.seamlessNav:not(.navScrolled) {
+  border-bottom-color: transparent;
+}
+
 .inner {
   max-width: var(--max-width);
   margin: 0 auto;

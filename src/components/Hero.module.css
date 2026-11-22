@@ -1,27 +1,122 @@
 .hero {
-  background: var(--color-bg-card);
+  --hero-peach: #efd0ba;
+  --hero-lilac: #dedbed;
+  --hero-cream: #f0e7d5;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
 }
 
+:global([data-theme="dark"]) .hero {
+  --hero-peach: #49302b;
+  --hero-lilac: #292639;
+  --hero-cream: #28252a;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.96;
+  background:
+    radial-gradient(ellipse at 12% 88%, var(--hero-peach), transparent 59%),
+    radial-gradient(ellipse at 95% 100%, var(--hero-lilac), transparent 58%);
+}
+
+.background::before,
+.background::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.background::before {
+  width: 145%;
+  height: 155%;
+  left: -37%;
+  top: -82%;
+  background: color-mix(in srgb, var(--color-surface) 66%, transparent);
+  transform: rotate(-15deg);
+}
+
+.background::after {
+  width: 125%;
+  height: 110%;
+  right: -35%;
+  bottom: -77%;
+  background: color-mix(in srgb, var(--hero-cream) 65%, transparent);
+  transform: rotate(-17deg);
+}
+
+/* Drift only the oversized curves: transform animation leaves the gradient,
+   portrait, and copy steady, and never exposes the edge of a background layer. */
+@media (prefers-reduced-motion: no-preference) {
+  .background::before {
+    animation: upperCurveDrift 14s ease-in-out -4s infinite alternate;
+  }
+
+  .background::after {
+    animation: lowerCurveDrift 18s ease-in-out -9s infinite alternate;
+  }
+}
+
+@keyframes upperCurveDrift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-15deg);
+  }
+  to {
+    transform: translate3d(clamp(24px, 4.5vw, 64px), 30px, 0) rotate(-12deg);
+  }
+}
+
+@keyframes lowerCurveDrift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-17deg);
+  }
+  to {
+    transform: translate3d(clamp(-72px, -5vw, -28px), -36px, 0) rotate(-20deg);
+  }
+}
+
 .inner {
+  position: relative;
   max-width: var(--max-width);
+  min-height: clamp(460px, 46vw, 550px);
   margin: 0 auto;
-  padding: var(--space-xxxl) var(--space-xxl);
+  padding: 28px var(--space-xxl) 32px;
   display: grid;
-  /* Proportional columns so the portrait shrinks with the viewport instead
-     of holding its full width and crushing the text column. */
   grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
   gap: var(--space-xxxl);
   align-items: center;
 }
 
+.portraitFilter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
 .portrait {
-  width: 100%;
-  max-width: 550px;
+  /* Shoulders extend beneath the copy; the hero clips the sketch's rough
+     lower edge. The original 1650px asset covers this size at 2x density. */
+  position: absolute;
+  width: min(62vw, 740px);
+  max-width: none;
   height: auto;
+  left: -3%;
+  bottom: -80px;
+  pointer-events: none;
+  filter: url(#hero-portrait-backing);
 }
 
 .content {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
   min-width: 0;
 }
 
@@ -58,19 +153,32 @@
 
 @media (max-width: 960px) {
   .inner {
-    grid-template-columns: 1fr;
-    padding: var(--space-xxl) var(--space-xxl);
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 20px var(--space-xxl) 0;
+  }
+
+  .content {
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .portrait {
-    max-width: 360px;
-    margin: 0 auto;
+    position: relative;
+    grid-column: 1;
+    grid-row: 2;
+    width: min(100vw, 430px);
+    left: auto;
+    bottom: auto;
+    justify-self: center;
+    margin-bottom: -48px;
   }
 }
 
 @media (max-width: 480px) {
   .inner {
-    padding: var(--space-xxl) var(--space-xl);
+    padding-inline: var(--space-xxl);
   }
 
   .actions {

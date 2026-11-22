@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   images: {
     // Prefer AVIF (≈20–30% smaller than WebP), fall back to WebP.
     formats: ["image/avif", "image/webp"],
+    // Preserve portrait pencil lines and fine text in case-study screenshots.
+    qualities: [75, 90],
   },
 };
 

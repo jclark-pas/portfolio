@@ -24,7 +24,7 @@ export default function IntreventPage() {
         title={project.tagline}
         description={project.description}
         heroImage="/images/intrevent/hero-framed.png"
-        imageBackground="rgba(0, 0, 0, 0.2)"
+        palette="coral"
         imageWidth={1344}
         imageHeight={904}
       />
