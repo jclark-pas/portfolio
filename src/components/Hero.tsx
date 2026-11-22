@@ -44,10 +44,10 @@ export default function Hero() {
           <p className={styles.eyebrow}>Product Leader based in Eugene, Oregon</p>
           <h1 className={styles.headline}>Good design opens&nbsp;doors.</h1>
           <p className={styles.dek}>
-            I&rsquo;m a product designer and leader who makes complex software
-            feel effortless. Working alongside teams, I uncover what&rsquo;s
-            really getting in users&rsquo; way &mdash; then design the simplest
-            path through it, so more people get&nbsp;in.
+            I&rsquo;m a product person at heart who loves to identify and
+            eliminate friction in human-computer interaction. Working alongside
+            teams, I find the simplest path through it, so more people
+            get&nbsp;in.
           </p>
           <div className={styles.actions}>
             <Button href="/work">See Work</Button>
