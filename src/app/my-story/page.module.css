@@ -1,4 +1,6 @@
 .section {
+  /* ~15 words (about 80 characters) per line at the 18px body size. */
+  --story-width: 640px;
   padding: var(--space-xxxl) var(--space-xxl);
   display: flex;
   flex-direction: column;
@@ -8,7 +10,7 @@
 
 .header {
   width: 100%;
-  max-width: 960px;
+  max-width: var(--story-width);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -18,24 +20,24 @@
   font-size: var(--font-h3);
   line-height: 1;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-accent-text);
 }
 
 .eyebrowDot {
-  color: var(--color-text);
+  color: var(--color-accent-text);
 }
 
 .headline {
   font-family: var(--font-serif);
   font-size: 56px;
-  line-height: 68px;
+  line-height: var(--line-h1);
   font-weight: 700;
   color: var(--color-text);
 }
 
 .imageRow {
   width: 100%;
-  max-width: 960px;
+  max-width: var(--story-width);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -56,7 +58,7 @@
 
 .prose {
   width: 100%;
-  max-width: 960px;
+  max-width: var(--story-width);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -102,7 +104,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  max-width: 960px;
+  max-width: var(--story-width);
   aspect-ratio: 960 / 518;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -119,7 +121,6 @@
 @media (max-width: 960px) {
   .headline {
     font-size: 48px;
-    line-height: 60px;
   }
 
   .imageRow {
@@ -136,7 +137,6 @@
 
   .headline {
     font-size: 40px;
-    line-height: 55px;
   }
 
   .imageRow {

@@ -106,7 +106,7 @@
 .heroHeadline {
   font-family: var(--font-bricolage), sans-serif;
   font-size: 44px;
-  line-height: 52px;
+  line-height: var(--line-h1);
   font-weight: 700;
   color: #F4F4F5;
   text-wrap: balance;
@@ -428,7 +428,7 @@
 
   .heroHeadline {
     font-size: 44px;
-    line-height: 50px;
+    line-height: var(--line-h1);
   }
 
   .sectionHeading {

@@ -40,19 +40,6 @@ export default function WorkIndexPage() {
         </div>
       </section>
 
-      <section className={styles.section}>
-        <div className={styles.sectionInner}>
-          <div className={styles.sectionHeader}>
-            <p className={styles.subsectionLabel}>More Work</p>
-          </div>
-          <div className={styles.moreWorkGrid}>
-            {otherProjects.map((project) => (
-              <WorkCard key={project.slug} project={project} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* side projects with a site of their own; the cards link out */}
       <section className={styles.section}>
         <div className={styles.sectionInner}>
@@ -62,6 +49,19 @@ export default function WorkIndexPage() {
           <div className={styles.personalGrid}>
             {personalProjects.map((project) => (
               <PersonalProjectCard key={project.href} project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionInner}>
+          <div className={styles.sectionHeader}>
+            <p className={styles.subsectionLabel}>More Work</p>
+          </div>
+          <div className={styles.moreWorkGrid}>
+            {otherProjects.map((project) => (
+              <WorkCard key={project.slug} project={project} />
             ))}
           </div>
         </div>
