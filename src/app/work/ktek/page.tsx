@@ -40,6 +40,10 @@ export default function KtekPage() {
         title={project.tagline}
         description={project.description}
         heroImage={project.heroImage}
+        palette="safari"
+        imageWidth={1840}
+        imageHeight={1128}
+        floatingImage
       />
 
       {/* What I did */}

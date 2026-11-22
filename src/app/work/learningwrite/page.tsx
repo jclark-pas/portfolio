@@ -28,6 +28,9 @@ export default function LearningWritePage() {
         title={project.tagline}
         description={project.description}
         heroImage={project.heroImage}
+        palette="mint"
+        imageWidth={1600}
+        imageHeight={1178}
       />
 
       {/* What I did */}

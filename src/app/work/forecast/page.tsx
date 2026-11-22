@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
+import CaseStudyHero from "@/components/CaseStudyHero";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import FeaturedWorkCard from "@/components/FeaturedWorkCard";
@@ -69,46 +70,20 @@ export default function ForecastTurnPage() {
       <Navigation />
       <main id="main">
         {/* ===== Hero: the promise of a turn ===== */}
-        <section className={turn.hero}>
-          <div className={styles.heroInner}>
-            <div className={styles.heroIntro}>
-              <p className={styles.kicker}>LivePlan · Financial Forecasting · 2025</p>
-              <h1 className={styles.heroHeadline}>When the forecast met reality</h1>
-            </div>
-            <div className={styles.heroMedia}>
-              <div className={styles.heroVisual}>
-                <Image
-                  src="/images/forecast/forecast-hero.png"
-                  alt="LivePlan Actuals + Forecast overview: projected revenue, expenses, operating income and cash shown beside real bookkeeping actuals"
-                  width={3096}
-                  height={2016}
-                  priority
-                  sizes="(max-width: 1100px) 100vw, 1100px"
-                  className={styles.heroImg}
-                />
-              </div>
-            </div>
-            <p className={turn.heroLine}>A story about shipping the right thing at the wrong time.</p>
-            <dl className={styles.metaRow}>
-              <div className={styles.metaCell}>
-                <dt>Role</dt>
-                <dd>Design Lead</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Shipped</dt>
-                <dd>Aug–Oct 2025</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Outcome</dt>
-                <dd>
-                  Loved by the owners it served.
-                  <br />
-                  Churn unchanged.
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </section>
+        <CaseStudyHero
+          company="LivePlan · Financial Forecasting · 2025"
+          title="When the forecast met reality"
+          description="A story about shipping the right thing at the wrong time."
+          heroImage="/images/forecast/forecast-hero.png"
+          imageAlt="LivePlan's Expenses forecast showing projected expenses alongside bookkeeping actuals in a chart and grouped table"
+          imageWidth={3096}
+          imageHeight={2016}
+          facts={[
+            { label: "Role", value: "Design Lead" },
+            { label: "Shipped", value: "Aug–Oct 2025" },
+            { label: "Outcome", value: <>Loved by the owners it served.<br />Churn unchanged.</> },
+          ]}
+        />
 
         {/* ===== The bet ===== */}
         <section className={styles.section}>

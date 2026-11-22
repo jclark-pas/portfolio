@@ -1,35 +1,3 @@
-/* The Forecast story in four beats. Shares the hero, section and prose styles
-   with ./page.module.css; this file only holds what the beats add: the product
-   moves, the pull quote, the stat row. */
-
-/* the hero on the card gray instead of the shared dark hero: same layout
-   classes from ./page.module.css, but the page colors and the page accent */
-.hero {
-  background: var(--color-bg-card);
-  color: var(--color-text);
-  padding: var(--space-xxxl) var(--space-xxl);
-}
-.hero h1,
-.hero dl dd {
-  color: var(--color-text);
-}
-@media (max-width: 480px) {
-  .hero {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-
-/* the one-line lead under the hero image, before the meta row */
-.heroLine {
-  font-family: var(--font-bricolage), sans-serif;
-  font-size: 24px;
-  line-height: 1.3;
-  font-weight: 500;
-  color: var(--color-text);
-  text-wrap: balance;
-}
-
 /* three moves: the shipped design on a soft backdrop, the words beside it.
    The PNGs are transparent designs that float on the gradient, edge to edge,
    so the frame carries the radius and shadow. */
@@ -138,8 +106,5 @@
 @media (max-width: 480px) {
   .stat {
     padding: var(--space-md);
-  }
-  .heroLine {
-    font-size: 20px;
   }
 }

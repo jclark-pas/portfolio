@@ -131,3 +131,54 @@
     padding: 32px 16px;
   }
 }
+.heroArtwork {
+  position: relative;
+  aspect-ratio: 1600 / 846;
+}
+
+/* Crop the existing composite in CSS, preserving its original UI pixels.
+   The dashboard overlaps the outcome screen in the source artwork. */
+.heroOutcome,
+.heroDashboard {
+  position: absolute;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+}
+.heroOutcome {
+  left: 30.8125%;
+  top: 5.31915%;
+  width: 57.5%;
+  height: 94.68085%;
+  /* Exclude the dashboard baked into the back layer, including its corners. */
+  clip-path: polygon(-10% -10%, 110% -10%, 110% 110%, 53.37% 110%, 53.37% 35.955%, -10% 35.955%);
+}
+.heroOutcomeCrop {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.heroDashboard {
+  left: 5.5%;
+  top: 39.3617%;
+  width: 56%;
+  height: 60.6383%;
+  overflow: hidden;
+}
+.heroOutcome img,
+.heroDashboard img {
+  position: absolute;
+  max-width: none;
+  height: auto;
+}
+.heroOutcome img {
+  width: 173.91304%;
+  left: -53.58696%;
+  top: -5.61798%;
+}
+.heroDashboard img {
+  width: 178.57143%;
+  left: -9.82143%;
+  top: -64.91228%;
+}

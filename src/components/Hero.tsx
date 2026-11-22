@@ -6,12 +6,38 @@ import styles from "./Hero.module.css";
 export default function Hero() {
   return (
     <section className={styles.hero}>
+      <svg className={styles.portraitFilter} aria-hidden="true" focusable="false">
+        <defs>
+          <filter
+            id="hero-portrait-backing"
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            colorInterpolationFilters="sRGB"
+          >
+            {/* Fill the translucent interior while keeping the outside clear.
+                Composite the original sketch on top so its pencil detail stays intact. */}
+            <feComponentTransfer in="SourceAlpha" result="silhouette">
+              <feFuncA type="linear" slope="32" intercept="-1" />
+            </feComponentTransfer>
+            <feFlood floodColor="white" result="paper" />
+            <feComposite in="paper" in2="silhouette" operator="in" result="backing" />
+            <feMerge>
+              <feMergeNode in="backing" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+      <div className={styles.background} aria-hidden="true" />
       <div className={styles.inner}>
         <Image
           src={joshHero}
           alt="Portrait illustration of Josh Clark"
           priority
-          sizes="(max-width: 960px) 360px, 550px"
+          sizes="(max-width: 430px) 100vw, (max-width: 960px) 430px, (max-width: 1193px) 62vw, 740px"
+          quality={90}
           className={styles.portrait}
         />
         <div className={styles.content}>

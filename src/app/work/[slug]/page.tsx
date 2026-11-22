@@ -45,6 +45,8 @@ export default async function CaseStudyPage({
         title={project.tagline}
         description={project.description}
         heroImage={project.heroImage}
+        imageWidth={1600}
+        imageHeight={1000}
       />
 
       {/* What I Did */}

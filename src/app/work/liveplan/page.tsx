@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
+import CaseStudyHero from "@/components/CaseStudyHero";
 import Footer from "@/components/Footer";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
@@ -90,45 +91,24 @@ export default function LivePlanPage() {
       <Navigation />
       <main id="main">
         {/* ===== Hero ===== */}
-        <section className={beats.hero}>
-          <div className={styles.heroInner}>
-            <div className={styles.heroIntro}>
-              <p className={styles.kicker}>LivePlan · Product Design · 2024</p>
-              <h1 className={styles.heroHeadline}>Redesigning the business plan</h1>
-            </div>
-            <div className={`${styles.heroVisual} ${beats.heroFrame}`}>
-              <Image
-                src="/images/liveplan/businessplan-hero.png"
-                alt="LivePlan business plan editor with executive summary, formatting toolbar, and inline AI guidance"
-                fill
-                priority
-                sizes="(max-width: 1100px) 100vw, 1100px"
-                className={styles.heroImg}
-              />
-            </div>
-            <p className={beats.heroLine}>
-              A ten-year-old editor, rebuilt around where people actually write.
-            </p>
-            <dl className={styles.metaRow}>
-              <div className={styles.metaCell}>
-                <dt>Role</dt>
-                <dd>Lead Product Designer</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Team</dt>
-                <dd>9 engineers, 1 PM</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Shipped</dt>
-                <dd>Q3 2024, after 3 months</dd>
-              </div>
-              <div className={styles.metaCell}>
-                <dt>Outcome</dt>
-                <dd>Early churn down 25%</dd>
-              </div>
-            </dl>
-          </div>
-        </section>
+        <CaseStudyHero
+          company="LivePlan · Product Design · 2024"
+          title="Redesigning the business plan"
+          description="A ten-year-old editor, rebuilt around where people actually write."
+          heroImage="/images/liveplan/featured-plan-editor.png"
+          imageAlt="LivePlan business plan editor with executive summary, formatting toolbar, and inline AI guidance"
+          imageWidth={1749}
+          imageHeight={1366}
+          imageMaxWidth={640}
+          palette="liveplan"
+          floatingImage
+          facts={[
+            { label: "Role", value: "Lead Product Designer" },
+            { label: "Team", value: "9 engineers, 1 PM" },
+            { label: "Shipped", value: "Q3 2024, after 3 months" },
+            { label: "Outcome", value: "Early churn down 25%" },
+          ]}
+        />
 
         {/* ===== The problem ===== */}
         <section className={styles.section}>

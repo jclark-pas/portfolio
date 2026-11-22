@@ -17,6 +17,7 @@ export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("light");
   const [scrolled, setScrolled] = useState(false);
+  const hasSeamlessHero = pathname === "/" || /^\/work\/[^/]+$/.test(pathname ?? "");
 
   const isActive = (href: string) => {
     if (href.includes("#")) return false;
@@ -84,7 +85,7 @@ export default function Navigation() {
     <a href="#main" className="skip-link">
       Skip to main content
     </a>
-    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
+    <nav className={`${styles.nav} ${hasSeamlessHero ? styles.seamlessNav : ""} ${scrolled ? styles.navScrolled : ""}`}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
           Josh Clark<span className={styles.logoDot}>.</span>
