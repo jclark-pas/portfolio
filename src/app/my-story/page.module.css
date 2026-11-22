@@ -20,11 +20,11 @@
   font-size: var(--font-h3);
   line-height: 1;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-accent-text);
 }
 
 .eyebrowDot {
-  color: var(--color-text);
+  color: var(--color-accent-text);
 }
 
 .headline {
