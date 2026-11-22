@@ -18,7 +18,7 @@ export default function MyStoryPage() {
             About Me<span className={styles.eyebrowDot}>.</span>
           </p>
           <h1 className={styles.headline}>
-            How the worst day of my life made me a better design leader.
+            What paralysis taught me about design.
           </h1>
         </header>
 

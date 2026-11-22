@@ -17,7 +17,7 @@ export default function StoryTeaser() {
       <div className={styles.content}>
         <p className={styles.eyebrow}>My Story</p>
         <h3 className={styles.headline}>
-          How the worst day of my life made me a better design leader.
+          What paralysis taught me about design.
         </h3>
         <p className={styles.body}>
           A story underneath the r&eacute;sum&eacute; — one that reshaped how I
