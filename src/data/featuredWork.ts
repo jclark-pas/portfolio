@@ -3,6 +3,22 @@ import type { FeaturedWork } from "@/components/FeaturedWorkCard";
 export const featuredWork: FeaturedWork[] = [
   {
     number: "01",
+    eyebrow: "LivePlan · Help Me Forecast",
+    title: "Help Me Forecast",
+    subtitle: "From napkin math to a working forecast",
+    description:
+      "A guided AI conversation that helps business owners build and understand their financial forecast — driving 65% more starts and 50% more sections completed.",
+    href: "/work/help-me-forecast",
+    imageBackground:
+      "linear-gradient(135deg, #dceef1 0%, #dce5f5 50%, #e5dcf2 100%)",
+    image: "/images/help-me-forecast/featured-sidebar.svg",
+    imageWidth: 510,
+    imageHeight: 974,
+    imageElevated: true,
+    imageBleedBottom: true,
+  },
+  {
+    number: "02",
     eyebrow: "LivePlan · Actuals in Forecast",
     title: "Actuals in the Forecast",
     subtitle: "Making iterative forecasting easier",
@@ -17,7 +33,7 @@ export const featuredWork: FeaturedWork[] = [
     imageSnug: true,
   },
   {
-    number: "02",
+    number: "03",
     eyebrow: "LivePlan · Plan Editor",
     title: "Redesigning the Plan",
     subtitle: "The business plan editor, reimagined",
@@ -31,7 +47,7 @@ export const featuredWork: FeaturedWork[] = [
     imageHeight: 1366,
   },
   {
-    number: "03",
+    number: "04",
     eyebrow: "LivePlan · Idea Canvas",
     title: "From Idea to Plan",
     subtitle: "An AI canvas for shaping ideas",
@@ -47,4 +63,4 @@ export const featuredWork: FeaturedWork[] = [
   },
 ];
 
-export const featuredSlugs = new Set(["forecast", "liveplan", "idea-canvas"]);
+export const featuredSlugs = new Set(["help-me-forecast", "forecast", "liveplan", "idea-canvas"]);

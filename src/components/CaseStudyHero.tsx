@@ -8,6 +8,9 @@ interface CaseStudyHeroProps {
   title: string;
   description: string;
   heroImage: string;
+  /** Optional art-directed SVG for narrow screens. */
+  mobileHeroImage?: string;
+  imageCaption?: string;
   imageAlt?: string;
   imageWidth: number;
   imageHeight: number;
@@ -24,6 +27,8 @@ export default function CaseStudyHero({
   title,
   description,
   heroImage,
+  mobileHeroImage,
+  imageCaption,
   imageAlt = title,
   imageWidth,
   imageHeight,
@@ -35,6 +40,19 @@ export default function CaseStudyHero({
   // Keep two source pixels per CSS pixel on Retina screens, with a quieter
   // maximum size even when a larger export is available.
   const displayWidth = Math.min(imageMaxWidth, 800, Math.floor(imageWidth / 2));
+  const Media = imageCaption ? "figure" : "div";
+  const image = (
+    <Image
+      src={heroImage}
+      alt={imageAlt}
+      width={imageWidth}
+      height={imageHeight}
+      priority
+      quality={90}
+      sizes={`(max-width: 480px) min(calc(100vw - 32px), ${displayWidth}px), min(calc(100vw - 80px), ${displayWidth}px)`}
+      className={styles.heroImg}
+    />
+  );
 
   return (
     <section className={`${styles.hero} ${styles[palette] ?? ""}`}>
@@ -45,20 +63,17 @@ export default function CaseStudyHero({
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.heroLine}>{description}</p>
         </div>
-        <div className={styles.heroMedia} style={{ maxWidth: displayWidth }}>
+        <Media className={styles.heroMedia} style={{ maxWidth: displayWidth }}>
           <div className={floatingImage ? undefined : styles.heroVisual}>
-            <Image
-              src={heroImage}
-              alt={imageAlt}
-              width={imageWidth}
-              height={imageHeight}
-              priority
-              quality={90}
-              sizes={`(max-width: 480px) min(calc(100vw - 32px), ${displayWidth}px), min(calc(100vw - 80px), ${displayWidth}px)`}
-              className={styles.heroImg}
-            />
+            {mobileHeroImage ? (
+              <picture>
+                <source media="(max-width: 600px)" srcSet={mobileHeroImage} />
+                {image}
+              </picture>
+            ) : image}
           </div>
-        </div>
+          {imageCaption && <figcaption className={styles.imageCaption}>{imageCaption}</figcaption>}
+        </Media>
         {facts && facts.length > 0 && (
           <dl className={`${styles.heroMeta} ${facts.length === 4 ? styles.fourFacts : ""}`}>
             {facts.map(({ label, value }) => (

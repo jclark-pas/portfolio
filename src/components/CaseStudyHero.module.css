@@ -83,6 +83,12 @@
   width: 100%;
   max-width: 800px;
 }
+.imageCaption {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
 .heroVisual {
   background: var(--color-surface);
   border: 1px solid var(--color-border-light);

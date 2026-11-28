@@ -1,0 +1,78 @@
+.wrap {
+  --rail: color-mix(in srgb, var(--color-text-secondary) 45%, transparent);
+  margin: 36px 0;
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+}
+.bubble {
+  position: relative;
+  display: grid;
+  max-width: 640px;
+  margin: 0 auto 28px;
+  padding: 22px 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 1px 2px #14141708, 0 10px 24px -8px #14141710;
+}
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: calc(50% - 9px);
+  width: 16px;
+  height: 16px;
+  transform: rotate(45deg);
+  border-right: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+}
+.voice { grid-area: 1 / 1; visibility: hidden; }
+.voice[data-active] { visibility: visible; }
+.eyebrow { margin-bottom: 8px; font-size: 12px; line-height: 1.4; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--color-accent); }
+.headline { font-size: clamp(24px, 2.8vw, 32px); font-weight: 600; line-height: 1.2; text-wrap: balance; }
+.description { max-width: 52ch; margin: 10px auto 0; font-size: 15px; line-height: 1.5; color: var(--color-text-secondary); text-wrap: pretty; }
+.canvas { position: relative; aspect-ratio: 760 / 350; }
+.desktopWires, .mobileWires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.mobileWires { display: none; }
+.wire { fill: none; stroke: var(--rail); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.loop, .highlight { stroke: var(--color-accent); }
+.desktopWires marker path, .mobileWires marker path { fill: none; stroke: context-stroke; stroke-width: 1.5; }
+.approvalLabel, .loopLabel { fill: var(--color-text-secondary); font-family: var(--font-sans); font-size: 12px; font-weight: 500; }
+.approvalLabel { text-anchor: middle; fill: var(--color-accent); font-weight: 600; }
+.stage { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -28px); width: 15.8%; display: flex; flex-direction: column; align-items: center; padding: 0; color: var(--color-text-secondary); text-align: center; font: inherit; }
+.tile { position: relative; display: grid; place-items: center; width: 56px; height: 56px; border: 1px solid var(--color-border-light); border-radius: 12px; background: var(--color-surface); box-shadow: 0 1px 2px #1414170d, 0 6px 16px -4px #14141714; }
+.tile::after { content: ""; position: absolute; inset: -5px; border: 1.5px dashed var(--color-accent); border-radius: 17px; opacity: 0; }
+.stage[data-active] .tile { color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface)); border-color: color-mix(in srgb, var(--color-accent) 40%, transparent); }
+.stage[data-active] .tile::after { opacity: 1; }
+.stage[data-active] .name { color: var(--color-text); }
+.stage:hover .tile { color: var(--color-accent); }
+.name { margin-top: 12px; font-size: 14px; line-height: 1.3; font-weight: 600; }
+.detail { margin-top: 4px; white-space: pre-line; font-size: 12px; line-height: 1.4; }
+.stage:focus-visible { outline: none; }
+.stage:focus-visible .tile { outline: 2px solid var(--color-accent); outline-offset: 7px; }
+:global([data-theme="dark"]) .tile, :global([data-theme="dark"]) .bubble { box-shadow: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .voice[data-active] { animation: reveal .25s ease-out; }
+  .wrap[data-live] .loop { animation: march 1s linear infinite; }
+  @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes march { to { stroke-dashoffset: -8; } }
+}
+@media (max-width: 800px) {
+  .wrap { padding: 18px 12px; }
+  .bubble { margin-bottom: 22px; padding: 18px 14px; }
+  .eyebrow { font-size: 10px; }
+  .headline { font-size: 24px; }
+  .description { font-size: 14px; }
+  .canvas { aspect-ratio: auto; height: 770px; max-width: 340px; margin: auto; }
+  .desktopWires { display: none; }
+  .mobileWires { display: block; }
+  .stage { left: var(--mx); top: var(--my); width: 128px; transform: translate(-50%, -24px); }
+  .tile { width: 48px; height: 48px; }
+  .name { font-size: 13px; margin-top: 8px; }
+  .detail { font-size: 11px; line-height: 1.3; }
+  .mobileWires .approvalLabel { text-anchor: start; }
+}

@@ -1,0 +1,59 @@
+/* The product conversation stays light, as in the LivePlan interface. */
+.example { min-width: 0; height: 660px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e5e0ee; border-radius: 14px; background: #f9f7fd; color: #202d41; box-shadow: 0 8px 22px #1b316420; font-size: 14px; line-height: 1.5; }
+.chatHeader { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; background: white; border-bottom: 1px solid #e8e5ee; }
+.brand { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 800; }
+.controls { display: flex; }
+.playback { display: grid; place-items: center; width: 34px; height: 34px; color: #687385; border-radius: 5px; }
+.transcript { position: relative; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin; scrollbar-color: #cbc3dd transparent; padding: 16px 12px 24px; scroll-padding: 16px; }
+.explanation, .questionCard { background: white; border: 1px solid #e5e0ee; border-radius: 10px; overflow: hidden; }
+.explanation { padding: 16px; }
+.explanation h3 { font-family: inherit; font-size: 20px; font-weight: 800; line-height: 1.3; margin: 6px 0 10px; }
+.explanation p { margin: 10px 0 16px; }
+.speaker { display: block; font-size: 11px; font-weight: 700; color: #687385; margin-bottom: 5px; }
+.exchange { margin-top: 22px; }
+.question { padding: 0 6px; font-weight: 700; }
+.reply { margin: 12px 0 0 32px; padding: 12px 14px; background: #eee6fa; border-radius: 12px 12px 3px 12px; }
+.reply .speaker { color: #65517e; }
+.latest { margin-top: 18px; }
+.latest:empty { margin: 0; }
+.summary > div { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e8e5ee; font-size: 13px; }
+.summary strong { white-space: nowrap; }
+.restart { display: inline-flex; align-items: center; gap: 8px; color: #652fd0; font: inherit; font-weight: 700; min-height: 44px; }
+.screen { padding: 16px; }
+.screen h3 { font-family: inherit; font-size: 20px; line-height: 1.3; font-weight: 800; color: #202d41; text-wrap: pretty; }
+.intro { color: #687385; font-size: 14px; line-height: 1.5; margin: 6px 0 16px; }
+.options { min-width: 0; padding: 0; border: 1px solid #e2e4e9; border-radius: 9px; overflow: hidden; }
+.option { display: flex; align-items: start; gap: 12px; padding: 12px 14px; cursor: pointer; }
+.option + .option, .valueRow + .valueRow { border-top: 1px solid #e2e4e9; }
+.option[data-selected="true"] { background: #f8f5fc; }
+.option input { flex-shrink: 0; width: 17px; height: 17px; margin-top: 2px; accent-color: #652fd0; cursor: pointer; }
+.option strong { display: block; font-size: 14px; font-weight: 700; line-height: 1.4; }
+.option small { display: block; color: #687385; font-size: 12px; line-height: 1.45; margin-top: 4px; }
+.add { display: flex; align-items: center; gap: 9px; color: #652fd0; padding: 12px 14px; min-height: 44px; width: 100%; font: inherit; font-weight: 600; border-top: 1px solid #e2e4e9; }
+.addForm { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #e2e4e9; }
+.addForm input { min-width: 0; flex: 1; border: 1px solid #dfe2e7; border-radius: 4px; padding: 8px; background: white; color: #202d41; font: inherit; font-size: 16px; }
+.addForm button { padding: 6px; color: #652fd0; font-weight: 600; }
+.valueRow { display: grid; grid-template-columns: minmax(0,1fr) 106px; align-items: center; gap: 12px; padding: 12px; font-size: 14px; font-weight: 600; }
+.estimate { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 13px; font-weight: 600; }
+.estimate strong { color: #652fd0; font-size: 22px; }
+.empty { padding: 16px; font-size: 14px; color: #687385; }
+.actions { display: flex; justify-content: flex-end; gap: 12px; align-items: center; }
+.next { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: auto; padding: 8px 14px; }
+.example button:disabled { opacity: .4; cursor: default; }
+.example input:focus-visible { outline: 2px solid #652fd0; outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .enter { animation: questionEnter .28s ease-out; }
+  @keyframes questionEnter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+}
+@media (max-width: 480px) {
+  .screen { padding: 14px; }
+  .screen h3 { font-size: 20px; }
+  .option { padding: 10px; gap: 9px; }
+  .option strong { font-size: 13px; }
+  .valueRow { grid-template-columns: minmax(0,1fr) 82px; padding: 10px; gap: 8px; font-size: 13px; }
+  .example { height: 640px; }
+  .transcript { padding: 12px 8px 20px; }
+  .chatHeader { padding: 8px 10px; }
+  .brand { font-size: 13px; gap: 6px; }
+  .reply { margin-left: 20px; }
+}
