@@ -87,7 +87,6 @@ export default function HelpMeForecastPage() {
             <p>Keeping the owner involved was essential: they would be responsible for executing the plan. The experience needed to help them learn as they went, understand the assumptions behind their numbers, and speak with authority about their business to loan officers and investors.</p>
           </div>
           <ForecastWorkflow />
-          <aside className={styles.card} aria-labelledby="exploration"><p className={styles.label}>Exploration</p><h3 id="exploration">Keep enough context to pick up where you left off</h3><p>Panel, modal and full-page history concepts explored where the guide could live and how a conversation might resume without losing context.</p></aside>
         </div>
       </section>
       <section className={`${layout.section} ${beats.cardBand}`} aria-labelledby="examples">
