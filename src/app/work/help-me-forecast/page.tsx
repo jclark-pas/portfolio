@@ -116,8 +116,8 @@ export default function HelpMeForecastPage() {
           <h2 id="outcomes" className={layout.sectionHeading}>More people started. They got further.</h2>
           <p className={`${layout.prose} ${styles.copy}`}>Help Me Forecast has become the main way people forecast in LivePlan. More owners are getting started and making progress across their forecast.</p>
           <div className={styles.entryGrid}>
-            <div className={styles.card}><h3><span className={styles.metric}>65%</span>more forecast starts</h3><p>More owners began putting together a forecast.</p></div>
-            <div className={styles.card}><h3><span className={styles.metric}>50%</span>more sections completed</h3><p>Owners made progress across more of the forecast.</p></div>
+            <div className={styles.card}><h3><span className={styles.metric}>50%</span>more forecast starts</h3><p>More owners began putting together a forecast.</p></div>
+            <div className={styles.card}><h3><span className={styles.metric}>65%</span>more sections completed</h3><p>Owners made progress across more of the forecast.</p></div>
           </div>
         </div>
       </section>
