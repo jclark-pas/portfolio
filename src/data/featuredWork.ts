@@ -7,7 +7,7 @@ export const featuredWork: FeaturedWork[] = [
     title: "Help Me Forecast",
     subtitle: "From napkin math to a working forecast",
     description:
-      "A guided AI conversation that helps business owners build and understand their financial forecast — driving 65% more starts and 50% more sections completed.",
+      "A guided AI conversation that helps business owners build and understand their financial forecast — driving 50% more starts and 65% more sections completed.",
     href: "/work/help-me-forecast",
     imageBackground:
       "linear-gradient(135deg, #dceef1 0%, #dce5f5 50%, #e5dcf2 100%)",
