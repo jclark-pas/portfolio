@@ -21,6 +21,8 @@ export interface FeaturedWork {
   /** Anchor a transparent screenshot snug into the corner (no padding/float),
    *  letting it bleed off the edge on a soft gradient — mirrors DesignShowcase. */
   imageSnug?: boolean;
+  /** Keep a tall screenshot at full width and let the panel crop its bottom. */
+  imageBleedBottom?: boolean;
 }
 
 export default function FeaturedWorkCard({ work }: { work: FeaturedWork }) {
@@ -55,6 +57,8 @@ export default function FeaturedWorkCard({ work }: { work: FeaturedWork }) {
               sizes="(max-width: 900px) 100vw, 45vw"
               className={`${styles.mediaImg}${
                 work.imageElevated ? ` ${styles.mediaImgElevated}` : ""
+              }${
+                work.imageBleedBottom ? ` ${styles.mediaImgBleedBottom}` : ""
               }`}
             />
           ))}

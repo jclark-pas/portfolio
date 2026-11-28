@@ -1,0 +1,28 @@
+.page { min-width: 0; }
+.copy { max-width: 680px; }
+.quotedHeading { position: relative; }
+.openingQuote { position: absolute; inset-inline-end: 100%; top: 0; }
+.copy + .copy { margin-top: var(--space-md); }
+.page [id="ask"], .page [id="correct"], .page [id="approve"] { scroll-margin-top: 96px; }
+.entryGrid { display: grid; gap: 16px; margin-top: 32px; }
+.entryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card { padding: 24px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.card h3 { font-size: 22px; line-height: 1.25; margin-bottom: 8px; }
+.metric { display: block; margin-bottom: 12px; font-size: clamp(48px, 6vw, 72px); line-height: 1; letter-spacing: -.04em; color: var(--color-accent); }
+.card p { font-size: 16px; line-height: 1.5; color: var(--color-text-secondary); }
+.card .label { font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+.guided { background: color-mix(in srgb, #9bbce8 15%, var(--color-surface)); }
+.art { padding: clamp(16px, 3vw, 44px); border-radius: var(--radius-lg); display: grid; place-items: center; }
+.ask { padding: clamp(14px, 2vw, 28px); background: linear-gradient(135deg, #dceef3, #dce6f9 58%, #e5def4); }
+.correct { padding: clamp(14px, 2vw, 28px); background: linear-gradient(135deg, #e7dcf6, #e5e7f7 44%, #eddfeb); }
+.approve { padding: clamp(14px, 2vw, 28px); background: linear-gradient(135deg, #d8eee7, #dceaf5 53%, #dae2f7); }
+.exampleImage { width: 100%; max-width: 468px; height: auto; border-radius: 8px; box-shadow: 0 8px 22px #1b31642a; }
+.caption { margin-top: 12px; font-size: 14px; line-height: 1.45; color: var(--color-text-secondary); }
+.productVideo { margin: 32px 0 0; }
+.productVideo iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: var(--radius-lg); background: #21334d; }
+@media (max-width: 600px) {
+  .entryGrid { grid-template-columns: 1fr; }
+  .card { padding: 20px; }
+  .copy, .exampleCopy { font-size: 16px; }
+  .page figcaption { font-size: 14px; }
+}

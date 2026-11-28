@@ -62,6 +62,16 @@
   box-shadow: none;
 }
 
+.mediaImgBleedBottom {
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  width: calc(100% - 2 * var(--space-lg));
+  height: auto;
+  max-height: none;
+  transform-origin: top center;
+}
+
 /* Registered so the glow's radius can animate — a smooth bloom that grows only
    the light, not the whole box. (Scaling the box exposed its rectangular edge
    where the radial ran bright near the top-left corner.) */
